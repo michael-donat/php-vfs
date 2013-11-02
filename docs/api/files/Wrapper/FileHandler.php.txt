@@ -1,0 +1,115 @@
+<?php
+/*
+ * This file is part of the php-vfs package.
+ *
+ * (c) Michael Donat <michael.donat@me.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace VirtualFileSystem\Wrapper;
+
+use VirtualFileSystem\Structure\File;
+
+/**
+ * User as file handle by streamWrapper implementation.
+ *
+ * This class is responsible mainly for managing the pointer position during reading and writing.
+ *
+ * @author Michael Donat <michael.donat@me.com>
+ * @package php-vfs
+ */
+class FileHandler
+{
+    protected $position = 0;
+
+    /**
+     * @var File
+     */
+    protected $file;
+
+    /**
+     * Sets file in context.
+     *
+     * @param File $file
+     */
+    public function setFile(File $file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Writes data to file. Will return the number of bytes written. Will advance pointer by number of bytes written.
+     *
+     * @param string $data
+     *
+     * @return int
+     */
+    public function write($data)
+    {
+        $content = $this->file->data();
+        $content = substr($content, 0, $this->position());
+        $content .= $data;
+        $this->file->setData($content);
+        $written = strlen($data);
+        $this->position($this->position()+$written);
+
+        return $written;
+    }
+
+    /**
+     * Will read and return $bytes bytes from file. Will advance pointer by $bytes bytes.
+     *
+     * @param int $bytes
+     *
+     * @return string
+     */
+    public function read($bytes)
+    {
+        $content = $this->file->data();
+
+        $return = substr($content, $this->position(), $bytes);
+
+        $newPosition = $this->position()+$bytes;
+
+        $newPosition = $newPosition > strlen($content) ? strlen($content) : $newPosition;
+
+        $this->position($newPosition);
+
+        return $return;
+    }
+
+    /**
+     * Returns current pointer position.
+     *
+     * @param null $position
+     *
+     * @return int
+     */
+    public function position($position = null)
+    {
+        return is_null($position) ? $this->position : $this->position = $position;
+    }
+
+    /**
+     * Moves pointer to the end of file (for append modes).
+     *
+     * @return int
+     */
+    public function seekToEnd()
+    {
+        return $this->position(strlen($this->file->data()));
+    }
+
+    /**
+     * Tells whether pointer is at the end of file.
+     *
+     * @return bool
+     */
+    public function atEof()
+    {
+        return $this->position() >= strlen($this->file->data());
+    }
+}
+

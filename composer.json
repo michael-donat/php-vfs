@@ -1,0 +1,34 @@
+{
+    "name": "php-vfs/php-vfs",
+    "homepage": "http://thornag.github.com/php-vfs",
+    "keywords": ["php", "virtual", "filesystem", "testing", "unit"],
+    "license": "GPL-3.0+",
+    "description": "Virtual file system implementation for use with PHP unit testing.",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Michael Donat",
+            "email": "michael.donat@me.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "VirtualFileSystem": "src/"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/thornag/php-vfs/issues",
+        "wiki": "https://github.com/thornag/php-vfs/wiki"
+    },
+    "archive": {
+        "exclude": ["docs", "vendor", "tests", ".*", "phpunit.xml", "composer.*"]
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "type": "library"
+}

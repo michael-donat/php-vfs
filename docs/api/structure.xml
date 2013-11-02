@@ -1,0 +1,1477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="PHP Virtual FileSystem." version="2.1.0&#10;">
+  <partials/>
+  <file path="Wrapper/FileHandler.php" generated-path="Wrapper.FileHandler.html" hash="db4eed340df9299638278c1c689f5339" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem\Wrapper" line="23" package="php-vfs">
+      <extends/>
+      <name>FileHandler</name>
+      <full_name>\VirtualFileSystem\Wrapper\FileHandler</full_name>
+      <docblock line="23">
+        <description>User as file handle by streamWrapper implementation.</description>
+        <long-description>This class is responsible mainly for managing the pointer position during reading and writing.</long-description>
+        <tag name="author" line="23" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="23" description="php-vfs"/>
+      </docblock>
+      <property static="false" visibility="protected" line="25" namespace="VirtualFileSystem\Wrapper" package="php-vfs">
+        <name>$position</name>
+        <default>0</default>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="30" namespace="VirtualFileSystem\Wrapper" package="php-vfs">
+        <name>$file</name>
+        <default></default>
+        <docblock line="30">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" line="30" description="" type="\VirtualFileSystem\Structure\File" variable="">
+            <type link="File.html">\VirtualFileSystem\Structure\File</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Wrapper" line="37" package="php-vfs">
+        <name>setFile</name>
+        <full_name>\VirtualFileSystem\Wrapper\FileHandler::setFile()</full_name>
+        <docblock line="37">
+          <description>Sets file in context.</description>
+          <long-description></long-description>
+          <tag name="param" line="37" description="" type="\VirtualFileSystem\Structure\File" variable="$file">
+            <type link="File.html">\VirtualFileSystem\Structure\File</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$file</name>
+          <default></default>
+          <type>\VirtualFileSystem\Structure\File</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Wrapper" line="49" package="php-vfs">
+        <name>write</name>
+        <full_name>\VirtualFileSystem\Wrapper\FileHandler::write()</full_name>
+        <docblock line="49">
+          <description>Writes data to file. Will return the number of bytes written. Will advance pointer by number of bytes written.</description>
+          <long-description></long-description>
+          <tag name="param" line="49" description="" type="string" variable="$data">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="49" description="" type="int">
+            <type>int</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$data</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Wrapper" line="68" package="php-vfs">
+        <name>read</name>
+        <full_name>\VirtualFileSystem\Wrapper\FileHandler::read()</full_name>
+        <docblock line="68">
+          <description>Will read and return $bytes bytes from file. Will advance pointer by $bytes bytes.</description>
+          <long-description></long-description>
+          <tag name="param" line="68" description="" type="int" variable="$bytes">
+            <type>int</type>
+          </tag>
+          <tag name="return" line="68" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$bytes</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Wrapper" line="90" package="php-vfs">
+        <name>position</name>
+        <full_name>\VirtualFileSystem\Wrapper\FileHandler::position()</full_name>
+        <docblock line="90">
+          <description>Returns current pointer position.</description>
+          <long-description></long-description>
+          <tag name="param" line="90" description="" type="null" variable="$position">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="90" description="" type="int">
+            <type>int</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$position</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Wrapper" line="100" package="php-vfs">
+        <name>seekToEnd</name>
+        <full_name>\VirtualFileSystem\Wrapper\FileHandler::seekToEnd()</full_name>
+        <docblock line="100">
+          <description>Moves pointer to the end of file (for append modes).</description>
+          <long-description></long-description>
+          <tag name="return" line="100" description="" type="int">
+            <type>int</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Wrapper" line="110" package="php-vfs">
+        <name>atEof</name>
+        <full_name>\VirtualFileSystem\Wrapper\FileHandler::atEof()</full_name>
+        <docblock line="110">
+          <description>Tells whether pointer is at the end of file.</description>
+          <long-description></long-description>
+          <tag name="return" line="110" description="" type="bool">
+            <type>bool</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="25" code="PPC:ERR-50007">No summary for property $position</error>
+      <error line="30" code="PPC:ERR-50007">No summary for property $file</error>
+    </parse_markers>
+    <source>eJydVUtv2zAMvvtX6NCD0+XR87qkBdYUG7AOw9qtlwKDbNOxUFsyJDlZMPS/j5StOPUj6OZD3Ugkxe9h6sNVmZXB4jxg5+whE4alIgeG75Jry1TKbAYMQ2bblNbiZ76BOQZTfBhP2J2IMw45u1GSW/ahqH/OE/p5XcA8VsWqCb9V2lVLqzxnsSr3Wmwyy7hMWC5ikAbPlanSBbdCySkrc+C4thWwc3lfPn9cf71fUynXpM3wxB03LBHGahFVFhK2EzbDHQRgVKVjwIMS1/AiCCQvwCAGYD+FthXPb7HM/d5YKJ4eNS9L0JdBUJmh/Xurq9hWGp5oEcMW5w7UDwOa8Ya2DLHgK9ozbAh40RRlokAsBUjrkHn6HN1xzo0hvjW2pqQRERYouJD5niEX+K/kGyE3tQ5KSIv1SmUEVWJJpWkPz0roTVTuNG7JjT/kmlc2wzpv1IldNxp7zR1zdZME/JNDqIM/AcOn1MpCTLSfHVpasgtkh3YdQ/Rg1S3XLr9ZWHTT05rUTto9WG9IiUIi9t923mweSqNReeGK12VeH1FF6C20nIxddwYsRYZt+MTF1XjoOSPzzFbu1KVvjDZeeu09ItWA9uOWM6tco3P2KNDdGtAq0mkmqyJCyfBLivYUTfpYkE0gT7Zcxq2yaJ2xhGHc5HxU/oya6EY0XWDlk5zQARC6Cj0yHOnSEhMtL7MVxYaTy6E4U0XYU+hXpuxi6nO9R8LJUOp8WaO4HJJitkLlbuhUH39coqGITrc6B9mA6VU6NNBr6J2vMWlcSE/Dn98atUGtOE/c9+eTavHqv6lWxbE9BlQ/jh+RGmObsBGhay+c1JraDOsi/6p1G9gcN6B1j9dp0/GrfAm7b+24GNDCpZzIOP65OmjujcGu+kvvXyUdl+464yhsyAv1e8wK390uTvVKa6KyO7BHlJV0Ix5G6H9+xi2Eo1lMlbtC+3rmF+224URchw7irbOybBsdY+FObdHKHjtORpqDgN8GzjQ3V0O62ehqxLUC72cz6RHzRtAG4PlBrWUSjqDs6uud0Xe4H0p9PA+Q5ziHM0Ac+oAL72y8STvQxnBESuUngXC7VulbQUzYqh11A0g8kJfgL1/a9Ng=</source>
+  </file>
+  <file path="Structure/Directory.php" generated-path="Structure.Directory.html" hash="cfcafa4e153a675658e248970f112e66" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem\Structure" line="21" package="php-vfs">
+      <extends>\VirtualFileSystem\Structure\Node</extends>
+      <name>Directory</name>
+      <full_name>\VirtualFileSystem\Structure\Directory</full_name>
+      <docblock line="21">
+        <description>FileSystem Directory representation.</description>
+        <long-description></long-description>
+        <tag name="author" line="21" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="21" description="php-vfs"/>
+      </docblock>
+      <constant namespace="VirtualFileSystem\Structure" line="26" package="php-vfs">
+        <name>S_IFTYPE</name>
+        <full_name>\VirtualFileSystem\Structure\Directory::S_IFTYPE</full_name>
+        <value>16384</value>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+          <tag name="see" line="26" description="" link="\VirtualFileSystem\Structure\http://man7.org/linux/man-pages/man2/lstat.2.html"/>
+        </docblock>
+      </constant>
+      <property static="false" visibility="protected" line="28" namespace="VirtualFileSystem\Structure" package="php-vfs">
+        <name>$children</name>
+        <default>array()</default>
+        <docblock line="28">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="35" package="php-vfs">
+        <name>__construct</name>
+        <full_name>\VirtualFileSystem\Structure\Directory::__construct()</full_name>
+        <docblock line="35">
+          <description>Class constructor.</description>
+          <long-description></long-description>
+          <tag name="param" line="35" description="" type="string" variable="$basename">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$basename</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="48" package="php-vfs">
+        <name>addDirectory</name>
+        <full_name>\VirtualFileSystem\Structure\Directory::addDirectory()</full_name>
+        <docblock line="48">
+          <description>Adds child Directory.</description>
+          <long-description></long-description>
+          <tag name="param" line="48" description="" type="\VirtualFileSystem\Structure\Directory" variable="$directory">
+            <type link="Directory.html">\VirtualFileSystem\Structure\Directory</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$directory</name>
+          <default></default>
+          <type>\VirtualFileSystem\Structure\Directory</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="58" package="php-vfs">
+        <name>addFile</name>
+        <full_name>\VirtualFileSystem\Structure\Directory::addFile()</full_name>
+        <docblock line="58">
+          <description>Adds child File.</description>
+          <long-description></long-description>
+          <tag name="param" line="58" description="" type="\VirtualFileSystem\Structure\File" variable="$file">
+            <type link="File.html">\VirtualFileSystem\Structure\File</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$file</name>
+          <default></default>
+          <type>\VirtualFileSystem\Structure\File</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="VirtualFileSystem\Structure" line="68" package="php-vfs">
+        <name>addNode</name>
+        <full_name>\VirtualFileSystem\Structure\Directory::addNode()</full_name>
+        <docblock line="68">
+          <description>Adds child Node.</description>
+          <long-description></long-description>
+          <tag name="param" line="68" description="" type="\VirtualFileSystem\Structure\Node" variable="$node">
+            <type link="Node.html">\VirtualFileSystem\Structure\Node</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$node</name>
+          <default></default>
+          <type>\VirtualFileSystem\Structure\Node</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="79" package="php-vfs">
+        <name>size</name>
+        <full_name>\VirtualFileSystem\Structure\Directory::size()</full_name>
+        <docblock line="79">
+          <description>Returns size as the number of child elements.</description>
+          <long-description></long-description>
+          <tag name="return" line="79" description="" type="int">
+            <type>int</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="93" package="php-vfs">
+        <name>childAt</name>
+        <full_name>\VirtualFileSystem\Structure\Directory::childAt()</full_name>
+        <docblock line="93">
+          <description>Returns child Node existing at path.</description>
+          <long-description></long-description>
+          <tag name="param" line="93" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="93" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+          <tag name="throws" line="93" description="" type="\VirtualFileSystem\NotFoundException">
+            <type link="NotFoundException.html">\VirtualFileSystem\NotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="28" code="PPC:ERR-50007">No summary for property $children</error>
+    </parse_markers>
+    <source>eJyNVe9r2zAQ/e6/4gYZdUqTlDIYZG3XrE2gsIbSlMFYS1DscyxqS0aSm2Sj//tOsmOn+dFEXxxb707v3p1ezr9nceZ1jj04hseYa4h4gkDPjCkDMgITIxCk9RrZb8ELm2KbwBbvB02440HMMIEbKZiB87R4bYf29SrFdiDTyxI+kMpli/IkgUBmC8WnsQEmQkh4gELTuSKSKmWGS3ECWYKMvr1ynLm4n7fX/eGob1M5kiamE2dMQ8i1UXySGwxhxk1MO1SAlrkKkA4KHeGO5wmWoqYaEH5xZXKWDCjNaKENpk8jo/LA5Aq/eV6utyGG0gxkLsL+PMDMMiRk57iorELBDVcYGKkWoDBTqFEYV85SsyuWm5iEOFA3uCo1X/bAVRIkTOuVo3BuUIQahlSr988DWo6ZXZRCI0JsTNbtdFImvralmnYSLvK5fW1llF3bX2edRBPZ9lk7NmlSRnfcM5BCGxiNbwePv+/79OECTk+/nNIiESwgU9IQGWpAI4h5EioUhGFKsYXfLDErlK5dAS6rlV2qdrlTcabxYynYvoopNCY0CLZ770hl+YTmhsZJBFZhGI+rhH4V0XTQQhO7eAT1JlxcwIOUptv90Rv1h727fnMFapeJlZyBoAl8uhWvLOFhT03zlLpajYF/dK2Qekw8w7IjHDXQXCpK7a6SkjGfcFLniLRYpn6rflGtlLDb3V5AEfG2oWEvpI47setJ2CFjPSmNJcXFh1KyMKxi/G3R67I27JVrXVKcnUF/BXgAfXt9djC3W9Cw130fX4v0a/g+gg5zALdhYR/buNktaAh7595xq67CKj13ah2xg97y7vxxoNblcgj85jNdJ/exHqASo9HcuwHyXZKdRT0g2ZsgX+R/0U6ntVSRpxNU1uaLajFBO9t6o2LlgsmfzYd9sLn99drK2IDMs+RYF7qXbd0FcjnyeXvNyDAzZuI9nmEhO8pI+RzD9T131TU8HeD8H2rgGPeoUktgm/18crY4fsHF2JWkC+jJ+hA0d5vRBiNfZ1S1iciMZE6CCXKeiNM/a6EfKfZZH50UojTfmdB6mzYm0YY8L9v05v0HWe5q7A==</source>
+  </file>
+  <file path="Container.php" generated-path="Container.html" hash="c81413853f088a0b02e849f290feca91" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem" line="26" package="php-vfs">
+      <extends/>
+      <name>Container</name>
+      <full_name>\VirtualFileSystem\Container</full_name>
+      <docblock line="26">
+        <description>Class to hold the filesystem structure as object representation. It also provides access and factory methods for
+file system management.</description>
+        <long-description>An instance of Container is registered as a default stream options when FileSystem class is instantiated - it is
+later used by streamWrapper implementation to interact with underlying object representation.</long-description>
+        <tag name="author" line="26" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="26" description="php-vfs"/>
+      </docblock>
+      <property static="false" visibility="protected" line="31" namespace="VirtualFileSystem" package="php-vfs">
+        <name>$root</name>
+        <default></default>
+        <docblock line="31">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" line="31" description="" type="\VirtualFileSystem\Structure\Root" variable="">
+            <type link="Root.html">\VirtualFileSystem\Structure\Root</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="36" namespace="VirtualFileSystem" package="php-vfs">
+        <name>$factory</name>
+        <default></default>
+        <docblock line="36">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" line="36" description="" type="\VirtualFileSystem\Factory" variable="">
+            <type link="Factory.html">\VirtualFileSystem\Factory</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="43" package="php-vfs">
+        <name>__construct</name>
+        <full_name>\VirtualFileSystem\Container::__construct()</full_name>
+        <docblock line="43">
+          <description>Class constructor. Sets factory and root object on init.</description>
+          <long-description></long-description>
+          <tag name="param" line="43" description="" type="\VirtualFileSystem\Factory" variable="$factory">
+            <type link="Factory.html">\VirtualFileSystem\Factory</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$factory</name>
+          <default></default>
+          <type>\VirtualFileSystem\Factory</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="54" package="php-vfs">
+        <name>setFactory</name>
+        <full_name>\VirtualFileSystem\Container::setFactory()</full_name>
+        <docblock line="54">
+          <description>Sets Factory instance</description>
+          <long-description></long-description>
+          <tag name="param" line="54" description="" type="\VirtualFileSystem\Factory" variable="$factory">
+            <type link="Factory.html">\VirtualFileSystem\Factory</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$factory</name>
+          <default></default>
+          <type>\VirtualFileSystem\Factory</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="64" package="php-vfs">
+        <name>factory</name>
+        <full_name>\VirtualFileSystem\Container::factory()</full_name>
+        <docblock line="64">
+          <description>Returns Factory instance</description>
+          <long-description></long-description>
+          <tag name="return" line="64" description="" type="\VirtualFileSystem\Factory">
+            <type link="Factory.html">\VirtualFileSystem\Factory</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="74" package="php-vfs">
+        <name>root</name>
+        <full_name>\VirtualFileSystem\Container::root()</full_name>
+        <docblock line="74">
+          <description>Returns Root instance</description>
+          <long-description></long-description>
+          <tag name="return" line="74" description="" type="\VirtualFileSystem\Structure\Directory">
+            <type link="Directory.html">\VirtualFileSystem\Structure\Directory</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="88" package="php-vfs">
+        <name>fileAt</name>
+        <full_name>\VirtualFileSystem\Container::fileAt()</full_name>
+        <docblock line="88">
+          <description>Returns filesystem Node|Directory|File|Root at given path.</description>
+          <long-description></long-description>
+          <tag name="param" line="88" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="88" description="" type="\VirtualFileSystem\Structure\Node">
+            <type link="Node.html">\VirtualFileSystem\Structure\Node</type>
+          </tag>
+          <tag name="throws" line="88" description="" type="\VirtualFileSystem\NotFoundException">
+            <type link="NotFoundException.html">\VirtualFileSystem\NotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="112" package="php-vfs">
+        <name>createDir</name>
+        <full_name>\VirtualFileSystem\Container::createDir()</full_name>
+        <docblock line="112">
+          <description>Creates Directory at given path.</description>
+          <long-description></long-description>
+          <tag name="param" line="112" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="112" description="" type="bool" variable="$recursive">
+            <type>bool</type>
+          </tag>
+          <tag name="param" line="112" description="" type="null" variable="$mode">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="112" description="" type="\VirtualFileSystem\Structure\Directory">
+            <type link="Directory.html">\VirtualFileSystem\Structure\Directory</type>
+          </tag>
+          <tag name="throws" line="112" description="" type="\VirtualFileSystem\NotFoundException">
+            <type link="NotFoundException.html">\VirtualFileSystem\NotFoundException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$recursive</name>
+          <default>false</default>
+          <type>bool</type>
+        </argument>
+        <argument line="0">
+          <name>$mode</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="141" package="php-vfs">
+        <name>createFile</name>
+        <full_name>\VirtualFileSystem\Container::createFile()</full_name>
+        <docblock line="141">
+          <description>Creates file at given path</description>
+          <long-description></long-description>
+          <tag name="param" line="141" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="141" description="" type="null" variable="$data">
+            <type>null</type>
+          </tag>
+          <tag name="return" line="141" description="" type="\VirtualFileSystem\Structure\File">
+            <type link="File.html">\VirtualFileSystem\Structure\File</type>
+          </tag>
+          <tag name="throws" line="141" description="" type="\RuntimeException">
+            <type link="RuntimeException.html">\RuntimeException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$data</name>
+          <default>null</default>
+          <type>null</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="31" code="PPC:ERR-50007">No summary for property $root</error>
+      <error line="36" code="PPC:ERR-50007">No summary for property $factory</error>
+    </parse_markers>
+    <source>eJylVttu4zYQfddXTAEvIgdx8r7Z9WaRC7BAu1gkRfsSIKClscVWIgWScmI0+fceUhdLvm5avxgihzNnzpkZ8tOXMiuji9OITun3TFqay5wJ/6UwjvScXMYEk8ly7teSv8WCz2Hs7eNkTL/JJBOc041WwtGnov48T/3nVcHniS6mjfmdNsHbvMpzSnS5MnKRORIqpVwmrCziqrk2hXBSqzMqcxZYW0p+Dud+/XZ9+/3h1rsKIF2GiM/CUiqtM3JWOU7pWboMO0jA6sokjEBpAHwRRUoUbJED0x/SuErkd3DzsLKOi8soquyO9ccHZ6rEVYYfb6ThxGmzujxqeq+1g8eL05D3dS6sJacp03laM4BDNhwi2x4iJKJnfyEEGS4NW1YuEHFO30BSbjWVRi9lypZEkjBceubmImCigl2mU8inTUdQE6IQCqIV8NcK91WBaeuEAhWQ+FojlFRsvO6GF6CTDbgEIkEpz0WVOw+URUG69JgsPWesaJ08JSFJnK8dOym8GhOSDos+Zo4FQ2Aupdmq8fanEWXpwxbQumgT9lRJBWukVutZqZRNvpJqsYeiJq8rUYEF87NFSVdNQbcFHsqkzqTjJPonIvyClv6HU0thyEvcLFyEf4jjgAzpjUwt/65jd7Vc+042am4frmsoAfOhXrQ5pwd2tpPfl4IP2/KjvcLSCx7OdxjQ1RCxQdHFG8KpZmhHdKlKghpPT13YePPgOJyoGfK/ke+8ydSyayzjzvJy0yjA/dx+NWbxeDJdsPPsxs2Rty0yQuYtlLaQd2f6uN2m70p+Vya7c26V+NxTcTf8e0a/q+MZmGB3IIWDyDtCN+A2Xoeoj0H1ehzD2c3Hg7BMUPYgprp9DgPqTdDvGPCvXfBXT9NrwIvWX8glxlQpXLanE/zFgaky8iZ78lqPdR+p3e2sXGb0swUKd6cxp25fEg4j8rA4APnVxSHsVj35xR+4fS1qSRgjVk8wxziM+aXMASE+uTg5q83GZ3SCFHJWJ+NmaAQXCmbr3jJNN3X7uCRYJBnFvVgY9qOcl5yPe1gGzvz/ZJpkMk899tp43dZv0Zae/sQ+Ja8BweEu65T7r3q1WzOtc8xeTipj4WZjV/lHx6hYK7hf5s1C/n9SJyFP+KzJPutBBKlzXOx8VgPDp0e5ox4MLrofOAyLVBr/jGlKpzdU/Sr2Z3gyDQw6CweKN5StPfeGcFeWbcS+vpQI54tmK38a8WbRyDnFv6wz3dwOeDybpPC423IY2xIyu3l80rH3kT7Yj7AkWwFDeN7gok9bqeqG6FD3YNfVdzDtgUStj75QjUC7i705M5mKNO1KJx4hsXVp77nmQkiv1rgvVNc9PQ/HuigQMmigd/dP3SGpcOJoh/gZu6c5Hu8rPP4Kfk9zeHddd3gAezphRwWHvHfU76Byh9W2hXBdbR8wBnNASlfEL3gF227OvqcPDhQJoG5gHfbzYIj36qpmCOjvhvkOqikYbfT/0GPjIDzQbsBzHNjeU3vestl5i96ifwEusjlt</source>
+  </file>
+  <file path="Structure/Node.php" generated-path="Structure.Node.html" hash="873127a9d32cb9039c2cd451e9967cf9" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="true" namespace="VirtualFileSystem\Structure" line="19" package="php-vfs">
+      <extends/>
+      <name>Node</name>
+      <full_name>\VirtualFileSystem\Structure\Node</full_name>
+      <docblock line="19">
+        <description>Abstract class to represent filesystem Node.</description>
+        <long-description></long-description>
+        <tag name="author" line="19" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="19" description="php-vfs"/>
+      </docblock>
+      <constant namespace="VirtualFileSystem\Structure" line="21" package="php-vfs">
+        <name>S_IFMT</name>
+        <full_name>\VirtualFileSystem\Structure\Node::S_IFMT</full_name>
+        <value>57344</value>
+        <docblock line="21">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <constant namespace="VirtualFileSystem\Structure" line="22" package="php-vfs">
+        <name>DEF_MODE</name>
+        <full_name>\VirtualFileSystem\Structure\Node::DEF_MODE</full_name>
+        <value>0</value>
+        <docblock line="22">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <property static="false" visibility="protected" line="24" namespace="VirtualFileSystem\Structure" package="php-vfs">
+        <name>$basename</name>
+        <default></default>
+        <docblock line="24">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="25" namespace="VirtualFileSystem\Structure" package="php-vfs">
+        <name>$parent</name>
+        <default></default>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="26" namespace="VirtualFileSystem\Structure" package="php-vfs">
+        <name>$userid</name>
+        <default></default>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="27" namespace="VirtualFileSystem\Structure" package="php-vfs">
+        <name>$groupid</name>
+        <default></default>
+        <docblock line="27">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="34" package="php-vfs">
+        <name>__construct</name>
+        <full_name>\VirtualFileSystem\Structure\Node::__construct()</full_name>
+        <docblock line="34">
+          <description>Class constructor.</description>
+          <long-description></long-description>
+          <tag name="param" line="34" description="" type="string" variable="$basename">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$basename</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="48" package="php-vfs">
+        <name>chmod</name>
+        <full_name>\VirtualFileSystem\Structure\Node::chmod()</full_name>
+        <docblock line="48">
+          <description>Changes access to file.</description>
+          <long-description>This will apply the DIR/FILE type mask for use by stat to distinguish between file and directory.</long-description>
+          <tag name="see" line="48" description="for explanation." link="\VirtualFileSystem\Structure\http://man7.org/linux/man-pages/man2/lstat.2.html"/>
+          <tag name="param" line="48" description="" type="int" variable="$mode">
+            <type>int</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$mode</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="58" package="php-vfs">
+        <name>mode</name>
+        <full_name>\VirtualFileSystem\Structure\Node::mode()</full_name>
+        <docblock line="58">
+          <description>Returns file mode</description>
+          <long-description></long-description>
+          <tag name="return" line="58" description="" type="int">
+            <type>int</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="68" package="php-vfs">
+        <name>chown</name>
+        <full_name>\VirtualFileSystem\Structure\Node::chown()</full_name>
+        <docblock line="68">
+          <description>Changes ownership.</description>
+          <long-description></long-description>
+          <tag name="param" line="68" description="" type="" variable="$userid"/>
+        </docblock>
+        <argument line="0">
+          <name>$userid</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="78" package="php-vfs">
+        <name>user</name>
+        <full_name>\VirtualFileSystem\Structure\Node::user()</full_name>
+        <docblock line="78">
+          <description>Returns ownership.</description>
+          <long-description></long-description>
+          <tag name="return" line="78" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="88" package="php-vfs">
+        <name>chgrp</name>
+        <full_name>\VirtualFileSystem\Structure\Node::chgrp()</full_name>
+        <docblock line="88">
+          <description>Changes group ownership.</description>
+          <long-description></long-description>
+          <tag name="param" line="88" description="" type="" variable="$groupid"/>
+        </docblock>
+        <argument line="0">
+          <name>$groupid</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="98" package="php-vfs">
+        <name>group</name>
+        <full_name>\VirtualFileSystem\Structure\Node::group()</full_name>
+        <docblock line="98">
+          <description>Returns group ownership.</description>
+          <long-description></long-description>
+          <tag name="return" line="98" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="true" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="108" package="php-vfs">
+        <name>size</name>
+        <full_name>\VirtualFileSystem\Structure\Node::size()</full_name>
+        <docblock line="108">
+          <description>Returns Node size.</description>
+          <long-description></long-description>
+          <tag name="return" line="108" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="VirtualFileSystem\Structure" line="115" package="php-vfs">
+        <name>setParent</name>
+        <full_name>\VirtualFileSystem\Structure\Node::setParent()</full_name>
+        <docblock line="115">
+          <description>Sets parent Node.</description>
+          <long-description></long-description>
+          <tag name="param" line="115" description="" type="\VirtualFileSystem\Structure\Directory" variable="$parent">
+            <type link="Directory.html">\VirtualFileSystem\Structure\Directory</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$parent</name>
+          <default></default>
+          <type>\VirtualFileSystem\Structure\Directory</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="125" package="php-vfs">
+        <name>basename</name>
+        <full_name>\VirtualFileSystem\Structure\Node::basename()</full_name>
+        <docblock line="125">
+          <description>Returns Node basename.</description>
+          <long-description></long-description>
+          <tag name="return" line="125" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="135" package="php-vfs">
+        <name>path</name>
+        <full_name>\VirtualFileSystem\Structure\Node::path()</full_name>
+        <docblock line="135">
+          <description>Returns node URL.</description>
+          <long-description></long-description>
+          <tag name="return" line="135" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="153" package="php-vfs">
+        <name>__toString</name>
+        <full_name>\VirtualFileSystem\Structure\Node::__toString()</full_name>
+        <docblock line="153">
+          <description>Returns node absolute path (without scheme).</description>
+          <long-description></long-description>
+          <tag name="return" line="153" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="163" package="php-vfs">
+        <name>dirname</name>
+        <full_name>\VirtualFileSystem\Structure\Node::dirname()</full_name>
+        <docblock line="163">
+          <description>Returns Node parent absolute path.</description>
+          <long-description></long-description>
+          <tag name="return" line="163" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="24" code="PPC:ERR-50007">No summary for property $basename</error>
+      <error line="25" code="PPC:ERR-50007">No summary for property $parent</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $userid</error>
+      <error line="27" code="PPC:ERR-50007">No summary for property $groupid</error>
+    </parse_markers>
+    <source>eJylVt9v2zgMfvdfwYcOcYrW3vZwB6Tr1mFJgALtbmh6BxxwQKAoSizMlgxJXprb9X8/Uv6RxJnjYtNDHIsU+fEjRfrdhzzJg/g8gHN4TKSFlUwF4DNnxoFegUsEoMrltxXt8a9sLSJUJv2QD+Fe8oSJFMZaMQfvsvI1WtLrTSYirrP3lfpUG29tVaQpcJ1vjVwnDphaQiq5UBb9qpU2GXNSqwvIU8Fw75sUG3/u7vbT5PNsQqY8SJegxw2zsJTWGbkonFjCRroEJRiA1YXhAh0tPeA4CBTLhMUYBPwljStYOkUzs611Ivtn5kzBXWHEVYBseLwfF2iWcQc8ZdaC02BEboQVynkA1p+Ez5UDOnLDCpdgmC9kBW4qRmuGPU526JfsB98DwMW1sg5m89vp/SO9X8PrN7+9xnW1Jx5PpvP7P8YTL/YyL8yNdoITRWcLpJW4uGoLMOcY3NF2YYWRy6PttdFFTvte4EmjdQ6fPG6PhkjVJqoktQKGbVgGlDW13uGpxHHpqFhgVWCxKE7lAPN5YzBsTgy9akkOrTPK/OX7WowMtILdU+JJppehFelqNKo5G5Zaz8chJUythQXGuShrgSqgHZe/QBuJ5c3yPN36qh3fPsTT27sJuG0uIGP2K2CNA3IKiy1SgPWB1qiEkYtC2gQWwm2EUGWR0+1YSiOIxm3UEGiFgMS5fBTHGVO/R9qs41Sq4oleL3MsKUv/3sYpeYjeRonLUu9YPOUpU/6KdaRFYn2fZVR1p/JR0uf1OrJAIsqAf/7nQ5V8NKLyffz7y6SL6geB11BVjWgPRoPSeAWCeRIgHQ3b0Kqzewj7Mq43ShibyLyDrep29HCFVsJKs4OtUkh87V+3bnq6cVUxZvJJnIZFjnoYOo2l5sh3gn6mqobRQ9Xa5GGt2sFVJSWymiZ0mq0+hC/mzBvqIe2FmKixg5X/HrWRbjTNaGjDIjPh8LgVz4Tzo5xmVjWofpSacd1h6hlwyEHT83f+hPviFcOjox05q0BcH06ZHnbq5t3FUDlBTiasNtGTs8Mx0Q1LEaw/H+5+AVHOXHKE5gybfD2ySkTVRpNVWnIF4U7zGgbxALCnH2wNhvAd4hjnitHa7c7ux1zpR63gw+FuSj4HbaZsjqG5VTh4ZeNXdnDRmLlokxgOa9A9RGI96xS/2zwnENLHmy4cWJ4IHO6/wPF87vTMq/XkvUzGi4qxquADzD/fSJr0tuD5FO9fmeGe8Ef4SecwjjKW8vc5+B9TcFk4</source>
+  </file>
+  <file path="Wrapper.php" generated-path="Wrapper.html" hash="cc6ffc227fda62c25eea0c6cffc25c7f" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem" line="23" package="php-vfs">
+      <extends/>
+      <name>Wrapper</name>
+      <full_name>\VirtualFileSystem\Wrapper</full_name>
+      <docblock line="23">
+        <description>Stream wrapper class. This is the class that PHP uses as the stream operations handler.</description>
+        <long-description></long-description>
+        <tag name="see" line="23" description="for informal protocol description" link="\VirtualFileSystem\http://php.net/streamwrapper"/>
+        <tag name="author" line="23" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="23" description="php-vfs"/>
+      </docblock>
+      <property static="false" visibility="public" line="25" namespace="VirtualFileSystem" package="php-vfs">
+        <name>$context</name>
+        <default></default>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="30" namespace="VirtualFileSystem" package="php-vfs">
+        <name>$currently_opened</name>
+        <default></default>
+        <docblock line="30">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" line="30" description="" type="\VirtualFileSystem\Wrapper\FileHandler" variable="">
+            <type link="FileHandler.html">\VirtualFileSystem\Wrapper\FileHandler</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="VirtualFileSystem" line="39" package="php-vfs">
+        <name>getStatArray</name>
+        <full_name>\VirtualFileSystem\Wrapper::getStatArray()</full_name>
+        <docblock line="39">
+          <description>Returns default expectation for stat() function.</description>
+          <long-description></long-description>
+          <tag name="see" line="39" description="" link="\VirtualFileSystem\http://php.net/stat"/>
+          <tag name="return" line="39" description="" type="array">
+            <type>array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="67" package="php-vfs">
+        <name>stripScheme</name>
+        <full_name>\VirtualFileSystem\Wrapper::stripScheme()</full_name>
+        <docblock line="67">
+          <description>Returns path stripped of url scheme (http://, ftp://, test:// etc.)</description>
+          <long-description></long-description>
+          <tag name="param" line="67" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="67" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="84" package="php-vfs">
+        <name>getContainerFromContext</name>
+        <full_name>\VirtualFileSystem\Wrapper::getContainerFromContext()</full_name>
+        <docblock line="84">
+          <description>Returns Container object fished form default_context_options by scheme.</description>
+          <long-description></long-description>
+          <tag name="param" line="84" description="" type="" variable="$path"/>
+          <tag name="return" line="84" description="" type="\VirtualFileSystem\Container">
+            <type link="Container.html">\VirtualFileSystem\Container</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="98" package="php-vfs">
+        <name>stream_tell</name>
+        <full_name>\VirtualFileSystem\Wrapper::stream_tell()</full_name>
+        <docblock line="98">
+          <description></description>
+          <long-description></long-description>
+          <tag name="see" line="98" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.stream-tell"/>
+          <tag name="return" line="98" description="" type="int">
+            <type>int</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="108" package="php-vfs">
+        <name>stream_close</name>
+        <full_name>\VirtualFileSystem\Wrapper::stream_close()</full_name>
+        <docblock line="108">
+          <description></description>
+          <long-description></long-description>
+          <tag name="see" line="108" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.stream-close"/>
+          <tag name="return" line="108" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="125" package="php-vfs">
+        <name>stream_open</name>
+        <full_name>\VirtualFileSystem\Wrapper::stream_open()</full_name>
+        <docblock line="125">
+          <description>Opens stream in selected mode.</description>
+          <long-description></long-description>
+          <tag name="see" line="125" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.stream-open"/>
+          <tag name="param" line="125" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="125" description="" type="int" variable="$mode">
+            <type>int</type>
+          </tag>
+          <tag name="param" line="125" description="" type="int" variable="$options">
+            <type>int</type>
+          </tag>
+          <tag name="param" line="125" description="" type="string" variable="$opened_path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="125" description="" type="bool">
+            <type>bool</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$mode</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+        <argument line="0">
+          <name>$options</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+        <argument line="0">
+          <name>$opened_path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="160" package="php-vfs">
+        <name>stream_write</name>
+        <full_name>\VirtualFileSystem\Wrapper::stream_write()</full_name>
+        <docblock line="160">
+          <description>Writes data to stream.</description>
+          <long-description></long-description>
+          <tag name="see" line="160" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.stream-write"/>
+          <tag name="param" line="160" description="" type="" variable="$data"/>
+          <tag name="return" line="160" description="" type="int">
+            <type>int</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$data</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="172" package="php-vfs">
+        <name>stream_stat</name>
+        <full_name>\VirtualFileSystem\Wrapper::stream_stat()</full_name>
+        <docblock line="172">
+          <description>Returns stat data for file inclusion. Currently disabled.</description>
+          <long-description></long-description>
+          <tag name="see" line="172" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.stream-stat"/>
+          <tag name="return" line="172" description="" type="bool">
+            <type>bool</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="187" package="php-vfs">
+        <name>url_stat</name>
+        <full_name>\VirtualFileSystem\Wrapper::url_stat()</full_name>
+        <docblock line="187">
+          <description>Returns file stat information</description>
+          <long-description></long-description>
+          <tag name="see" line="187" description="" link="\VirtualFileSystem\http://php.net/stat"/>
+          <tag name="param" line="187" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="187" description="" type="int" variable="$flags">
+            <type>int</type>
+          </tag>
+          <tag name="return" line="187" description="" type="array|bool">
+            <type>array</type>
+            <type>bool</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$flags</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="211" package="php-vfs">
+        <name>stream_read</name>
+        <full_name>\VirtualFileSystem\Wrapper::stream_read()</full_name>
+        <docblock line="211">
+          <description>Reads and returns $bytes amount of bytes from stream.</description>
+          <long-description></long-description>
+          <tag name="see" line="211" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.stream-read"/>
+          <tag name="param" line="211" description="" type="int" variable="$bytes">
+            <type>int</type>
+          </tag>
+          <tag name="return" line="211" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$bytes</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="223" package="php-vfs">
+        <name>stream_eof</name>
+        <full_name>\VirtualFileSystem\Wrapper::stream_eof()</full_name>
+        <docblock line="223">
+          <description>Checks whether pointer has reached EOF.</description>
+          <long-description></long-description>
+          <tag name="see" line="223" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.stream-eof"/>
+          <tag name="return" line="223" description="" type="bool">
+            <type>bool</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="239" package="php-vfs">
+        <name>mkdir</name>
+        <full_name>\VirtualFileSystem\Wrapper::mkdir()</full_name>
+        <docblock line="239">
+          <description>Called in response to mkdir to create directory.</description>
+          <long-description></long-description>
+          <tag name="see" line="239" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.mkdir"/>
+          <tag name="param" line="239" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="239" description="" type="int" variable="$mode">
+            <type>int</type>
+          </tag>
+          <tag name="param" line="239" description="" type="int" variable="$options">
+            <type>int</type>
+          </tag>
+          <tag name="return" line="239" description="" type="bool">
+            <type>bool</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$mode</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+        <argument line="0">
+          <name>$options</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="261" package="php-vfs">
+        <name>stream_metadata</name>
+        <full_name>\VirtualFileSystem\Wrapper::stream_metadata()</full_name>
+        <docblock line="261">
+          <description>Called in response to chown/chgrp/touch/chmod etc.</description>
+          <long-description></long-description>
+          <tag name="see" line="261" description="" link="\VirtualFileSystem\http://php.net/streamwrapper.stream-metadata"/>
+          <tag name="param" line="261" description="" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="261" description="" type="int" variable="$option">
+            <type>int</type>
+          </tag>
+          <tag name="param" line="261" description="" type="mixed" variable="$value">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="261" description="" type="bool">
+            <type>bool</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0">
+          <name>$option</name>
+          <default></default>
+          <type>int</type>
+        </argument>
+        <argument line="0">
+          <name>$value</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="25" code="PPC:ERR-50007">No summary for property $context</error>
+      <error line="30" code="PPC:ERR-50007">No summary for property $currently_opened</error>
+      <error line="98" code="PPC:ERR-50008">No summary for method stream_tell()</error>
+      <error line="108" code="PPC:ERR-50008">No summary for method stream_close()</error>
+    </parse_markers>
+    <source>eJy9WEtz2zYQvutX4KCEVEaPpr3FsROPIreZ1nbGcpKDk9FAICSyJgkOAFp2W//37gIgTYmkLD8SjscigcW+8WEXb99lYdYZveqQV+Q8jBRZRDEn8JtRqYlYEB1yAiSDqwWOsUu65EMgRnqf9chxxELKY/JBpFSTt4n9HAb4+T7hQyaSA0d+JKThtsjjmDCR3choGWpC04DEEeOpArnpQsiE6kikfZLFnMLYVcRXZt1fH8eTk+kEWRkldQgSV1SRIFJaRvNc84CsIh3CDBigRC4ZB0GBUXjU6aQ04Qps4ORLJHVO4yNgM71Rmid7nU6uGsa/fZU0y7j8hkN/gKoxl0A7emUsmmrJaUJWloawmCo1tG6EP9TZDFlNP/3xiYAMRaidUnaxgJXGYEVCy79w73vFOQm1zt6MRhCBYcr1yC4qBIKzCpfFJJNCCyZiEnDFZJQhz4ITzXUItDsGi7x3gS4Cb9xnTXH+6PzbIfBk+RxCR7pMpJpfa/AMjhrv4AOcrqgkFd+58ZFdDRpzhlHrslxKnur4Zgb+SHlQ53TGdS7BSQFf0DzWhF9nsNZ4zvhBwbvfg+RKGY4N3bpSkUZnUr1JJo0YQqWkNy3KFiLIkuspsDhEWr9nqKxb8OmCtwQj+5aVX47j4wX8yiP7B+SX/vp4lIrG8QSSuHEijaP0snEmj4LG8WXLuGzTSUX/WNmvf/1tYwq8nzTrlbTOsNaZeXxZyhq8rk0KdqncXDnVc3mCTzVys4TLJfft+xWNc658G5Be30UGluKq29ZEyyggCQIL5HuASJjLmCgW8oQT32VSnyzcr+ZKwwvhmg17m0kFWAo7HXmlS9JFxi1pZ0nW885usTLpjEZTo4ZvWNUSD5FbQeLBr+Iz0NrRVXzVDYXSQBIpxbVvV1x4OOh975F3ZH2EvCEpYPZeVQT4ZnM5Dq4vtyPl8s1QqQys1QvfG71QL5TXt2r1SaHu9viMAXNolAIMivnfsDPhUFAhbk+AwwIlZg6YAFUsxM5vXAhr+GBjtC04pcCt8QFQKAmPpEjGVoOWWLl8qgfrwrNT3ve9BupIzdClvhtBn28wGHpDr8IEYuBoK+wKp+y7s6j0FthQeMxvmHLO9XsN269geuHEfb/wSncUttRjeu9RN7RfA83juCU8kEr3bRw0BDnUwLpQHguHwcHmYTQ4yARw59JvTcqdDWCxULzFgisRBbuYYHjUD5xm5SG6d5u3rvgpEKmiFolABI/tKZfYumld0V2tRNE7g2AxBS4mXRTbNO7SqoWbNXW2ZfPOhYh38S1ysjuob5Xpl7L75GVVUM3/rASk/SIY28GgDqhuWR3jq9iNWtk9O1NZHGncojPJsxgqW9+bA456nlN+bYd2MUQpJkSUzmxV4tGSskKo5U3FLrPUFNz7FRsHBzh0WDflljCqWUj8E6GPRJ4Gk2vGjQNJF4Bqgy+EEZK1mXMQSazYnYSKiMrKwQENAqwv/UYVKdNCQm1mImHI5tBSVLlWNe/sspegGanUs341iG3ooZxso2LV0dGC+C4qNc+0M+OX52KSBn6z6i7ftcx5257/KiMoV0hANSVauMx/9F5fIbeW0xRFPA2uDXffMHooaFeX3ldMYCtgHYK9hO2BUxbnClsJMi54Y6tJ5zEPHu2tLT3HrhBlO51mZ2wLe2Grsc4YXGm3H9ku7Qbqi5guVYvVBoj+u9d2KGys4QU2G56bXtiCXLsA8h2oteFwdfdW3F5tOu4kVZrDflMbiM9da2c0HRzgN9DXCYuGztHlCtGngW65TreUIs9cuhRP77F47cxd0FjxKvrY//WEo4Ey9zvSpV53foPIQxMQZG6X7PcCIvFUGIJ/QXN2mhQ0gp7UdeHWQyG+5fVQNKoubduh45BDk0tWIdchlBGu6iQhVcCeMuxuJqdHj3YRF4snQg9weHDtTPUEV7XaTGPAUyw9JVeZwFtAOJOSSzj98YWBXM0BdyU3Z/nDjTesfmQx+mBnGo1aisyfXFWWpODeXKroCrHSRwt6UJoUDeJLMj0/mxwez47//PDxbHY2GX8+m378MlmrLit1lw3ah4qRJfuGcnOHo6s5SVgoVumIhUuZjbTIWQjvwNzcwTx2jyRc06aqZbeEEVnlLC1mkugarzjNNdQT91+hXelXK7DvuN9/HKpVZMDeLdzEd3wYXroX8Z6cH84Ox+PJdPqmRmii/kzHKuQMhs53duw1CpuDDy43DuBGjU+/nkzOZieHx5MWreEsxTsXoaJrvNHIVtASFLIvzEn7vVmF57QXktdHTZ7F2h8fHqPus4Tn97PTz5+2hWe5Hp6lXAvP8ueEB1DFR02exdofHx6j7mPC427zmjWsYXPx3D5vAVm+sphTiYU+w3rHR8F3F8Lbjozbzv+axSob</source>
+  </file>
+  <file path="FileSystem.php" generated-path="FileSystem.html" hash="eb44a2828f48402364551cd8c63f58b8" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem" line="24" package="php-vfs">
+      <extends/>
+      <name>FileSystem</name>
+      <full_name>\VirtualFileSystem\FileSystem</full_name>
+      <docblock line="24">
+        <description>Main 'access' class to vfs implementation. It will register new stream wrapper on instantiation.</description>
+        <long-description>This class provides methods to get access to Container as well as file URI helper.</long-description>
+        <tag name="author" line="24" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="24" description="php-vfs"/>
+      </docblock>
+      <property static="false" visibility="protected" line="26" namespace="VirtualFileSystem" package="php-vfs">
+        <name>$scheme</name>
+        <default></default>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="31" namespace="VirtualFileSystem" package="php-vfs">
+        <name>$container</name>
+        <default></default>
+        <docblock line="31">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" line="31" description="" type="\VirtualFileSystem\Container" variable="">
+            <type link="Container.html">\VirtualFileSystem\Container</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="38" package="php-vfs">
+        <name>__construct</name>
+        <full_name>\VirtualFileSystem\FileSystem::__construct()</full_name>
+        <docblock line="38">
+          <description>Class constructor. Will register both, the stream default options and wrapper handler.</description>
+          <long-description>Note: Each FileSystem instance will create NEW stream wrapper/scheme.</long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="56" package="php-vfs">
+        <name>scheme</name>
+        <full_name>\VirtualFileSystem\FileSystem::scheme()</full_name>
+        <docblock line="56">
+          <description>Returns wrapper scheme.</description>
+          <long-description></long-description>
+          <tag name="return" line="56" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="VirtualFileSystem" line="66" package="php-vfs">
+        <name>registerContextOptions</name>
+        <full_name>\VirtualFileSystem\FileSystem::registerContextOptions()</full_name>
+        <docblock line="66">
+          <description>Registers Container object as default context option for scheme associated with FileSystem instance.</description>
+          <long-description></long-description>
+          <tag name="param" line="66" description="" type="\VirtualFileSystem\Container" variable="$container">
+            <type link="Container.html">\VirtualFileSystem\Container</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$container</name>
+          <default></default>
+          <type>\VirtualFileSystem\Container</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="VirtualFileSystem" line="78" package="php-vfs">
+        <name>unregisterContextOptions</name>
+        <full_name>\VirtualFileSystem\FileSystem::unregisterContextOptions()</full_name>
+        <docblock line="78">
+          <description>There is no known (to me) way to remove default context options as of yet.</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="86" package="php-vfs">
+        <name>__destruct</name>
+        <full_name>\VirtualFileSystem\FileSystem::__destruct()</full_name>
+        <docblock line="86">
+          <description>Remoces wrapper registered for scheme associated with FileSystem instance.</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="98" package="php-vfs">
+        <name>container</name>
+        <full_name>\VirtualFileSystem\FileSystem::container()</full_name>
+        <docblock line="98">
+          <description>Returns Container instance.</description>
+          <long-description></long-description>
+          <tag name="return" line="98" description="" type="\VirtualFileSystem\Container">
+            <type link="Container.html">\VirtualFileSystem\Container</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="108" package="php-vfs">
+        <name>root</name>
+        <full_name>\VirtualFileSystem\FileSystem::root()</full_name>
+        <docblock line="108">
+          <description>Returns Root instance.</description>
+          <long-description></long-description>
+          <tag name="return" line="108" description="" type="\VirtualFileSystem\Structure\Root">
+            <type link="Root.html">\VirtualFileSystem\Structure\Root</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="120" package="php-vfs">
+        <name>path</name>
+        <full_name>\VirtualFileSystem\FileSystem::path()</full_name>
+        <docblock line="120">
+          <description>Returns absolute path to full URI path (with scheme)</description>
+          <long-description></long-description>
+          <tag name="param" line="120" description="&lt;ul&gt;&#10;&lt;li&gt;path without scheme&lt;/li&gt;&#10;&lt;/ul&gt;&#10;" type="string" variable="$path">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="120" description="- path with scheme" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$path</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $scheme</error>
+      <error line="31" code="PPC:ERR-50007">No summary for property $container</error>
+    </parse_markers>
+    <source>eJydVttu4zYQffdXzEMKyYEjv+9u0iyyDhCgSYt427wEEGiKttiVSJWk7BqL/fcOL5IlW7IXNQIEouZ2zpwZ6tOvVV5N5tcTuIavOdew5gUD/F8RZUCuweQM0ORmu7Zn9BvZsASNrX1Mp/DMaU5YAV+kIAY+lf4xyezjfckSKsu7YP4olYu2rosCqKz2im9yA0RkUHDKhMa8Yi1VSQyXYgZVwQiebTnbOb/fnh4WL8uFDeWKNDlm3BENGddG8VVtWAY7bnJ8gwC0rBVlmChzBc8nE0FKphEDg7+4MjUpHjHMcq8NKz9OJrUeOH9fGlVTUyv2/oUrRo1U+48XTV+lNBhxfu1wPxMuICKUMq0joAXRGowESygvEWTJhHGQE3hCQBzZUWyDmJgCgdgRHCMl7BSpKjySAmnShgjDvVeg13XPR6+U3PKMaSiZyWXm0m0YUu1qsE8PEnNygeGQvx3DlCS0/s/XJ8hZgZmawPekxijqZ1sN90EmjWwc+b6wA1uT7xPAH1ZqkFVs3JWmOVKBtNlzR539YbgtUYd6w+n82Js2BqcBHlxqNNCuQVIl8NYjeSVNPnMSC1RnbE3qAuVfWYK1k2hDf44PhSPHRW+SvGAlH2BBaN4BGRqFgnNdpRjcMHhZvB31dO6xJ31w9QrHAqdFUFsFpGkLIZ46C0+h/V1Zxd/c+TBwC7Xg//AsjrAD2IBoGkjxxGBVfyNrXGyQlLKSAvWnm6ydaC2lGPCq+2BF2TYktk+PxE1GPMVMY1Fu7hSORTzFMplZukrjXt3dKsOLpkU2G/vX/O77ER+q6fp4TtPAadr49pPMQFeKC7OOo/dfNP5FM2T25fPzYvnH54dFms4gevMRogbNjxNJvTKccxRGI4p+/1rlKmdmC0OyzzbXBzjpawjQQzBek8erO8MtV7bTdrYbSVPPZJA24LoNudFIS4orpVmiAzI+AYiXBKr4kO/QmJE5bQGPdHYo1InYA5a0Gc/bpvUBXIq7rnkZD7wK/j21HpnpjhlRiuzTkqkNi1v7oUJmvbfOLT6azLtwHLVAI3vYATttg4zL72vOlLukhYRvQu4ExLjTcYLwOtzb9a5YKbdspOna6gFv9j0zyaU21WKkUcNKHddmKfHqaeelCWpT/S8Fjq1IvPTObshxPOOL5OBzsq/G0PrtcBDz6ACFAR+53o7gtSK5sCc6d+H5Au13ysXarNHZsvxa/7mK7Pr39pdqIystC/ykw49O+0Un/Wej/TpxB7FTSGjE8FryaxeunP2Nd7NesjbB8ey+7rr07YdpsMaxS3aiPRfnFgqMW3oTvGXmvWt5aNPH0yT6MJ9HiXNpCPsx+Q/cM53h</source>
+  </file>
+  <file path="Structure/File.php" generated-path="Structure.File.html" hash="3cb9f6901bb222bb21ba9b37a759649b" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem\Structure" line="19" package="php-vfs">
+      <extends>\VirtualFileSystem\Structure\Node</extends>
+      <name>File</name>
+      <full_name>\VirtualFileSystem\Structure\File</full_name>
+      <docblock line="19">
+        <description>Object representation of File.</description>
+        <long-description></long-description>
+        <tag name="author" line="19" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="19" description="php-vfs"/>
+      </docblock>
+      <constant namespace="VirtualFileSystem\Structure" line="24" package="php-vfs">
+        <name>S_IFTYPE</name>
+        <full_name>\VirtualFileSystem\Structure\File::S_IFTYPE</full_name>
+        <value>32768</value>
+        <docblock line="24">
+          <description></description>
+          <long-description></long-description>
+          <tag name="see" line="24" description="" link="\VirtualFileSystem\Structure\http://man7.org/linux/man-pages/man2/lstat.2.html"/>
+        </docblock>
+      </constant>
+      <property static="false" visibility="protected" line="26" namespace="VirtualFileSystem\Structure" package="php-vfs">
+        <name>$data</name>
+        <default>null</default>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="33" package="php-vfs">
+        <name>size</name>
+        <full_name>\VirtualFileSystem\Structure\File::size()</full_name>
+        <docblock line="33">
+          <description>Returns contents size.</description>
+          <long-description></long-description>
+          <tag name="return" line="33" description="" type="int">
+            <type>int</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="43" package="php-vfs">
+        <name>data</name>
+        <full_name>\VirtualFileSystem\Structure\File::data()</full_name>
+        <docblock line="43">
+          <description>Returns contents.</description>
+          <long-description></long-description>
+          <tag name="return" line="43" description="" type="null">
+            <type>null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="53" package="php-vfs">
+        <name>setData</name>
+        <full_name>\VirtualFileSystem\Structure\File::setData()</full_name>
+        <docblock line="53">
+          <description>Sets contents.</description>
+          <long-description></long-description>
+          <tag name="param" line="53" description="" type="" variable="$data"/>
+        </docblock>
+        <argument line="0">
+          <name>$data</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $data</error>
+    </parse_markers>
+    <source>eJyNk99v0zAQx9/zV9xDH9qJJmMvSGyMSqyVJsFAZEJCQkKuc2kMjm3Zl3UD7X/nzs1QQWrhXhL7fn3ue8nF69CFojop4ARuO5OgNRaBn0FFAt8CdQgcMr9r5U5/VxssOVjip3oG74zuFFq48k4RXPS7Y9nIcdFjqX1/OYavfMzV2sFa0D48RLPpCJRrwBqNLnFf1/rYKzLePYNgUfHdncFtznt7/WZ5Uy+lVIakjjtuVYLGJIpmPRA2sDXUsYcHSH6IGrlRk4GronCqx8QzIHwykQZlV1ymfkiE/Zea4qBpiHhesBqZ9/36G2qCiCFiQkcZSySRtCcNFmqgjgf7Tx1gMWr4pGkm01allMsC3hO6JsENYxc/C2DLOGKcnRChIwovq6pX7kXp46ayxg33cpwHLpzk7ayyiXnLs7Kj3o7ZVX5q7xJB/fV6dfv5w5IvXsHp81MxnlwCQvTEc7OWk0aRYr/jhY3OPZaPyHK5JAUZmVhw80Nkyd7fwDFH8WLpD4owrHnn/Ck4nVWV3Oksu3ZDi425vFyLbjqRrc4vhWl2nmMe/8l0CEcmOsojXQ7x7IEc4qiRjkDwr6X6nbrHRUG6Eo4c+TfMHgWvaLJP81j8AgFHHWg=</source>
+  </file>
+  <file path="Factory.php" generated-path="Factory.html" hash="0f6071f3d8f452cc77f5c633e29de3e1" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem" line="24" package="php-vfs">
+      <extends/>
+      <name>Factory</name>
+      <full_name>\VirtualFileSystem\Factory</full_name>
+      <docblock line="24">
+        <description>Factory class to encapsulate object creation.</description>
+        <long-description></long-description>
+        <tag name="author" line="24" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="24" description="php-vfs"/>
+      </docblock>
+      <property static="false" visibility="protected" line="26" namespace="VirtualFileSystem" package="php-vfs">
+        <name>$userid</name>
+        <default></default>
+        <docblock line="26">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" line="27" namespace="VirtualFileSystem" package="php-vfs">
+        <name>$groupid</name>
+        <default></default>
+        <docblock line="27">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="35" package="php-vfs">
+        <name>__construct</name>
+        <full_name>\VirtualFileSystem\Factory::__construct()</full_name>
+        <docblock line="35">
+          <description>Class constructor. Sets user/group to current system user/group.</description>
+          <long-description>On non POSIX systems both attributes will be set to 0</long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="46" package="php-vfs">
+        <name>getRoot</name>
+        <full_name>\VirtualFileSystem\Factory::getRoot()</full_name>
+        <docblock line="46">
+          <description>Creates Root object.</description>
+          <long-description></long-description>
+          <tag name="return" line="46" description="" type="\VirtualFileSystem\Structure\Node">
+            <type link="Node.html">\VirtualFileSystem\Structure\Node</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="VirtualFileSystem" line="58" package="php-vfs">
+        <name>updateOwnership</name>
+        <full_name>\VirtualFileSystem\Factory::updateOwnership()</full_name>
+        <docblock line="58">
+          <description>Sets default (current) uid/gui on object.</description>
+          <long-description></long-description>
+          <tag name="param" line="58" description="" type="\VirtualFileSystem\Structure\Node" variable="$node">
+            <type link="Node.html">\VirtualFileSystem\Structure\Node</type>
+          </tag>
+          <tag name="return" line="58" description="" type="\VirtualFileSystem\Structure\Node">
+            <type link="Node.html">\VirtualFileSystem\Structure\Node</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$node</name>
+          <default></default>
+          <type>\VirtualFileSystem\Structure\Node</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="73" package="php-vfs">
+        <name>getDir</name>
+        <full_name>\VirtualFileSystem\Factory::getDir()</full_name>
+        <docblock line="73">
+          <description>Creates Directory object.</description>
+          <long-description></long-description>
+          <tag name="param" line="73" description="" type="string" variable="$basename">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="73" description="" type="\VirtualFileSystem\Structure\Node">
+            <type link="Node.html">\VirtualFileSystem\Structure\Node</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$basename</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem" line="85" package="php-vfs">
+        <name>getFile</name>
+        <full_name>\VirtualFileSystem\Factory::getFile()</full_name>
+        <docblock line="85">
+          <description>Creates File object.</description>
+          <long-description></long-description>
+          <tag name="param" line="85" description="" type="string" variable="$basename">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="85" description="" type="\VirtualFileSystem\Structure\Node">
+            <type link="Node.html">\VirtualFileSystem\Structure\Node</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$basename</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="26" code="PPC:ERR-50007">No summary for property $userid</error>
+      <error line="27" code="PPC:ERR-50007">No summary for property $groupid</error>
+    </parse_markers>
+    <source>eJy9VE1v2zAMvftX8JCDEyzJ7um6AP0ACmzNsAzDDgUCWWZsbbZkSFSzYuh/HyU7zkfXZkOB+WKYovje46N59r4pm2Q6SmAEX0rlYK0qBH43whKYNVCJwCnj+3WIyR+iwAknh/xUDuGjkqXACi6NFgRndfs5ycPnvMaJNPV5l35tbKy29lUF0jQPVhUlgdA5VEqidoyr18bWgpTRb6CpUHDsXuEm3vtwc3F1u7wKpSJJKhlxIxzkypFVmSfMYaOo5BMW4Iy3Ehkoj4SnSaJFjY41IHxVlryorrnM8sER1rMk8e4P8bslWS/JW7y7VBYlGfswO5l6y5insz4bQ6ezQpDZTUdtD0WkALISzgEZQC1F43wlCMFk35khSIuxg1ub5sJTyb3/S6tg3tm8tT02rwXs4JNfCfDTWEMMyF0fsAqr8tlxuLDGNyEeD6KG8IzgIpaTRrso1NgJLJEchDrTeCuIk95a1AQuNmXvcNLV2ZZbaNBGw6fF8uZbl+0gMzwKgrrRcDwaPHcZgkMKxd8e1pi23H3Gs8gjqmVoIaxWPcd0GDNa6eEZhDEbn7fS4R00xqmfqwLJqzwdzo7zul7sJxa7xMenLQo2Mu0wJp21x7LnlsGshjBvL8pgrFDmiYTu/lZJkzPiYqPRulI1qeYfr732LMloWo5r4SvifdD6NQTuwLTwChj6Gea8XkQdicNA7+ifVtYPVy/umPau6BPHQnB8Lkuz0emBfft2bZMK26SH3g27Qd5vnY7/+ssW9qvj5W6ELaYLGGS89sKueoXbjJj2df7d9Z7wXpGTgxo21X8TGMBeo/Dofi/uMfkN8DAmOA==</source>
+  </file>
+  <file path="NotFoundException.php" generated-path="NotFoundException.html" hash="54d36dfafc939fae825ea4145e535cf7" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem" line="19" package="php-vfs">
+      <extends>\Exception</extends>
+      <name>NotFoundException</name>
+      <full_name>\VirtualFileSystem\NotFoundException</full_name>
+      <docblock line="19">
+        <description>Thrown when non-existing Node is requested.</description>
+        <long-description></long-description>
+        <tag name="author" line="19" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="19" description="php-vfs"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyNkEFOAzEMRfc5hZdQ0ekBqKASbSUk6KaIFZuQeCYRiTMkTqcV4u54hpY1q8jO9//2W973rleLmYIZvDhfoPUBQd5eZ4bUAjsEkcwP7dgzH7rDRsSj/spcw7M3TmOAdSLNsIy/ZWPHchWxMSneneXblCe3toYAJvWn7DvHoMlC8AapSC61KUfNPtEN9AG19A4eh2nu6fFhs9tvRqtpSXaSOOgC1hfO/r0yWhg8O/mRA0qq2aAE2WnhhVKkIxa5AeHVZ646bMVmfyqM8VYJgzOEnAaCwSEBJZrjUdw9dbAToxFMxs+KMmMvGFa6spPb/okCVmeMF6zTciboUiSDt6mS3RwN9iMFwCMj2QJvfy31pb7VD5k6ki8=</source>
+  </file>
+  <file path="Structure/Root.php" generated-path="Structure.Root.html" hash="576d8fd5bfc3067124bf6685e2cb35aa" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="VirtualFileSystem\Structure" line="21" package="php-vfs">
+      <extends>\VirtualFileSystem\Structure\Directory</extends>
+      <name>Root</name>
+      <full_name>\VirtualFileSystem\Structure\Root</full_name>
+      <docblock line="21">
+        <description>FileSystem Root representation.</description>
+        <long-description>Specialised Directory that does not allow for basename or parent setting.</long-description>
+        <tag name="author" line="21" description="Michael Donat" link="mailto:michael.donat@me.com"/>
+        <tag name="package" line="21" description="php-vfs"/>
+      </docblock>
+      <constant namespace="VirtualFileSystem\Structure" line="23" package="php-vfs">
+        <name>BASENAME</name>
+        <full_name>\VirtualFileSystem\Structure\Root::BASENAME</full_name>
+        <value>'/'</value>
+        <docblock line="23">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <property static="false" visibility="protected" line="24" namespace="VirtualFileSystem\Structure" package="php-vfs">
+        <name>$scheme</name>
+        <default></default>
+        <docblock line="24">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="29" package="php-vfs">
+        <name>__construct</name>
+        <full_name>\VirtualFileSystem\Structure\Root::__construct()</full_name>
+        <docblock line="29">
+          <description>Class constructor.</description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="VirtualFileSystem\Structure" line="42" package="php-vfs">
+        <name>setParent</name>
+        <full_name>\VirtualFileSystem\Structure\Root::setParent()</full_name>
+        <docblock line="42">
+          <description>Defined to prevent setting parent on Root.</description>
+          <long-description></long-description>
+          <tag name="param" line="42" description="" type="\VirtualFileSystem\Structure\Directory" variable="$parent">
+            <type link="Directory.html">\VirtualFileSystem\Structure\Directory</type>
+          </tag>
+          <tag name="throws" line="42" description="" type="\LogicException">
+            <type link="LogicException.html">\LogicException</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$parent</name>
+          <default></default>
+          <type>\VirtualFileSystem\Structure\Directory</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="52" package="php-vfs">
+        <name>setScheme</name>
+        <full_name>\VirtualFileSystem\Structure\Root::setScheme()</full_name>
+        <docblock line="52">
+          <description>Set root scheme for use in path method.</description>
+          <long-description></long-description>
+          <tag name="param" line="52" description="" type="" variable="$scheme"/>
+        </docblock>
+        <argument line="0">
+          <name>$scheme</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="VirtualFileSystem\Structure" line="62" package="php-vfs">
+        <name>path</name>
+        <full_name>\VirtualFileSystem\Structure\Root::path()</full_name>
+        <docblock line="62">
+          <description>Returns URL to file.</description>
+          <long-description></long-description>
+          <tag name="return" line="62" description="" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="24" code="PPC:ERR-50007">No summary for property $scheme</error>
+    </parse_markers>
+    <source>eJyNVEuP2jAQvudXzAGJgLpwh32wXYJUCbYV2fa0EjLOhFhN7Mh2YFHFf+/YSWAXyqq5gOPPM99jnNuHMiuDYT+APrxkwkAqcgT6LZm2oFKwGQJBbrape8d/sw0OCOzwIe/BQvCMYQ5TJZmF26JeDhK3nBQ44Kq4b+AzpX21tMpz4Krca7HJLDCZQC44SkN9Zap0waxQ8guUOTJ6txW48+fm356i5zhypTxJm1HHHTOQCGO1WFcWE9gJm9EOCTCq0hypUeIJD4NAsgINaUD4JbStWD6jMvHeWCxeY6srbiuN44DcqPked2GplAWNpUaD0np+rQlxiVywXBhqPhUauVV6X3NLFBqQdJLludoBSYM1KXI0gP6Tw1QMDFor5KatN2GVzWj3P42FSRNKG5KXynNmTM0a3yzKxJy4BX8CoIcraSx8fYyj58dFBHfQHXbHfqfUyhKU9HQMz7Bwlrj33hb39OHJ1/clnG1KD5qdYV2hWlOiFLTkzipYrY7QsOcRNQf3dFxYN/dHY+7IkDwdjVpm43MkzwqVhMalwEejaTRbLb5Po16NO1xQnWIqJGmxioTh9p3jbQBE0DnVSmgPkrGaFe8y7dT4c5jNtNoZeJ2rjeDRG8fSaf7ox9HRoyXE4YcvF140OHfINwBJt+CsR9j1CXMm3ZBlbIvAGlGD7lVDYqRRdufqcP1YVv7u0Vm6PAXS/CVX3Ggm4tO0SVrsUWGDvhJ50//uNGb/JrxEupfSwM/l3KXo7v4FO+0x4L4DcvMpO6fxYgib4x+JPZytR6crcggOwV+0npIF</source>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="php-vfs" full_name="php-vfs"/>
+  <namespace name="VirtualFileSystem" full_name="VirtualFileSystem">
+    <namespace name="Structure" full_name="VirtualFileSystem\Structure"/>
+    <namespace name="Wrapper" full_name="VirtualFileSystem\Wrapper"/>
+  </namespace>
+  <deprecated count="0"/>
+</project>
