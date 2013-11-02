@@ -448,7 +448,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testTouchCreatesNonExistingFiles()
+    public function testTouchFileCreation()
     {
         $fs = new FileSystem();
 
@@ -456,6 +456,28 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(file_exists($fs->path('/file2')));
 
+        @touch($fs->path('/dir/file'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'touch: %s: No such file or directory.',
+            $error['message'],
+            'Fails when no parent'
+        );
+
+        $file = $fs->container()->fileAt('/file2');
+
+        $file->setAccessTime(20);
+        $file->setModificationTime(20);
+        $file->setChangeTime(20);
+
+        touch($fs->path('/file2'));
+        $stat = stat($fs->path('/file2'));
+
+        $this->assertNotEquals(20, $stat['atime'], 'Access time has changed after touch');
+        $this->assertNotEquals(20, $stat['mtime'], 'Modification time has changed after touch');
+        $this->assertNotEquals(20, $stat['ctime'], 'inode change time has changed after touch');
 
     }
 

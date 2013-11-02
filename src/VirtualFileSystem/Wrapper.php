@@ -328,8 +328,20 @@ class Wrapper
                 case STREAM_META_TOUCH:
                     if (!$this->getContainerFromContext($path)->hasFileAt($this->stripScheme($path))) {
                         $strippedPath = $this->stripScheme($path);
-                        $this->getContainerFromContext($path)->createFile($strippedPath);
+                        try {
+                            $this->getContainerFromContext($path)->createFile($strippedPath);
+                        } catch (NotFoundException $e) {
+                            trigger_error(
+                                sprintf('touch: %s: No such file or directory.', $strippedPath),
+                                E_USER_WARNING
+                            );
+                            return false;
+                        }
                     }
+                    $file = $this->getContainerFromContext($path)->fileAt($this->stripScheme($path));
+                    $file->setAccessTime(time());
+                    $file->setModificationTime(time());
+                    $file->setChangeTime(time());
                     break;
 
             }
