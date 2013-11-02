@@ -481,4 +481,55 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testRenamesMovesFileCorrectly()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createFile('/file', 'data');
+
+        rename($fs->path('/file'), $fs->path('/file2'));
+
+        $this->assertTrue($fs->container()->hasFileAt('/file2'));
+        $this->assertFalse($fs->container()->hasFileAt('/file'));
+        $this->assertEquals('data', $fs->container()->fileAt('/file2')->data());
+    }
+
+    public function testRenameReturnsCorrectWarnings()
+    {
+        $fs = new FileSystem();
+
+        @rename($fs->path('/file'), $fs->path('/dir/file2'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'mv: rename %s to %s: No such file or directory',
+            $error['message'],
+            'Triggers when moving non existing file'
+        );
+
+        $fs->container()->createFile('/file');
+
+        @rename($fs->path('/file'), $fs->path('/dir/file2'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'mv: rename %s to %s: No such file or directory',
+            $error['message'],
+            'Triggers when moving to non existing directory'
+        );
+
+        $fs->container()->createDir('/dir');
+
+        @rename($fs->path('/dir'), $fs->path('/file'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'mv: rename %s to %s: Not a directory',
+            $error['message'],
+            'Triggers when moving to non existing directory'
+        );
+
+    }
 }

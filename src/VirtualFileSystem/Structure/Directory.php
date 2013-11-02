@@ -102,9 +102,19 @@ class Directory extends Node
     public function childAt($path)
     {
         if (!array_key_exists($path, $this->children)) {
-            throw new NotFoundException(sprintf('Could not find child at %s', $path));
+            throw new NotFoundException(sprintf('Could not find child %s in %s', $path, $this->path()));
         }
 
         return $this->children[$path];
+    }
+
+    /**
+     * Removes child Node
+     *
+     * @param string $basename
+     */
+    public function remove($basename)
+    {
+        unset($this->children[$basename]);
     }
 }

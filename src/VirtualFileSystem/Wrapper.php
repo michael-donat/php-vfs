@@ -384,4 +384,29 @@ class Wrapper
         return true;
     }
 
+    public function rename($oldname, $newname)
+    {
+        $container = $this->getContainerFromContext($newname);
+        $oldname = $this->stripScheme($oldname);
+        $newname = $this->stripScheme($newname);
+
+        try {
+            $container->move($oldname, $newname);
+        } catch (NotFoundException $e) {
+            trigger_error(
+                sprintf('mv: rename %s to %s: No such file or directory', $oldname, $newname),
+                E_USER_WARNING
+            );
+            return false;
+        } catch (\RuntimeException $e) {
+            trigger_error(
+                sprintf('mv: rename %s to %s: Not a directory', $oldname, $newname),
+                E_USER_WARNING
+            );
+            return false;
+        }
+
+        return true;
+    }
+
 }

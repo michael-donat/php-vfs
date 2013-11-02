@@ -10,7 +10,9 @@
 
 namespace VirtualFileSystem;
 
+use Symfony\Component\Config\Definition\Exception\Exception;
 use VirtualFileSystem\Structure\Directory;
+use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Root;
 
 /**
@@ -172,5 +174,74 @@ class Container
 
         return $newFile;
 
+    }
+
+    public function move($from, $to)
+    {
+        $fromNode = $this->fileAt($from);
+        $fromParent = $this->fileAt(dirname($from));
+        $toNode = $this->fileAt(dirname($to));
+        $newNodeName = basename($to);
+
+        try {
+            $nodeAtToPath = $this->fileAt($to);
+            if ($nodeAtToPath instanceof Directory) {
+                $newNodeName = basename($from);
+                $toNode = $nodeAtToPath;
+            }
+        } catch (NotFoundException $e) {
+            $nodeAtToPath = null;
+        }
+
+        $fromNode->setBasename($newNodeName);
+
+        if ($nodeAtToPath instanceof File) {
+            if ($fromNode instanceof File) {
+                $toNode->remove($nodeAtToPath->basename());
+            } else {
+                throw new \RuntimeException('Can\'t move directory onto a file');
+            }
+        }
+
+        if ($fromNode instanceof File) {
+            $toNode->addFile($fromNode);
+        } else {
+            $toNode->addDirectory($fromNode);
+        }
+
+        $fromParent->remove(basename($from));
+
+        return true;
+        $target = clone $this->fileAt($from);
+        $targetPath = $to;
+        $parent = $this->fileAt(dirname($to));
+
+        try {
+            $toCheck = $this->fileAt(trim($to, '/'));
+            if ($toCheck instanceof Directory) {
+                $parent = $toCheck;
+                $targetPath = $from;
+            }
+        } catch (NotFoundException $e) {
+        }
+
+        $target->setBasename(basename($targetPath));
+
+        if ($this->hasFileAt($to)) {
+            if ($target instanceof File) {
+                $parent->remove(basename($to));
+            } else {
+                throw new \RuntimeException('Can\'t move directory onto a file');
+            }
+        }
+
+
+        if ($target instanceof File) {
+            $parent->addFile($target);
+        } else {
+            $parent->addDirectory($target);
+        }
+        $this->fileAt(dirname($from))->remove(basename($from));
+        return;
     }
 }

@@ -133,6 +133,16 @@ abstract class Node
     }
 
     /**
+     * Sets new basename
+     *
+     * @param string $basename
+     */
+    public function setBasename($basename)
+    {
+        $this->basename = $basename;
+    }
+
+    /**
      * Returns node URL.
      *
      * @return string
@@ -197,7 +207,7 @@ abstract class Node
      *
      * @param int $time
      */
-    public function setChangeTime($time)
+    public function     setChangeTime($time)
     {
         $this->ctime = $time;
     }

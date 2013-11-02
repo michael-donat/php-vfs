@@ -82,7 +82,8 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, $root->size());
     }
 
-    public function testThrowsWhenFileNameClashes() {
+    public function testThrowsWhenFileNameClashes()
+    {
 
         $root = new Root();
         $root->addDirectory(new Directory('dir1'));
@@ -90,5 +91,16 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('\VirtualFileSystem\FileExistsException');
         $root->addDirectory(new Directory('dir1'));
 
+    }
+
+    public function testRemove()
+    {
+        $root = new Root();
+        $root->addDirectory(new Directory('dir1'));
+        $root->remove('dir1');
+
+        $this->setExpectedException('\VirtualFileSystem\NotFoundException');
+
+        $root->childAt('dir1');
     }
 }
