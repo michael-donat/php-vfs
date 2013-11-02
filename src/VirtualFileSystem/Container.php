@@ -212,36 +212,5 @@ class Container
         $fromParent->remove(basename($from));
 
         return true;
-        $target = clone $this->fileAt($from);
-        $targetPath = $to;
-        $parent = $this->fileAt(dirname($to));
-
-        try {
-            $toCheck = $this->fileAt(trim($to, '/'));
-            if ($toCheck instanceof Directory) {
-                $parent = $toCheck;
-                $targetPath = $from;
-            }
-        } catch (NotFoundException $e) {
-        }
-
-        $target->setBasename(basename($targetPath));
-
-        if ($this->hasFileAt($to)) {
-            if ($target instanceof File) {
-                $parent->remove(basename($to));
-            } else {
-                throw new \RuntimeException('Can\'t move directory onto a file');
-            }
-        }
-
-
-        if ($target instanceof File) {
-            $parent->addFile($target);
-        } else {
-            $parent->addDirectory($target);
-        }
-        $this->fileAt(dirname($from))->remove(basename($from));
-        return;
     }
 }
