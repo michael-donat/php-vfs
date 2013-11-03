@@ -62,6 +62,14 @@ class Root extends Directory
      */
     public function path()
     {
-        return $this->scheme ? $this->scheme : '/';
+        return '/';
+    }
+
+    public function url()
+    {
+        if (!$this->scheme) {
+            throw new \RuntimeException('No scheme set');
+        }
+        return $this->scheme;
     }
 }

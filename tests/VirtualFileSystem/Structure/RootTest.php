@@ -37,11 +37,30 @@ class RootTest extends \PHPUnit_Framework_TestCase
         $root = new Root();
 
         $root->setScheme('scheme://');
-        $this->assertEquals('scheme://', $root);
+        $this->assertEquals('/', $root, 'No scheme when one is set');
+
+    }
+
+    public function testURLIsReturned()
+    {
+
+        $root = new Root();
+
+        $root->setScheme('scheme://');
+        $this->assertEquals('scheme://', $root->url());
 
         $root->setScheme('scheme');
-        $this->assertEquals('scheme://', $root, 'Scheme is properly reformatted');
+        $this->assertEquals('scheme://', $root->url(), 'Scheme reformatted');
 
+    }
+
+    public function testURLThrowsWhenNoScheme()
+    {
+        $root = new Root();
+
+        $this->setExpectedException('RuntimeException');
+
+        $root->url();
     }
 
     public function testRootPathReturnsWithoutScheme()
