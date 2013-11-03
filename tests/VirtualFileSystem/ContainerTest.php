@@ -203,6 +203,31 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $container->move('/dir1', '/file2');
 
+    }
 
+    public function testRemoveDeletesNodeFromParent()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $container->remove('/file');
+
+        $this->assertFalse($container->hasFileAt('/file'), 'File was removed');
+
+        $container->createDir('/dir');
+
+        $container->remove('/dir', true);
+
+        $this->assertFalse($container->hasFileAt('/dir'), 'Directory was removed');
+    }
+
+    public function testRemoveThrowsWhenDeletingDirectoriesWithRecursiveFlag()
+    {
+        $container = new Container(new Factory());
+        $container->createDir('/dir');
+
+        $this->setExpectedException('\RuntimeException', 'Won\'t non-recursively remove directory');
+
+        $container->remove('/dir');
     }
 }

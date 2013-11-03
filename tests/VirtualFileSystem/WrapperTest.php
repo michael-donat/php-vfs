@@ -532,4 +532,120 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         );
 
     }
+
+    public function testUnlinkRemovesFile()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createFile('/file');
+
+        unlink($fs->path('/file'));
+
+        $this->assertFalse($fs->container()->hasFileAt('/file'));
+    }
+
+    public function testUnlinkThrowsWarnings()
+    {
+        $fs = new FileSystem();
+
+        @unlink($fs->path('/file'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'rm: %s: No such file or directory',
+            $error['message'],
+            'Warning when file does not exist'
+        );
+
+        $fs->container()->createDir('/dir');
+
+        @unlink($fs->path('/dir'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'rm: %s: is a directory',
+            $error['message'],
+            'Warning when trying to remove directory'
+        );
+
+    }
+
+    public function testRmdirRemovesDirectories()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createDir('/dir');
+
+        rmdir($fs->path('/dir'));
+
+        $this->assertFalse($fs->container()->hasFileAt('/dir'), 'Directory has been removed');
+    }
+
+    public function testRmdirErrorsWithNonEmptyDirectories()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createDir('/dir/dir', true);
+
+        @rmdir($fs->path('/dir'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'Warning: rmdir(%s): Directory not empty',
+            $error['message'],
+            'Warning triggered when removing non empty directory'
+        );
+    }
+
+    public function testRmdirErrorsWhenRemovingNonExistingDirectory()
+    {
+        $fs = new FileSystem();
+
+        @rmdir($fs->path('/dir'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'Warning: rmdir(%s): No such file or directory',
+            $error['message'],
+            'Warning triggered when removing non existing directory'
+        );
+    }
+
+    public function testRmdirErrorsWhenRemovingFile()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createFile('/file');
+
+        @rmdir($fs->path('/file'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'Warning: rmdir(%s): Not a directory',
+            $error['message'],
+            'Warning triggered when trying to remove a file'
+        );
+    }
+
+    public function testStreamOpenWarnsWhenFlagPassed()
+    {
+        $fs = new FileSystem();
+        $opened_path = null;
+
+        $wrapper = new Wrapper();
+
+        $this->assertFalse($wrapper->stream_open($fs->path('/file'), 'r', 0, $opened_path), 'No warning when no flag');
+
+        @$wrapper->stream_open($fs->path('/file'), 'r', STREAM_REPORT_ERRORS, $opened_path);
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            '%s: failed to open stream.',
+            $error['message'],
+            'Stream open errors when flag passed'
+        );
+
+    }
 }

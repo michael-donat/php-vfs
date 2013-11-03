@@ -176,10 +176,17 @@ class Container
 
     }
 
+    /**
+     * Moves Node from source to destination
+     *
+     * @param string $from
+     * @param string $to
+     * @return bool
+     * @throws \RuntimeException
+     */
     public function move($from, $to)
     {
         $fromNode = $this->fileAt($from);
-        $fromParent = $this->fileAt(dirname($from));
         $toNode = $this->fileAt(dirname($to));
         $newNodeName = basename($to);
 
@@ -209,8 +216,27 @@ class Container
             $toNode->addDirectory($fromNode);
         }
 
-        $fromParent->remove(basename($from));
+        $this->remove($from, true);
 
         return true;
+    }
+
+    /**
+     * Removes node at $path
+     *
+     * @param string $path
+     * @param bool $recursive
+     *
+     * @throws \RuntimeException
+     */
+    public function remove($path, $recursive = false)
+    {
+        $fileToRemove = $this->fileAt($path);
+
+        if (!$recursive && $fileToRemove instanceof Directory) {
+            throw new \RuntimeException('Won\'t non-recursively remove directory');
+        }
+
+        $this->fileAt(dirname($path))->remove(basename($path));
     }
 }

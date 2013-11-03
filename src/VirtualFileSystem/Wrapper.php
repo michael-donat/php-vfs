@@ -10,6 +10,7 @@
 
 namespace VirtualFileSystem;
 
+use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Wrapper\FileHandler;
 
 /**
@@ -378,12 +379,27 @@ class Wrapper
         return true;
     }
 
+    /**
+     * Truncates file to given size
+     *
+     * @param int $new_size
+     *
+     * @return bool
+     */
     public function stream_truncate($new_size) {
         $this->currently_opened->truncate($new_size);
         clearstatcache();
         return true;
     }
 
+    /**
+     * Renames/Moves file
+     *
+     * @param string $oldname
+     * @param string $newname
+     *
+     * @return bool
+     */
     public function rename($oldname, $newname)
     {
         $container = $this->getContainerFromContext($newname);
@@ -409,4 +425,77 @@ class Wrapper
         return true;
     }
 
+    /**
+     * Deletes file at given path
+     *
+     * @param int $path
+     *
+     * @return bool
+     */
+    public function unlink($path)
+    {
+        $container = $this->getContainerFromContext($path);
+
+        try {
+            $container->remove($path = $this->stripScheme($path));
+        } catch (NotFoundException $e) {
+            trigger_error(
+                sprintf('rm: %s: No such file or directory', $path),
+                E_USER_WARNING
+            );
+            return false;
+        } catch (\RuntimeException $e) {
+            trigger_error(
+                sprintf('rm: %s: is a directory', $path),
+                E_USER_WARNING
+            );
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Removes directory
+     *
+     * @param string $path
+     *
+     * @return bool
+     */
+    public function rmdir($path)
+    {
+        $container = $this->getContainerFromContext($path);
+        $path = $this->stripScheme($path);
+
+        try {
+            $directory = $container->fileAt($path);
+
+            if ($directory instanceof File) {
+                trigger_error(
+                    sprintf('Warning: rmdir(%s): Not a directory', $path),
+                    E_USER_WARNING
+                );
+                return false;
+            }
+
+        } catch (NotFoundException $e) {
+            trigger_error(
+                sprintf('Warning: rmdir(%s): No such file or directory', $path),
+                E_USER_WARNING
+            );
+            return false;
+        }
+
+        if ($directory->size()) {
+            trigger_error(
+                sprintf('Warning: rmdir(%s): Directory not empty', $path),
+                E_USER_WARNING
+            );
+            return false;
+        }
+
+        $container->remove($path, true);
+
+        return true;
+    }
 }
