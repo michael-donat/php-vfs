@@ -180,7 +180,9 @@ class Wrapper
      */
     public function stream_write($data)
     {
-        if(!$this->currently_opened->isWritable()) return false;
+        if (!$this->currently_opened->isWritable()) {
+            return false;
+        }
         //file access time changes so stat cache needs to be cleared
         $written = $this->currently_opened->write($data);
         clearstatcache();
@@ -238,7 +240,9 @@ class Wrapper
      */
     public function stream_read($bytes)
     {
-        if(!$this->currently_opened->isReadable()) return null;
+        if (!$this->currently_opened->isReadable()) {
+            return null;
+        }
         $data = $this->currently_opened->read($bytes);
         //file access time changes so stat cache needs to be cleared
         clearstatcache();
@@ -276,7 +280,7 @@ class Wrapper
 
         try {
             $container->createDir($path, $recursive, $mode);
-        } catch(FileExistsException $e) {
+        } catch (FileExistsException $e) {
             trigger_error($e->getMessage(), E_USER_WARNING);
             return false;
         }
@@ -386,7 +390,8 @@ class Wrapper
      *
      * @return bool
      */
-    public function stream_truncate($new_size) {
+    public function stream_truncate($new_size)
+    {
         $this->currently_opened->truncate($new_size);
         clearstatcache();
         return true;

@@ -48,12 +48,26 @@ class Factory
         return $this->updateMetadata(new Root());
     }
 
-    public function updateMetadata(Node $node) {
+    /**
+     * Updates time and ownership of a node
+     *
+     * @param Node $node
+     *
+     * @return Node
+     */
+    public function updateMetadata(Node $node)
+    {
         $this->updateFileTimes($node);
         $this->updateOwnership($node);
         return $node;
     }
 
+    /**
+     * Update file a/c/m times
+     *
+     * @param Node $node
+     * @return Node
+     */
     public function updateFileTimes(Node $node)
     {
         $time = time();

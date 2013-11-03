@@ -94,7 +94,8 @@ class FileHandlerTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testOffsetPositionMovesPointerCorrectly() {
+    public function testOffsetPositionMovesPointerCorrectly()
+    {
 
         $file = new File('/file');
         $file->setData('data');

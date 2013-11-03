@@ -207,7 +207,7 @@ abstract class Node
      *
      * @param int $time
      */
-    public function     setChangeTime($time)
+    public function setChangeTime($time)
     {
         $this->ctime = $time;
     }

@@ -112,7 +112,7 @@ class Container
         try {
             $this->fileAt($path);
             return true;
-        } catch(NotFoundException $e) {
+        } catch (NotFoundException $e) {
             return false;
         }
     }
@@ -203,11 +203,10 @@ class Container
         $fromNode->setBasename($newNodeName);
 
         if ($nodeAtToPath instanceof File) {
-            if ($fromNode instanceof File) {
-                $toNode->remove($nodeAtToPath->basename());
-            } else {
+            if (!$fromNode instanceof File) {
                 throw new \RuntimeException('Can\'t move directory onto a file');
             }
+            $toNode->remove($nodeAtToPath->basename());
         }
 
         if ($fromNode instanceof File) {

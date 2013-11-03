@@ -32,7 +32,8 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testHasFileAtReturnsCorrectly() {
+    public function testHasFileAtReturnsCorrectly()
+    {
 
         $container = new Container(new Factory());
         $container->root()->addDirectory(new Directory('dir1.1'));

@@ -242,8 +242,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testOpeningForReadingOnNonExistingFails() {
-
+    public function testOpeningForReadingOnNonExistingFails()
+    {
         $fs = new FileSystem();
 
         @fopen($fs->path('/nonExistingFile'), 'r');
@@ -251,7 +251,6 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $error = error_get_last();
 
         $this->assertStringMatchesFormat('fopen(%s://nonExistingFile): failed to open stream: %s', $error['message']);
-
     }
 
     public function testOpeningForWritingCorrectlyOpensAndTruncatesFile()
@@ -328,7 +327,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $fs = new FileSystem();
         $file = $fs->container()->createFile('/file', 'data--');
 
-        $handle = fopen($fs->path('/file'), 'a'); //has to opened for append otherwise file is automatically truncated by 'w' opening mode
+        //has to opened for append otherwise file is automatically truncated by 'w' opening mode
+        $handle = fopen($fs->path('/file'), 'a');
 
         ftruncate($handle, 4);
 
