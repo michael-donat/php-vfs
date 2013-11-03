@@ -12,7 +12,6 @@ namespace VirtualFileSystem;
 
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
-use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Wrapper\FileHandler;
 use VirtualFileSystem\Wrapper\DirectoryHandler;
 
