@@ -117,4 +117,14 @@ class Directory extends Node
     {
         unset($this->children[$basename]);
     }
+
+    /**
+     * Returns children
+     *
+     * @return array
+     */
+    public function children()
+    {
+        return $this->children;
+    }
 }

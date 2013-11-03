@@ -143,13 +143,31 @@ abstract class Node
     }
 
     /**
-     * Returns node URL.
+     * Returns node path.
      *
      * @return string
      */
     public function path()
     {
         $dirname = $this->dirname();
+
+        if ($this->parent instanceof Root) { //at root
+
+            return $dirname.$this->basename();
+        }
+
+        return sprintf('%s/%s', $dirname, $this->basename());
+
+    }
+
+    /**
+     * Returns node URL.
+     *
+     * @return string
+     */
+    public function url()
+    {
+        $dirname = $this->parent->url();
 
         if ($this->parent instanceof Root) { //at root
 

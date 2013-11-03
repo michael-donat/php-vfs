@@ -12,7 +12,9 @@ namespace VirtualFileSystem;
 
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
+use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Wrapper\FileHandler;
+use VirtualFileSystem\Wrapper\DirectoryHandler;
 
 /**
  * Stream wrapper class. This is the class that PHP uses as the stream operations handler.
@@ -514,5 +516,74 @@ class Wrapper
         $container->remove($path, true);
 
         return true;
+    }
+
+    /**
+     * Opens directory for iteration
+     *
+     * @param string $path
+     * @param int $options
+     *
+     * @return bool
+     */
+    public function dir_opendir($path, $options)
+    {
+        $container = $this->getContainerFromContext($path);
+        $path = $this->stripScheme($path);
+
+        if (!$container->hasFileAt($path)) {
+            trigger_error(sprintf('opendir(%s): failed to open dir: No such file or directory', $path), E_USER_WARNING);
+            return false;
+        }
+
+        $dir = $container->fileAt($path);
+
+        if ($dir instanceof File) {
+            trigger_error(sprintf('opendir(%s): failed to open dir: Not a directory', $path), E_USER_WARNING);
+            return false;
+        }
+
+        $this->currently_opened = new DirectoryHandler();
+        $this->currently_opened->setDirectory($dir);
+
+        return true;
+    }
+
+    /**
+     * Closes opened dir
+     *
+     * @return bool
+     */
+    public function dir_closedir()
+    {
+        if ($this->currently_opened) {
+            $this->currently_opened = null;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns next file url in directory
+     *
+     * @return null
+     */
+    public function dir_readdir()
+    {
+        $node = $this->currently_opened->iterator()->current();
+        if (!$node) {
+            return false;
+        }
+        $this->currently_opened->iterator()->next();
+        return $node->basename();
+    }
+
+    /**
+     * Resets directory iterator
+     */
+    public function dir_rewinddir()
+    {
+        $this->currently_opened->iterator()->rewind();
     }
 }

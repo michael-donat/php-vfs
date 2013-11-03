@@ -345,32 +345,32 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $fs = new FileSystem();
         $file = $fs->container()->createFile('/file', 'data');
 
-        $handle = fopen($file, 'r');
+        $handle = fopen($fs->path('/file'), 'r');
         $this->assertEquals('data', fread($handle, 4), 'Contents can be read in read mode');
         $this->assertEquals(0, fwrite($handle, '--'), '0 bytes should be written in readonly mode');
 
-        $handle = fopen($file, 'r+');
+        $handle = fopen($fs->path('/file'), 'r+');
         $this->assertEquals('data', fread($handle, 4), 'Contents can be read in extended read mode');
         $this->assertEquals(2, fwrite($handle, '--'), '2 bytes should be written in extended readonly mode');
 
-        $handle = fopen($file, 'w');
+        $handle = fopen($fs->path('/file'), 'w');
         $this->assertEquals(4, fwrite($handle, 'data'), '4 bytes written in writeonly mode');
         fseek($handle, 0);
         $this->assertEmpty(fread($handle, 4), 'No bytes read in write only mode');
 
-        $handle = fopen($file, 'w+');
+        $handle = fopen($fs->path('/file'), 'w+');
         $this->assertEquals(4, fwrite($handle, 'data'), '4 bytes written in extended writeonly mode');
         fseek($handle, 0);
         $this->assertEquals('data', fread($handle, 4), 'Bytes read in extended write only mode');
 
         $file->setData('data');
 
-        $handle = fopen($file, 'a');
+        $handle = fopen($fs->path('/file'), 'a');
         $this->assertEquals(4, fwrite($handle, 'data'), '4 bytes written in append mode');
         fseek($handle, 0);
         $this->assertEmpty(fread($handle, 4), 'No bytes read in append mode');
 
-        $handle = fopen($file, 'a+');
+        $handle = fopen($fs->path('/file'), 'a+');
         $this->assertEquals(4, fwrite($handle, 'data'), '4 bytes written in extended append mode');
         fseek($handle, 0);
         $this->assertEquals('datadata', fread($handle, 8), 'Bytes read in extended append mode');
@@ -684,5 +684,104 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_resource($handle));
 
         $this->assertEmpty(fread($handle, 1));
+    }
+
+    public function testDirectoryOpensForReading()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createDir('/dir');
+
+        $wrapper = new Wrapper();
+
+        $handle = $wrapper->dir_opendir($fs->path('/dir'), 0);
+
+        $this->assertTrue($handle, 'Directory opened for reading');
+
+        $handle = @$wrapper->dir_opendir($fs->path('/nonExistingDir'), 0);
+
+        $this->assertFalse($handle, 'Non existing directory not opened for reading');
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'opendir(%s): failed to open dir: No such file or directory',
+            $error['message'],
+            'Opening non existing directory triggers warning'
+        );
+
+        $handle = opendir($fs->path('/dir'));
+
+        $this->assertTrue(is_resource($handle), 'opendir uses dir_opendir');
+    }
+
+    public function testDirectoryOpenDoesNotOpenFiles()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createFile('/file');
+
+        $wrapper = new Wrapper();
+
+        $handle = @$wrapper->dir_opendir($fs->path('/file'), 0);
+
+        $this->assertFalse($handle, 'Opening fiels with opendir fails');
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'opendir(%s): failed to open dir: Not a directory',
+            $error['message'],
+            'Opening fiels with opendir triggers warning'
+        );
+    }
+
+    public function testDirectoryCloses()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createDir('/dir');
+
+        $wrapper = new Wrapper();
+
+        $this->assertFalse($wrapper->dir_closedir(), 'Returns false when no dir opened');
+
+        $wrapper->dir_opendir($fs->path('/dir'), 0);
+
+        $this->assertTrue($wrapper->dir_closedir());
+    }
+
+    public function testDirectoryReading()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createDir('/dir1');
+        $fs->container()->createDir('/dir2');
+        $fs->container()->createDir('/dir3');
+
+        $wr = new Wrapper();
+        $wr->dir_opendir($fs->path('/'), 0);
+
+        $this->assertEquals('dir1', $wr->dir_readdir());
+        $this->assertEquals('dir2', $wr->dir_readdir());
+        $this->assertEquals('dir3', $wr->dir_readdir());
+        $this->assertFalse($wr->dir_readdir());
+
+        $wr->dir_rewinddir();
+        $this->assertEquals('dir1', $wr->dir_readdir(), 'Directory reqound');
+
+    }
+
+    public function testDirectoryIterationWithDirectoryIterator()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createDir('/dir1');
+        $fs->container()->createDir('/dir2');
+        $fs->container()->createDir('/dir3');
+
+        $result = array();
+
+        foreach (new \DirectoryIterator($fs->path('/')) as $fileInfo) {
+            $result[] = $fileInfo->getBasename();
+        }
+
+        $this->assertEquals(array('dir1', 'dir2', 'dir3'), $result, 'All directories found');
+
     }
 }

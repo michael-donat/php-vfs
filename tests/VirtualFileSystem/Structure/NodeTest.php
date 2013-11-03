@@ -39,6 +39,17 @@ class NodeTest extends \PHPUnit_Framework_TestCase
         $file->setData('1234567890');
 
         $this->assertEquals(10, $file->size());
+    }
 
+    public function testURLConstruction()
+    {
+        $root = new Root();
+        $root->setScheme('s://');
+
+        $root->addDirectory($dir = new Directory('dir'));
+        $dir->addDirectory($dir = new Directory('dir'));
+        $dir->addFile($file = new File('file'));
+
+        $this->assertEquals('s://dir/dir/file', $file->url());
     }
 }
