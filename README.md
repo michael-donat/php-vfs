@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/thornag/php-vfs.png)](https://travis-ci.org/thornag/php-vfs)
+[![Build Status](https://travis-ci.org/thornag/php-vfs.png)](https://travis-ci.org/thornag/php-vfs) [![Coverage Status](https://coveralls.io/repos/thornag/php-vfs/badge.png?branch=master)](https://coveralls.io/r/thornag/php-vfs?branch=master)
