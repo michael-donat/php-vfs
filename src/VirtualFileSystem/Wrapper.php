@@ -10,6 +10,7 @@
 
 namespace VirtualFileSystem;
 
+use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Wrapper\FileHandler;
 
@@ -147,6 +148,17 @@ class Wrapper
         }
 
         $file = $container->fileAt($path);
+
+        if (($extended || $writeMode) && $file instanceof Directory) {
+            if ($options & STREAM_REPORT_ERRORS) {
+                trigger_error(sprintf('fopen(%s): failed to open stream: Is a directory', $path), E_USER_WARNING);
+            }
+            return false;
+        }
+
+        if ($file instanceof Directory) {
+            $file = $container->factory()->getFile('tmp');
+        }
 
         $this->currently_opened = new FileHandler();
         $this->currently_opened->setFile($file);
