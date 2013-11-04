@@ -51,7 +51,7 @@ class CSVTest extends \PHPUnit_Framework_TestCase {
         $csv = new CSV('fixtures/sum.csv');
 
         $this->assertEquals(10, $csv->getColumnSum(1), 'Sum of first column is 10');
-        $this->assertEquals(15, $csv->getCOlumnSum(2), 'Sum of first column is 15');
+        $this->assertEquals(15, $csv->getColumnSum(2), 'Sum of first column is 15');
     }
 }
 ```
@@ -74,11 +74,11 @@ class CSV {
 
     public function __construct($file)
     {
-        if(false === ($handle = fopen($file, "r"))) {
+        if (false === ($handle = fopen($file, "r"))) {
             throw new \RuntimeException('Could not read input file: ' . $file);
         }
 
-        while(false !== ($data = fgetcsv($handle, 1024))) {
+        while (false !== ($data = fgetcsv($handle, 1024))) {
             $this->data[] = $data;
         }
 
@@ -121,7 +121,6 @@ class CSVTest extends \PHPUnit_Framework_TestCase {
 
     public function test_sumIsCorrectlyCalculated()
     {
-
         $fs = new FileSystem();
 
         file_put_contents($fs->path('/sum.csv'), join(PHP_EOL, $this->csvData));
@@ -129,7 +128,7 @@ class CSVTest extends \PHPUnit_Framework_TestCase {
         $csv = new CSV($fs->path('/sum.csv'));
 
         $this->assertEquals(10, $csv->getColumnSum(1), 'Sum of first column is 10');
-        $this->assertEquals(15, $csv->getCOlumnSum(2), 'Sum of first column is 15');
+        $this->assertEquals(15, $csv->getColumnSum(2), 'Sum of first column is 15');
     }
 }
 ```
@@ -152,28 +151,28 @@ Combining above 2 should allow you to recreate any direcotry/file structure.
 Behaviour
 -------------
 
-php-vfs tries to mimick unix filesystem as much as possible. The same conditions must be matched and the same errors will be triggered as if we were interacting via php with real underlying filesystem.
+php-vfs tries to mimic unix filesystem as much as possible. The same conditions must be matched and the same errors will be triggered as if we were interacting via php with real underlying filesystem.
 
-Most of [PHP filesystem functions](http://www.php.net/manual/en/ref.filesystem.php) are happily supported by php-vfs as long as the full file URL is passed as argument (using ```$fs->path()```). If you find something not working and not listed below please rise an issue on [github issues page](https://github.com/thornag/php-vfs/issues)
+Most of [PHP filesystem functions](http://www.php.net/manual/en/ref.filesystem.php) are happily supported by php-vfs as long as the full file URL is passed as argument (using ```$fs->path()```). If you find something not working and not listed below please rise an issue on [github issues page](https://github.com/thornag/php-vfs/issues).
 
 **Supported**
 
-fopen modes
-setting permissions and ownership
-directory iteration
-file access/modification/change times
+- fopen modes
+- setting permissions and ownership
+- directory iteration
+- file access/modification/change times
 
 **Currently unsupported**
 
-permission/ownership checks
+- permission/ownership checks (roadmap for 0.4)
 
 **Known pitfalls**
 
-streamWrapper implementations like php-vfs will not work with glob methods for directory iteration - you need to use DirectoryIterator or readdir instead.
+streamWrapper implementations like php-vfs will not work with glob methods for directory iteration - you need to use ```DirectoryIterator``` or ```readdir()``` instead.
 
 Contributing
 ----------------
 
-Any contributions are more than welcome. Please make sure that you keep to PSR-2 standards and provide tested code.
+Any contributions are more than welcome. Please make sure that you keep to [PSR-2](http://www.php-fig.org/psr/psr-2/) standards and provide tested code.
 
 You are more than welcome to add yourself to CONTRIBUTORS.md.
