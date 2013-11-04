@@ -727,7 +727,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->dir_readdir());
 
         $wr->dir_rewinddir();
-        $this->assertEquals('dir1', $wr->dir_readdir(), 'Directory reqound');
+        $this->assertEquals('dir1', $wr->dir_readdir(), 'Directory rewound');
 
     }
 
