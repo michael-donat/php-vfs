@@ -240,6 +240,10 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $fs->container()->createFile('/file2', str_repeat('test data', 5000));
         $this->assertEquals(str_repeat('test data', 5000), file_get_contents($fs->path('/file2')));
 
+        $fs->container()->createDir('/dir');
+
+        $this->assertEmpty(file_get_contents($fs->path('/dir')));
+
     }
 
     public function testOpeningForReadingOnNonExistingFails()
@@ -746,5 +750,40 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(array('dir1', 'dir2', 'dir3'), $result, 'All directories found');
 
+    }
+
+    public function testStreamOpenDoesNotOpenDirectoriesForWriting()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createDir('/dir');
+
+        $this->assertFalse(@fopen($fs->path('/dir'), 'w'));
+        $this->assertFalse(@fopen($fs->path('/dir'), 'r+'));
+        $this->assertFalse(@fopen($fs->path('/dir'), 'w+'));
+
+        $opened_path = null;
+
+        $wr = new Wrapper();
+        @$wr->stream_open($fs->path('/dir'), 'w', STREAM_REPORT_ERRORS, $opened_path);
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'fopen(%s): failed to open stream: Is a directory',
+            $error['message'],
+            'Stream does not open directories'
+        );
+    }
+
+    public function testStreamOpenAllowsForDirectoryOpeningForReadingAndReturnsEmptyStrings()
+    {
+        $fs = new FileSystem();
+        $fs->container()->createDir('/dir');
+
+        $handle = fopen($fs->path('/dir'), 'r');
+
+        $this->assertTrue(is_resource($handle));
+
+        $this->assertEmpty(fread($handle, 1));
     }
 }
