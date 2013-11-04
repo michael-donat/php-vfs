@@ -14,7 +14,6 @@
   </head>
 
   <body>
-    <a href="https://github.com/thornag/php-vfs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
     <div id="container">
       <div class="inner">
 
@@ -32,20 +31,12 @@
         <hr>
 
         <section id="main_content">
-          <table>
-<thead><tr>
-<th align="center">Build status</th>
-<th align="center">Coverage</th>
-<th align="center">Last stable</th>
-<th align="center">Last development</th>
-</tr></thead>
-<tbody><tr>
-<td align="center"><a href="https://travis-ci.org/thornag/php-vfs"><img src="https://travis-ci.org/thornag/php-vfs.png" alt="Build Status"></a></td>
-<td align="center"><a href="https://coveralls.io/r/thornag/php-vfs?branch=master"><img src="https://coveralls.io/repos/thornag/php-vfs/badge.png?branch=master" alt="Coverage Status"></a></td>
-<td align="center"><a href="https://packagist.org/packages/php-vfs/php-vfs"><img src="https://poser.pugx.org/php-vfs/php-vfs/v/stable.png" alt="Latest Stable Version"></a></td>
-<td align="center"><a href="https://packagist.org/packages/php-vfs/php-vfs"><img src="https://poser.pugx.org/php-vfs/php-vfs/v/unstable.png" alt="Latest Unstable Version"></a></td>
-</tr></tbody>
-</table><h1>
+          <p><a href="https://github.com/thornag/php-vfs/fork"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+|Build status|Coverage|Last stable|Last development|
+|:-------------:|:-------------:|:-----:|:-----:|
+|<a href="https://travis-ci.org/thornag/php-vfs"><img src="https://travis-ci.org/thornag/php-vfs.png" alt="Build Status"></a>|<a href="https://coveralls.io/r/thornag/php-vfs?branch=master"><img src="https://coveralls.io/repos/thornag/php-vfs/badge.png?branch=master" alt="Coverage Status"></a>|<a href="https://packagist.org/packages/php-vfs/php-vfs"><img src="https://poser.pugx.org/php-vfs/php-vfs/v/stable.png" alt="Latest Stable Version"></a>|<a href="https://packagist.org/packages/php-vfs/php-vfs"><img src="https://poser.pugx.org/php-vfs/php-vfs/v/unstable.png" alt="Latest Unstable Version"></a>|</p>
+
+<h1>
 <a name="php-vfs" class="anchor" href="#php-vfs"><span class="octicon octicon-link"></span></a>php-vfs</h1>
 
 <p>Very simple filesystem emulating PHP stream wrapper for use in unit testing
@@ -94,7 +85,7 @@ with real filesystem without creating temporary directories or file fixtures.</p
         <span class="nv">$csv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CSV</span><span class="p">(</span><span class="s1">'fixtures/sum.csv'</span><span class="p">);</span>
 
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nv">$csv</span><span class="o">-&gt;</span><span class="na">getColumnSum</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s1">'Sum of first column is 10'</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="nv">$csv</span><span class="o">-&gt;</span><span class="na">getCOlumnSum</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">'Sum of first column is 15'</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="nv">$csv</span><span class="o">-&gt;</span><span class="na">getColumnSum</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">'Sum of first column is 15'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -115,11 +106,11 @@ with real filesystem without creating temporary directories or file fixtures.</p
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="k">false</span> <span class="o">===</span> <span class="p">(</span><span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">false</span> <span class="o">===</span> <span class="p">(</span><span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)))</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="k">new</span> <span class="nx">\RuntimeException</span><span class="p">(</span><span class="s1">'Could not read input file: '</span> <span class="o">.</span> <span class="nv">$file</span><span class="p">);</span>
         <span class="p">}</span>
 
-        <span class="k">while</span><span class="p">(</span><span class="k">false</span> <span class="o">!==</span> <span class="p">(</span><span class="nv">$data</span> <span class="o">=</span> <span class="nb">fgetcsv</span><span class="p">(</span><span class="nv">$handle</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)))</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="k">false</span> <span class="o">!==</span> <span class="p">(</span><span class="nv">$data</span> <span class="o">=</span> <span class="nb">fgetcsv</span><span class="p">(</span><span class="nv">$handle</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)))</span> <span class="p">{</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
         <span class="p">}</span>
 
@@ -161,7 +152,6 @@ We could possibly create the file in our setUp method and then clear it in tearD
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">test_sumIsCorrectlyCalculated</span><span class="p">()</span>
     <span class="p">{</span>
-
         <span class="nv">$fs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileSystem</span><span class="p">();</span>
 
         <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$fs</span><span class="o">-&gt;</span><span class="na">path</span><span class="p">(</span><span class="s1">'/sum.csv'</span><span class="p">),</span> <span class="nb">join</span><span class="p">(</span><span class="nx">PHP_EOL</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">csvData</span><span class="p">));</span>
@@ -169,7 +159,7 @@ We could possibly create the file in our setUp method and then clear it in tearD
         <span class="nv">$csv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CSV</span><span class="p">(</span><span class="nv">$fs</span><span class="o">-&gt;</span><span class="na">path</span><span class="p">(</span><span class="s1">'/sum.csv'</span><span class="p">));</span>
 
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nv">$csv</span><span class="o">-&gt;</span><span class="na">getColumnSum</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s1">'Sum of first column is 10'</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="nv">$csv</span><span class="o">-&gt;</span><span class="na">getCOlumnSum</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">'Sum of first column is 15'</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="nv">$csv</span><span class="o">-&gt;</span><span class="na">getColumnSum</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">'Sum of first column is 15'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -194,29 +184,29 @@ scope of our unit test, thus keeping our test background/environment isolated fr
 <h2>
 <a name="behaviour" class="anchor" href="#behaviour"><span class="octicon octicon-link"></span></a>Behaviour</h2>
 
-<p>php-vfs tries to mimick unix filesystem as much as possible. The same conditions must be matched and the same errors will be triggered as if we were interacting via php with real underlying filesystem.</p>
+<p>php-vfs tries to mimic unix filesystem as much as possible. The same conditions must be matched and the same errors will be triggered as if we were interacting via php with real underlying filesystem.</p>
 
-<p>Most of <a href="http://www.php.net/manual/en/ref.filesystem.php">PHP filesystem functions</a> are happily supported by php-vfs as long as the full file URL is passed as argument (using <code>$fs-&gt;path()</code>). If you find something not working and not listed below please rise an issue on <a href="https://github.com/thornag/php-vfs/issues">github issues page</a></p>
+<p>Most of <a href="http://www.php.net/manual/en/ref.filesystem.php">PHP filesystem functions</a> are happily supported by php-vfs as long as the full file URL is passed as argument (using <code>$fs-&gt;path()</code>). If you find something not working and not listed below please rise an issue on <a href="https://github.com/thornag/php-vfs/issues">github issues page</a>.</p>
 
 <p><strong>Supported</strong></p>
 
-<p>fopen modes
-setting permissions and ownership
-directory iteration
-file access/modification/change times</p>
+<ul>
+<li>fopen modes</li>
+<li>setting permissions and ownership</li>
+<li>directory iteration</li>
+<li>file access/modification/change times</li>
+</ul><p><strong>Currently unsupported</strong></p>
 
-<p><strong>Currently unsupported</strong></p>
+<ul>
+<li>permission/ownership checks (roadmap for 0.4)</li>
+</ul><p><strong>Known pitfalls</strong></p>
 
-<p>permission/ownership checks</p>
-
-<p><strong>Known pitfalls</strong></p>
-
-<p>streamWrapper implementations like php-vfs will not work with glob methods for directory iteration - you need to use DirectoryIterator or readdir instead.</p>
+<p>streamWrapper implementations like php-vfs will not work with glob methods for directory iteration - you need to use <code>DirectoryIterator</code> or <code>readdir()</code> instead.</p>
 
 <h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
-<p>Any contributions are more than welcome. Please make sure that you keep to PSR-2 standards and provide tested code.</p>
+<p>Any contributions are more than welcome. Please make sure that you keep to <a href="http://www.php-fig.org/psr/psr-2/">PSR-2</a> standards and provide tested code.</p>
 
 <p>You are more than welcome to add yourself to CONTRIBUTORS.md.</p>
         </section>
