@@ -785,3 +785,28 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     }
 }
+
+use VirtualFileSystem\FileSystem;
+
+class CSVTest extends \PHPUnit_Framework_TestCase {
+
+    protected $csvData = array(
+        '"Column 1";"Column 2"',
+        '5,5',
+        '4,7',
+        '1,3'
+    );
+
+    public function test_sumIsCorrectlyCalculated()
+    {
+
+        $fs = new FileSystem();
+
+        file_put_contents($fs->path('/sum.csv'), join(PHP_EOL, $this->csvData));
+
+        $csv = new CSV($fs->path('/sum.csv'));
+
+        $this->assertEquals(10, $csv->getColumnSum(1), 'Sum of first column is 10');
+        $this->assertEquals(15, $csv->getCOlumnSum(2), 'Sum of first column is 15');
+    }
+}
