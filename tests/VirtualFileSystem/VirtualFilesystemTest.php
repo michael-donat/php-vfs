@@ -77,4 +77,25 @@ class VirtualFilesystemTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayNotHasKey($scheme, $options, 'FS Context option present');
         $this->assertArrayHasKey('someContext', $options, 'Previously existing context option present');
     }
+
+    public function testCreateDirectoryCreatesDirectories()
+    {
+        $fs = new FileSystem();
+
+        $directory = $fs->createDirectory('/dir/dir', true);
+
+        $this->assertInstanceOf('\VirtualFileSystem\Structure\Directory', $directory);
+        $this->assertEquals('/dir/dir', $directory->path());
+    }
+
+    public function testCreateFileCreatesFile()
+    {
+        $fs = new FileSystem();
+
+        $file = $fs->createFile('/file', 'data');
+
+        $this->assertInstanceOf('\VirtualFileSystem\Structure\File', $file);
+        $this->assertEquals('/file', $file->path());
+        $this->assertEquals('data', $file->data());
+    }
 }

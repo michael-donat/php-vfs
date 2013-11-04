@@ -11,6 +11,7 @@
 namespace VirtualFileSystem;
 
 use VirtualFileSystem\Structure\Directory;
+use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Root;
 
 /**
@@ -122,5 +123,32 @@ class FileSystem
         $path = ltrim($path, '/');
 
         return $this->scheme().'://'.$path;
+    }
+
+    /**
+     * Creates and returns a directory
+     *
+     * @param string $path
+     * @param bool $recursive
+     * @param null $mode
+     *
+     * @return Directory
+     */
+    public function createDirectory($path, $recursive = false, $mode = null)
+    {
+        return $this->container()->createDir($path, $recursive, $mode);
+    }
+
+    /**
+     * Creates and returns a file
+     *
+     * @param string $path
+     * @param string $data
+     *
+     * @return File
+     */
+    public function createFile($path, $data = null)
+    {
+        return $this->container()->createFile($path, $data);
     }
 }
