@@ -34,88 +34,86 @@ I decided to deliver something that will offer the same if not more functionalit
 
 Let's assume we need to test a class that reads CSV file and provides SUM() of columns. The unit test class would normally look something similar to following:
 
-```PHP
-class CSVTest extends \PHPUnit_Framework_TestCase {
 
-    public function test_sumIsCorrectlyCalculated()
-    {
-        $csv = new CSV('fixtures/sum.csv');
+    class CSVTest extends \PHPUnit_Framework_TestCase {
 
-        $this->assertEquals(10, $csv->getColumnSum(1), 'Sum of first column is 10');
-        $this->assertEquals(15, $csv->getColumnSum(2), 'Sum of first column is 15');
+        public function test_sumIsCorrectlyCalculated()
+        {
+            $csv = new CSV('fixtures/sum.csv');
+
+            $this->assertEquals(10, $csv->getColumnSum(1), 'Sum of first column is 10');
+            $this->assertEquals(15, $csv->getColumnSum(2), 'Sum of first column is 15');
+        }
     }
-}
-```
 
 And the CSV file would look something like:
 
-```
-"Column 1","Column 2"
-5,5
-4,7
-1,3
-```
+    "Column 1","Column 2"
+    5,5
+    4,7
+    1,3
+
 
 And our CSV class:
 
-```PHP
-class CSV {
 
-    protected $data = array();
+    class CSV {
 
-    public function __construct($file)
-    {
-        if (false === ($handle = fopen($file, "r"))) {
-            throw new \RuntimeException('Could not read input file: ' . $file);
+        protected $data = array();
+
+        public function __construct($file)
+        {
+            if (false === ($handle = fopen($file, "r"))) {
+                throw new \RuntimeException('Could not read input file: ' . $file);
+            }
+
+            while (false !== ($data = fgetcsv($handle, 1024))) {
+                $this->data[] = $data;
+            }
+
+            fclose($handle);
         }
 
-        while (false !== ($data = fgetcsv($handle, 1024))) {
-            $this->data[] = $data;
+        public function getColumnSum($column)
+        {
+            $toSum = array();
+            foreach ($this->data as $line) {
+                $toSum[] = $line[$column];
+            }
+
+            return array_sum($toSum);
         }
 
-        fclose($handle);
     }
 
-    public function getColumnSum($column)
-    {
-        $toSum = array();
-        foreach ($this->data as $line) {
-            $toSum[] = $line[$column];
-        }
-
-        return array_sum($toSum);
-    }
-
-}
-```
 
  Let's consider slightly reworked unit test using php-vfs:
 
-```PHP
-use VirtualFileSystem\FileSystem;
 
-class CSVTest extends \PHPUnit_Framework_TestCase {
+    use VirtualFileSystem\FileSystem;
 
-    protected $csvData = array(
-        '"Column 1";"Column 2"',
-        '5,5',
-        '4,7',
-        '1,3'
-    );
+    class CSVTest extends \PHPUnit_Framework_TestCase {
 
-    public function test_sumIsCorrectlyCalculated()
-    {
-        $fs = new FileSystem();
+        protected $csvData = array(
+            '"Column 1";"Column 2"',
+            '5,5',
+            '4,7',
+            '1,3'
+        );
 
-        file_put_contents($fs->path('/sum.csv'), join(PHP_EOL, $this->csvData));
+        public function test_sumIsCorrectlyCalculated()
+        {
+            $fs = new FileSystem();
 
-        $csv = new CSV($fs->path('/sum.csv'));
+            file_put_contents($fs->path('/sum.csv'), join(PHP_EOL, $this->csvData));
 
-        $this->assertEquals(10, $csv->getColumnSum(1), 'Sum of first column is 10');
-        $this->assertEquals(15, $csv->getColumnSum(2), 'Sum of first column is 15');
+            $csv = new CSV($fs->path('/sum.csv'));
+
+            $this->assertEquals(10, $csv->getColumnSum(1), 'Sum of first column is 10');
+            $this->assertEquals(15, $csv->getColumnSum(2), 'Sum of first column is 15');
+        }
     }
-}
-```
+
 
 As you can see the dependency on underlying fs has been removed and the unit test is run in full isolation.
 
