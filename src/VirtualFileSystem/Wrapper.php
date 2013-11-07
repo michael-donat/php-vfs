@@ -193,7 +193,7 @@ class Wrapper
      */
     public function stream_write($data)
     {
-        if (!$this->currently_opened->isWritable()) {
+        if (!$this->currently_opened->isOpenedForWriting()) {
             return false;
         }
         //file access time changes so stat cache needs to be cleared
@@ -253,7 +253,7 @@ class Wrapper
      */
     public function stream_read($bytes)
     {
-        if (!$this->currently_opened->isReadable()) {
+        if (!$this->currently_opened->isOpenedForReading()) {
             return null;
         }
         $data = $this->currently_opened->read($bytes);
