@@ -173,7 +173,7 @@ class FileHandler
      *
      * @return bool
      */
-    public function isWritable()
+    public function isOpenedForWriting()
     {
         return (bool)($this->mode & self::WRITE_MODE);
     }
@@ -183,7 +183,7 @@ class FileHandler
      *
      * @return bool
      */
-    public function isReadable()
+    public function isOpenedForReading()
     {
         return (bool)($this->mode & self::READ_MODE);
     }

@@ -14,7 +14,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     {
         $file = new File('file');
 
-        $this->assertEquals(0000 | File::S_IFTYPE, $file->mode());
+        $this->assertEquals(Node::DEF_MODE | File::S_IFTYPE, $file->mode());
 
         $file->chmod(0200);
         $this->assertEquals(0200 | File::S_IFTYPE, $file->mode());
