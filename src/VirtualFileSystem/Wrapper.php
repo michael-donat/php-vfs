@@ -14,6 +14,7 @@ use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Wrapper\FileHandler;
 use VirtualFileSystem\Wrapper\DirectoryHandler;
+use VirtualFileSystem\Wrapper\PermissionHelper;
 
 /**
  * Stream wrapper class. This is the class that PHP uses as the stream operations handler.
@@ -145,12 +146,19 @@ class Wrapper
                 return false;
             }
             $parent = $container->fileAt(dirname($path));
+            $ph = new PermissionHelper($parent);
+            if (!$ph->isWritable()) {
+                if ($options & STREAM_REPORT_ERRORS) {
+                    trigger_error(sprintf('%s: failed to open stream: Permission denied', $path), E_USER_WARNING);
+                }
+                return false;
+            }
             $parent->addFile($container->factory()->getFile(basename($path)));
         }
 
         $file = $container->fileAt($path);
 
-        if (($extended || $writeMode) && $file instanceof Directory) {
+        if (($extended || $writeMode || $appendMode) && $file instanceof Directory) {
             if ($options & STREAM_REPORT_ERRORS) {
                 trigger_error(sprintf('fopen(%s): failed to open stream: Is a directory', $path), E_USER_WARNING);
             }
@@ -158,16 +166,40 @@ class Wrapper
         }
 
         if ($file instanceof Directory) {
+            $dir = $file;
             $file = $container->factory()->getFile('tmp');
+            $file->chmod($dir->mode());
+            $file->chown($dir->user());
+            $file->chgrp($dir->group());
         }
+
+        $permissionHelper = new PermissionHelper($file);
 
         $this->currently_opened = new FileHandler();
         $this->currently_opened->setFile($file);
         if ($extended) {
+            if (!$permissionHelper->isReadable() or !$permissionHelper->isWritable()) {
+                if ($options & STREAM_REPORT_ERRORS) {
+                    trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
+                }
+                return false;
+            }
             $this->currently_opened->setReadWriteMode();
         } elseif ($readMode) {
+            if (!$permissionHelper->isReadable()) {
+                if ($options & STREAM_REPORT_ERRORS) {
+                    trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
+                }
+                return false;
+            }
             $this->currently_opened->setReadOnlyMode();
         } else { // a or w are for write only
+            if (!$permissionHelper->isWritable()) {
+                if ($options & STREAM_REPORT_ERRORS) {
+                    trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
+                }
+                return false;
+            }
             $this->currently_opened->setWriteOnlyMode();
         }
 
@@ -539,6 +571,13 @@ class Wrapper
 
         if ($dir instanceof File) {
             trigger_error(sprintf('opendir(%s): failed to open dir: Not a directory', $path), E_USER_WARNING);
+            return false;
+        }
+
+        $permissionHelper = new PermissionHelper($dir);
+
+        if (!$permissionHelper->isReadable()) {
+            trigger_error(sprintf('opendir(%s): failed to open dir: Permission denied', $path), E_USER_WARNING);
             return false;
         }
 

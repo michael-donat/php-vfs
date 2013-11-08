@@ -760,6 +760,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(@fopen($fs->path('/dir'), 'w'));
         $this->assertFalse(@fopen($fs->path('/dir'), 'r+'));
         $this->assertFalse(@fopen($fs->path('/dir'), 'w+'));
+        $this->assertFalse(@fopen($fs->path('/dir'), 'a'));
+        $this->assertFalse(@fopen($fs->path('/dir'), 'a+'));
 
         $opened_path = null;
 
@@ -785,5 +787,209 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_resource($handle));
 
         $this->assertEmpty(fread($handle, 1));
+    }
+
+    public function testPermissionsAreCheckedWhenOpeningFiles()
+    {
+        $fs = new FileSystem();
+        $file = $fs->container()->createFile('/file');
+
+        $wr = new Wrapper();
+
+        $file->chmod(0000);
+        $file->chown(0);
+        $file->chgrp(0);
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
+
+        $file->chmod(0400);
+        $file->chown(posix_getuid());
+        $file->chgrp(0);
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
+
+        $file->chmod(0200);
+        $file->chown(posix_getuid());
+        $file->chgrp(0);
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
+
+        $file->chmod(0600);
+        $file->chown(posix_getuid());
+        $file->chgrp(0);
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w+', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
+
+    }
+
+    public function testTemporaryFileCreatedToReadDirectoriesWithStreamOpenInheritsPermissions()
+    {
+        $fs = new FileSystem();
+        $file = $fs->container()->createDir('/dir');
+
+        $wr = new Wrapper();
+
+        $file->chmod(0000);
+        $file->chown(0);
+        $file->chgrp(0);
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
+
+        $file->chmod(0400);
+        $file->chown(posix_getuid());
+        $file->chgrp(0);
+        $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
+
+        $file->chmod(0200);
+        $file->chown(posix_getuid());
+        $file->chgrp(0);
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
+
+        $file->chmod(0600);
+        $file->chown(posix_getuid());
+        $file->chgrp(0);
+        $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
+    }
+
+    public function testPermissionsAreCheckedWhenOpeningDirectories()
+    {
+        $fs = new FileSystem();
+        $file = $fs->container()->createDir('/dir');
+
+        $wr = new Wrapper();
+
+        $file->chmod(0000);
+        $file->chown(0);
+        $file->chgrp(0);
+        $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0));
+
+        $file->chmod(0200);
+        $file->chown(posix_getuid());
+        $file->chgrp(0);
+        $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0));
+
+        $file->chmod(0400);
+        $file->chown(posix_getuid());
+        $file->chgrp(0);
+        $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $path));
+
+        $file->chmod(0040);
+        $file->chown(0);
+        $file->chgrp(posix_getgid());
+        $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $path));
+    }
+
+    public function testPermissionsAreCheckedWhenCreatingFilesWithinDirectories()
+    {
+        $fs = new FileSystem();
+        $dir = $fs->createDirectory('/dir');
+
+        $dir->chmod(0000);
+        $this->assertFalse(@file_put_contents($fs->path('/dir/file'), 'data'));
+
+        $dir->chmod(0400);
+        $this->assertFalse(@file_put_contents($fs->path('/dir/file'), 'data'));
+
+        $dir->chmod(0200);
+        $this->assertGreaterThan(0, @file_put_contents($fs->path('/dir/file'), 'data'));
+    }
+
+    public function testStreamOpenReportsErrorsOnPermissionDenied()
+    {
+        $fs = new FileSystem();
+        $dir = $fs->createDirectory('/dir');
+        $file = $fs->createFile('/file');
+        $dir->chmod(0000);
+
+        $wr = new Wrapper();
+
+        @$wr->stream_open($fs->path('/dir/file'), 'w', STREAM_REPORT_ERRORS, $path);
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            '%s: failed to open stream: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+        $file->chmod(0000);
+        @$wr->stream_open($fs->path('/file'), 'r', STREAM_REPORT_ERRORS, $path);
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            '%s: failed to open stream: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+        $file->chmod(0000);
+        @$wr->stream_open($fs->path('/file'), 'w', STREAM_REPORT_ERRORS, $path);
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            '%s: failed to open stream: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+        $file->chmod(0000);
+        @$wr->stream_open($fs->path('/file'), 'a', STREAM_REPORT_ERRORS, $path);
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            '%s: failed to open stream: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+        $file->chmod(0000);
+        @$wr->stream_open($fs->path('/file'), 'w+', STREAM_REPORT_ERRORS, $path);
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            '%s: failed to open stream: Permission denied',
+            $error['message']
+        );
+
     }
 }

@@ -19,7 +19,7 @@ namespace VirtualFileSystem\Structure;
 abstract class Node
 {
     const S_IFMT    = 0160000;
-    const DEF_MODE  = 0000;
+    const DEF_MODE  = 0755;
 
     protected $basename;
     protected $parent;
