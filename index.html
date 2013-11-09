@@ -91,10 +91,10 @@ sudo pear install pear.michaeldonat.net/VirtualFileSystem
 
 <p>To use PEAR installation with your testing framework you need to initialize the autoloader in your bootsrtap files.</p>
 
-<pre><code>require_once 'VirtualFileSystem/Loader.php';
-$l = new \VirtualFileSystem\Loader();
-$l-&gt;register();
-</code></pre>
+<div class="highlight highlight-PHP"><pre><span class="k">require_once</span> <span class="s1">'VirtualFileSystem/Loader.php'</span><span class="p">;</span>
+<span class="nv">$l</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\VirtualFileSystem\Loader</span><span class="p">();</span>
+<span class="nv">$l</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
 
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
