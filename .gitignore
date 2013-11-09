@@ -1,4 +1,5 @@
 .idea
 vendor
 build/log
+build/docs
 tmp
