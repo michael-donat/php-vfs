@@ -47,9 +47,11 @@ php-vfs is hosted on pear.michaeldonat.net and can be installed using following 
     
 To use PEAR installation with your testing framework you need to initialize the autoloader in your bootsrtap files.
 
-	require_once 'VirtualFileSystem/Loader.php';
-	$l = new \VirtualFileSystem\Loader();
-	$l->register();
+```PHP
+require_once 'VirtualFileSystem/Loader.php';
+$l = new \VirtualFileSystem\Loader();
+$l->register();
+```
 	
 Usage
 --------------
