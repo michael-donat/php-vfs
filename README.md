@@ -38,7 +38,7 @@ Or via command line:
 
 This will install latest stable version of php-vfs as a development dependency, for the latest development version replace @stable with @dev.
 
-**Pear**
+**PEAR**
 
 php-vfs is hosted on pear.michaeldonat.net and can be installed using following commands:
 
