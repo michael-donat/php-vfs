@@ -163,7 +163,7 @@ There are generally 2 methods you should always use when mocking up the state:
 
 Combining above 2 should allow you to recreate any directory/file structure.
 
-Full API documentation is available [here](/php-vfs/api/master).
+Full API documentation is available [here](http://thornag.github.io/php-vfs/api/master).
 
 Behaviour
 -------------
