@@ -159,7 +159,9 @@ There are generally 2 methods you should always use when mocking up the state:
 - ```\VirtualFileSystem\FileSystem::createDirectory($path, $recursive, $mode)``` used to mock directory;
 - ```\VirtualFileSystem\FileSystem::createFIle($path, $data)``` used to mock file and its contents.
 
-Combining above 2 should allow you to recreate any direcotry/file structure.
+Combining above 2 should allow you to recreate any directory/file structure.
+
+Full API documentation is available [here](/php-vfs/api/master).
 
 Behaviour
 -------------
