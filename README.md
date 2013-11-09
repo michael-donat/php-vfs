@@ -149,7 +149,7 @@ class CSVTest extends \PHPUnit_Framework_TestCase {
 As you can see there is no fixture or file created by our test that could be otherwise left behind. We can control the file contents and existence within the
 scope of our unit test, thus keeping our test background/environment isolated from external changes.
 
-Usage
+API
 --------------
 
 While using low level API for interaction with php-vfs is at its core, a much easier approach is to mock filesystem using provided interface.
@@ -174,10 +174,11 @@ Most of [PHP filesystem functions](http://www.php.net/manual/en/ref.filesystem.p
 - setting permissions and ownership
 - directory iteration
 - file access/modification/change times
+- file/directory permissions when opening for reading/writing
 
 **Currently unsupported**
 
-- permission/ownership checks (roadmap for 0.4)
+- permission/ownership checks for touch (roadmap for 0.4)
 
 **Known pitfalls**
 
