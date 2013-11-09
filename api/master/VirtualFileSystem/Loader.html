@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>VirtualFileSystem\Loader | </title>
+                    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../classes.html">Classes</a></li>
+                            <li><a href="../namespaces.html">Namespaces</a></li>
+                        <li><a href="../interfaces.html">Interfaces</a></li>
+            <li><a href="../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title"></div>
+
+            <div class="type">Class</div>
+    <h1><a href="../VirtualFileSystem.html">VirtualFileSystem</a>\Loader</h1>
+    </div>
+        <div class="content">
+                <p>class    <strong>Loader</strong></p>
+
+    
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>($ns = &#039;VirtualFileSystem&#039;, $includePath = null)
+                    <p>Creates a new <tt>Loader</tt> that loads classes of the specified namespace.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setNamespaceSeparator">setNamespaceSeparator</a>(string $sep)
+                    <p>Sets the namespace separator used by classes in the namespace of this class loader.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    void
+                </td>
+                <td class="last">
+                    <a href="#method_getNamespaceSeparator">getNamespaceSeparator</a>()
+                    <p>Gets the namespace seperator used by classes in the namespace of this class loader.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setIncludePath">setIncludePath</a>(string $includePath)
+                    <p>Sets the base include path for all class files in the namespace of this class loader.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_getIncludePath">getIncludePath</a>()
+                    <p>Gets the base include path for all class files in the namespace of this class loader.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setFileExtension">setFileExtension</a>(string $fileExtension)
+                    <p>Sets the file extension of class files in the namespace of this class loader.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_getFileExtension">getFileExtension</a>()
+                    <p>Gets the file extension of class files in the namespace of this class loader.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_register">register</a>(bool $prepend = false)
+                    <p>Installs this class loader on the SPL autoload stack.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_unregister">unregister</a>()
+                    <p>Uninstalls this class loader from the SPL autoloader stack.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    void
+                </td>
+                <td class="last">
+                    <a href="#method_loadClass">loadClass</a>(string $className)
+                    <p>Loads the given class or interface.</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method___construct">
+        <div class="location">at line 35</div>
+        <code>            public            
+    <strong>__construct</strong>($ns = &#039;VirtualFileSystem&#039;, $includePath = null)</code>
+    </h3>
+    <div class="details">
+        <p>Creates a new <tt>Loader</tt> that loads classes of the specified namespace.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$ns</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$includePath</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setNamespaceSeparator">
+        <div class="location">at line 46</div>
+        <code>            public            
+    <strong>setNamespaceSeparator</strong>(string $sep)</code>
+    </h3>
+    <div class="details">
+        <p>Sets the namespace separator used by classes in the namespace of this class loader.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$sep</td>
+                <td>The separator to use.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getNamespaceSeparator">
+        <div class="location">at line 56</div>
+        <code>            public            void
+    <strong>getNamespaceSeparator</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Gets the namespace seperator used by classes in the namespace of this class loader.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setIncludePath">
+        <div class="location">at line 66</div>
+        <code>            public            
+    <strong>setIncludePath</strong>(string $includePath)</code>
+    </h3>
+    <div class="details">
+        <p>Sets the base include path for all class files in the namespace of this class loader.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$includePath</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getIncludePath">
+        <div class="location">at line 76</div>
+        <code>            public            string
+    <strong>getIncludePath</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Gets the base include path for all class files in the namespace of this class loader.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>$includePath</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setFileExtension">
+        <div class="location">at line 86</div>
+        <code>            public            
+    <strong>setFileExtension</strong>(string $fileExtension)</code>
+    </h3>
+    <div class="details">
+        <p>Sets the file extension of class files in the namespace of this class loader.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$fileExtension</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getFileExtension">
+        <div class="location">at line 96</div>
+        <code>            public            string
+    <strong>getFileExtension</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Gets the file extension of class files in the namespace of this class loader.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>$fileExtension</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_register">
+        <div class="location">at line 106</div>
+        <code>            public            
+    <strong>register</strong>(bool $prepend = false)</code>
+    </h3>
+    <div class="details">
+        <p>Installs this class loader on the SPL autoload stack.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>bool</td>
+                <td>$prepend</td>
+                <td>If true, prepend autoloader on the autoload stack</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_unregister">
+        <div class="location">at line 114</div>
+        <code>            public            
+    <strong>unregister</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Uninstalls this class loader from the SPL autoloader stack.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_loadClass">
+        <div class="location">at line 125</div>
+        <code>            public            void
+    <strong>loadClass</strong>(string $className)</code>
+    </h3>
+    <div class="details">
+        <p>Loads the given class or interface.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td>The name of the class to load.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>

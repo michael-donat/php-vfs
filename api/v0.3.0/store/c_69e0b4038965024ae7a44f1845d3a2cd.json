@@ -1,0 +1,310 @@
+{
+    "name": "VirtualFileSystem\\Structure\\Directory",
+    "line": 22,
+    "short_desc": "FileSystem Directory representation.",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem\\Structure",
+    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Directory.php",
+    "hash": "1d1321774cb55eaba71b0367dd295adf4dc328a3",
+    "parent": "VirtualFileSystem\\Structure\\Node",
+    "modifiers": 0,
+    "is_interface": false,
+    "aliases": {
+        "FileExistsException": "VirtualFileSystem\\FileExistsException",
+        "NotFoundException": "VirtualFileSystem\\NotFoundException"
+    },
+    "errors": [
+
+    ],
+    "interfaces": [
+
+    ],
+    "properties": [
+
+    ],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 38,
+            "short_desc": "Class constructor.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\InvalidArgumentException",
+                    ""
+                ]
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "basename": {
+                    "name": "basename",
+                    "line": 38,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "addDirectory": {
+            "name": "addDirectory",
+            "line": 51,
+            "short_desc": "Adds child Directory.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "directory": {
+                    "name": "directory",
+                    "line": 51,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Structure\\Directory",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "Directory",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "addFile": {
+            "name": "addFile",
+            "line": 61,
+            "short_desc": "Adds child File.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "file": {
+                    "name": "file",
+                    "line": 61,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Structure\\File",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "File",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "size": {
+            "name": "size",
+            "line": 88,
+            "short_desc": "Returns size as the number of child elements.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "int",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "childAt": {
+            "name": "childAt",
+            "line": 102,
+            "short_desc": "Returns child Node existing at path.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "mixed",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\VirtualFileSystem\\NotFoundException",
+                    ""
+                ]
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 102,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "remove": {
+            "name": "remove",
+            "line": 116,
+            "short_desc": "Removes child Node",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "basename": {
+                    "name": "basename",
+                    "line": 116,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "children": {
+            "name": "children",
+            "line": 126,
+            "short_desc": "Returns children",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        }
+    },
+    "constants": {
+        "S_IFTYPE": {
+            "name": "S_IFTYPE",
+            "line": 27,
+            "short_desc": "",
+            "long_desc": ""
+        }
+    }
+}

@@ -1,0 +1,483 @@
+{
+    "name": "VirtualFileSystem\\Wrapper\\FileHandler",
+    "line": 23,
+    "short_desc": "User as file handle by streamWrapper implementation.",
+    "long_desc": "This class is responsible mainly for managing the pointer position during reading and writing.",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem\\Wrapper",
+    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/FileHandler.php",
+    "hash": "1cee91273320b665d04dd3c72031ae4dc37b493d",
+    "parent": null,
+    "modifiers": 0,
+    "is_interface": false,
+    "aliases": {
+        "File": "VirtualFileSystem\\Structure\\File"
+    },
+    "errors": [
+
+    ],
+    "interfaces": [
+
+    ],
+    "properties": [
+
+    ],
+    "methods": {
+        "setFile": {
+            "name": "setFile",
+            "line": 42,
+            "short_desc": "Sets file in context.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "file": {
+                    "name": "file",
+                    "line": 42,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Structure\\File",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "File",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "write": {
+            "name": "write",
+            "line": 54,
+            "short_desc": "Writes data to file.",
+            "long_desc": "Will return the number of bytes written. Will advance pointer by number of bytes written.",
+            "hint": [
+                [
+                    "int",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "data": {
+                    "name": "data",
+                    "line": 54,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "read": {
+            "name": "read",
+            "line": 74,
+            "short_desc": "Will read and return $bytes bytes from file.",
+            "long_desc": "Will advance pointer by $bytes bytes.",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "bytes": {
+                    "name": "bytes",
+                    "line": 74,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "position": {
+            "name": "position",
+            "line": 97,
+            "short_desc": "Returns current pointer position.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "int",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "position": {
+                    "name": "position",
+                    "line": 97,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "null",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": "null",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "seekToEnd": {
+            "name": "seekToEnd",
+            "line": 107,
+            "short_desc": "Moves pointer to the end of file (for append modes).",
+            "long_desc": "",
+            "hint": [
+                [
+                    "int",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "offsetPosition": {
+            "name": "offsetPosition",
+            "line": 117,
+            "short_desc": "Offsets position by $offset",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "offset": {
+                    "name": "offset",
+                    "line": 117,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "atEof": {
+            "name": "atEof",
+            "line": 127,
+            "short_desc": "Tells whether pointer is at the end of file.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "truncate": {
+            "name": "truncate",
+            "line": 139,
+            "short_desc": "Removed all data from file and sets pointer to 0",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "new_size": {
+                    "name": "new_size",
+                    "line": 139,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": "0",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setReadOnlyMode": {
+            "name": "setReadOnlyMode",
+            "line": 153,
+            "short_desc": "Sets handler to read only",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "setReadWriteMode": {
+            "name": "setReadWriteMode",
+            "line": 161,
+            "short_desc": "Sets handler into read\/write mode",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "setWriteOnlyMode": {
+            "name": "setWriteOnlyMode",
+            "line": 166,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "isWritable": {
+            "name": "isWritable",
+            "line": 176,
+            "short_desc": "Checks if pointer allows writing",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "isReadable": {
+            "name": "isReadable",
+            "line": 186,
+            "short_desc": "Checks if pointer allows reading",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        }
+    },
+    "constants": {
+        "READ_MODE": {
+            "name": "READ_MODE",
+            "line": 25,
+            "short_desc": "",
+            "long_desc": ""
+        },
+        "WRITE_MODE": {
+            "name": "WRITE_MODE",
+            "line": 26,
+            "short_desc": "",
+            "long_desc": ""
+        }
+    }
+}

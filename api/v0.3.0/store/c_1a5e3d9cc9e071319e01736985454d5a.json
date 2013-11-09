@@ -1,0 +1,214 @@
+{
+    "name": "VirtualFileSystem\\FileSystem",
+    "line": 24,
+    "short_desc": "Main 'access' class to vfs implementation.",
+    "long_desc": "It will register new stream wrapper on instantiation.\n\nThis class provides methods to get access to Container as well as file URI helper.",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem",
+    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/FileSystem.php",
+    "hash": "60d26a9d94a3e34c7d091b4e15d4004090671388",
+    "parent": null,
+    "modifiers": 0,
+    "is_interface": false,
+    "aliases": {
+        "Directory": "VirtualFileSystem\\Structure\\Directory",
+        "Root": "VirtualFileSystem\\Structure\\Root"
+    },
+    "errors": [
+
+    ],
+    "interfaces": [
+
+    ],
+    "properties": [
+
+    ],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 38,
+            "short_desc": "Class constructor.",
+            "long_desc": "Will register both, the stream default options and wrapper handler.\n\nNote: Each FileSystem instance will create NEW stream wrapper\/scheme.",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "scheme": {
+            "name": "scheme",
+            "line": 56,
+            "short_desc": "Returns wrapper scheme.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "__destruct": {
+            "name": "__destruct",
+            "line": 86,
+            "short_desc": "Remoces wrapper registered for scheme associated with FileSystem instance.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "container": {
+            "name": "container",
+            "line": 98,
+            "short_desc": "Returns Container instance.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Container",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "root": {
+            "name": "root",
+            "line": 108,
+            "short_desc": "Returns Root instance.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Root",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "path": {
+            "name": "path",
+            "line": 120,
+            "short_desc": "Returns absolute path to full URI path (with scheme)",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "- path with scheme",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 120,
+                    "short_desc": "- path without scheme",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": [
+
+    ]
+}

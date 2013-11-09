@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>VirtualFileSystem\Structure\Root | </title>
+                    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../../classes.html">Classes</a></li>
+                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../interfaces.html">Interfaces</a></li>
+            <li><a href="../../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title"></div>
+
+            <div class="type">Class</div>
+    <h1><a href="../../VirtualFileSystem/Structure.html">VirtualFileSystem\Structure</a>\Root</h1>
+    </div>
+        <div class="content">
+                <p>class    <strong>Root</strong>        extends <a href="../../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></p>
+
+            <div class="description">
+            <p>FileSystem Root representation.</p>
+            <p>Specialised Directory that does not allow for basename or parent setting.</p>
+        </div>
+    
+            <h2>Constants</h2>
+
+            <table>
+                    <tr>
+                <td>S_IFMT</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>DEF_MODE</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>S_IFTYPE</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>BASENAME</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>()
+                    <p>Class constructor.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_addDirectory">addDirectory</a>(<a href="../../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> $directory)
+                    <p>Adds child Directory.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Directory.html#method_addDirectory"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_addFile">addFile</a>(<a href="../../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a> $file)
+                    <p>Adds child File.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Directory.html#method_addFile"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_size">size</a>()
+                    <p>Returns size as the number of child elements.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Directory.html#method_size"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    mixed
+                </td>
+                <td class="last">
+                    <a href="#method_childAt">childAt</a>(string $path)
+                    <p>Returns child Node existing at path.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Directory.html#method_childAt"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_remove">remove</a>(string $basename)
+                    <p>Removes child Node</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Directory.html#method_remove"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array
+                </td>
+                <td class="last">
+                    <a href="#method_children">children</a>()
+                    <p>Returns children</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Directory.html#method_children"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setScheme">setScheme</a>(<abbr title="VirtualFileSystem\Structure\$scheme">$scheme</abbr> $scheme)
+                    <p>Set root scheme for use in path method.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_path">path</a>()
+                    <p>Returns URL to file.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_url">url</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method___construct">
+        <div class="location">at line 29</div>
+        <code>            public            
+    <strong>__construct</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Class constructor.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_addDirectory">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Directory.html#method_addDirectory"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> at line 51</div>
+        <code>            public            
+    <strong>addDirectory</strong>(<a href="../../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> $directory)</code>
+    </h3>
+    <div class="details">
+        <p>Adds child Directory.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></td>
+                <td>$directory</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_addFile">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Directory.html#method_addFile"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> at line 61</div>
+        <code>            public            
+    <strong>addFile</strong>(<a href="../../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a> $file)</code>
+    </h3>
+    <div class="details">
+        <p>Adds child File.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a></td>
+                <td>$file</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_size">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Directory.html#method_size"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> at line 88</div>
+        <code>            public            int
+    <strong>size</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns size as the number of child elements.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_childAt">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Directory.html#method_childAt"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> at line 102</div>
+        <code>            public            mixed
+    <strong>childAt</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Returns child Node existing at path.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>mixed</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../VirtualFileSystem/NotFoundException.html"><abbr title="VirtualFileSystem\NotFoundException">NotFoundException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_remove">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Directory.html#method_remove"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> at line 116</div>
+        <code>            public            
+    <strong>remove</strong>(string $basename)</code>
+    </h3>
+    <div class="details">
+        <p>Removes child Node</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$basename</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_children">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Directory.html#method_children"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> at line 126</div>
+        <code>            public            array
+    <strong>children</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns children</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setScheme">
+        <div class="location">at line 52</div>
+        <code>            public            
+    <strong>setScheme</strong>(<abbr title="VirtualFileSystem\Structure\$scheme">$scheme</abbr> $scheme)</code>
+    </h3>
+    <div class="details">
+        <p>Set root scheme for use in path method.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="VirtualFileSystem\Structure\$scheme">$scheme</abbr></td>
+                <td>$scheme</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_path">
+        <div class="location">at line 63</div>
+        <code>            public            string
+    <strong>path</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns URL to file.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_url">
+        <div class="location">at line 68</div>
+        <code>            public            
+    <strong>url</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>

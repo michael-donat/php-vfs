@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>VirtualFileSystem\Wrapper\PermissionHelper | </title>
+                    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../../classes.html">Classes</a></li>
+                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../interfaces.html">Interfaces</a></li>
+            <li><a href="../../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title"></div>
+
+            <div class="type">Class</div>
+    <h1><a href="../../VirtualFileSystem/Wrapper.html">VirtualFileSystem\Wrapper</a>\PermissionHelper</h1>
+    </div>
+        <div class="content">
+                <p>class    <strong>PermissionHelper</strong></p>
+
+    
+            <h2>Constants</h2>
+
+            <table>
+                    <tr>
+                <td>MODE_USER_READ</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>MODE_USER_WRITE</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>MODE_GROUP_READ</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>MODE_GROUP_WRITE</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>MODE_WORLD_READ</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>MODE_WORLD_WRITE</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>(<a href="../../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $node)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_userIsOwner">userIsOwner</a>()
+                    <p>Checks whether user_id on file is the same as executing user</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_userCanRead">userCanRead</a>()
+                    <p>Checks whether file is readable for user</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_userCanWrite">userCanWrite</a>()
+                    <p>Checks whether file is writable for user</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_groupIsOwner">groupIsOwner</a>()
+                    <p>Checks whether group_id on file is the same as executing user</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_groupCanRead">groupCanRead</a>()
+                    <p>Checks whether file is readable for group</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_groupCanWrite">groupCanWrite</a>()
+                    <p>Checks whether file is writable for group</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_worldCanRead">worldCanRead</a>()
+                    <p>Checks whether file is readable for world</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_worldCanWrite">worldCanWrite</a>()
+                    <p>Checks whether file is writable for world</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_isReadable">isReadable</a>()
+                    <p>Checks whether file is readable (by user, group or world)</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_isWritable">isWritable</a>()
+                    <p>Checks whether file is writable (by user, group or world)</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method___construct">
+        <div class="location">at line 30</div>
+        <code>            public            
+    <strong>__construct</strong>(<a href="../../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $node)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_userIsOwner">
+        <div class="location">at line 42</div>
+        <code>            public            bool
+    <strong>userIsOwner</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether user_id on file is the same as executing user</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_userCanRead">
+        <div class="location">at line 52</div>
+        <code>            public            bool
+    <strong>userCanRead</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether file is readable for user</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_userCanWrite">
+        <div class="location">at line 62</div>
+        <code>            public            bool
+    <strong>userCanWrite</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether file is writable for user</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_groupIsOwner">
+        <div class="location">at line 72</div>
+        <code>            public            bool
+    <strong>groupIsOwner</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether group_id on file is the same as executing user</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_groupCanRead">
+        <div class="location">at line 82</div>
+        <code>            public            bool
+    <strong>groupCanRead</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether file is readable for group</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_groupCanWrite">
+        <div class="location">at line 92</div>
+        <code>            public            bool
+    <strong>groupCanWrite</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether file is writable for group</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_worldCanRead">
+        <div class="location">at line 102</div>
+        <code>            public            bool
+    <strong>worldCanRead</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether file is readable for world</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_worldCanWrite">
+        <div class="location">at line 112</div>
+        <code>            public            bool
+    <strong>worldCanWrite</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether file is writable for world</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_isReadable">
+        <div class="location">at line 122</div>
+        <code>            public            bool
+    <strong>isReadable</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether file is readable (by user, group or world)</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_isWritable">
+        <div class="location">at line 132</div>
+        <code>            public            bool
+    <strong>isWritable</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether file is writable (by user, group or world)</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>

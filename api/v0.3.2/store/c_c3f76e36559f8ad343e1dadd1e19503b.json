@@ -1,0 +1,272 @@
+{
+    "name": "VirtualFileSystem\\Factory",
+    "line": 24,
+    "short_desc": "Factory class to encapsulate object creation.",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem",
+    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Factory.php",
+    "hash": "8b59aa0a97ab6134085b3a7ff194c96b967a7e97",
+    "parent": null,
+    "modifiers": 0,
+    "is_interface": false,
+    "aliases": {
+        "Directory": "VirtualFileSystem\\Structure\\Directory",
+        "Node": "VirtualFileSystem\\Structure\\Node",
+        "Root": "VirtualFileSystem\\Structure\\Root",
+        "File": "VirtualFileSystem\\Structure\\File"
+    },
+    "errors": [
+
+    ],
+    "interfaces": [
+
+    ],
+    "properties": [
+
+    ],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 35,
+            "short_desc": "Class constructor.",
+            "long_desc": "Sets user\/group to current system user\/group.\n\nOn non POSIX systems both attributes will be set to 0",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "getRoot": {
+            "name": "getRoot",
+            "line": 46,
+            "short_desc": "Creates Root object.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Node",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "updateMetadata": {
+            "name": "updateMetadata",
+            "line": 58,
+            "short_desc": "Updates time and ownership of a node",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Node",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "node": {
+                    "name": "node",
+                    "line": 58,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Structure\\Node",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "Node",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "updateFileTimes": {
+            "name": "updateFileTimes",
+            "line": 71,
+            "short_desc": "Update file a\/c\/m times",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Node",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "node": {
+                    "name": "node",
+                    "line": 71,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Structure\\Node",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "Node",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getDir": {
+            "name": "getDir",
+            "line": 103,
+            "short_desc": "Creates Directory object.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Node",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "basename": {
+                    "name": "basename",
+                    "line": 103,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getFile": {
+            "name": "getFile",
+            "line": 115,
+            "short_desc": "Creates File object.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Node",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "basename": {
+                    "name": "basename",
+                    "line": 115,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": [
+
+    ]
+}

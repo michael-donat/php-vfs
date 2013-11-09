@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>VirtualFileSystem\FileSystem | </title>
+                    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../classes.html">Classes</a></li>
+                            <li><a href="../namespaces.html">Namespaces</a></li>
+                        <li><a href="../interfaces.html">Interfaces</a></li>
+            <li><a href="../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title"></div>
+
+            <div class="type">Class</div>
+    <h1><a href="../VirtualFileSystem.html">VirtualFileSystem</a>\FileSystem</h1>
+    </div>
+        <div class="content">
+                <p>class    <strong>FileSystem</strong></p>
+
+            <div class="description">
+            <p>Main 'access' class to vfs implementation.</p>
+            <p>It will register new stream wrapper on instantiation.</p>
+
+<p>This class provides methods to get access to Container as well as file URI helper.</p>
+        </div>
+    
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>()
+                    <p>Class constructor.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_scheme">scheme</a>()
+                    <p>Returns wrapper scheme.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___destruct">__destruct</a>()
+                    <p>Remoces wrapper registered for scheme associated with FileSystem instance.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_container">container</a>()
+                    <p>Returns Container instance.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Structure/Root.html"><abbr title="VirtualFileSystem\Structure\Root">Root</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_root">root</a>()
+                    <p>Returns Root instance.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_path">path</a>(string $path)
+                    <p>Returns absolute path to full URI path (with scheme)</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method___construct">
+        <div class="location">at line 38</div>
+        <code>            public            
+    <strong>__construct</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Class constructor.</p>
+        <p>Will register both, the stream default options and wrapper handler.</p>
+
+<p>Note: Each FileSystem instance will create NEW stream wrapper/scheme.</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_scheme">
+        <div class="location">at line 56</div>
+        <code>            public            string
+    <strong>scheme</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns wrapper scheme.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method___destruct">
+        <div class="location">at line 86</div>
+        <code>            public            
+    <strong>__destruct</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Remoces wrapper registered for scheme associated with FileSystem instance.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_container">
+        <div class="location">at line 98</div>
+        <code>            public            <a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a>
+    <strong>container</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns Container instance.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_root">
+        <div class="location">at line 108</div>
+        <code>            public            <a href="../VirtualFileSystem/Structure/Root.html"><abbr title="VirtualFileSystem\Structure\Root">Root</abbr></a>
+    <strong>root</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns Root instance.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Structure/Root.html"><abbr title="VirtualFileSystem\Structure\Root">Root</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_path">
+        <div class="location">at line 120</div>
+        <code>            public            string
+    <strong>path</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Returns absolute path to full URI path (with scheme)</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><ul>
+<li>path without scheme</li>
+</ul>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td><ul>
+<li>path with scheme</li>
+</ul>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>
