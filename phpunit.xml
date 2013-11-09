@@ -10,6 +10,7 @@
          stopOnFailure="false"
          syntaxCheck="true"
          bootstrap="vendor/autoload.php"
+         processUncoveredFilesFromWhitelist="true"
         >
 
     <testsuites>
@@ -21,6 +22,9 @@
     <filter>
         <whitelist>
             <directory>./src/</directory>
+            <exclude>
+                <file>./src/VirtualFileSystem/Loader.php</file>
+            </exclude>
         </whitelist>
     </filter>
 
