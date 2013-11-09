@@ -70,12 +70,10 @@ class Wrapper
      */
     public function stripScheme($path)
     {
-        $parts = parse_url($path);
+        $scheme = preg_split('#://#', $path, 2);
+        $scheme = end($scheme);
 
-        $host = isset($parts['host']) ? $parts['host'] : null;
-        $path = isset($parts['path']) ? $parts['path'] : null;
-
-        return sprintf('/%s%s', $host, $path);
+        return '/'.ltrim($scheme, '/');
     }
 
     /**
@@ -87,8 +85,7 @@ class Wrapper
      */
     public function getContainerFromContext($path)
     {
-        $scheme = parse_url($path)['scheme'];
-        $scheme = is_null($scheme) ? parse_url($path.'.')['scheme'] : $scheme;
+        $scheme = current(preg_split('#://#', $path));
         $options = stream_context_get_options(stream_context_get_default());
 
         return $options[$scheme]['Container'];

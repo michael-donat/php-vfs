@@ -14,6 +14,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/1/2/3/4', $c->stripScheme('test://1/2/3/4'));
         $this->assertEquals('/', $c->stripScheme('test://'));
         $this->assertEquals('/', $c->stripScheme('test:///'));
+        $this->assertEquals('/dir', $c->stripScheme('test:///dir'));
 
     }
 
@@ -25,6 +26,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('test', $c->getContainerFromContext('contextContainerTest://file'));
         $this->assertEquals('test', $c->getContainerFromContext('contextContainerTest://'));
+        $this->assertEquals('test', $c->getContainerFromContext('contextContainerTest:///file'));
 
     }
 
