@@ -182,7 +182,7 @@ Most of [PHP filesystem functions](http://www.php.net/manual/en/ref.filesystem.p
 
 **Currently unsupported**
 
-- permission/ownership checks for touch (roadmap for 0.4)
+- permission/ownership checks for touch (roadmap for 1.0.1)
 
 **Known pitfalls**
 
