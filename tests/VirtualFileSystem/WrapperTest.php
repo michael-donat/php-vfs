@@ -170,6 +170,12 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(file_exists($fs->path('/dir')));
         $this->assertTrue(is_dir($fs->path('/dir')));
 
+        mkdir($fs->path('/dir2'), false, 0000);
+
+        $dir = $fs->container()->fileAt('/dir2');
+
+        $this->assertEquals(0000 | Directory::S_IFTYPE, $dir->mode());
+
     }
 
     public function testMkdirCatchesClashes()
@@ -192,6 +198,12 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(file_exists($fs->path('/dir/dir2')));
         $this->assertTrue(is_dir($fs->path('/dir/dir2')));
+
+        @mkdir($fs->path('/dir/a/b'), 0777, false);
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat('mkdir: %s: No such file or directory', $error['message']);
 
     }
 
@@ -993,5 +1005,70 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
             $error['message']
         );
 
+    }
+
+    public function testPermissionsAreCheckedWhenCreatingDirectories()
+    {
+        $fs = new FileSystem();
+        $fs->createDirectory('/test', false, 0000);
+
+        $wr = new Wrapper();
+
+        $this->assertFalse(@$wr->mkdir($fs->path('/test/dir'), 0777, 0));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'mkdir: %s: Permission denied',
+            $error['message']
+        );
+    }
+
+    public function testPermissionsAreCheckedWhenRemovingFiles()
+    {
+        $fs = new FileSystem();
+        $file = $fs->createFile('/file');
+        $file->chmod(0000);
+
+        $wr = new Wrapper();
+        $this->assertTrue($wr->unlink($fs->path('/file'), 'Allows removals with writable parent'));
+
+        $fs->root()->chmod(0500);
+
+        $this->assertFalse(@$wr->unlink($fs->path('/file'), 'Does not allow removals with non-writable parent'));
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'rm: %s: Permission denied',
+            $error['message']
+        );
+    }
+
+    public function testRmDirNotAllowedWhenDirectoryNotWritable()
+    {
+        $fs = new FileSystem();
+        $dir = $fs->createDirectory('/dir');
+
+        $wr = new Wrapper();
+
+        $dir->chmod(0000);
+        $this->assertFalse(@$wr->rmdir($fs->path('/dir')), 'Directory not removed with no permissions');
+
+        $dir->chmod(0100);
+        $this->assertFalse(@$wr->rmdir($fs->path('/dir')), 'Directory not removed with exec only');
+
+        $dir->chmod(0200);
+        $this->assertFalse(@$wr->rmdir($fs->path('/dir')), 'Directory not removed with write');
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'rmdir: %s: Permission denied',
+            $error['message']
+        );
+
+        $dir->chmod(0400);
+        $this->assertTrue($wr->rmdir($fs->path('/dir')), 'Directory removed with read permission');
     }
 }

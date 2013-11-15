@@ -98,7 +98,7 @@ class Factory
      *
      * @param string $basename
      *
-     * @return Node
+     * @return Directory
      */
     public function getDir($basename)
     {
@@ -110,7 +110,7 @@ class Factory
      *
      * @param string $basename
      *
-     * @return Node
+     * @return File
      */
     public function getFile($basename)
     {

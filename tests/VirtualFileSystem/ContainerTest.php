@@ -56,6 +56,12 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('\VirtualFileSystem\Structure\Directory', $container->fileAt('/dir1/dir2'));
 
+        //and mode
+        $container = new Container(new Factory());
+        $dir = $container->createDir('/dir1/dir2/dir3', true, 0000);
+
+        $this->assertEquals(0000 | Directory::S_IFTYPE, $dir->mode());
+
     }
 
     public function testMkdirThrowsWhenNoParent()

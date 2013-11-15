@@ -12,6 +12,7 @@ namespace VirtualFileSystem;
 
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
+use VirtualFileSystem\Structure\Root;
 use VirtualFileSystem\Wrapper\FileHandler;
 use VirtualFileSystem\Wrapper\DirectoryHandler;
 use VirtualFileSystem\Wrapper\PermissionHelper;
@@ -130,6 +131,13 @@ class Wrapper
 
         $mode = str_split(str_replace('b', '', $mode));
 
+        $permissionDeniedError = function () use ($path, $options) {
+            if ($options & STREAM_REPORT_ERRORS) {
+                trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
+            }
+            return false;
+        };
+
         $appendMode = in_array('a', $mode);
         $readMode = in_array('r', $mode);
         $writeMode = in_array('w', $mode);
@@ -145,10 +153,7 @@ class Wrapper
             $parent = $container->fileAt(dirname($path));
             $ph = new PermissionHelper($parent);
             if (!$ph->isWritable()) {
-                if ($options & STREAM_REPORT_ERRORS) {
-                    trigger_error(sprintf('%s: failed to open stream: Permission denied', $path), E_USER_WARNING);
-                }
-                return false;
+                return $permissionDeniedError();
             }
             $parent->addFile($container->factory()->getFile(basename($path)));
         }
@@ -176,26 +181,17 @@ class Wrapper
         $this->currently_opened->setFile($file);
         if ($extended) {
             if (!$permissionHelper->isReadable() or !$permissionHelper->isWritable()) {
-                if ($options & STREAM_REPORT_ERRORS) {
-                    trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
-                }
-                return false;
+                return $permissionDeniedError();
             }
             $this->currently_opened->setReadWriteMode();
         } elseif ($readMode) {
             if (!$permissionHelper->isReadable()) {
-                if ($options & STREAM_REPORT_ERRORS) {
-                    trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
-                }
-                return false;
+                return $permissionDeniedError();
             }
             $this->currently_opened->setReadOnlyMode();
         } else { // a or w are for write only
             if (!$permissionHelper->isWritable()) {
-                if ($options & STREAM_REPORT_ERRORS) {
-                    trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
-                }
-                return false;
+                return $permissionDeniedError();
             }
             $this->currently_opened->setWriteOnlyMode();
         }
@@ -321,9 +317,29 @@ class Wrapper
         $recursive = (bool) ($options & STREAM_MKDIR_RECURSIVE);
 
         try {
+            //need to check all parents for permissions
+            $parentPath = $path;
+            while ($parentPath = dirname($parentPath)) {
+                try {
+                    $parent = $container->fileAt($parentPath);
+                    $ph = new PermissionHelper($parent);
+                    if (!$ph->isWritable()) {
+                        trigger_error(sprintf('mkdir: %s: Permission denied', dirname($path)), E_USER_WARNING);
+                        return false;
+                    }
+                    if ($parent instanceof Root) {
+                        break;
+                    }
+                } catch (NotFoundException $e) {
+                    break; //will sort missing parent below
+                }
+            }
             $container->createDir($path, $recursive, $mode);
         } catch (FileExistsException $e) {
             trigger_error($e->getMessage(), E_USER_WARNING);
+            return false;
+        } catch (NotFoundException $e) {
+            trigger_error(sprintf('mkdir: %s: No such file or directory', dirname($path)), E_USER_WARNING);
             return false;
         }
 
@@ -484,6 +500,20 @@ class Wrapper
         $container = $this->getContainerFromContext($path);
 
         try {
+
+            $path = $this->stripScheme($path);
+
+            $parent = $container->fileAt(dirname($path));
+
+            $ph = new PermissionHelper($parent);
+            if (!$ph->isWritable()) {
+                trigger_error(
+                    sprintf('rm: %s: Permission denied', $path),
+                    E_USER_WARNING
+                );
+                return false;
+            }
+
             $container->remove($path = $this->stripScheme($path));
         } catch (NotFoundException $e) {
             trigger_error(
@@ -520,6 +550,15 @@ class Wrapper
             if ($directory instanceof File) {
                 trigger_error(
                     sprintf('Warning: rmdir(%s): Not a directory', $path),
+                    E_USER_WARNING
+                );
+                return false;
+            }
+
+            $ph = new PermissionHelper($directory);
+            if (!$ph->isReadable()) {
+                trigger_error(
+                    sprintf('rmdir: %s: Permission denied', $path),
                     E_USER_WARNING
                 );
                 return false;
