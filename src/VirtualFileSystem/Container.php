@@ -143,6 +143,9 @@ class Container
         }
 
         $parent->addDirectory($newDirectory = $this->factory()->getDir($name));
+        if (!is_null($mode)) {
+            $newDirectory->chmod($mode);
+        }
 
         return $newDirectory;
     }
