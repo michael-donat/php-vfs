@@ -8,6 +8,7 @@ md:
 
 cov:
 	phpunit --coverage-html=build/log/coverage
+	open build/log/coverage/index.html
 
 pear:
 	./build/pear/package.php --source=src/ --version=$(version) > package.xml
