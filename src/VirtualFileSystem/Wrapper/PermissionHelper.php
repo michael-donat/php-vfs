@@ -25,13 +25,13 @@ class PermissionHelper
     protected $groupid;
 
     /**
-     * @param Node $node
+     * @param int $uid
+     * @param int $gid
      */
-    public function __construct(Node $node)
+    public function __construct($uid = null, $gid = null)
     {
-        $this->node = $node;
-        $this->userid = posix_getuid();
-        $this->groupid = posix_getgid();
+        $this->userid = is_null($uid) ? posix_getuid() : $uid;
+        $this->groupid = is_null($gid) ? posix_getgid() : $gid;
     }
 
     /**
@@ -142,5 +142,16 @@ class PermissionHelper
     public function userIsRoot()
     {
         return $this->userid == 0;
+    }
+
+    /**
+     * @param \VirtualFileSystem\Structure\Node $node
+     *
+     * @return PermissionHelper
+     */
+    public function setNode($node)
+    {
+        $this->node = $node;
+        return $this;
     }
 }

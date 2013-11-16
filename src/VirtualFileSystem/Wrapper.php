@@ -151,7 +151,7 @@ class Wrapper
                 return false;
             }
             $parent = $container->fileAt(dirname($path));
-            $ph = new PermissionHelper($parent);
+            $ph = $container->getPermissionHelper($parent);
             if (!$ph->isWritable()) {
                 return $permissionDeniedError();
             }
@@ -175,7 +175,7 @@ class Wrapper
             $file->chgrp($dir->group());
         }
 
-        $permissionHelper = new PermissionHelper($file);
+        $permissionHelper = $container->getPermissionHelper($file);
 
         $this->currently_opened = new FileHandler();
         $this->currently_opened->setFile($file);
@@ -322,7 +322,7 @@ class Wrapper
             while ($parentPath = dirname($parentPath)) {
                 try {
                     $parent = $container->fileAt($parentPath);
-                    $ph = new PermissionHelper($parent);
+                    $ph = $container->getPermissionHelper($parent);
                     if (!$ph->isWritable()) {
                         trigger_error(sprintf('mkdir: %s: Permission denied', dirname($path)), E_USER_WARNING);
                         return false;
@@ -388,7 +388,7 @@ class Wrapper
             $container = $this->getContainerFromContext($path);
             $strippedPath = $this->stripScheme($path);
             $node = $container->fileAt($strippedPath);
-            $ph = new PermissionHelper($node);
+            $ph = $container->getPermissionHelper($node);
 
             switch ($option) {
                 case STREAM_META_ACCESS:
@@ -550,7 +550,7 @@ class Wrapper
 
             $parent = $container->fileAt(dirname($path));
 
-            $ph = new PermissionHelper($parent);
+            $ph = $container->getPermissionHelper($parent);
             if (!$ph->isWritable()) {
                 trigger_error(
                     sprintf('rm: %s: Permission denied', $path),
@@ -600,7 +600,7 @@ class Wrapper
                 return false;
             }
 
-            $ph = new PermissionHelper($directory);
+            $ph = $container->getPermissionHelper($directory);
             if (!$ph->isReadable()) {
                 trigger_error(
                     sprintf('rmdir: %s: Permission denied', $path),
@@ -641,6 +641,7 @@ class Wrapper
     public function dir_opendir($path, $options)
     {
         $container = $this->getContainerFromContext($path);
+
         $path = $this->stripScheme($path);
 
         if (!$container->hasFileAt($path)) {
@@ -655,7 +656,7 @@ class Wrapper
             return false;
         }
 
-        $permissionHelper = new PermissionHelper($dir);
+        $permissionHelper = $container->getPermissionHelper($dir);
 
         if (!$permissionHelper->isReadable()) {
             trigger_error(sprintf('opendir(%s): failed to open dir: Permission denied', $path), E_USER_WARNING);

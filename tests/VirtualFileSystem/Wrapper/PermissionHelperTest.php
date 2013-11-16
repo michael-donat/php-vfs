@@ -13,7 +13,8 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
         $file = new File('file');
         $file->chown(posix_getuid());
 
-        $ph = new PermissionHelper($file);
+        $ph = new PermissionHelper();
+        $ph->setNode($file);
 
         $file->chmod(0000);
         $this->assertFalse($ph->userCanRead(), 'User can\'t read with 0000');
@@ -51,7 +52,8 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
         $file = new File('file');
         $file->chgrp(posix_getgid());
 
-        $ph = new PermissionHelper($file);
+        $ph = new PermissionHelper();
+        $ph->setNode($file);
 
         $file->chmod(0000);
         $this->assertFalse($ph->groupCanRead(), 'group can\'t read with 0000');
@@ -88,7 +90,8 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
     {
         $file = new File('file');
 
-        $ph = new PermissionHelper($file);
+        $ph = new PermissionHelper();
+        $ph->setNode($file);
 
         $file->chmod(0000);
         $this->assertFalse($ph->worldCanRead(), 'world can\'t read with 0000');
@@ -120,7 +123,8 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
     {
         $file = new File('file');
 
-        $ph = new PermissionHelper($file);
+        $ph = new PermissionHelper();
+        $ph->setNode($file);
 
         $file->chmod(0000);
         $file->chown(0);

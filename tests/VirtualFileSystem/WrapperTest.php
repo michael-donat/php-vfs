@@ -103,6 +103,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         }
 
         $fs = new FileSystem();
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
 
         chown($fs->path('/'), 'root');
         $this->assertEquals('root', posix_getpwuid(fileowner($fs->path('/')))['name']);
@@ -122,6 +123,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         }
 
         $fs = new FileSystem();
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
 
         chown($fs->path('/'), 0);
 
@@ -138,6 +140,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         }
 
         $fs = new FileSystem();
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
 
         //lets workout available group
         //this is needed to find string name of group root belongs to
@@ -157,6 +160,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         }
 
         $fs = new FileSystem();
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
 
         //lets workout available group
         $group = posix_getpwuid(0)['gid'];
