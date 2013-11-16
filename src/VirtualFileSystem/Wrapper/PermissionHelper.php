@@ -133,4 +133,14 @@ class PermissionHelper
     {
         return $this->userCanWrite() || $this->groupCanWrite() || $this->worldCanWrite();
     }
+
+    /**
+     * Checks whether userid is 0 - root.
+     *
+     * @return bool
+     */
+    public function userIsRoot()
+    {
+        return $this->userid == 0;
+    }
 }

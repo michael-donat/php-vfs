@@ -7,6 +7,11 @@ use VirtualFileSystem\Structure\File;
 
 class WrapperTest extends \PHPUnit_Framework_TestCase
 {
+    public function setUp()
+    {
+        @$na['n/a']; //putting error in known state
+    }
+
     public function testSchemeStripping()
     {
         $c = new Wrapper();
@@ -1069,6 +1074,98 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         );
 
         $dir->chmod(0400);
-        $this->assertTrue($wr->rmdir($fs->path('/dir')), 'Directory removed with read permission');
+        $this->assertTrue(
+            $wr->rmdir($fs->path('/dir')),
+            'Directory removed with read permission, yes that is how it normally behaves ;)'
+        );
+    }
+
+    public function testChmodNotAllowedIfNotOwner()
+    {
+        $fs = new FileSystem();
+        $file = $fs->createFile('/file');
+        $file->chown(posix_getuid() + 1); //set to non current
+
+        $wr = new Wrapper();
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_ACCESS, 0000),
+            'Not allowed to chmod if not owner'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chmod: %s: Permission denied',
+            $error['message']
+        );
+    }
+
+    public function testChownAndChgrpNotAllowedIfNotRoot()
+    {
+        $fs = new FileSystem();
+        $file = $fs->createFile('/file');
+        $file->chown(posix_getuid() + 1); //set to non current
+
+        $wr = new Wrapper();
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_OWNER, 1),
+            'Not allowed to chown if not root'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chown: %s: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_OWNER_NAME, 'user'),
+            'Not allowed to chown by name if not root'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chown: %s: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_GROUP, 1),
+            'Not allowed to chgrp if not root'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chgrp: %s: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_GROUP_NAME, 'group'),
+            'Not allowed to chgrp by name if not root'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chgrp: %s: Permission denied',
+            $error['message']
+        );
+    }
+
+    public function testTouchNotAllowedIfNotOwnerOrNotWritable()
+    {
+
     }
 }
