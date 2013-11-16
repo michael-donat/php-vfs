@@ -1170,6 +1170,38 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testTouchNotAllowedIfNotOwnerOrNotWritable()
     {
+        $fs = new FileSystem();
+        $file = $fs->createFile('/file');
+        $file->chown(posix_getuid() + 1); //set to non current
+        $file->chmod(0000);
 
+        $wr = new Wrapper();
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_TOUCH, 0),
+            'Not allowed to touch if not owner and no permission'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'touch: %s: Permission denied',
+            $error['message']
+        );
+
+        $file->chown(posix_getuid());
+
+        $this->assertTrue(
+            $wr->stream_metadata($fs->path('/file'), STREAM_META_TOUCH, 0),
+            'Allowed to touch if owner and no permission'
+        );
+
+        $file->chown(posix_getuid() + 1); //set to non current
+        $file->chmod(0002);
+
+        $this->assertTrue(
+            $wr->stream_metadata($fs->path('/file'), STREAM_META_TOUCH, 0),
+            'Allowed to touch if not owner but with write permission'
+        );
     }
 }

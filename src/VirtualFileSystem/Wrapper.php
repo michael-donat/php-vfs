@@ -359,13 +359,15 @@ class Wrapper
      */
     public function stream_metadata($path, $option, $value)
     {
+        $container = $this->getContainerFromContext($path);
+        $strippedPath = $this->stripScheme($path);
+
         try {
 
             if ($option == STREAM_META_TOUCH) {
-                if (!$this->getContainerFromContext($path)->hasFileAt($this->stripScheme($path))) {
-                    $strippedPath = $this->stripScheme($path);
+                if (!$container->hasFileAt($strippedPath)) {
                     try {
-                        $this->getContainerFromContext($path)->createFile($strippedPath);
+                        $container->createFile($strippedPath);
                     } catch (NotFoundException $e) {
                         trigger_error(
                             sprintf('touch: %s: No such file or directory.', $strippedPath),
@@ -374,7 +376,18 @@ class Wrapper
                         return false;
                     }
                 }
-                $file = $this->getContainerFromContext($path)->fileAt($this->stripScheme($path));
+                $file = $container->fileAt($strippedPath);
+
+                $ph = $container->getPermissionHelper($file);
+
+                if (!$ph->userIsOwner() && !$ph->isWritable()) {
+                    trigger_error(
+                        sprintf('touch: %s: Permission denied', $strippedPath),
+                        E_USER_WARNING
+                    );
+                    return false;
+                }
+
                 $file->setAccessTime(time());
                 $file->setModificationTime(time());
                 $file->setChangeTime(time());
@@ -385,8 +398,8 @@ class Wrapper
 
             }
 
-            $container = $this->getContainerFromContext($path);
-            $strippedPath = $this->stripScheme($path);
+
+
             $node = $container->fileAt($strippedPath);
             $ph = $container->getPermissionHelper($node);
 
