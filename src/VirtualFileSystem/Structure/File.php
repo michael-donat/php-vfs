@@ -49,6 +49,7 @@ class File extends Node
      * Sets contents.
      *
      * @param $data
+     * @param null|string $data
      */
     public function setData($data)
     {

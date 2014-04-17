@@ -95,7 +95,7 @@ class Directory extends Node
      *
      * @param string $path
      *
-     * @return mixed
+     * @return Node
      *
      * @throws \VirtualFileSystem\NotFoundException
      */

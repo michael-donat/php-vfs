@@ -10,7 +10,6 @@
 
 namespace VirtualFileSystem;
 
-use Symfony\Component\Config\Definition\Exception\Exception;
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Root;
@@ -122,7 +121,7 @@ class Container
      *
      * @param string $path
      * @param bool $recursive
-     * @param null $mode
+     * @param null|integer $mode
      *
      * @return Structure\Directory
      *
@@ -154,7 +153,7 @@ class Container
      * Creates file at given path
      *
      * @param string $path
-     * @param null $data
+     * @param string|null $data
      *
      * @return Structure\File
      *
