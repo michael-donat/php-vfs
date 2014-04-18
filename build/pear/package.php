@@ -71,6 +71,10 @@ class PackageXML
 
     }
 
+    /**
+     * @param string $cut
+     * @param DOMElement $parentNode
+     */
     protected function getInstallListing($directory, $cut, $parentNode)
     {
         $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS));
@@ -83,6 +87,9 @@ class PackageXML
         }
     }
 
+    /**
+     * @param DOMElement $parentNode
+     */
     protected function getDirectoryListing($directory, $parentNode)
     {
         $return = $parentNode;
