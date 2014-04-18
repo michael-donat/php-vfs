@@ -237,4 +237,14 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $container->remove('/dir');
     }
+
+    public function testCreatingDirectoryOnPathThrowsWhenParentIsAFile()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $this->setExpectedException('VirtualFileSystem\NotDirectoryException');
+
+        $container->createDir('/file/dir');
+    }
 }

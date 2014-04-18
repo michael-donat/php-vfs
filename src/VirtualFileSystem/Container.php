@@ -147,7 +147,12 @@ class Container
             $parent = $this->createDir($parentPath, $recursive, $mode);
         }
 
+        if(!$parent instanceof Directory) {
+            throw new NotDirectoryException(sprintf('createDir: %s: Not a directory', $parentPath));
+        }
+
         $parent->addDirectory($newDirectory = $this->factory()->getDir($name));
+
         if (!is_null($mode)) {
             $newDirectory->chmod($mode);
         }
@@ -167,14 +172,15 @@ class Container
      */
     public function createFile($path, $data = null)
     {
-        try {
-            $file = $this->fileAt($path);
+        if($this->hasFileAt($path)) {
             throw new \RuntimeException(sprintf('%s already exists', $path));
-        } catch (NotFoundException $e) {
-
         }
 
         $parent =  $this->fileAt(dirname($path));
+
+        if(!$parent instanceof Directory) {
+            throw new NotDirectoryException(sprintf('createFile: %s: Not a directory', dirname($path)));
+        }
 
         $parent->addFile($newFile = $this->factory()->getFile(basename($path)));
 
