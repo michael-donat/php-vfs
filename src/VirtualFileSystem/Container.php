@@ -99,6 +99,9 @@ class Container
         $node = $this->root();
 
         foreach ($pathParts as $level) {
+            if($node instanceof File) {
+                throw new NotFoundException();
+            }
             $node = $node->childAt($level);
         }
 

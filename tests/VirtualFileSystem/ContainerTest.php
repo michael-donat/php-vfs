@@ -212,6 +212,18 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testMovingFileOntoInvalidPathWithFileParentThrows()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file1');
+        $container->createFile('/file2', 'file2');
+
+        $this->setExpectedException('\RuntimeException', 'Can\'t move directory onto a file');
+
+        $container->move('/file1', '/file2/file1');
+
+    }
+
     public function testRemoveDeletesNodeFromParent()
     {
         $container = new Container(new Factory());
@@ -246,5 +258,14 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('VirtualFileSystem\NotDirectoryException');
 
         $container->createDir('/file/dir');
+    }
+
+    public function testFileAtThrowsWhenFileOnParentPath() {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $this->setExpectedException('VirtualFileSystem\NotFoundException');
+
+        $container->fileAt('/file/file2');
     }
 }
