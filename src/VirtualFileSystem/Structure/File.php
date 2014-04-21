@@ -38,7 +38,7 @@ class File extends Node
     /**
      * Returns contents.
      *
-     * @return null
+     * @return null|string
      */
     public function data()
     {

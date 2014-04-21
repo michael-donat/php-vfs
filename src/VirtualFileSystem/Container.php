@@ -230,6 +230,10 @@ class Container
             $nodeAtToPath = null;
         }
 
+        if(!$toNode instanceof Directory) {
+            throw new NotDirectoryException('Destination not a directory');
+        }
+
         $fromNode->setBasename($newNodeName);
 
         if ($nodeAtToPath instanceof File) {
