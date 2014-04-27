@@ -151,7 +151,7 @@ class Wrapper
                 return false;
             }
             $parent = $container->fileAt(dirname($path));
-            $ph = new PermissionHelper($parent);
+            $ph = $container->getPermissionHelper($parent);
             if (!$ph->isWritable()) {
                 return $permissionDeniedError();
             }
@@ -175,7 +175,7 @@ class Wrapper
             $file->chgrp($dir->group());
         }
 
-        $permissionHelper = new PermissionHelper($file);
+        $permissionHelper = $container->getPermissionHelper($file);
 
         $this->currently_opened = new FileHandler();
         $this->currently_opened->setFile($file);
@@ -322,7 +322,7 @@ class Wrapper
             while ($parentPath = dirname($parentPath)) {
                 try {
                     $parent = $container->fileAt($parentPath);
-                    $ph = new PermissionHelper($parent);
+                    $ph = $container->getPermissionHelper($parent);
                     if (!$ph->isWritable()) {
                         trigger_error(sprintf('mkdir: %s: Permission denied', dirname($path)), E_USER_WARNING);
                         return false;
@@ -359,54 +359,112 @@ class Wrapper
      */
     public function stream_metadata($path, $option, $value)
     {
+        $container = $this->getContainerFromContext($path);
+        $strippedPath = $this->stripScheme($path);
+
         try {
+
+            if ($option == STREAM_META_TOUCH) {
+                if (!$container->hasFileAt($strippedPath)) {
+                    try {
+                        $container->createFile($strippedPath);
+                    } catch (NotFoundException $e) {
+                        trigger_error(
+                            sprintf('touch: %s: No such file or directory.', $strippedPath),
+                            E_USER_WARNING
+                        );
+                        return false;
+                    }
+                }
+                $file = $container->fileAt($strippedPath);
+
+                $ph = $container->getPermissionHelper($file);
+
+                if (!$ph->userIsOwner() && !$ph->isWritable()) {
+                    trigger_error(
+                        sprintf('touch: %s: Permission denied', $strippedPath),
+                        E_USER_WARNING
+                    );
+                    return false;
+                }
+
+                $file->setAccessTime(time());
+                $file->setModificationTime(time());
+                $file->setChangeTime(time());
+
+                clearstatcache(true, $path);
+
+                return true;
+
+            }
+
+
+
+            $node = $container->fileAt($strippedPath);
+            $ph = $container->getPermissionHelper($node);
+
             switch ($option) {
                 case STREAM_META_ACCESS:
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->chmod($value);
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->setChangeTime(time());
+                    if (!$ph->userIsOwner()) {
+                        trigger_error(
+                            sprintf('chmod: %s: Permission denied', $strippedPath),
+                            E_USER_WARNING
+                        );
+                        return false;
+                    }
+                    $node->chmod($value);
+                    $node->setChangeTime(time());
                     break;
 
                 case STREAM_META_OWNER_NAME:
-                    $uid = posix_getpwnam($value)['uid'];
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->chown($uid);
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->setChangeTime(time());
+                    if (!$ph->userIsRoot()) {
+                        trigger_error(
+                            sprintf('chown: %s: Permission denied', $strippedPath),
+                            E_USER_WARNING
+                        );
+                        return false;
+                    }
+                    $uid = function_exists('posix_getpwnam') ? posix_getpwnam($value)['uid'] : 0;
+                    $node->chown($uid);
+                    $node->setChangeTime(time());
                     break;
 
                 case STREAM_META_OWNER:
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->chown($value);
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->setChangeTime(time());
+                    if (!$ph->userIsRoot()) {
+                        trigger_error(
+                            sprintf('chown: %s: Permission denied', $strippedPath),
+                            E_USER_WARNING
+                        );
+                        return false;
+                    }
+                    $node->chown($value);
+                    $node->setChangeTime(time());
                     break;
 
                 case STREAM_META_GROUP_NAME:
-                    $gid = posix_getgrnam($value)['gid'];
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->chgrp($gid);
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->setChangeTime(time());
+                    if (!$ph->userIsRoot()) {
+                        trigger_error(
+                            sprintf('chgrp: %s: Permission denied', $strippedPath),
+                            E_USER_WARNING
+                        );
+                        return false;
+                    }
+                    $gid = function_exists('posix_getgrnam') ? posix_getgrnam($value)['gid'] : 0;
+                    $node->chgrp($gid);
+                    $node->setChangeTime(time());
                     break;
 
                 case STREAM_META_GROUP:
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->chgrp($value);
-                    $this->getContainerFromContext($path)->fileAt($this->stripScheme($path))->setChangeTime(time());
-                    break;
-
-                case STREAM_META_TOUCH:
-                    if (!$this->getContainerFromContext($path)->hasFileAt($this->stripScheme($path))) {
-                        $strippedPath = $this->stripScheme($path);
-                        try {
-                            $this->getContainerFromContext($path)->createFile($strippedPath);
-                        } catch (NotFoundException $e) {
-                            trigger_error(
-                                sprintf('touch: %s: No such file or directory.', $strippedPath),
-                                E_USER_WARNING
-                            );
-                            return false;
-                        }
+                    if (!$ph->userIsRoot()) {
+                        trigger_error(
+                            sprintf('chgrp: %s: Permission denied', $strippedPath),
+                            E_USER_WARNING
+                        );
+                        return false;
                     }
-                    $file = $this->getContainerFromContext($path)->fileAt($this->stripScheme($path));
-                    $file->setAccessTime(time());
-                    $file->setModificationTime(time());
-                    $file->setChangeTime(time());
+                    $node->chgrp($value);
+                    $node->setChangeTime(time());
                     break;
-
             }
         } catch (NotFoundException $e) {
             return false;
@@ -505,7 +563,7 @@ class Wrapper
 
             $parent = $container->fileAt(dirname($path));
 
-            $ph = new PermissionHelper($parent);
+            $ph = $container->getPermissionHelper($parent);
             if (!$ph->isWritable()) {
                 trigger_error(
                     sprintf('rm: %s: Permission denied', $path),
@@ -555,7 +613,7 @@ class Wrapper
                 return false;
             }
 
-            $ph = new PermissionHelper($directory);
+            $ph = $container->getPermissionHelper($directory);
             if (!$ph->isReadable()) {
                 trigger_error(
                     sprintf('rmdir: %s: Permission denied', $path),
@@ -596,6 +654,7 @@ class Wrapper
     public function dir_opendir($path, $options)
     {
         $container = $this->getContainerFromContext($path);
+
         $path = $this->stripScheme($path);
 
         if (!$container->hasFileAt($path)) {
@@ -610,7 +669,7 @@ class Wrapper
             return false;
         }
 
-        $permissionHelper = new PermissionHelper($dir);
+        $permissionHelper = $container->getPermissionHelper($dir);
 
         if (!$permissionHelper->isReadable()) {
             trigger_error(sprintf('opendir(%s): failed to open dir: Permission denied', $path), E_USER_WARNING);
