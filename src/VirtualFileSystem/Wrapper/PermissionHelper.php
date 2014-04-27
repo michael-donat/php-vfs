@@ -30,8 +30,8 @@ class PermissionHelper
      */
     public function __construct($uid = null, $gid = null)
     {
-        $this->userid = is_null($uid) ? posix_getuid() : $uid;
-        $this->groupid = is_null($gid) ? posix_getgid() : $gid;
+        $this->userid = is_null($uid) ? (function_exists('posix_getuid') ? posix_getuid() : 0) : $uid;
+        $this->groupid = is_null($gid) ? ((function_exists('posix_getgid') ? posix_getgid() : 0)) : $gid;
     }
 
     /**

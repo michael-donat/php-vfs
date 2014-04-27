@@ -424,7 +424,7 @@ class Wrapper
                         );
                         return false;
                     }
-                    $uid = posix_getpwnam($value)['uid'];
+                    $uid = function_exists('posix_getpwnam') ? posix_getpwnam($value)['uid'] : 0;
                     $node->chown($uid);
                     $node->setChangeTime(time());
                     break;
@@ -449,7 +449,7 @@ class Wrapper
                         );
                         return false;
                     }
-                    $gid = posix_getgrnam($value)['gid'];
+                    $gid = function_exists('posix_getgrnam') ? posix_getgrnam($value)['gid'] : 0;
                     $node->chgrp($gid);
                     $node->setChangeTime(time());
                     break;

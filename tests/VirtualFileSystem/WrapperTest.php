@@ -7,8 +7,13 @@ use VirtualFileSystem\Structure\File;
 
 class WrapperTest extends \PHPUnit_Framework_TestCase
 {
-    public function setUp()
-    {
+    protected $uid;
+    protected $gid;
+
+    public function setUp() {
+        $this->uid = function_exists('posix_getuid') ? posix_getuid() : 0;
+        $this->gid = function_exists('posix_getgid') ? posix_getgid() : 0;
+
         @$na['n/a']; //putting error in known state
     }
 
@@ -96,9 +101,9 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testChownByName()
     {
-        if (posix_getuid() == 0) {
+        if ($this->uid == 0) {
             $this->markTestSkipped(
-                'No point testing if user is already root. \Php unit shouldn\'t be run as root user.'
+                'No point testing if user is already root. \Php unit shouldn\'t be run as root user. (Unless you are a windows user!)'
             );
         }
 
@@ -116,7 +121,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testChownById()
     {
-        if (posix_getuid() == 0) {
+        if ($this->uid == 0) {
             $this->markTestSkipped(
                 'No point testing if user is already root. Php unit shouldn\'t be run as root user.'
             );
@@ -133,9 +138,9 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testChgrpByName()
     {
-        if (posix_getgid() == 0) {
+        if ($this->uid == 0) {
             $this->markTestSkipped(
-                'No point testing if group is already root. Php unit shouldn\'t be run as root group.'
+                'No point testing if group is already root. Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
             );
         }
 
@@ -153,9 +158,9 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testChgrpById()
     {
-        if (posix_getgid() == 0) {
+        if ($this->gid == 0) {
             $this->markTestSkipped(
-                'No point testing if group is already root. Php unit shouldn\'t be run as root group.'
+                'No point testing if group is already root. Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
             );
         }
 
@@ -830,7 +835,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
 
         $file->chmod(0400);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
@@ -840,7 +845,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
 
         $file->chmod(0200);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
@@ -850,7 +855,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
 
         $file->chmod(0600);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $path));
         $this->assertTrue($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
@@ -879,7 +884,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
 
         $file->chmod(0400);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
@@ -889,7 +894,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
 
         $file->chmod(0200);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
@@ -899,7 +904,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
 
         $file->chmod(0600);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
@@ -922,18 +927,18 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0));
 
         $file->chmod(0200);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0));
 
         $file->chmod(0400);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $path));
 
         $file->chmod(0040);
         $file->chown(0);
-        $file->chgrp(posix_getgid());
+        $file->chgrp($this->gid);
         $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $path));
     }
 
@@ -1088,7 +1093,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         $fs = new FileSystem();
         $file = $fs->createFile('/file');
-        $file->chown(posix_getuid() + 1); //set to non current
+        $file->chown($this->uid + 1); //set to non current
 
         $wr = new Wrapper();
 
@@ -1109,7 +1114,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         $fs = new FileSystem();
         $file = $fs->createFile('/file');
-        $file->chown(posix_getuid() + 1); //set to non current
+        $file->chown($this->uid + 1); //set to non current
 
         $wr = new Wrapper();
 
@@ -1172,7 +1177,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         $fs = new FileSystem();
         $file = $fs->createFile('/file');
-        $file->chown(posix_getuid() + 1); //set to non current
+        $file->chown($this->uid + 1); //set to non current
         $file->chmod(0000);
 
         $wr = new Wrapper();
@@ -1189,14 +1194,14 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
             $error['message']
         );
 
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
 
         $this->assertTrue(
             $wr->stream_metadata($fs->path('/file'), STREAM_META_TOUCH, 0),
             'Allowed to touch if owner and no permission'
         );
 
-        $file->chown(posix_getuid() + 1); //set to non current
+        $file->chown($this->uid + 1); //set to non current
         $file->chmod(0002);
 
         $this->assertTrue(
