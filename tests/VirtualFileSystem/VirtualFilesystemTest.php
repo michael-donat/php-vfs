@@ -98,4 +98,51 @@ class VirtualFilesystemTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/file', $file->path());
         $this->assertEquals('data', $file->data());
     }
+
+    public function testCreateStuctureMirrorsStructure()
+    {
+        $fs = new FileSystem();
+        $fs->createStructure(['file' => 'omg', 'file2' => 'gmo']);
+
+        $file = $fs->container()->fileAt('/file');
+        $file2 = $fs->container()->fileAt('/file2');
+
+        $this->assertEquals('omg', $file->data());
+        $this->assertEquals('gmo', $file2->data());
+
+        $fs->createStructure(['dir' => [], 'dir2' => []]);
+
+        $dir = $fs->container()->fileAt('/dir');
+        $dir2 = $fs->container()->fileAt('/dir2');
+
+        $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $dir);
+        $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $dir2);
+
+        $fs->createStructure([
+            'dir3' => [
+                'file' => 'nested',
+                'dir4' => [
+                    'dir5' => [
+                        'file5' => 'nestednested'
+                    ]
+                ]
+            ]
+        ]);
+
+        $dir = $fs->container()->fileAt('/dir3');
+
+        $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $dir);
+
+        $file = $fs->container()->fileAt('/dir3/file');
+
+        $this->assertEquals('nested', $file->data());
+
+        $dir = $fs->container()->fileAt('/dir3/dir4/dir5');
+
+        $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $dir);
+
+        $file = $fs->container()->fileAt('/dir3/dir4/dir5/file5');
+
+        $this->assertEquals('nestednested', $file->data());
+    }
 }

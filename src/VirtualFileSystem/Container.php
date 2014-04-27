@@ -186,6 +186,22 @@ class Container
     }
 
     /**
+     * Creates struture
+     *
+     * @param array $structure
+     */
+    public function createStructure(array $structure, $parent = '/') {
+        foreach($structure as $key => $value) {
+            if(is_array($value)) {
+                $this->createDir($parent.$key);
+                $this->createStructure($value, $parent.$key.'/');
+            } else {
+                $this->createFile($parent.$key, $value);
+            }
+        }
+    }
+
+    /**
      * Moves Node from source to destination
      *
      * @param string $from
