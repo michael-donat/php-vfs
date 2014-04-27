@@ -26,7 +26,7 @@ tools:
     php_mess_detector:
         enabled: true
         config:
-            ruleset: phpmd.xml.dist
+            ruleset: phpmd.xml
             design_rules: { eval_expression: false }
         filter:
             paths: ["src/*"]

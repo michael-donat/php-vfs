@@ -89,7 +89,7 @@ class Container
      * @param string $path
      *
      * @return Structure\Node
-     * 
+     *
      * @throws NotFoundException
      */
     public function fileAt($path)
@@ -99,7 +99,7 @@ class Container
         $node = $this->root();
 
         foreach ($pathParts as $level) {
-            if($node instanceof File) {
+            if ($node instanceof File) {
                 throw new NotFoundException();
             }
             $node = $node->childAt($level);
@@ -119,6 +119,7 @@ class Container
     {
         try {
             $this->fileAt($path);
+
             return true;
         } catch (NotFoundException $e) {
             return false;
@@ -128,8 +129,8 @@ class Container
     /**
      * Creates Directory at given path.
      *
-     * @param string $path
-     * @param bool $recursive
+     * @param string       $path
+     * @param bool         $recursive
      * @param null|integer $mode
      *
      * @return Structure\Directory
@@ -150,7 +151,7 @@ class Container
             $parent = $this->createDir($parentPath, $recursive, $mode);
         }
 
-        if(!$parent instanceof Directory) {
+        if (!$parent instanceof Directory) {
             throw new NotDirectoryException(sprintf('createDir: %s: Not a directory', $parentPath));
         }
 
@@ -166,7 +167,7 @@ class Container
     /**
      * Creates file at given path
      *
-     * @param string $path
+     * @param string      $path
      * @param string|null $data
      *
      * @return Structure\File
@@ -175,13 +176,13 @@ class Container
      */
     public function createFile($path, $data = null)
     {
-        if($this->hasFileAt($path)) {
+        if ($this->hasFileAt($path)) {
             throw new \RuntimeException(sprintf('%s already exists', $path));
         }
 
         $parent =  $this->fileAt(dirname($path));
 
-        if(!$parent instanceof Directory) {
+        if (!$parent instanceof Directory) {
             throw new NotDirectoryException(sprintf('createFile: %s: Not a directory', dirname($path)));
         }
 
@@ -212,8 +213,8 @@ class Container
     /**
      * Moves Node from source to destination
      *
-     * @param string $from
-     * @param string $to
+     * @param  string            $from
+     * @param  string            $to
      * @return bool
      * @throws \RuntimeException
      */
@@ -233,7 +234,7 @@ class Container
             $nodeAtToPath = null;
         }
 
-        if(!$toNode instanceof Directory) {
+        if (!$toNode instanceof Directory) {
             throw new NotDirectoryException('Destination not a directory');
         }
 
@@ -261,7 +262,7 @@ class Container
      * Removes node at $path
      *
      * @param string $path
-     * @param bool $recursive
+     * @param bool   $recursive
      *
      * @throws \RuntimeException
      */

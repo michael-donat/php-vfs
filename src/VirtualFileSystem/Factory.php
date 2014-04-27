@@ -59,13 +59,14 @@ class Factory
     {
         $this->updateFileTimes($node);
         $this->updateOwnership($node);
+
         return $node;
     }
 
     /**
      * Update file a/c/m times
      *
-     * @param Node $node
+     * @param  Node $node
      * @return Node
      */
     public function updateFileTimes(Node $node)

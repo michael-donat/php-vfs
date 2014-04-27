@@ -117,8 +117,8 @@ class Wrapper
      * @see http://php.net/streamwrapper.stream-open
      *
      * @param string $path
-     * @param int $mode
-     * @param int $options
+     * @param int    $mode
+     * @param int    $options
      * @param string $opened_path
      *
      * @return bool
@@ -134,6 +134,7 @@ class Wrapper
             if ($options & STREAM_REPORT_ERRORS) {
                 trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
             }
+
             return false;
         };
 
@@ -147,6 +148,7 @@ class Wrapper
                 if ($options & STREAM_REPORT_ERRORS) {
                     trigger_error(sprintf('%s: failed to open stream.', $path), E_USER_WARNING);
                 }
+
                 return false;
             }
             $parent = $container->fileAt(dirname($path));
@@ -163,6 +165,7 @@ class Wrapper
             if ($options & STREAM_REPORT_ERRORS) {
                 trigger_error(sprintf('fopen(%s): failed to open stream: Is a directory', $path), E_USER_WARNING);
             }
+
             return false;
         }
 
@@ -195,7 +198,6 @@ class Wrapper
             $this->currently_opened->setWriteOnlyMode();
         }
 
-
         if ($appendMode) {
             $this->currently_opened->seekToEnd();
         } elseif ($writeMode) {
@@ -223,6 +225,7 @@ class Wrapper
         //file access time changes so stat cache needs to be cleared
         $written = $this->currently_opened->write($data);
         clearstatcache();
+
         return $written;
     }
 
@@ -244,7 +247,7 @@ class Wrapper
      * @see http://php.net/stat
      *
      * @param string $path
-     * @param int $flags
+     * @param int    $flags
      *
      * @return array|bool
      */
@@ -283,6 +286,7 @@ class Wrapper
         $data = $this->currently_opened->read($bytes);
         //file access time changes so stat cache needs to be cleared
         clearstatcache();
+
         return $data;
     }
 
@@ -304,8 +308,8 @@ class Wrapper
      * @see http://php.net/streamwrapper.mkdir
      *
      * @param string $path
-     * @param int $mode
-     * @param int $options
+     * @param int    $mode
+     * @param int    $options
      *
      * @return bool
      */
@@ -324,6 +328,7 @@ class Wrapper
                     $ph = $container->getPermissionHelper($parent);
                     if (!$ph->isWritable()) {
                         trigger_error(sprintf('mkdir: %s: Permission denied', dirname($path)), E_USER_WARNING);
+
                         return false;
                     }
                     if ($parent instanceof Root) {
@@ -336,9 +341,11 @@ class Wrapper
             $container->createDir($path, $recursive, $mode);
         } catch (FileExistsException $e) {
             trigger_error($e->getMessage(), E_USER_WARNING);
+
             return false;
         } catch (NotFoundException $e) {
             trigger_error(sprintf('mkdir: %s: No such file or directory', dirname($path)), E_USER_WARNING);
+
             return false;
         }
 
@@ -351,8 +358,8 @@ class Wrapper
      * @see http://php.net/streamwrapper.stream-metadata
      *
      * @param string $path
-     * @param int $option
-     * @param mixed $value
+     * @param int    $option
+     * @param mixed  $value
      *
      * @return bool
      */
@@ -372,6 +379,7 @@ class Wrapper
                             sprintf('touch: %s: No such file or directory.', $strippedPath),
                             E_USER_WARNING
                         );
+
                         return false;
                     }
                 }
@@ -384,6 +392,7 @@ class Wrapper
                         sprintf('touch: %s: Permission denied', $strippedPath),
                         E_USER_WARNING
                     );
+
                     return false;
                 }
 
@@ -397,8 +406,6 @@ class Wrapper
 
             }
 
-
-
             $node = $container->fileAt($strippedPath);
             $ph = $container->getPermissionHelper($node);
 
@@ -409,6 +416,7 @@ class Wrapper
                             sprintf('chmod: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
                         );
+
                         return false;
                     }
                     $node->chmod($value);
@@ -421,6 +429,7 @@ class Wrapper
                             sprintf('chown: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
                         );
+
                         return false;
                     }
                     $uid = function_exists('posix_getpwnam') ? posix_getpwnam($value)['uid'] : 0;
@@ -434,6 +443,7 @@ class Wrapper
                             sprintf('chown: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
                         );
+
                         return false;
                     }
                     $node->chown($value);
@@ -446,6 +456,7 @@ class Wrapper
                             sprintf('chgrp: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
                         );
+
                         return false;
                     }
                     $gid = function_exists('posix_getgrnam') ? posix_getgrnam($value)['gid'] : 0;
@@ -459,6 +470,7 @@ class Wrapper
                             sprintf('chgrp: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
                         );
+
                         return false;
                     }
                     $node->chgrp($value);
@@ -484,7 +496,7 @@ class Wrapper
      */
     public function stream_seek($offset, $whence = SEEK_SET)
     {
-        switch($whence) {
+        switch ($whence) {
             case SEEK_SET:
                 $this->currently_opened->position($offset);
                 break;
@@ -495,6 +507,7 @@ class Wrapper
                 $this->currently_opened->seekToEnd();
                 $this->currently_opened->offsetPosition($offset);
         }
+
         return true;
     }
 
@@ -509,6 +522,7 @@ class Wrapper
     {
         $this->currently_opened->truncate($new_size);
         clearstatcache();
+
         return true;
     }
 
@@ -533,12 +547,14 @@ class Wrapper
                 sprintf('mv: rename %s to %s: No such file or directory', $oldname, $newname),
                 E_USER_WARNING
             );
+
             return false;
         } catch (\RuntimeException $e) {
             trigger_error(
                 sprintf('mv: rename %s to %s: Not a directory', $oldname, $newname),
                 E_USER_WARNING
             );
+
             return false;
         }
 
@@ -568,6 +584,7 @@ class Wrapper
                     sprintf('rm: %s: Permission denied', $path),
                     E_USER_WARNING
                 );
+
                 return false;
             }
 
@@ -577,12 +594,14 @@ class Wrapper
                 sprintf('rm: %s: No such file or directory', $path),
                 E_USER_WARNING
             );
+
             return false;
         } catch (\RuntimeException $e) {
             trigger_error(
                 sprintf('rm: %s: is a directory', $path),
                 E_USER_WARNING
             );
+
             return false;
         }
 
@@ -609,6 +628,7 @@ class Wrapper
                     sprintf('Warning: rmdir(%s): Not a directory', $path),
                     E_USER_WARNING
                 );
+
                 return false;
             }
 
@@ -618,6 +638,7 @@ class Wrapper
                     sprintf('rmdir: %s: Permission denied', $path),
                     E_USER_WARNING
                 );
+
                 return false;
             }
 
@@ -626,6 +647,7 @@ class Wrapper
                 sprintf('Warning: rmdir(%s): No such file or directory', $path),
                 E_USER_WARNING
             );
+
             return false;
         }
 
@@ -634,6 +656,7 @@ class Wrapper
                 sprintf('Warning: rmdir(%s): Directory not empty', $path),
                 E_USER_WARNING
             );
+
             return false;
         }
 
@@ -646,7 +669,7 @@ class Wrapper
      * Opens directory for iteration
      *
      * @param string $path
-     * @param int $options
+     * @param int    $options
      *
      * @return bool
      */
@@ -658,6 +681,7 @@ class Wrapper
 
         if (!$container->hasFileAt($path)) {
             trigger_error(sprintf('opendir(%s): failed to open dir: No such file or directory', $path), E_USER_WARNING);
+
             return false;
         }
 
@@ -665,6 +689,7 @@ class Wrapper
 
         if ($dir instanceof File) {
             trigger_error(sprintf('opendir(%s): failed to open dir: Not a directory', $path), E_USER_WARNING);
+
             return false;
         }
 
@@ -672,6 +697,7 @@ class Wrapper
 
         if (!$permissionHelper->isReadable()) {
             trigger_error(sprintf('opendir(%s): failed to open dir: Permission denied', $path), E_USER_WARNING);
+
             return false;
         }
 
@@ -690,6 +716,7 @@ class Wrapper
     {
         if ($this->currently_opened) {
             $this->currently_opened = null;
+
             return true;
         }
 
@@ -708,6 +735,7 @@ class Wrapper
             return false;
         }
         $this->currently_opened->iterator()->next();
+
         return $node->basename();
     }
 

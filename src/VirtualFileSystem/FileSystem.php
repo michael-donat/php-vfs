@@ -129,8 +129,8 @@ class FileSystem
      * Creates and returns a directory
      *
      * @param string $path
-     * @param bool $recursive
-     * @param null $mode
+     * @param bool   $recursive
+     * @param null   $mode
      *
      * @return Directory
      */
