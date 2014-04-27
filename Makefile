@@ -1,7 +1,7 @@
 .PHONY: cs md cov pear
 
 cs:
-	phpcs --standard=PSR2 src/
+	phpcs --standard=PSR2 --ignore=Wrapper.php src/
 
 md:
 	phpmd src/
@@ -9,6 +9,9 @@ md:
 cov:
 	phpunit --coverage-html=build/log/coverage
 	open build/log/coverage/index.html
+
+scru:
+	scrutinizer run --output-file=build/log/scrutinizer.json ./
 
 pear:
 	./build/pear/package.php --source=src/ --version=$(version) > package.xml

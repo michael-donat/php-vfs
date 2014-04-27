@@ -2,7 +2,6 @@
 
 namespace VirtualFileSystem\Wrapper;
 
-
 use VirtualFileSystem\Structure\File;
 
 class PermissionHelperTest extends \PHPUnit_Framework_TestCase

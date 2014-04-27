@@ -39,7 +39,7 @@ class Container
     /**
      * @var Wrapper\PermissionHelper
      */
-    protected $permission_helper;
+    protected $permissionHelper;
 
     /**
      * Class constructor. Sets factory and root object on init.
@@ -213,21 +213,21 @@ class Container
     /**
      * Moves Node from source to destination
      *
-     * @param  string            $from
-     * @param  string            $to
+     * @param  string            $fromPath
+     * @param  string            $toPath
      * @return bool
      * @throws \RuntimeException
      */
-    public function move($from, $to)
+    public function move($fromPath, $toPath)
     {
-        $fromNode = $this->fileAt($from);
-        $toNode = $this->fileAt(dirname($to));
-        $newNodeName = basename($to);
+        $fromNode = $this->fileAt($fromPath);
+        $toNode = $this->fileAt(dirname($toPath));
+        $newNodeName = basename($toPath);
 
         try {
-            $nodeAtToPath = $this->fileAt($to);
+            $nodeAtToPath = $this->fileAt($toPath);
             if ($nodeAtToPath instanceof Directory) {
-                $newNodeName = basename($from);
+                $newNodeName = basename($fromPath);
                 $toNode = $nodeAtToPath;
             }
         } catch (NotFoundException $e) {
@@ -253,7 +253,7 @@ class Container
             $toNode->addDirectory($fromNode);
         }
 
-        $this->remove($from, true);
+        $this->remove($fromPath, true);
 
         return true;
     }
@@ -286,16 +286,16 @@ class Container
      */
     public function getPermissionHelper(Structure\Node $node)
     {
-        return $this->permission_helper->setNode($node);
+        return $this->permissionHelper->setNode($node);
     }
 
     /**
      * Sets permission helper instance
      *
-     * @param \VirtualFileSystem\Wrapper\PermissionHelper $permission_helper
+     * @param \VirtualFileSystem\Wrapper\PermissionHelper $permissionHelper
      */
-    public function setPermissionHelper($permission_helper)
+    public function setPermissionHelper($permissionHelper)
     {
-        $this->permission_helper = $permission_helper;
+        $this->permissionHelper = $permissionHelper;
     }
 }

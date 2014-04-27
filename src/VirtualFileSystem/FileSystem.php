@@ -66,9 +66,9 @@ class FileSystem
      */
     protected function registerContextOptions(Container $container)
     {
-        $default_options = stream_context_get_options(stream_context_get_default());
+        $defaultOptions = stream_context_get_options(stream_context_get_default());
         stream_context_set_default(array_merge(
-            $default_options,
+            $defaultOptions,
             array($this->scheme => array('Container' => $container))
         ));
     }

@@ -31,7 +31,7 @@ class Wrapper
     /**
      * @var FileHandler
      */
-    protected $currently_opened;
+    protected $currentlyOpened;
 
     /**
      * Returns default expectation for stat() function.
@@ -98,7 +98,7 @@ class Wrapper
      */
     public function stream_tell()
     {
-        return $this->currently_opened->position();
+        return $this->currentlyOpened->position();
     }
 
     /**
@@ -108,7 +108,7 @@ class Wrapper
      */
     public function stream_close()
     {
-        $this->currently_opened = null;
+        $this->currentlyOpened = null;
     }
 
     /**
@@ -123,14 +123,14 @@ class Wrapper
      *
      * @return bool
      */
-    public function stream_open($path, $mode, $options, &$opened_path)
+    public function stream_open($path, $mode, $options)
     {
         $container = $this->getContainerFromContext($path);
         $path = $this->stripScheme($path);
 
         $mode = str_split(str_replace('b', '', $mode));
 
-        $permissionDeniedError = function () use ($path, $options) {
+        $accessDeniedError = function () use ($path, $options) {
             if ($options & STREAM_REPORT_ERRORS) {
                 trigger_error(sprintf('fopen(%s): failed to open stream: Permission denied', $path), E_USER_WARNING);
             }
@@ -152,9 +152,9 @@ class Wrapper
                 return false;
             }
             $parent = $container->fileAt(dirname($path));
-            $ph = $container->getPermissionHelper($parent);
-            if (!$ph->isWritable()) {
-                return $permissionDeniedError();
+            $permissionHelper = $container->getPermissionHelper($parent);
+            if (!$permissionHelper->isWritable()) {
+                return $accessDeniedError();
             }
             $parent->addFile($container->factory()->getFile(basename($path)));
         }
@@ -179,29 +179,29 @@ class Wrapper
 
         $permissionHelper = $container->getPermissionHelper($file);
 
-        $this->currently_opened = new FileHandler();
-        $this->currently_opened->setFile($file);
+        $this->currentlyOpened = new FileHandler();
+        $this->currentlyOpened->setFile($file);
         if ($extended) {
             if (!$permissionHelper->isReadable() or !$permissionHelper->isWritable()) {
-                return $permissionDeniedError();
+                return $accessDeniedError();
             }
-            $this->currently_opened->setReadWriteMode();
+            $this->currentlyOpened->setReadWriteMode();
         } elseif ($readMode) {
             if (!$permissionHelper->isReadable()) {
-                return $permissionDeniedError();
+                return $accessDeniedError();
             }
-            $this->currently_opened->setReadOnlyMode();
+            $this->currentlyOpened->setReadOnlyMode();
         } else { // a or w are for write only
             if (!$permissionHelper->isWritable()) {
-                return $permissionDeniedError();
+                return $accessDeniedError();
             }
-            $this->currently_opened->setWriteOnlyMode();
+            $this->currentlyOpened->setWriteOnlyMode();
         }
 
         if ($appendMode) {
-            $this->currently_opened->seekToEnd();
+            $this->currentlyOpened->seekToEnd();
         } elseif ($writeMode) {
-            $this->currently_opened->truncate();
+            $this->currentlyOpened->truncate();
             clearstatcache();
         }
 
@@ -219,11 +219,11 @@ class Wrapper
      */
     public function stream_write($data)
     {
-        if (!$this->currently_opened->isOpenedForWriting()) {
+        if (!$this->currentlyOpened->isOpenedForWriting()) {
             return false;
         }
         //file access time changes so stat cache needs to be cleared
-        $written = $this->currently_opened->write($data);
+        $written = $this->currentlyOpened->write($data);
         clearstatcache();
 
         return $written;
@@ -251,7 +251,7 @@ class Wrapper
      *
      * @return array|bool
      */
-    public function url_stat($path, $flags)
+    public function url_stat($path)
     {
         try {
             $file = $this->getContainerFromContext($path)->fileAt($this->stripScheme($path));
@@ -280,10 +280,10 @@ class Wrapper
      */
     public function stream_read($bytes)
     {
-        if (!$this->currently_opened->isOpenedForReading()) {
+        if (!$this->currentlyOpened->isOpenedForReading()) {
             return null;
         }
-        $data = $this->currently_opened->read($bytes);
+        $data = $this->currentlyOpened->read($bytes);
         //file access time changes so stat cache needs to be cleared
         clearstatcache();
 
@@ -299,7 +299,7 @@ class Wrapper
      */
     public function stream_eof()
     {
-        return $this->currently_opened->atEof();
+        return $this->currentlyOpened->atEof();
     }
 
     /**
@@ -325,8 +325,8 @@ class Wrapper
             while ($parentPath = dirname($parentPath)) {
                 try {
                     $parent = $container->fileAt($parentPath);
-                    $ph = $container->getPermissionHelper($parent);
-                    if (!$ph->isWritable()) {
+                    $permissionHelper = $container->getPermissionHelper($parent);
+                    if (!$permissionHelper->isWritable()) {
                         trigger_error(sprintf('mkdir: %s: Permission denied', dirname($path)), E_USER_WARNING);
 
                         return false;
@@ -385,9 +385,9 @@ class Wrapper
                 }
                 $file = $container->fileAt($strippedPath);
 
-                $ph = $container->getPermissionHelper($file);
+                $permissionHelper = $container->getPermissionHelper($file);
 
-                if (!$ph->userIsOwner() && !$ph->isWritable()) {
+                if (!$permissionHelper->userIsOwner() && !$permissionHelper->isWritable()) {
                     trigger_error(
                         sprintf('touch: %s: Permission denied', $strippedPath),
                         E_USER_WARNING
@@ -407,11 +407,11 @@ class Wrapper
             }
 
             $node = $container->fileAt($strippedPath);
-            $ph = $container->getPermissionHelper($node);
+            $permissionHelper = $container->getPermissionHelper($node);
 
             switch ($option) {
                 case STREAM_META_ACCESS:
-                    if (!$ph->userIsOwner()) {
+                    if (!$permissionHelper->userIsOwner()) {
                         trigger_error(
                             sprintf('chmod: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
@@ -424,7 +424,7 @@ class Wrapper
                     break;
 
                 case STREAM_META_OWNER_NAME:
-                    if (!$ph->userIsRoot()) {
+                    if (!$permissionHelper->userIsRoot()) {
                         trigger_error(
                             sprintf('chown: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
@@ -438,7 +438,7 @@ class Wrapper
                     break;
 
                 case STREAM_META_OWNER:
-                    if (!$ph->userIsRoot()) {
+                    if (!$permissionHelper->userIsRoot()) {
                         trigger_error(
                             sprintf('chown: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
@@ -451,7 +451,7 @@ class Wrapper
                     break;
 
                 case STREAM_META_GROUP_NAME:
-                    if (!$ph->userIsRoot()) {
+                    if (!$permissionHelper->userIsRoot()) {
                         trigger_error(
                             sprintf('chgrp: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
@@ -465,7 +465,7 @@ class Wrapper
                     break;
 
                 case STREAM_META_GROUP:
-                    if (!$ph->userIsRoot()) {
+                    if (!$permissionHelper->userIsRoot()) {
                         trigger_error(
                             sprintf('chgrp: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
@@ -498,14 +498,14 @@ class Wrapper
     {
         switch ($whence) {
             case SEEK_SET:
-                $this->currently_opened->position($offset);
+                $this->currentlyOpened->position($offset);
                 break;
             case SEEK_CUR:
-                $this->currently_opened->offsetPosition($offset);
+                $this->currentlyOpened->offsetPosition($offset);
                 break;
             case SEEK_END:
-                $this->currently_opened->seekToEnd();
-                $this->currently_opened->offsetPosition($offset);
+                $this->currentlyOpened->seekToEnd();
+                $this->currentlyOpened->offsetPosition($offset);
         }
 
         return true;
@@ -514,13 +514,13 @@ class Wrapper
     /**
      * Truncates file to given size
      *
-     * @param int $new_size
+     * @param int $newSize
      *
      * @return bool
      */
-    public function stream_truncate($new_size)
+    public function stream_truncate($newSize)
     {
-        $this->currently_opened->truncate($new_size);
+        $this->currentlyOpened->truncate($newSize);
         clearstatcache();
 
         return true;
@@ -578,8 +578,8 @@ class Wrapper
 
             $parent = $container->fileAt(dirname($path));
 
-            $ph = $container->getPermissionHelper($parent);
-            if (!$ph->isWritable()) {
+            $permissionHelper = $container->getPermissionHelper($parent);
+            if (!$permissionHelper->isWritable()) {
                 trigger_error(
                     sprintf('rm: %s: Permission denied', $path),
                     E_USER_WARNING
@@ -632,8 +632,8 @@ class Wrapper
                 return false;
             }
 
-            $ph = $container->getPermissionHelper($directory);
-            if (!$ph->isReadable()) {
+            $permissionHelper = $container->getPermissionHelper($directory);
+            if (!$permissionHelper->isReadable()) {
                 trigger_error(
                     sprintf('rmdir: %s: Permission denied', $path),
                     E_USER_WARNING
@@ -673,7 +673,7 @@ class Wrapper
      *
      * @return bool
      */
-    public function dir_opendir($path, $options)
+    public function dir_opendir($path)
     {
         $container = $this->getContainerFromContext($path);
 
@@ -701,8 +701,8 @@ class Wrapper
             return false;
         }
 
-        $this->currently_opened = new DirectoryHandler();
-        $this->currently_opened->setDirectory($dir);
+        $this->currentlyOpened = new DirectoryHandler();
+        $this->currentlyOpened->setDirectory($dir);
 
         return true;
     }
@@ -714,8 +714,8 @@ class Wrapper
      */
     public function dir_closedir()
     {
-        if ($this->currently_opened) {
-            $this->currently_opened = null;
+        if ($this->currentlyOpened) {
+            $this->currentlyOpened = null;
 
             return true;
         }
@@ -730,11 +730,11 @@ class Wrapper
      */
     public function dir_readdir()
     {
-        $node = $this->currently_opened->iterator()->current();
+        $node = $this->currentlyOpened->iterator()->current();
         if (!$node) {
             return false;
         }
-        $this->currently_opened->iterator()->next();
+        $this->currentlyOpened->iterator()->next();
 
         return $node->basename();
     }
@@ -744,6 +744,6 @@ class Wrapper
      */
     public function dir_rewinddir()
     {
-        $this->currently_opened->iterator()->rewind();
+        $this->currentlyOpened->iterator()->rewind();
     }
 }

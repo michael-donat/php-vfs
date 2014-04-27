@@ -218,7 +218,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->createFile('/file1');
         $container->createFile('/file2', 'file2');
 
-        $this->setExpectedException('\RuntimeException', 'Can\'t move directory onto a file');
+        $this->setExpectedException('VirtualFileSystem\NotDirectoryException', 'Destination not a directory');
 
         $container->move('/file1', '/file2/file1');
 
@@ -260,12 +260,23 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->createDir('/file/dir');
     }
 
-    public function testFileAtThrowsWhenFileOnParentPath() {
+    public function testFileAtThrowsWhenFileOnParentPath()
+    {
         $container = new Container(new Factory());
         $container->createFile('/file');
 
         $this->setExpectedException('VirtualFileSystem\NotFoundException');
 
         $container->fileAt('/file/file2');
+    }
+
+    public function testCreateFileThrowsNonDirWhenParentNotDirectory()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $this->setExpectedException('VirtualFileSystem\NotDirectoryException');
+
+        $container->createFile('/file/file2');
     }
 }
