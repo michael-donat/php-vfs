@@ -95,7 +95,7 @@ class Container
      */
     public function fileAt($path)
     {
-        $pathParts = array_filter(explode('/', $path), 'strlen');
+        $pathParts = array_filter(explode('/', str_replace('\\', '/', $path)), 'strlen');
 
         $node = $this->root();
 
