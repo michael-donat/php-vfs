@@ -27,8 +27,5 @@
     "require": {
         "php": ">=5.4.0"
     },
-    "require-dev": {
-        "satooshi/php-coveralls": "dev-master"
-    },
     "type": "library"
 }
