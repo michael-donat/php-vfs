@@ -127,6 +127,26 @@ class Container
     }
 
     /**
+     * Returns directory at given path
+     *
+     * @param $path
+     *
+     * @return Structure\Directory
+     *
+     * @throws NotDirectoryException
+     * @throws NotFoundException
+     */
+    public function directoryAt($path) {
+        $file = $this->fileAt($path);
+
+        if(!$file instanceof Directory) {
+            throw new NotDirectoryException();
+        }
+
+        return $file;
+    }
+
+    /**
      * Creates Directory at given path.
      *
      * @param string       $path
@@ -143,16 +163,12 @@ class Container
         $name = basename($path);
 
         try {
-            $parent = $this->fileAt($parentPath);
+            $parent = $this->directoryAt($parentPath);
         } catch (NotFoundException $e) {
             if (!$recursive) {
                 throw new NotFoundException(sprintf('createDir: %s: No such file or directory', $parentPath));
             }
             $parent = $this->createDir($parentPath, $recursive, $mode);
-        }
-
-        if (!$parent instanceof Directory) {
-            throw new NotDirectoryException(sprintf('createDir: %s: Not a directory', $parentPath));
         }
 
         $parent->addDirectory($newDirectory = $this->factory()->getDir($name));
@@ -180,11 +196,7 @@ class Container
             throw new \RuntimeException(sprintf('%s already exists', $path));
         }
 
-        $parent =  $this->fileAt(dirname($path));
-
-        if (!$parent instanceof Directory) {
-            throw new NotDirectoryException(sprintf('createFile: %s: Not a directory', dirname($path)));
-        }
+        $parent =  $this->directoryAt(dirname($path));
 
         $parent->addFile($newFile = $this->factory()->getFile(basename($path)));
 

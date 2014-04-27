@@ -279,4 +279,28 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $container->createFile('/file/file2');
     }
+
+    public function testDirectoryAtThrowsNonDirIfReturnedNotDir() {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $this->setExpectedException('VirtualFileSystem\NotDirectoryException');
+
+        $container->directoryAt('/file');
+    }
+
+    public function testDirectoryAtBubblesNotFoundOnBadPath() {
+        $container = new Container(new Factory());
+
+        $this->setExpectedException('VirtualFileSystem\NotFoundException');
+
+        $container->directoryAt('/dir');
+    }
+
+    public function testDirectoryAtReturnsDirectory() {
+        $container = new Container(new Factory());
+        $container->createDir('/dir');
+
+        $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $container->directoryAt('/dir'));
+    }
 }

@@ -11,7 +11,7 @@ cov:
 	open build/log/coverage/index.html
 
 scru:
-	scrutinizer run --output-file=build/log/scrutinizer.json ./
+	scrutinizer run -f json --output-file=build/log/scrutinizer.json ./
 
 pear:
 	./build/pear/package.php --source=src/ --version=$(version) > package.xml
