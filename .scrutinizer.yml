@@ -1,6 +1,6 @@
 before_commands:
     - composer install
-php_code_coverage: true
+
 tools:
     php_code_coverage:
         enabled: true
