@@ -7,6 +7,16 @@ use VirtualFileSystem\Structure\File;
 
 class WrapperTest extends \PHPUnit_Framework_TestCase
 {
+    protected $uid;
+    protected $gid;
+
+    public function setUp() {
+        $this->uid = function_exists('posix_getuid') ? posix_getuid() : 0;
+        $this->gid = function_exists('posix_getgid') ? posix_getgid() : 0;
+
+        @$na['n/a']; //putting error in known state
+    }
+
     public function testSchemeStripping()
     {
         $c = new Wrapper();
@@ -91,13 +101,14 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testChownByName()
     {
-        if (posix_getuid() == 0) {
+        if ($this->uid == 0) {
             $this->markTestSkipped(
-                'No point testing if user is already root. \Php unit shouldn\'t be run as root user.'
+                'No point testing if user is already root. \Php unit shouldn\'t be run as root user. (Unless you are a windows user!)'
             );
         }
 
         $fs = new FileSystem();
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
 
         chown($fs->path('/'), 'root');
         $this->assertEquals('root', posix_getpwuid(fileowner($fs->path('/')))['name']);
@@ -110,13 +121,14 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testChownById()
     {
-        if (posix_getuid() == 0) {
+        if ($this->uid == 0) {
             $this->markTestSkipped(
                 'No point testing if user is already root. Php unit shouldn\'t be run as root user.'
             );
         }
 
         $fs = new FileSystem();
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
 
         chown($fs->path('/'), 0);
 
@@ -126,13 +138,14 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testChgrpByName()
     {
-        if (posix_getgid() == 0) {
+        if ($this->uid == 0) {
             $this->markTestSkipped(
-                'No point testing if group is already root. Php unit shouldn\'t be run as root group.'
+                'No point testing if group is already root. Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
             );
         }
 
         $fs = new FileSystem();
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
 
         //lets workout available group
         //this is needed to find string name of group root belongs to
@@ -145,13 +158,14 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testChgrpById()
     {
-        if (posix_getgid() == 0) {
+        if ($this->gid == 0) {
             $this->markTestSkipped(
-                'No point testing if group is already root. Php unit shouldn\'t be run as root group.'
+                'No point testing if group is already root. Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
             );
         }
 
         $fs = new FileSystem();
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
 
         //lets workout available group
         $group = posix_getpwuid(0)['gid'];
@@ -821,7 +835,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
 
         $file->chmod(0400);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
@@ -831,7 +845,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
 
         $file->chmod(0200);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
@@ -841,7 +855,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
 
         $file->chmod(0600);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $path));
         $this->assertTrue($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
@@ -870,7 +884,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
 
         $file->chmod(0400);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
@@ -880,7 +894,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
 
         $file->chmod(0200);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
@@ -890,7 +904,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
 
         $file->chmod(0600);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
         $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
@@ -913,18 +927,18 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0));
 
         $file->chmod(0200);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0));
 
         $file->chmod(0400);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $path));
 
         $file->chmod(0040);
         $file->chown(0);
-        $file->chgrp(posix_getgid());
+        $file->chgrp($this->gid);
         $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $path));
     }
 
@@ -1069,6 +1083,130 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         );
 
         $dir->chmod(0400);
-        $this->assertTrue($wr->rmdir($fs->path('/dir')), 'Directory removed with read permission');
+        $this->assertTrue(
+            $wr->rmdir($fs->path('/dir')),
+            'Directory removed with read permission, yes that is how it normally behaves ;)'
+        );
+    }
+
+    public function testChmodNotAllowedIfNotOwner()
+    {
+        $fs = new FileSystem();
+        $file = $fs->createFile('/file');
+        $file->chown($this->uid + 1); //set to non current
+
+        $wr = new Wrapper();
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_ACCESS, 0000),
+            'Not allowed to chmod if not owner'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chmod: %s: Permission denied',
+            $error['message']
+        );
+    }
+
+    public function testChownAndChgrpNotAllowedIfNotRoot()
+    {
+        $fs = new FileSystem();
+        $file = $fs->createFile('/file');
+        $file->chown($this->uid + 1); //set to non current
+
+        $wr = new Wrapper();
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_OWNER, 1),
+            'Not allowed to chown if not root'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chown: %s: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_OWNER_NAME, 'user'),
+            'Not allowed to chown by name if not root'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chown: %s: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_GROUP, 1),
+            'Not allowed to chgrp if not root'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chgrp: %s: Permission denied',
+            $error['message']
+        );
+
+        @$na['n/a']; //putting error in known state
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_GROUP_NAME, 'group'),
+            'Not allowed to chgrp by name if not root'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'chgrp: %s: Permission denied',
+            $error['message']
+        );
+    }
+
+    public function testTouchNotAllowedIfNotOwnerOrNotWritable()
+    {
+        $fs = new FileSystem();
+        $file = $fs->createFile('/file');
+        $file->chown($this->uid + 1); //set to non current
+        $file->chmod(0000);
+
+        $wr = new Wrapper();
+
+        $this->assertFalse(
+            @$wr->stream_metadata($fs->path('/file'), STREAM_META_TOUCH, 0),
+            'Not allowed to touch if not owner and no permission'
+        );
+
+        $error = error_get_last();
+
+        $this->assertStringMatchesFormat(
+            'touch: %s: Permission denied',
+            $error['message']
+        );
+
+        $file->chown($this->uid);
+
+        $this->assertTrue(
+            $wr->stream_metadata($fs->path('/file'), STREAM_META_TOUCH, 0),
+            'Allowed to touch if owner and no permission'
+        );
+
+        $file->chown($this->uid + 1); //set to non current
+        $file->chmod(0002);
+
+        $this->assertTrue(
+            $wr->stream_metadata($fs->path('/file'), STREAM_META_TOUCH, 0),
+            'Allowed to touch if not owner but with write permission'
+        );
     }
 }

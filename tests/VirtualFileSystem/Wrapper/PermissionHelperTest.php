@@ -7,13 +7,22 @@ use VirtualFileSystem\Structure\File;
 
 class PermissionHelperTest extends \PHPUnit_Framework_TestCase
 {
+    protected $uid;
+    protected $gid;
+
+    public function setUp() {
+        $this->uid = function_exists('posix_getuid') ? posix_getuid() : 0;
+        $this->gid = function_exists('posix_getgid') ? posix_getgid() : 0;
+    }
 
     public function testUserPermissionsAreCalculatedCorrectly()
     {
-        $file = new File('file');
-        $file->chown(posix_getuid());
 
-        $ph = new PermissionHelper($file);
+        $file = new File('file');
+        $file->chown($this->uid);
+
+        $ph = new PermissionHelper();
+        $ph->setNode($file);
 
         $file->chmod(0000);
         $this->assertFalse($ph->userCanRead(), 'User can\'t read with 0000');
@@ -49,9 +58,10 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
     public function testGroupPermissionsAreCalculatedCorrectly()
     {
         $file = new File('file');
-        $file->chgrp(posix_getgid());
+        $file->chgrp($this->gid);
 
-        $ph = new PermissionHelper($file);
+        $ph = new PermissionHelper();
+        $ph->setNode($file);
 
         $file->chmod(0000);
         $this->assertFalse($ph->groupCanRead(), 'group can\'t read with 0000');
@@ -88,7 +98,8 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
     {
         $file = new File('file');
 
-        $ph = new PermissionHelper($file);
+        $ph = new PermissionHelper();
+        $ph->setNode($file);
 
         $file->chmod(0000);
         $this->assertFalse($ph->worldCanRead(), 'world can\'t read with 0000');
@@ -120,7 +131,8 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
     {
         $file = new File('file');
 
-        $ph = new PermissionHelper($file);
+        $ph = new PermissionHelper();
+        $ph->setNode($file);
 
         $file->chmod(0000);
         $file->chown(0);
@@ -143,43 +155,43 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($ph->isReadable(), 'File is readable root:root 0004');
 
         $file->chmod(0000);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertFalse($ph->isReadable(), 'File is not readable user:root 0000');
 
         $file->chmod(0400);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($ph->isReadable(), 'File is readable user:root 0400');
 
         $file->chmod(0040);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertFalse($ph->isReadable(), 'File is not readable user:root 0040');
 
         $file->chmod(0004);
-        $file->chown(posix_getuid());
+        $file->chown($this->uid);
         $file->chgrp(0);
         $this->assertTrue($ph->isReadable(), 'File is readable user:root 0004');
 
         $file->chmod(0000);
         $file->chown(0);
-        $file->chgrp(posix_getgid());
+        $file->chgrp($this->gid);
         $this->assertFalse($ph->isReadable(), 'File is not readable root:user 0000');
 
         $file->chmod(0040);
         $file->chown(0);
-        $file->chgrp(posix_getgid());
+        $file->chgrp($this->gid);
         $this->assertTrue($ph->isReadable(), 'File is readable root:user 0040');
 
         $file->chmod(0400);
         $file->chown(0);
-        $file->chgrp(posix_getgid());
+        $file->chgrp($this->gid);
         $this->assertFalse($ph->isReadable(), 'File is not readable root:user 0400');
 
         $file->chmod(0004);
         $file->chown(0);
-        $file->chgrp(posix_getgid());
+        $file->chgrp($this->gid);
         $this->assertTrue($ph->isReadable(), 'File is readable root:user 0004');
     }
 }

@@ -151,4 +151,14 @@ class FileSystem
     {
         return $this->container()->createFile($path, $data);
     }
+
+    /**
+     * Creates fs structure
+     *
+     * @param array $structure
+     */
+    public function createStructure(array $structure)
+    {
+        $this->container()->createStructure($structure);
+    }
 }

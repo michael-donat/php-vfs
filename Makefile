@@ -8,10 +8,11 @@ md:
 
 cov:
 	phpunit --coverage-html=build/log/coverage
+	open build/log/coverage/index.html
 
 pear:
 	./build/pear/package.php --source=src/ --version=$(version) > package.xml
 	pear package
-	mv VirtualFileSystem-$(version).tgz ../pear.thornag.github.io/
-	cd ../pear.thornag.github.io && /usr/local/opt/php55/bin/pirum add . VirtualFileSystem-$(version).tgz
+	mv VirtualFileSystem-$(version).tgz build/dist/
+	/usr/local/opt/php55/bin/pirum add ../pear.thornag.github.io build/dist/VirtualFileSystem-$(version).tgz
 	cd ../pear.thornag.github.io && git add . && git commit -a -m'adding VirtualFileSystem-$(version).tgz' && git push

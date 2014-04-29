@@ -37,6 +37,11 @@ class Container
     protected $factory;
 
     /**
+     * @var Wrapper\PermissionHelper
+     */
+    protected $permission_helper;
+
+    /**
      * Class constructor. Sets factory and root object on init.
      *
      * @param Factory $factory
@@ -45,6 +50,7 @@ class Container
     {
         $this->setFactory($factory);
         $this->root = $this->factory()->getRoot();
+        $this->setPermissionHelper(new Wrapper\PermissionHelper());
     }
 
     /**
@@ -88,7 +94,7 @@ class Container
      */
     public function fileAt($path)
     {
-        $pathParts = array_filter(explode('/', $path), 'strlen');
+        $pathParts = array_filter(explode('/', str_replace('\\', '/', $path)), 'strlen');
 
         $node = $this->root();
 
@@ -179,6 +185,22 @@ class Container
     }
 
     /**
+     * Creates struture
+     *
+     * @param array $structure
+     */
+    public function createStructure(array $structure, $parent = '/') {
+        foreach($structure as $key => $value) {
+            if(is_array($value)) {
+                $this->createDir($parent.$key);
+                $this->createStructure($value, $parent.$key.'/');
+            } else {
+                $this->createFile($parent.$key, $value);
+            }
+        }
+    }
+
+    /**
      * Moves Node from source to destination
      *
      * @param string $from
@@ -239,5 +261,27 @@ class Container
         }
 
         $this->fileAt(dirname($path))->remove(basename($path));
+    }
+
+    /**
+     * Returns PermissionHelper with given node in context
+     *
+     * @param Structure\Node $node
+     *
+     * @return \VirtualFileSystem\Wrapper\PermissionHelper
+     */
+    public function getPermissionHelper(Structure\Node $node)
+    {
+        return $this->permission_helper->setNode($node);
+    }
+
+    /**
+     * Sets permission helper instance
+     *
+     * @param \VirtualFileSystem\Wrapper\PermissionHelper $permission_helper
+     */
+    public function setPermissionHelper($permission_helper)
+    {
+        $this->permission_helper = $permission_helper;
     }
 }

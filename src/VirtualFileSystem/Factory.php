@@ -34,8 +34,8 @@ class Factory
      */
     public function __construct()
     {
-        $this->userid = posix_getuid();
-        $this->groupid = posix_getgid();
+        $this->userid = function_exists('posix_getuid') ? posix_getuid() : 0;
+        $this->groupid = function_exists('posix_getgid') ? posix_getgid() : 0;
     }
 
     /**

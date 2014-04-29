@@ -25,13 +25,13 @@ class PermissionHelper
     protected $groupid;
 
     /**
-     * @param Node $node
+     * @param int $uid
+     * @param int $gid
      */
-    public function __construct(Node $node)
+    public function __construct($uid = null, $gid = null)
     {
-        $this->node = $node;
-        $this->userid = posix_getuid();
-        $this->groupid = posix_getgid();
+        $this->userid = is_null($uid) ? (function_exists('posix_getuid') ? posix_getuid() : 0) : $uid;
+        $this->groupid = is_null($gid) ? ((function_exists('posix_getgid') ? posix_getgid() : 0)) : $gid;
     }
 
     /**
@@ -132,5 +132,26 @@ class PermissionHelper
     public function isWritable()
     {
         return $this->userCanWrite() || $this->groupCanWrite() || $this->worldCanWrite();
+    }
+
+    /**
+     * Checks whether userid is 0 - root.
+     *
+     * @return bool
+     */
+    public function userIsRoot()
+    {
+        return $this->userid == 0;
+    }
+
+    /**
+     * @param \VirtualFileSystem\Structure\Node $node
+     *
+     * @return PermissionHelper
+     */
+    public function setNode($node)
+    {
+        $this->node = $node;
+        return $this;
     }
 }
