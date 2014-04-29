@@ -74,20 +74,10 @@ class FileSystem
     }
 
     /**
-     * There is no known (to me) way to remove default context options as of yet.
-     */
-    protected function unregisterContextOptions()
-    {
-        return;
-    }
-
-    /**
      * Remoces wrapper registered for scheme associated with FileSystem instance.
      */
     public function __destruct()
     {
-        $this->unregisterContextOptions();
-
         stream_wrapper_unregister($this->scheme);
     }
 
@@ -128,9 +118,9 @@ class FileSystem
     /**
      * Creates and returns a directory
      *
-     * @param string $path
-     * @param bool   $recursive
-     * @param integer   $mode
+     * @param string  $path
+     * @param bool    $recursive
+     * @param integer $mode
      *
      * @return Directory
      */

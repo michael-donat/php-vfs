@@ -30,6 +30,8 @@ abstract class Node
     protected $mtime;
     protected $ctime;
 
+    protected $mode;
+
     /**
      * Class constructor.
      *

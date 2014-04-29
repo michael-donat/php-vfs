@@ -76,7 +76,7 @@ class Container
     /**
      * Returns Root instance
      *
-     * @return Directory
+     * @return Root
      */
     public function root()
     {
@@ -212,9 +212,10 @@ class Container
      *
      * @param array $structure
      */
-    public function createStructure(array $structure, $parent = '/') {
-        foreach($structure as $key => $value) {
-            if(is_array($value)) {
+    public function createStructure(array $structure, $parent = '/')
+    {
+        foreach ($structure as $key => $value) {
+            if (is_array($value)) {
                 $this->createDir($parent.$key);
                 $this->createStructure($value, $parent.$key.'/');
             } else {
@@ -287,7 +288,7 @@ class Container
             throw new \RuntimeException('Won\'t non-recursively remove directory');
         }
 
-        $this->fileAt(dirname($path))->remove(basename($path));
+        $this->directoryAt(dirname($path))->remove(basename($path));
     }
 
     /**

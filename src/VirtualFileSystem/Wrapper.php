@@ -355,9 +355,9 @@ class Wrapper
      *
      * @see http://php.net/streamwrapper.stream-metadata
      *
-     * @param string $path
-     * @param int    $option
-     * @param integer  $value
+     * @param string  $path
+     * @param int     $option
+     * @param integer $value
      *
      * @return bool
      */

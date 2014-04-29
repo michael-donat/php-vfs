@@ -129,7 +129,7 @@ class Loader
             || $this->namespace.$this->namespaceSeparator === substr(
                 $className,
                 0,
-                    strlen($this->namespace.$this->namespaceSeparator)
+                strlen($this->namespace.$this->namespaceSeparator)
             )) {
             $fileName = '';
             if (false !== ($lastNsPos = strripos($className, $this->namespaceSeparator))) {
@@ -142,16 +142,5 @@ class Loader
             $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->fileExtension;
             require $this->getFullPath($fileName);
         }
-    }
-
-    /**
-     * Returns full path for $fileName if _includePath is set, or leaves as-is for PHP's internal search in 'require'.
-     *
-     * @param  string $fileName relative to include path.
-     * @return string
-     */
-    private function getFullPath($fileName)
-    {
-        return ($this->includePath !== null ? $this->includePath . DIRECTORY_SEPARATOR : '') . $fileName;
     }
 }

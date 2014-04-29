@@ -9,7 +9,8 @@ class PermissionHelperTest extends \PHPUnit_Framework_TestCase
     protected $uid;
     protected $gid;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->uid = function_exists('posix_getuid') ? posix_getuid() : 0;
         $this->gid = function_exists('posix_getgid') ? posix_getgid() : 0;
     }
