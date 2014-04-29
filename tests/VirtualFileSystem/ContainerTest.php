@@ -280,7 +280,8 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->createFile('/file/file2');
     }
 
-    public function testDirectoryAtThrowsNonDirIfReturnedNotDir() {
+    public function testDirectoryAtThrowsNonDirIfReturnedNotDir()
+    {
         $container = new Container(new Factory());
         $container->createFile('/file');
 
@@ -289,7 +290,8 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->directoryAt('/file');
     }
 
-    public function testDirectoryAtBubblesNotFoundOnBadPath() {
+    public function testDirectoryAtBubblesNotFoundOnBadPath()
+    {
         $container = new Container(new Factory());
 
         $this->setExpectedException('VirtualFileSystem\NotFoundException');
@@ -297,7 +299,8 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->directoryAt('/dir');
     }
 
-    public function testDirectoryAtReturnsDirectory() {
+    public function testDirectoryAtReturnsDirectory()
+    {
         $container = new Container(new Factory());
         $container->createDir('/dir');
 

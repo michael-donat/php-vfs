@@ -119,7 +119,6 @@ class Wrapper
      * @param string $path
      * @param int    $mode
      * @param int    $options
-     * @param string $opened_path
      *
      * @return bool
      */
@@ -247,7 +246,6 @@ class Wrapper
      * @see http://php.net/stat
      *
      * @param string $path
-     * @param int    $flags
      *
      * @return array|bool
      */
@@ -359,7 +357,7 @@ class Wrapper
      *
      * @param string $path
      * @param int    $option
-     * @param mixed  $value
+     * @param integer  $value
      *
      * @return bool
      */
@@ -669,7 +667,6 @@ class Wrapper
      * Opens directory for iteration
      *
      * @param string $path
-     * @param int    $options
      *
      * @return bool
      */

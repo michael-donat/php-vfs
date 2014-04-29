@@ -130,7 +130,7 @@ class FileSystem
      *
      * @param string $path
      * @param bool   $recursive
-     * @param null   $mode
+     * @param integer   $mode
      *
      * @return Directory
      */

@@ -129,7 +129,7 @@ class Container
     /**
      * Returns directory at given path
      *
-     * @param $path
+     * @param string $path
      *
      * @return Structure\Directory
      *
