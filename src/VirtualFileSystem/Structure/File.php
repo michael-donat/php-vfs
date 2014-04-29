@@ -23,7 +23,7 @@ class File extends Node
      */
     const S_IFTYPE   = 0100000;
 
-    protected $data = null;
+    protected $data;
 
     /**
      * Returns contents size.

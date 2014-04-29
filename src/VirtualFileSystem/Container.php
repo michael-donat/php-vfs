@@ -136,10 +136,11 @@ class Container
      * @throws NotDirectoryException
      * @throws NotFoundException
      */
-    public function directoryAt($path) {
+    public function directoryAt($path)
+    {
         $file = $this->fileAt($path);
 
-        if(!$file instanceof Directory) {
+        if (!$file instanceof Directory) {
             throw new NotDirectoryException();
         }
 

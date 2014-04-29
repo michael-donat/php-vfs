@@ -30,8 +30,8 @@ class Loader
      * Creates a new <tt>Loader</tt> that loads classes of the
      * specified namespace.
      *
-     * @param string $namespace The namespace to use.
-     * @param null $includePath
+     * @param string $namespace   The namespace to use.
+     * @param null   $includePath
      */
     public function __construct($namespace = 'VirtualFileSystem', $includePath = null)
     {
