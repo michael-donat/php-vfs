@@ -47,7 +47,7 @@ class Root extends Directory
     /**
      * Set root scheme for use in path method.
      *
-     * @param $scheme
+     * @param string $scheme
      */
     public function setScheme($scheme)
     {
@@ -70,6 +70,7 @@ class Root extends Directory
         if (!$this->scheme) {
             throw new \RuntimeException('No scheme set');
         }
+
         return $this->scheme;
     }
 }

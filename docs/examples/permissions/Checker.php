@@ -26,8 +26,6 @@ class Checker {
 
     public function checkCache()
     {
-        $a = is_dir($this->root.'/cache');
-        $b = is_writable($this->root.'/cache');
         return is_dir($this->root.'/cache') && is_writable($this->root.'/cache');
     }
 

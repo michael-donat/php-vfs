@@ -11,7 +11,7 @@ class CheckerWithMockTest extends PHPUnit_Framework_TestCase {
 
         $this->assertFalse($checker->checkCache());
 
-        $cache = $fs->createDirectory('/cache');
+        $fs->createDirectory('/cache');
 
         chmod($fs->path('/cache'), 0000);
         $this->assertFalse($checker->checkCache());

@@ -66,19 +66,11 @@ class FileSystem
      */
     protected function registerContextOptions(Container $container)
     {
-        $default_options = stream_context_get_options(stream_context_get_default());
+        $defaultOptions = stream_context_get_options(stream_context_get_default());
         stream_context_set_default(array_merge(
-            $default_options,
+            $defaultOptions,
             array($this->scheme => array('Container' => $container))
         ));
-    }
-
-    /**
-     * There is no known (to me) way to remove default context options as of yet.
-     */
-    protected function unregisterContextOptions()
-    {
-        return;
     }
 
     /**
@@ -86,8 +78,6 @@ class FileSystem
      */
     public function __destruct()
     {
-        $this->unregisterContextOptions();
-
         stream_wrapper_unregister($this->scheme);
     }
 
@@ -128,9 +118,9 @@ class FileSystem
     /**
      * Creates and returns a directory
      *
-     * @param string $path
-     * @param bool $recursive
-     * @param null $mode
+     * @param string  $path
+     * @param bool    $recursive
+     * @param integer $mode
      *
      * @return Directory
      */

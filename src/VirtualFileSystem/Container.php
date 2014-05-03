@@ -39,7 +39,7 @@ class Container
     /**
      * @var Wrapper\PermissionHelper
      */
-    protected $permission_helper;
+    protected $permissionHelper;
 
     /**
      * Class constructor. Sets factory and root object on init.
@@ -76,7 +76,7 @@ class Container
     /**
      * Returns Root instance
      *
-     * @return Directory
+     * @return Root
      */
     public function root()
     {
@@ -89,7 +89,7 @@ class Container
      * @param string $path
      *
      * @return Structure\Node
-     * 
+     *
      * @throws NotFoundException
      */
     public function fileAt($path)
@@ -99,6 +99,9 @@ class Container
         $node = $this->root();
 
         foreach ($pathParts as $level) {
+            if ($node instanceof File) {
+                throw new NotFoundException();
+            }
             $node = $node->childAt($level);
         }
 
@@ -116,6 +119,7 @@ class Container
     {
         try {
             $this->fileAt($path);
+
             return true;
         } catch (NotFoundException $e) {
             return false;
@@ -123,10 +127,31 @@ class Container
     }
 
     /**
-     * Creates Directory at given path.
+     * Returns directory at given path
      *
      * @param string $path
-     * @param bool $recursive
+     *
+     * @return Structure\Directory
+     *
+     * @throws NotDirectoryException
+     * @throws NotFoundException
+     */
+    public function directoryAt($path)
+    {
+        $file = $this->fileAt($path);
+
+        if (!$file instanceof Directory) {
+            throw new NotDirectoryException();
+        }
+
+        return $file;
+    }
+
+    /**
+     * Creates Directory at given path.
+     *
+     * @param string       $path
+     * @param bool         $recursive
      * @param null|integer $mode
      *
      * @return Structure\Directory
@@ -139,7 +164,7 @@ class Container
         $name = basename($path);
 
         try {
-            $parent = $this->fileAt($parentPath);
+            $parent = $this->directoryAt($parentPath);
         } catch (NotFoundException $e) {
             if (!$recursive) {
                 throw new NotFoundException(sprintf('createDir: %s: No such file or directory', $parentPath));
@@ -148,6 +173,7 @@ class Container
         }
 
         $parent->addDirectory($newDirectory = $this->factory()->getDir($name));
+
         if (!is_null($mode)) {
             $newDirectory->chmod($mode);
         }
@@ -158,7 +184,7 @@ class Container
     /**
      * Creates file at given path
      *
-     * @param string $path
+     * @param string      $path
      * @param string|null $data
      *
      * @return Structure\File
@@ -167,14 +193,11 @@ class Container
      */
     public function createFile($path, $data = null)
     {
-        try {
-            $file = $this->fileAt($path);
+        if ($this->hasFileAt($path)) {
             throw new \RuntimeException(sprintf('%s already exists', $path));
-        } catch (NotFoundException $e) {
-
         }
 
-        $parent =  $this->fileAt(dirname($path));
+        $parent =  $this->directoryAt(dirname($path));
 
         $parent->addFile($newFile = $this->factory()->getFile(basename($path)));
 
@@ -189,9 +212,10 @@ class Container
      *
      * @param array $structure
      */
-    public function createStructure(array $structure, $parent = '/') {
-        foreach($structure as $key => $value) {
-            if(is_array($value)) {
+    public function createStructure(array $structure, $parent = '/')
+    {
+        foreach ($structure as $key => $value) {
+            if (is_array($value)) {
                 $this->createDir($parent.$key);
                 $this->createStructure($value, $parent.$key.'/');
             } else {
@@ -203,25 +227,29 @@ class Container
     /**
      * Moves Node from source to destination
      *
-     * @param string $from
-     * @param string $to
+     * @param  string            $fromPath
+     * @param  string            $toPath
      * @return bool
      * @throws \RuntimeException
      */
-    public function move($from, $to)
+    public function move($fromPath, $toPath)
     {
-        $fromNode = $this->fileAt($from);
-        $toNode = $this->fileAt(dirname($to));
-        $newNodeName = basename($to);
+        $fromNode = $this->fileAt($fromPath);
+        $toNode = $this->fileAt(dirname($toPath));
+        $newNodeName = basename($toPath);
 
         try {
-            $nodeAtToPath = $this->fileAt($to);
+            $nodeAtToPath = $this->fileAt($toPath);
             if ($nodeAtToPath instanceof Directory) {
-                $newNodeName = basename($from);
+                $newNodeName = basename($fromPath);
                 $toNode = $nodeAtToPath;
             }
         } catch (NotFoundException $e) {
             $nodeAtToPath = null;
+        }
+
+        if (!$toNode instanceof Directory) {
+            throw new NotDirectoryException('Destination not a directory');
         }
 
         $fromNode->setBasename($newNodeName);
@@ -239,7 +267,7 @@ class Container
             $toNode->addDirectory($fromNode);
         }
 
-        $this->remove($from, true);
+        $this->remove($fromPath, true);
 
         return true;
     }
@@ -248,7 +276,7 @@ class Container
      * Removes node at $path
      *
      * @param string $path
-     * @param bool $recursive
+     * @param bool   $recursive
      *
      * @throws \RuntimeException
      */
@@ -260,7 +288,7 @@ class Container
             throw new \RuntimeException('Won\'t non-recursively remove directory');
         }
 
-        $this->fileAt(dirname($path))->remove(basename($path));
+        $this->directoryAt(dirname($path))->remove(basename($path));
     }
 
     /**
@@ -272,16 +300,16 @@ class Container
      */
     public function getPermissionHelper(Structure\Node $node)
     {
-        return $this->permission_helper->setNode($node);
+        return $this->permissionHelper->setNode($node);
     }
 
     /**
      * Sets permission helper instance
      *
-     * @param \VirtualFileSystem\Wrapper\PermissionHelper $permission_helper
+     * @param \VirtualFileSystem\Wrapper\PermissionHelper $permissionHelper
      */
-    public function setPermissionHelper($permission_helper)
+    public function setPermissionHelper($permissionHelper)
     {
-        $this->permission_helper = $permission_helper;
+        $this->permissionHelper = $permissionHelper;
     }
 }

@@ -212,6 +212,18 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testMovingFileOntoInvalidPathWithFileParentThrows()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file1');
+        $container->createFile('/file2', 'file2');
+
+        $this->setExpectedException('VirtualFileSystem\NotDirectoryException', 'Destination not a directory');
+
+        $container->move('/file1', '/file2/file1');
+
+    }
+
     public function testRemoveDeletesNodeFromParent()
     {
         $container = new Container(new Factory());
@@ -236,5 +248,62 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('\RuntimeException', 'Won\'t non-recursively remove directory');
 
         $container->remove('/dir');
+    }
+
+    public function testCreatingDirectoryOnPathThrowsWhenParentIsAFile()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $this->setExpectedException('VirtualFileSystem\NotDirectoryException');
+
+        $container->createDir('/file/dir');
+    }
+
+    public function testFileAtThrowsWhenFileOnParentPath()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $this->setExpectedException('VirtualFileSystem\NotFoundException');
+
+        $container->fileAt('/file/file2');
+    }
+
+    public function testCreateFileThrowsNonDirWhenParentNotDirectory()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $this->setExpectedException('VirtualFileSystem\NotDirectoryException');
+
+        $container->createFile('/file/file2');
+    }
+
+    public function testDirectoryAtThrowsNonDirIfReturnedNotDir()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+
+        $this->setExpectedException('VirtualFileSystem\NotDirectoryException');
+
+        $container->directoryAt('/file');
+    }
+
+    public function testDirectoryAtBubblesNotFoundOnBadPath()
+    {
+        $container = new Container(new Factory());
+
+        $this->setExpectedException('VirtualFileSystem\NotFoundException');
+
+        $container->directoryAt('/dir');
+    }
+
+    public function testDirectoryAtReturnsDirectory()
+    {
+        $container = new Container(new Factory());
+        $container->createDir('/dir');
+
+        $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $container->directoryAt('/dir'));
     }
 }

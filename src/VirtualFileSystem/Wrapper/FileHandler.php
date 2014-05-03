@@ -61,6 +61,7 @@ class FileHandler
         $this->offsetPosition($written);
         $this->file->setModificationTime(time());
         $this->file->setChangeTime(time());
+
         return $written;
     }
 
@@ -132,18 +133,19 @@ class FileHandler
     /**
      * Removed all data from file and sets pointer to 0
      *
-     * @param int $new_size
+     * @param int $newSize
      *
      * @return void
      */
-    public function truncate($new_size = 0)
+    public function truncate($newSize = 0)
     {
         $this->position(0);
-        $newData = substr($this->file->data(), 0, $new_size);
+        $newData = substr($this->file->data(), 0, $newSize);
         $newData = false === $newData ? '' : $newData;
         $this->file->setData($newData);
         $this->file->setModificationTime(time());
         $this->file->setChangeTime(time());
+
         return;
     }
 
@@ -175,7 +177,7 @@ class FileHandler
      */
     public function isOpenedForWriting()
     {
-        return (bool)($this->mode & self::WRITE_MODE);
+        return (bool) ($this->mode & self::WRITE_MODE);
     }
 
     /**
@@ -185,6 +187,6 @@ class FileHandler
      */
     public function isOpenedForReading()
     {
-        return (bool)($this->mode & self::READ_MODE);
+        return (bool) ($this->mode & self::READ_MODE);
     }
 }
