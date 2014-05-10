@@ -159,7 +159,9 @@ While using low level API for interaction with php-vfs is at its core, a much ea
 There are generally 2 methods you should always use when mocking up the state:
 
 - ```\VirtualFileSystem\FileSystem::createDirectory($path, $recursive, $mode)``` used to mock directory;
-- ```\VirtualFileSystem\FileSystem::createFIle($path, $data)``` used to mock file and its contents.
+- ```\VirtualFileSystem\FileSystem::createFile($path, $data)``` used to mock file and its contents.
+- ```\VirtualFileSystem\FileSystem::createLink($linkPath, $targetPath)``` used to mock symlink.
+- ```\VirtualFileSystem\FileSystem::createStructure(array $structure)``` used to mock filesystem from array.
 
 Combining above 2 should allow you to recreate any directory/file structure.
 
@@ -172,18 +174,6 @@ php-vfs tries to mimic unix filesystem as much as possible. The same conditions 
 
 Most of [PHP filesystem functions](http://www.php.net/manual/en/ref.filesystem.php) are happily supported by php-vfs as long as the full file URL is passed as argument (using ```$fs->path()```). If you find something not working and not listed below please rise an issue on [github issues page](https://github.com/thornag/php-vfs/issues).
 
-**Supported**
-
-- fopen modes
-- setting permissions and ownership
-- directory iteration
-- file access/modification/change times
-- file/directory permissions when opening for reading/writing
-
-**Currently unsupported**
-
-- permission/ownership checks for touch (roadmap for 1.0.1)
-
 **Known pitfalls**
 
 streamWrapper implementations like php-vfs will not work with glob methods for directory iteration - you need to use ```DirectoryIterator``` or ```readdir()``` instead.
@@ -194,3 +184,14 @@ Contributing
 Any contributions are more than welcome. Please make sure that you keep to [PSR-2](http://www.php-fig.org/psr/psr-2/) standards and provide tested code.
 
 You are more than welcome to add yourself to CONTRIBUTORS.md.
+
+Changes in 1.1.0
+----------------
+
+For full diff of changes please go to https://github.com/thornag/php-vfs/compare/v1.0.0...1.1.x
+
+- added support for symlinks
+- fixed Windows compatibility issues
+- provided method to recreate dir/file structure from array [createStructure method]
+- added permission support where it was previously not available (touch etc)
+
