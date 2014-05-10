@@ -156,14 +156,14 @@ API
 
 While using low level API for interaction with php-vfs is at its core, a much easier approach is to mock filesystem using provided interface.
 
-There are generally 2 methods you should always use when mocking up the state:
+There are generally 4 methods you should always use when mocking up the state:
 
 - ```\VirtualFileSystem\FileSystem::createDirectory($path, $recursive, $mode)``` used to mock directory;
 - ```\VirtualFileSystem\FileSystem::createFile($path, $data)``` used to mock file and its contents.
 - ```\VirtualFileSystem\FileSystem::createLink($linkPath, $targetPath)``` used to mock symlink.
 - ```\VirtualFileSystem\FileSystem::createStructure(array $structure)``` used to mock filesystem from array.
 
-Combining above 2 should allow you to recreate any directory/file structure.
+Combining above should allow you to recreate any directory/file structure.
 
 Full API documentation is available [here](http://thornag.github.io/php-vfs/api/master).
 
