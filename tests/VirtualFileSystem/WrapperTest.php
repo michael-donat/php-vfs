@@ -4,13 +4,15 @@ namespace VirtualFileSystem;
 
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
+use VirtualFileSystem\Structure\Link;
 
 class WrapperTest extends \PHPUnit_Framework_TestCase
 {
     protected $uid;
     protected $gid;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->uid = function_exists('posix_getuid') ? posix_getuid() : 0;
         $this->gid = function_exists('posix_getgid') ? posix_getgid() : 0;
 
@@ -65,6 +67,15 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_dir($fs->path('/dir/dir')));
         $this->assertTrue(is_dir($fs->path('/')));
 
+    }
+
+    public function testIsLink()
+    {
+        $fs = new FileSystem();
+        $fs->root()->addDirectory($d = new Directory('dir'));
+        $d->addLink(new Link('link', $d));
+
+        $this->assertTrue(is_link($fs->path('/dir/link')));
     }
 
     public function testIsFile()
@@ -1208,6 +1219,120 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
             $wr->stream_metadata($fs->path('/file'), STREAM_META_TOUCH, 0),
             'Allowed to touch if not owner but with write permission'
         );
+    }
+
+    public function testLchown()
+    {
+        if ($this->uid == 0) {
+            $this->markTestSkipped(
+                'No point testing if user is already root. \Php unit shouldn\'t be run as root user. (Unless you are a windows user!)'
+            );
+        }
+
+        $fs = new FileSystem();
+        $directory = $fs->createDirectory('/dir');
+        $link = new Link('link', $directory);
+        $directory->addLink($link);
+
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
+
+        lchown($fs->path('/dir/link'), 'root');
+        $this->assertEquals('root', posix_getpwuid(fileowner($fs->path('/dir/link')))['name']);
+
+    }
+
+    public function testLchgrp()
+    {
+        if ($this->uid == 0) {
+            $this->markTestSkipped(
+                'No point testing if group is already root. Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
+            );
+        }
+
+        $fs = new FileSystem();
+        $directory = $fs->createDirectory('/dir');
+        $link = new Link('link', $directory);
+        $directory->addLink($link);
+
+        $fs->container()->setPermissionHelper(new Wrapper\PermissionHelper(0, 0)); //forcing user to root
+
+        //lets workout available group
+        //this is needed to find string name of group root belongs to
+        $group = posix_getgrgid(posix_getpwuid(0)['gid'])['name'];
+
+        chgrp($fs->path('/dir/link'), $group);
+
+        $this->assertEquals($group, posix_getgrgid(filegroup($fs->path('/dir/link')))['name']);
+    }
+
+    public function testFileCopy()
+    {
+        $fs = new FileSystem();
+        $fs->createFile('/file', 'data');
+
+        copy($fs->path('/file'), $fs->path('/file2'));
+
+        $this->assertTrue(file_exists($fs->path('/file2')));
+
+        $this->assertEquals('data', $fs->container()->fileAt('/file2')->data());
+
+    }
+
+    public function testLinkCopyCreatesHardCopyOfFile()
+    {
+
+        $fs = new FileSystem();
+        $fs->createFile('/file', 'data');
+        $fs->createLink('/link', '/file');
+
+        copy($fs->path('/link'), $fs->path('/file2'));
+
+        $this->assertTrue(file_exists($fs->path('/file2')));
+        $this->assertEquals('data', $fs->container()->fileAt('/file2')->data());
+
+    }
+
+    public function testLinkReading()
+    {
+
+        $fs = new FileSystem();
+        $fs->createFile('/file', 'data');
+        $fs->createLink('/link', '/file');
+
+        $this->assertEquals('data', file_get_contents($fs->path('/link')));
+    }
+
+    public function tetsLinkWriting()
+    {
+
+        $fs = new FileSystem();
+        $fs->createFile('/file', 'ubots!');
+        $fs->createLink('/link', '/file');
+
+        file_put_contents($fs->path('/link'), 'data');
+
+        $this->assertEquals('data', file_get_contents($fs->path('/link')));
+
+    }
+
+    public function testChmodViaLink()
+    {
+        $fs = new FileSystem();
+        $name = $fs->path($fs->createFile('/file')->path());
+        $link = $fs->path($fs->createLink('/link', '/file')->path());
+
+        chmod($link, 0000);
+
+        $this->assertFalse(is_readable($name));
+        $this->assertFalse(is_writable($name));
+        $this->assertFalse(is_executable($name));
+
+        chmod($link, 0700);
+
+        $this->assertTrue(is_readable($name));
+        $this->assertTrue(is_writable($name));
+        $this->assertTrue(is_executable($name));
+
     }
 
     public function testIsExecutableReturnsCorrectly()

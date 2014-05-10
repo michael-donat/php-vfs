@@ -70,6 +70,7 @@ class Root extends Directory
         if (!$this->scheme) {
             throw new \RuntimeException('No scheme set');
         }
+
         return $this->scheme;
     }
 }

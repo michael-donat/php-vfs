@@ -2,7 +2,6 @@
 
 namespace VirtualFileSystem\Wrapper;
 
-
 use VirtualFileSystem\Structure\Node;
 
 class PermissionHelper
@@ -41,7 +40,7 @@ class PermissionHelper
      */
     public function userIsOwner()
     {
-        return (bool)($this->userid == $this->node->user());
+        return (bool) ($this->userid == $this->node->user());
     }
 
     /**
@@ -71,7 +70,7 @@ class PermissionHelper
      */
     public function groupIsOwner()
     {
-        return (bool)($this->groupid == $this->node->group());
+        return (bool) ($this->groupid == $this->node->group());
     }
 
     /**
@@ -101,7 +100,7 @@ class PermissionHelper
      */
     public function worldCanRead()
     {
-        return (bool)($this->node->mode() & self::MODE_WORLD_READ);
+        return (bool) ($this->node->mode() & self::MODE_WORLD_READ);
     }
 
     /**
@@ -111,7 +110,7 @@ class PermissionHelper
      */
     public function worldCanWrite()
     {
-        return (bool)($this->node->mode() & self::MODE_WORLD_WRITE);
+        return (bool) ($this->node->mode() & self::MODE_WORLD_WRITE);
     }
 
     /**
@@ -152,6 +151,7 @@ class PermissionHelper
     public function setNode($node)
     {
         $this->node = $node;
+
         return $this;
     }
 }

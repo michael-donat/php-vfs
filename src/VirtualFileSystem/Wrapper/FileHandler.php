@@ -61,6 +61,7 @@ class FileHandler
         $this->offsetPosition($written);
         $this->file->setModificationTime(time());
         $this->file->setChangeTime(time());
+
         return $written;
     }
 
@@ -144,6 +145,7 @@ class FileHandler
         $this->file->setData($newData);
         $this->file->setModificationTime(time());
         $this->file->setChangeTime(time());
+
         return;
     }
 
@@ -175,7 +177,7 @@ class FileHandler
      */
     public function isOpenedForWriting()
     {
-        return (bool)($this->mode & self::WRITE_MODE);
+        return (bool) ($this->mode & self::WRITE_MODE);
     }
 
     /**
@@ -185,6 +187,6 @@ class FileHandler
      */
     public function isOpenedForReading()
     {
-        return (bool)($this->mode & self::READ_MODE);
+        return (bool) ($this->mode & self::READ_MODE);
     }
 }

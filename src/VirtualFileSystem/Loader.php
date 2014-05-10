@@ -119,7 +119,7 @@ class Loader
     /**
      * Loads the given class or interface.
      *
-     * @param string $className The name of the class to load.
+     * @param  string $className The name of the class to load.
      * @return void
      */
     public function loadClass($className)
@@ -141,7 +141,7 @@ class Loader
     /**
      * Returns full path for $fileName if _includePath is set, or leaves as-is for PHP's internal search in 'require'.
      *
-     * @param string $fileName relative to include path.
+     * @param  string $fileName relative to include path.
      * @return string
      */
     private function getFullPath($fileName)

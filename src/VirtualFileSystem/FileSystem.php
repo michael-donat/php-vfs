@@ -13,6 +13,7 @@ namespace VirtualFileSystem;
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Root;
+use VirtualFileSystem\Structure\Link;
 
 /**
  * Main 'access' class to vfs implementation. It will register new stream wrapper on instantiation.
@@ -129,8 +130,8 @@ class FileSystem
      * Creates and returns a directory
      *
      * @param string $path
-     * @param bool $recursive
-     * @param null $mode
+     * @param bool   $recursive
+     * @param null   $mode
      *
      * @return Directory
      */
@@ -160,5 +161,18 @@ class FileSystem
     public function createStructure(array $structure)
     {
         $this->container()->createStructure($structure);
+    }
+
+    /**
+     * Creates and returns a link
+     *
+     * @param string $path
+     * @param $destinationPath
+     *
+     * @return Link
+     */
+    public function createLink($path, $destinationPath)
+    {
+        return $this->container()->createLink($path, $destinationPath);
     }
 }

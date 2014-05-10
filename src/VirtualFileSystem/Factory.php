@@ -14,6 +14,7 @@ use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\Node;
 use VirtualFileSystem\Structure\Root;
 use VirtualFileSystem\Structure\File;
+use VirtualFileSystem\Structure\Link;
 
 /**
  * Factory class to encapsulate object creation.
@@ -59,13 +60,14 @@ class Factory
     {
         $this->updateFileTimes($node);
         $this->updateOwnership($node);
+
         return $node;
     }
 
     /**
      * Update file a/c/m times
      *
-     * @param Node $node
+     * @param  Node $node
      * @return Node
      */
     public function updateFileTimes(Node $node)
@@ -115,5 +117,18 @@ class Factory
     public function getFile($basename)
     {
         return $this->updateMetadata(new File($basename));
+    }
+
+    /**
+     * Creates Link object.
+     *
+     * @param string         $basename
+     * @param Structure\Node $destination
+     *
+     * @return Link
+     */
+    public function getLink($basename, Node $destination)
+    {
+        return $this->updateMetadata(new Link($basename, $destination));
     }
 }
