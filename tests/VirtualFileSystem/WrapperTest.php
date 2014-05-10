@@ -11,7 +11,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     protected $uid;
     protected $gid;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->uid = function_exists('posix_getuid') ? posix_getuid() : 0;
         $this->gid = function_exists('posix_getgid') ? posix_getgid() : 0;
 
@@ -1220,8 +1221,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testLchown() {
-
+    public function testLchown()
+    {
         if ($this->uid == 0) {
             $this->markTestSkipped(
                 'No point testing if user is already root. \Php unit shouldn\'t be run as root user. (Unless you are a windows user!)'
@@ -1264,8 +1265,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($group, posix_getgrgid(filegroup($fs->path('/dir/link')))['name']);
     }
 
-    public function testFileCopy() {
-
+    public function testFileCopy()
+    {
         $fs = new FileSystem();
         $fs->createFile('/file', 'data');
 
@@ -1277,7 +1278,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testLinkCopyCreatesHardCopyOfFile() {
+    public function testLinkCopyCreatesHardCopyOfFile()
+    {
 
         $fs = new FileSystem();
         $fs->createFile('/file', 'data');
@@ -1290,7 +1292,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testLinkReading() {
+    public function testLinkReading()
+    {
 
         $fs = new FileSystem();
         $fs->createFile('/file', 'data');
@@ -1299,7 +1302,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('data', file_get_contents($fs->path('/link')));
     }
 
-    public function tetsLinkWriting() {
+    public function tetsLinkWriting()
+    {
 
         $fs = new FileSystem();
         $fs->createFile('/file', 'ubots!');
@@ -1308,6 +1312,26 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         file_put_contents($fs->path('/link'), 'data');
 
         $this->assertEquals('data', file_get_contents($fs->path('/link')));
+
+    }
+
+    public function testChmodViaLink()
+    {
+        $fs = new FileSystem();
+        $name = $fs->path($fs->createFile('/file')->path());
+        $link = $fs->path($fs->createLink('/link', '/file')->path());
+
+        chmod($link, 0000);
+
+        $this->assertFalse(is_readable($name));
+        $this->assertFalse(is_writable($name));
+        $this->assertFalse(is_executable($name));
+
+        chmod($link, 0700);
+
+        $this->assertTrue(is_readable($name));
+        $this->assertTrue(is_writable($name));
+        $this->assertTrue(is_executable($name));
 
     }
 

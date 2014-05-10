@@ -1,8 +1,7 @@
 <?php
 
-
-class Checker {
-
+class Checker
+{
     protected $root;
 
     public function __construct($root)
@@ -25,6 +24,7 @@ class Checker {
     {
         $a = is_dir($this->root.'/cache');
         $b = is_writable($this->root.'/cache');
+
         return is_dir($this->root.'/cache') && is_writable($this->root.'/cache');
     }
 
@@ -43,4 +43,4 @@ class Checker {
         return !file_exists($this->root.'/lib');
     }
 
-} 
+}
