@@ -64,6 +64,16 @@ class Directory extends Node
     }
 
     /**
+     * Adds child Link.
+     *
+     * @param Link $link
+     */
+    public function addLink(Link $link)
+    {
+        $this->addNode($link);
+    }
+
+    /**
      * Adds child Node.
      *
      * @param Node $node

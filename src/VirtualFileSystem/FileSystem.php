@@ -161,4 +161,17 @@ class FileSystem
     {
         $this->container()->createStructure($structure);
     }
+
+    /**
+     * Creates and returns a link
+     *
+     * @param string $path
+     * @param $destinationPath
+     *
+     * @return Link
+     */
+    public function createLink($path, $destinationPath)
+    {
+        return $this->container()->createLink($path, $destinationPath);
+    }
 }
