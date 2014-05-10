@@ -156,6 +156,35 @@ class Container
     }
 
     /**
+     * Creates link at given path
+     *
+     * @param string $path
+     * @param $destination
+     *
+     * @return Structure\File
+     *
+     */
+    public function createLink($path, $destination)
+    {
+
+        $destination = $this->fileAt($destination);
+
+        try {
+            $file = $this->fileAt($path);
+            throw new \RuntimeException(sprintf('%s already exists', $path));
+        } catch (NotFoundException $e) {
+
+        }
+
+        $parent =  $this->fileAt(dirname($path));
+
+        $parent->addLink($newLink = $this->factory()->getLink(basename($path), $destination));
+
+        return $newLink;
+
+    }
+
+    /**
      * Creates file at given path
      *
      * @param string $path
