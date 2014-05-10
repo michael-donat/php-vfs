@@ -13,6 +13,7 @@ namespace VirtualFileSystem;
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Root;
+use VirtualFileSystem\Structure\Link;
 
 /**
  * Main 'access' class to vfs implementation. It will register new stream wrapper on instantiation.
@@ -129,8 +130,8 @@ class FileSystem
      * Creates and returns a directory
      *
      * @param string $path
-     * @param bool $recursive
-     * @param null $mode
+     * @param bool   $recursive
+     * @param null   $mode
      *
      * @return Directory
      */

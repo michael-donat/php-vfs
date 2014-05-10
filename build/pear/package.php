@@ -74,7 +74,7 @@ class PackageXML
     protected function getInstallListing($directory, $cut, $parentNode)
     {
         $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS));
-        foreach($objects as $name => $object){
+        foreach ($objects as $name => $object) {
             $file = ltrim(str_replace($cut, '', $name), '/');
             $as = ltrim(str_replace($directory, '', $name), '/');
             $parentNode->appendChild($node = new DOMElement('install'));

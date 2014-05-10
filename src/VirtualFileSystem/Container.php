@@ -10,7 +10,6 @@
 
 namespace VirtualFileSystem;
 
-use Symfony\Component\Config\Definition\Exception\Exception;
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Root;
@@ -90,7 +89,7 @@ class Container
      * @param string $path
      *
      * @return Structure\Node
-     * 
+     *
      * @throws NotFoundException
      */
     public function fileAt($path)
@@ -117,6 +116,7 @@ class Container
     {
         try {
             $this->fileAt($path);
+
             return true;
         } catch (NotFoundException $e) {
             return false;
@@ -127,8 +127,8 @@ class Container
      * Creates Directory at given path.
      *
      * @param string $path
-     * @param bool $recursive
-     * @param null $mode
+     * @param bool   $recursive
+     * @param null   $mode
      *
      * @return Structure\Directory
      *
@@ -189,7 +189,7 @@ class Container
      * Creates file at given path
      *
      * @param string $path
-     * @param null $data
+     * @param null   $data
      *
      * @return Structure\File
      *
@@ -219,9 +219,10 @@ class Container
      *
      * @param array $structure
      */
-    public function createStructure(array $structure, $parent = '/') {
-        foreach($structure as $key => $value) {
-            if(is_array($value)) {
+    public function createStructure(array $structure, $parent = '/')
+    {
+        foreach ($structure as $key => $value) {
+            if (is_array($value)) {
                 $this->createDir($parent.$key);
                 $this->createStructure($value, $parent.$key.'/');
             } else {
@@ -233,8 +234,8 @@ class Container
     /**
      * Moves Node from source to destination
      *
-     * @param string $from
-     * @param string $to
+     * @param  string            $from
+     * @param  string            $to
      * @return bool
      * @throws \RuntimeException
      */
@@ -278,7 +279,7 @@ class Container
      * Removes node at $path
      *
      * @param string $path
-     * @param bool $recursive
+     * @param bool   $recursive
      *
      * @throws \RuntimeException
      */

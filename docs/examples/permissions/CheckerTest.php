@@ -2,8 +2,8 @@
 
 require_once 'Checker.php';
 
-class CheckerWithMockTest extends PHPUnit_Framework_TestCase {
-
+class CheckerWithMockTest extends PHPUnit_Framework_TestCase
+{
     public function testCheckingForCacheReturnsWritableState()
     {
         $fs = new \VirtualFileSystem\FileSystem();
@@ -22,9 +22,8 @@ class CheckerWithMockTest extends PHPUnit_Framework_TestCase {
     }
 }
 
-
-class CheckerTest extends PHPUnit_Framework_TestCase {
-
+class CheckerTest extends PHPUnit_Framework_TestCase
+{
     public function testCheckingForCacheReturnsWritableState()
     {
         mkdir($root = '/tmp/'.uniqid());
