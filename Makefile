@@ -6,8 +6,11 @@ cs:
 md:
 	phpmd src/
 
+test:
+	vendor/bin/phpunit
+
 cov:
-	phpunit --coverage-html=build/log/coverage
+	vendor/bin/phpunit --coverage-html=build/log/coverage
 	open build/log/coverage/index.html
 
 pear:
