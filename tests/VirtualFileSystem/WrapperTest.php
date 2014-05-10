@@ -1209,4 +1209,18 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
             'Allowed to touch if not owner but with write permission'
         );
     }
+
+    public function testIsExecutableReturnsCorrectly()
+    {
+        $fs = new FileSystem();
+        $file = $fs->createFile('/file');
+
+        chmod($fs->path('/file'), 0000);
+
+        $this->assertFalse(is_executable($fs->path('/file')));
+
+        chmod($fs->path('/file'), 0777);
+
+        $this->assertTrue(is_executable($fs->path('/file')));
+    }
 }
