@@ -237,4 +237,27 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $container->remove('/dir');
     }
+
+    public function testLinkCreation()
+    {
+        $container = new Container(new Factory());
+        $container->createFile('/file');
+        $container->createLink('/link', '/file');
+
+        $this->assertInstanceOf('\VirtualFileSystem\Structure\Link', $container->fileAt('/link'));
+
+    }
+
+    public function testLinkCreationThrowsWhenTryingToOverride()
+    {
+        $container = new Container(new Factory());
+
+        $container->createFile('/file');
+        $container->createLink('/link', '/file');
+
+        $this->setExpectedException('\RuntimeException');
+
+        $container->createLink('/link', '/file');
+
+    }
 }

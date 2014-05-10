@@ -12,6 +12,7 @@ namespace VirtualFileSystem;
 
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
+use VirtualFileSystem\Structure\Link;
 use VirtualFileSystem\Structure\Root;
 use VirtualFileSystem\Wrapper\FileHandler;
 use VirtualFileSystem\Wrapper\DirectoryHandler;
@@ -159,6 +160,10 @@ class Wrapper
         }
 
         $file = $container->fileAt($path);
+
+        if($file instanceof Link) {
+            $file = $file->getDestination();
+        }
 
         if (($extended || $writeMode || $appendMode) && $file instanceof Directory) {
             if ($options & STREAM_REPORT_ERRORS) {
