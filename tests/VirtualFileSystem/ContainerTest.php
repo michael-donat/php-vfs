@@ -159,34 +159,6 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($container->hasFileAt('/dir2/dirMoved/file'), 'Directory child of type File moved');
     }
 
-    public function testMovingOntoDirectoryMovesIntoThatDirectory()
-    {
-        $container = new Container(new Factory());
-        $container->root()->addDirectory($dir = new Directory('dir1'));
-        $container->root()->addDirectory(new Directory('dir2'));
-        $dir->addDirectory(new Directory('dir11'));
-        $dir->addDirectory(new Directory('dir12'));
-        $dir->addFile(new File('file'));
-
-        $container->move('/dir1', '/dir2');
-
-        $this->assertTrue($container->hasFileAt('/dir2'), 'Other parent directories not moved');
-        $this->assertTrue($container->hasFileAt('/dir2/dir1'), 'Directory moved to new location');
-        $this->assertFalse($container->hasFileAt('/dir1'), 'Directory does not exist at old location');
-        $this->assertTrue($container->hasFileAt('/dir2/dir1/dir11'), 'Directory child of type Dir moved');
-        $this->assertTrue($container->hasFileAt('/dir2/dir1/file'), 'Directory child of type File moved');
-        $this->assertEquals('/dir2/dir1', $dir->path(), 'Moved dir has correct ancestors.');
-
-        $container->move('/dir2/dir1/file', '/dir2/');
-
-        $this->assertTrue($container->hasFileAt('/dir2/file'));
-
-        $container->move('/dir2/file', '/');
-
-        $this->assertTrue($container->hasFileAt('/file'));
-
-    }
-
     public function testMovingFileOntoExistingFileOverridesTarget()
     {
         $container = new Container(new Factory());
@@ -200,15 +172,52 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('file1', $container->fileAt('/file2')->data());
     }
 
+    public function testMovingDirectoryOntoExistingDirectoryOverridesTarget()
+    {
+        $container = new Container(new Factory());
+        $container->createDir('/dir1');
+        $container->createDir('/dir2');
+
+        $container->move('/dir1', '/dir2');
+
+        $this->assertTrue($container->hasFileAt('/dir2'));
+        $this->assertFalse($container->hasFileAt('/dir1'));
+    }
+
+    public function testMovingNonEmptyDirectoryOntoExistingDirectoryFails()
+    {
+        $container = new Container(new Factory());
+        $container->createDir('/dir1');
+        $container->createDir('/dir2');
+        $container->createFile('/dir2/file1', 'file');
+
+        $this->setExpectedException('\RuntimeException', 'Can\'t override non empty directory.');
+
+        $container->move('/dir1', '/dir2');
+
+    }
+
     public function testMovingDirectoryOntoExistingFileThrows()
     {
         $container = new Container(new Factory());
         $container->createDir('/dir1');
         $container->createFile('/file2', 'file2');
 
-        $this->setExpectedException('\RuntimeException', 'Can\'t move directory onto a file');
+        $this->setExpectedException('\RuntimeException', 'Can\'t move.');
 
         $container->move('/dir1', '/file2');
+
+    }
+
+    public function testMovingFileOntoExistingDirectoryThrows()
+    {
+        $container = new Container(new Factory());
+        $container->createDir('/dir1');
+        $container->createFile('/file2', 'file2');
+
+        $this->setExpectedException('\RuntimeException', 'Can\'t move.');
+
+        $container->move('/file2', '/dir1');
 
     }
 

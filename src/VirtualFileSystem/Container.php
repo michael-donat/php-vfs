@@ -212,32 +212,36 @@ class Container
     public function move($from, $to)
     {
         $fromNode = $this->fileAt($from);
-        $toNode = $this->fileAt(dirname($to));
-        $newNodeName = basename($to);
 
         try {
-            $nodeAtToPath = $this->fileAt($to);
-            if ($nodeAtToPath instanceof Directory) {
-                $newNodeName = basename($from);
-                $toNode = $nodeAtToPath;
+            $nodeToOverride = $this->fileAt($to);
+
+            if(!is_a($nodeToOverride, get_class($fromNode))) {
+                //nodes of a different type
+                throw new \RuntimeException('Can\'t move.');
             }
+
+            if($nodeToOverride instanceof Directory) {
+                if($nodeToOverride->size()) {
+                    //nodes of a different type
+                    throw new \RuntimeException('Can\'t override non empty directory.');
+                }
+            }
+
+            $this->remove($to, true);
+
         } catch (NotFoundException $e) {
-            $nodeAtToPath = null;
+
         }
 
-        $fromNode->setBasename($newNodeName);
+        $toParent = $this->fileAt(dirname($to));
 
-        if ($nodeAtToPath instanceof File) {
-            if (!$fromNode instanceof File) {
-                throw new \RuntimeException('Can\'t move directory onto a file');
-            }
-            $toNode->remove($nodeAtToPath->basename());
-        }
+        $fromNode->setBasename(basename($to));
 
         if ($fromNode instanceof File) {
-            $toNode->addFile($fromNode);
+            $toParent->addFile($fromNode);
         } else {
-            $toNode->addDirectory($fromNode);
+            $toParent->addDirectory($fromNode);
         }
 
         $this->remove($from, true);
