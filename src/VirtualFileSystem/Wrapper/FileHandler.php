@@ -91,7 +91,7 @@ class FileHandler
     /**
      * Returns current pointer position.
      *
-     * @param null $position
+     * @param integer $position
      *
      * @return int
      */
@@ -133,14 +133,14 @@ class FileHandler
     /**
      * Removed all data from file and sets pointer to 0
      *
-     * @param int $new_size
+     * @param int $newSize
      *
      * @return void
      */
-    public function truncate($new_size = 0)
+    public function truncate($newSize = 0)
     {
         $this->position(0);
-        $newData = substr($this->file->data(), 0, $new_size);
+        $newData = substr($this->file->data(), 0, $newSize);
         $newData = false === $newData ? '' : $newData;
         $this->file->setData($newData);
         $this->file->setModificationTime(time());

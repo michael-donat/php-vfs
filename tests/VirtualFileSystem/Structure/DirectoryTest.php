@@ -8,7 +8,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('\InvalidArgumentException');
 
-        $root = new Directory('/');
+        new Directory('/');
     }
 
     public function testBasename()

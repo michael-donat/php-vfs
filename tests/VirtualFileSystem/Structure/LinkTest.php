@@ -15,7 +15,7 @@ class LinkTest extends \PHPUnit_Framework_TestCase
 
         $dir = new Directory('/d');
 
-        $link = new Link('link', $dir);
+        new Link('link', $dir);
 
         $this->assertEquals($dir->size(), $dir->size());
 

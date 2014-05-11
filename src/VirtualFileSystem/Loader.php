@@ -21,21 +21,22 @@ namespace VirtualFileSystem;
 
 class Loader
 {
-    private $_fileExtension = '.php';
-    private $_namespace;
-    private $_includePath;
-    private $_namespaceSeparator = '\\';
+    private $fileExtension = '.php';
+    private $namespace;
+    private $includePath;
+    private $namespaceSeparator = '\\';
 
     /**
      * Creates a new <tt>Loader</tt> that loads classes of the
      * specified namespace.
      *
-     * @param string $ns The namespace to use.
+     * @param string $namespace   The namespace to use.
+     * @param null   $includePath
      */
-    public function __construct($ns = 'VirtualFileSystem', $includePath = null)
+    public function __construct($namespace = 'VirtualFileSystem', $includePath = null)
     {
-        $this->_namespace = $ns;
-        $this->_includePath = $includePath;
+        $this->namespace = $namespace;
+        $this->includePath = $includePath;
     }
 
     /**
@@ -45,17 +46,17 @@ class Loader
      */
     public function setNamespaceSeparator($sep)
     {
-        $this->_namespaceSeparator = $sep;
+        $this->namespaceSeparator = $sep;
     }
 
     /**
      * Gets the namespace seperator used by classes in the namespace of this class loader.
      *
-     * @return void
+     * @return string
      */
     public function getNamespaceSeparator()
     {
-        return $this->_namespaceSeparator;
+        return $this->namespaceSeparator;
     }
 
     /**
@@ -65,7 +66,7 @@ class Loader
      */
     public function setIncludePath($includePath)
     {
-        $this->_includePath = $includePath;
+        $this->includePath = $includePath;
     }
 
     /**
@@ -75,7 +76,7 @@ class Loader
      */
     public function getIncludePath()
     {
-        return $this->_includePath;
+        return $this->includePath;
     }
 
     /**
@@ -85,7 +86,7 @@ class Loader
      */
     public function setFileExtension($fileExtension)
     {
-        $this->_fileExtension = $fileExtension;
+        $this->fileExtension = $fileExtension;
     }
 
     /**
@@ -95,7 +96,7 @@ class Loader
      */
     public function getFileExtension()
     {
-        return $this->_fileExtension;
+        return $this->fileExtension;
     }
 
     /**
@@ -124,28 +125,22 @@ class Loader
      */
     public function loadClass($className)
     {
-        if (null === $this->_namespace
-            || $this->_namespace.$this->_namespaceSeparator === substr($className, 0, strlen($this->_namespace.$this->_namespaceSeparator))) {
+        if (null === $this->namespace
+            || $this->namespace.$this->namespaceSeparator === substr(
+                $className,
+                0,
+                strlen($this->namespace.$this->namespaceSeparator)
+            )) {
             $fileName = '';
-            $namespace = '';
-            if (false !== ($lastNsPos = strripos($className, $this->_namespaceSeparator))) {
+            if (false !== ($lastNsPos = strripos($className, $this->namespaceSeparator))) {
                 $namespace = substr($className, 0, $lastNsPos);
                 $className = substr($className, $lastNsPos + 1);
-                $fileName = str_replace($this->_namespaceSeparator, DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+                $fileName =
+                    str_replace($this->namespaceSeparator, DIRECTORY_SEPARATOR, $namespace) .
+                    DIRECTORY_SEPARATOR;
             }
-            $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->_fileExtension;
+            $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->fileExtension;
             require $this->getFullPath($fileName);
         }
-    }
-
-    /**
-     * Returns full path for $fileName if _includePath is set, or leaves as-is for PHP's internal search in 'require'.
-     *
-     * @param  string $fileName relative to include path.
-     * @return string
-     */
-    private function getFullPath($fileName)
-    {
-        return ($this->_includePath !== null ? $this->_includePath . DIRECTORY_SEPARATOR : '') . $fileName;
     }
 }

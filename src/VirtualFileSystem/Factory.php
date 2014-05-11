@@ -42,7 +42,7 @@ class Factory
     /**
      * Creates Root object.
      *
-     * @return Node
+     * @return Root
      */
     public function getRoot()
     {

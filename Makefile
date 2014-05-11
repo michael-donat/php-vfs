@@ -1,7 +1,7 @@
 .PHONY: cs md cov pear
 
 cs:
-	phpcs --standard=PSR2 src/
+	phpcs --standard=PSR2 --ignore=Wrapper.php src/
 
 md:
 	phpmd src/
@@ -12,6 +12,9 @@ test:
 cov:
 	vendor/bin/phpunit --coverage-html=build/log/coverage
 	open build/log/coverage/index.html
+
+scru:
+	scrutinizer run -f json --output-file=build/log/scrutinizer.json ./
 
 pear:
 	./build/pear/package.php --source=src/ --version=$(version) > package.xml

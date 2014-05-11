@@ -30,6 +30,8 @@ abstract class Node
     protected $mtime;
     protected $ctime;
 
+    protected $mode;
+
     /**
      * Class constructor.
      *
@@ -190,7 +192,7 @@ abstract class Node
     /**
      * Returns Node parent absolute path.
      *
-     * @return mixed
+     * @return string|null
      */
     public function dirname()
     {
