@@ -123,9 +123,12 @@ class Wrapper
      * @see http://php.net/streamwrapper.stream-open
      *
      * @param string $path
-     * @param int    $mode
-     * @param int    $options
+     * @param int $mode
+     * @param int $options
      *
+     * @param $openedPath
+     * @throws NotDirectoryException
+     * @throws NotFoundException
      * @return bool
      */
     public function stream_open($path, $mode, $options, &$openedPath)

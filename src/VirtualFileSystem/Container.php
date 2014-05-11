@@ -206,7 +206,7 @@ class Container
      * Creates link at given path
      *
      * @param string $path
-     * @param $destination
+     * @param string $destination
      *
      * @return Structure\Link
      *
@@ -257,6 +257,8 @@ class Container
      * Creates struture
      *
      * @param array $structure
+     * @param string $parent
+     * @throws NotFoundException
      */
     public function createStructure(array $structure, $parent = '/')
     {
