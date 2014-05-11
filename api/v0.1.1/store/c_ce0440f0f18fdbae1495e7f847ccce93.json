@@ -1,0 +1,813 @@
+{
+    "name": "VirtualFileSystem\\Wrapper",
+    "line": 23,
+    "short_desc": "Stream wrapper class.",
+    "long_desc": "This is the class that PHP uses as the stream operations handler.",
+    "hint": null,
+    "tags": {
+        "see": [
+            [
+                "http:\/\/php.net\/streamwrapper",
+                "for",
+                "informal",
+                "protocol",
+                "description"
+            ]
+        ],
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper.php",
+    "hash": "6f3877f135146031dccb2eb2d66024ef10ee84f0",
+    "parent": null,
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "FileHandler": "VirtualFileSystem\\Wrapper\\FileHandler"
+    },
+    "errors": [
+
+    ],
+    "interfaces": [
+
+    ],
+    "properties": {
+        "context": {
+            "name": "context",
+            "line": 25,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": 1,
+            "default": null,
+            "errors": [
+
+            ]
+        }
+    },
+    "methods": {
+        "stripScheme": {
+            "name": "stripScheme",
+            "line": 67,
+            "short_desc": "Returns path stripped of url scheme (http:\/\/, ftp:\/\/, test:\/\/ etc.)",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 67,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getContainerFromContext": {
+            "name": "getContainerFromContext",
+            "line": 84,
+            "short_desc": "Returns Container object fished form default_context_options by scheme.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Container",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 84,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\$path",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "stream_tell": {
+            "name": "stream_tell",
+            "line": 98,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "int",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.stream-tell"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "stream_close": {
+            "name": "stream_close",
+            "line": 108,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.stream-close"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "stream_open": {
+            "name": "stream_open",
+            "line": 125,
+            "short_desc": "Opens stream in selected mode.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.stream-open"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 125,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "mode": {
+                    "name": "mode",
+                    "line": 125,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "options": {
+                    "name": "options",
+                    "line": 125,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "opened_path": {
+                    "name": "opened_path",
+                    "line": 125,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": true
+                }
+            }
+        },
+        "stream_write": {
+            "name": "stream_write",
+            "line": 180,
+            "short_desc": "Writes data to stream.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "int",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.stream-write"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "data": {
+                    "name": "data",
+                    "line": 180,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\$data",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "stream_stat": {
+            "name": "stream_stat",
+            "line": 196,
+            "short_desc": "Returns stat data for file inclusion.",
+            "long_desc": "Currently disabled.",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.stream-stat"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "url_stat": {
+            "name": "url_stat",
+            "line": 211,
+            "short_desc": "Returns file stat information",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ],
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/stat"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 211,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "flags": {
+                    "name": "flags",
+                    "line": 211,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "stream_read": {
+            "name": "stream_read",
+            "line": 238,
+            "short_desc": "Reads and returns $bytes amount of bytes from stream.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.stream-read"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "bytes": {
+                    "name": "bytes",
+                    "line": 238,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "stream_eof": {
+            "name": "stream_eof",
+            "line": 254,
+            "short_desc": "Checks whether pointer has reached EOF.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.stream-eof"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "mkdir": {
+            "name": "mkdir",
+            "line": 270,
+            "short_desc": "Called in response to mkdir to create directory.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.mkdir"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 270,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "mode": {
+                    "name": "mode",
+                    "line": 270,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "options": {
+                    "name": "options",
+                    "line": 270,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "stream_metadata": {
+            "name": "stream_metadata",
+            "line": 297,
+            "short_desc": "Called in response to chown\/chgrp\/touch\/chmod etc.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": {
+                "see": [
+                    [
+                        "http:\/\/php.net\/streamwrapper.stream-metadata"
+                    ]
+                ]
+            },
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 297,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "option": {
+                    "name": "option",
+                    "line": 297,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "value": {
+                    "name": "value",
+                    "line": 297,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "mixed",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "stream_seek": {
+            "name": "stream_seek",
+            "line": 353,
+            "short_desc": "Sets file pointer to specified position",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "offset": {
+                    "name": "offset",
+                    "line": 353,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "whence": {
+                    "name": "whence",
+                    "line": 353,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": "SEEK_SET",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "stream_truncate": {
+            "name": "stream_truncate",
+            "line": 369,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "new_size": {
+                    "name": "new_size",
+                    "line": 369,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": [
+
+    ]
+}

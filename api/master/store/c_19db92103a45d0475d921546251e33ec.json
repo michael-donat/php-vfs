@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Structure",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Node.php",
-    "hash": "d268fe7368aa2aa9a06333411bb680275567377a",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Node.php",
+    "hash": "66281b28693f6fd6efc3de4ce767bcdb6b5d9e52",
     "parent": null,
     "modifiers": 16,
+    "is_trait": false,
     "is_interface": false,
     "aliases": [
 
@@ -461,7 +462,11 @@
             "long_desc": "",
             "hint": [
                 [
-                    "mixed",
+                    "string",
+                    false
+                ],
+                [
+                    "null",
                     false
                 ]
             ],

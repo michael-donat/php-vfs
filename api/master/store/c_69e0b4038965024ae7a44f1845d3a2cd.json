@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Structure",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Directory.php",
-    "hash": "1d1321774cb55eaba71b0367dd295adf4dc328a3",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Directory.php",
+    "hash": "3acacba94acbdddfc4684359fa7c25b21c3c5dee",
     "parent": "VirtualFileSystem\\Structure\\Node",
     "modifiers": 0,
+    "is_trait": false,
     "is_interface": false,
     "aliases": {
         "FileExistsException": "VirtualFileSystem\\FileExistsException",
@@ -189,7 +190,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "mixed",
+                    "VirtualFileSystem\\Structure\\Node",
                     false
                 ]
             ],

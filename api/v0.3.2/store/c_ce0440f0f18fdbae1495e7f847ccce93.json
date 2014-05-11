@@ -28,10 +28,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper.php",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper.php",
     "hash": "66595e3eb647a902cd4ef071e69e6563f816ad5f",
     "parent": null,
     "modifiers": 0,
+    "is_trait": false,
     "is_interface": false,
     "aliases": {
         "Directory": "VirtualFileSystem\\Structure\\Directory",

@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Structure",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Root.php",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Root.php",
     "hash": "aca7d15e1dd947e0acfcbdce24d7a2cd581c382e",
     "parent": "VirtualFileSystem\\Structure\\Directory",
     "modifiers": 0,
+    "is_trait": false,
     "is_interface": false,
     "aliases": [
 
@@ -101,7 +102,7 @@
         "path": {
             "name": "path",
             "line": 63,
-            "short_desc": "Returns URL to file.",
+            "short_desc": "Returns node path.",
             "long_desc": "",
             "hint": [
                 [
@@ -128,10 +129,15 @@
         "url": {
             "name": "url",
             "line": 68,
-            "short_desc": "",
+            "short_desc": "Returns node URL.",
             "long_desc": "",
-            "hint": null,
-            "hint_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
             "tags": [
 
             ],

@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Container.php",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Container.php",
     "hash": "156e2d178f1bc267f5ec29582131e0328099a378",
     "parent": null,
     "modifiers": 0,
+    "is_trait": false,
     "is_interface": false,
     "aliases": {
         "Exception": "Symfony\\Component\\Config\\Definition\\Exception\\Exception",

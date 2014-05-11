@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/FileExistsException.php",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/FileExistsException.php",
     "hash": "2530d8a3bacc348228695666e87f4dd9d51d1d7a",
     "parent": "Exception",
     "modifiers": 0,
+    "is_trait": false,
     "is_interface": false,
     "aliases": [
 

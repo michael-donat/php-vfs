@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Wrapper",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/FileHandler.php",
-    "hash": "c451e5ee7bf8da63c1df9474ac02a788fba12163",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/FileHandler.php",
+    "hash": "abb7016c02ed0cc8ca3e44d045fd05e3946b5bfa",
     "parent": null,
     "modifiers": 0,
+    "is_trait": false,
     "is_interface": false,
     "aliases": {
         "File": "VirtualFileSystem\\Structure\\File"
@@ -195,7 +196,7 @@
                     "long_desc": null,
                     "hint": [
                         [
-                            "null",
+                            "integer",
                             false
                         ]
                     ],

@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>VirtualFileSystem\Structure\Directory | </title>
+                    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../../classes.html">Classes</a></li>
+                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../interfaces.html">Interfaces</a></li>
+            <li><a href="../../traits.html">Traits</a></li>
+            <li><a href="../../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title"></div>
+
+            <div class="type">Class</div>
+    <h1><a href="../../VirtualFileSystem/Structure.html">VirtualFileSystem\Structure</a>\Directory</h1>
+    </div>
+        <div class="content">
+                <p>    class
+    <strong>Directory</strong>        extends <a href="../../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></p>
+
+            <div class="description">
+            <p>FileSystem Directory representation.</p>
+            <p>
+</p>
+        </div>
+    
+            <h2>Constants</h2>
+
+            <table>
+                    <tr>
+                <td>S_IFMT</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>DEF_MODE</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>S_IFTYPE</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>(string $basename)
+                    <p>Class constructor.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_chmod">chmod</a>(int $mode)
+                    <p>Changes access to file.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_chmod"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_mode">mode</a>()
+                    <p>Returns file mode</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_mode"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_chown">chown</a>(<abbr title="VirtualFileSystem\Structure\$userid">$userid</abbr> $userid)
+                    <p>Changes ownership.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_chown"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    mixed
+                </td>
+                <td class="last">
+                    <a href="#method_user">user</a>()
+                    <p>Returns ownership.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_user"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_chgrp">chgrp</a>(<abbr title="VirtualFileSystem\Structure\$groupid">$groupid</abbr> $groupid)
+                    <p>Changes group ownership.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_chgrp"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    mixed
+                </td>
+                <td class="last">
+                    <a href="#method_group">group</a>()
+                    <p>Returns group ownership.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_group"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_size">size</a>()
+                    <p>Returns size as the number of child elements.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_basename">basename</a>()
+                    <p>Returns Node basename.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_basename"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setBasename">setBasename</a>(string $basename)
+                    <p>Sets new basename</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_setBasename"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_path">path</a>()
+                    <p>Returns node URL.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_path"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method___toString">__toString</a>()
+                    <p>Returns node absolute path (without scheme).</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method___toString"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    mixed
+                </td>
+                <td class="last">
+                    <a href="#method_dirname">dirname</a>()
+                    <p>Returns Node parent absolute path.</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_dirname"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setAccessTime">setAccessTime</a>(int $time)
+                    <p>Sets last access time</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_setAccessTime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setModificationTime">setModificationTime</a>(int $time)
+                    <p>Sets last modification time</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_setModificationTime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setChangeTime">setChangeTime</a>(int $time)
+                    <p>Sets last inode change time</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_setChangeTime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_atime">atime</a>()
+                    <p>Returns last access time</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_atime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_mtime">mtime</a>()
+                    <p>Returns last modification time</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_mtime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_ctime">ctime</a>()
+                    <p>Returns last inode change time (chown etc.)</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../VirtualFileSystem/Structure/Node.html#method_ctime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_addDirectory">addDirectory</a>(<a href="../../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> $directory)
+                    <p>Adds child Directory.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_addFile">addFile</a>(<a href="../../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a> $file)
+                    <p>Adds child File.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    mixed
+                </td>
+                <td class="last">
+                    <a href="#method_childAt">childAt</a>(string $path)
+                    <p>Returns child Node existing at path.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_remove">remove</a>(string $basename)
+                    <p>Removes child Node</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method___construct">
+        <div class="location">at line 38</div>
+        <code>            public            
+    <strong>__construct</strong>(string $basename)</code>
+    </h3>
+    <div class="details">
+        <p>Class constructor.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$basename</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="http://php.net/InvalidArgumentException"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_chmod">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_chmod"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 53</div>
+        <code>            public            
+    <strong>chmod</strong>(int $mode)</code>
+    </h3>
+    <div class="details">
+        <p>Changes access to file.</p>
+        <p>This will apply the DIR/FILE type mask for use by stat to distinguish between file and directory.</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int</td>
+                <td>$mode</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://man7.org/linux/man-pages/man2/lstat.2.html</td>
+                <td>for explanation.</td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_mode">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_mode"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 63</div>
+        <code>            public            int
+    <strong>mode</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns file mode</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_chown">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_chown"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 73</div>
+        <code>            public            
+    <strong>chown</strong>(<abbr title="VirtualFileSystem\Structure\$userid">$userid</abbr> $userid)</code>
+    </h3>
+    <div class="details">
+        <p>Changes ownership.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="VirtualFileSystem\Structure\$userid">$userid</abbr></td>
+                <td>$userid</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_user">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_user"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 83</div>
+        <code>            public            mixed
+    <strong>user</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns ownership.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>mixed</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_chgrp">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_chgrp"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 93</div>
+        <code>            public            
+    <strong>chgrp</strong>(<abbr title="VirtualFileSystem\Structure\$groupid">$groupid</abbr> $groupid)</code>
+    </h3>
+    <div class="details">
+        <p>Changes group ownership.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="VirtualFileSystem\Structure\$groupid">$groupid</abbr></td>
+                <td>$groupid</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_group">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_group"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 103</div>
+        <code>            public            mixed
+    <strong>group</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns group ownership.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>mixed</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_size">
+        <div class="location">at line 88</div>
+        <code>            public            int
+    <strong>size</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns size as the number of child elements.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_basename">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_basename"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 130</div>
+        <code>            public            string
+    <strong>basename</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns Node basename.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setBasename">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_setBasename"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 140</div>
+        <code>            public            
+    <strong>setBasename</strong>(string $basename)</code>
+    </h3>
+    <div class="details">
+        <p>Sets new basename</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$basename</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_path">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_path"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 150</div>
+        <code>            public            string
+    <strong>path</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns node URL.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method___toString">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method___toString"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 168</div>
+        <code>            public            string
+    <strong>__toString</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns node absolute path (without scheme).</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_dirname">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_dirname"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 178</div>
+        <code>            public            mixed
+    <strong>dirname</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns Node parent absolute path.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>mixed</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setAccessTime">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_setAccessTime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 190</div>
+        <code>            public            
+    <strong>setAccessTime</strong>(int $time)</code>
+    </h3>
+    <div class="details">
+        <p>Sets last access time</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int</td>
+                <td>$time</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setModificationTime">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_setModificationTime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 200</div>
+        <code>            public            
+    <strong>setModificationTime</strong>(int $time)</code>
+    </h3>
+    <div class="details">
+        <p>Sets last modification time</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int</td>
+                <td>$time</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setChangeTime">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_setChangeTime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 210</div>
+        <code>            public            
+    <strong>setChangeTime</strong>(int $time)</code>
+    </h3>
+    <div class="details">
+        <p>Sets last inode change time</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int</td>
+                <td>$time</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_atime">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_atime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 220</div>
+        <code>            public            int
+    <strong>atime</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns last access time</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_mtime">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_mtime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 230</div>
+        <code>            public            int
+    <strong>mtime</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns last modification time</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_ctime">
+        <div class="location">in <a href="../../VirtualFileSystem/Structure/Node.html#method_ctime"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> at line 240</div>
+        <code>            public            int
+    <strong>ctime</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns last inode change time (chown etc.)</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_addDirectory">
+        <div class="location">at line 51</div>
+        <code>            public            
+    <strong>addDirectory</strong>(<a href="../../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a> $directory)</code>
+    </h3>
+    <div class="details">
+        <p>Adds child Directory.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></td>
+                <td>$directory</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_addFile">
+        <div class="location">at line 61</div>
+        <code>            public            
+    <strong>addFile</strong>(<a href="../../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a> $file)</code>
+    </h3>
+    <div class="details">
+        <p>Adds child File.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a></td>
+                <td>$file</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_childAt">
+        <div class="location">at line 102</div>
+        <code>            public            mixed
+    <strong>childAt</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Returns child Node existing at path.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>mixed</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../VirtualFileSystem/NotFoundException.html"><abbr title="VirtualFileSystem\NotFoundException">NotFoundException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_remove">
+        <div class="location">at line 116</div>
+        <code>            public            
+    <strong>remove</strong>(string $basename)</code>
+    </h3>
+    <div class="details">
+        <p>Removes child Node</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$basename</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+{
+    "name": "VirtualFileSystem\\Structure\\Root",
+    "line": 21,
+    "short_desc": "FileSystem Root representation.",
+    "long_desc": "Specialised Directory that does not allow for basename or parent setting.",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem\\Structure",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Root.php",
+    "hash": "99fc53f03ca53ba1c35ccf7bc594599b8d432b95",
+    "parent": "VirtualFileSystem\\Structure\\Directory",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [
+
+    ],
+    "errors": [
+
+    ],
+    "interfaces": [
+
+    ],
+    "properties": [
+
+    ],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 29,
+            "short_desc": "Class constructor.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\InvalidArgumentException",
+                    ""
+                ]
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "setScheme": {
+            "name": "setScheme",
+            "line": 52,
+            "short_desc": "Set root scheme for use in path method.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "scheme": {
+                    "name": "scheme",
+                    "line": 52,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Structure\\$scheme",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "path": {
+            "name": "path",
+            "line": 63,
+            "short_desc": "Returns node URL.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        }
+    },
+    "constants": {
+        "BASENAME": {
+            "name": "BASENAME",
+            "line": 23,
+            "short_desc": "",
+            "long_desc": ""
+        }
+    }
+}

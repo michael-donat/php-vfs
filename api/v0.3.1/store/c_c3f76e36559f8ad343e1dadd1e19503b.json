@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Factory.php",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Factory.php",
     "hash": "8b59aa0a97ab6134085b3a7ff194c96b967a7e97",
     "parent": null,
     "modifiers": 0,
+    "is_trait": false,
     "is_interface": false,
     "aliases": {
         "Directory": "VirtualFileSystem\\Structure\\Directory",

@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Structure",
-    "file": "\/Users\/thornag\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/File.php",
-    "hash": "ab7f198b3fc865688409cc8eed02a43b0142433c",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/File.php",
+    "hash": "32c02be6a281f7fa5adaad8fb3f8a4996e9a48aa",
     "parent": "VirtualFileSystem\\Structure\\Node",
     "modifiers": 0,
+    "is_trait": false,
     "is_interface": false,
     "aliases": [
 
@@ -93,7 +94,7 @@
         },
         "setData": {
             "name": "setData",
-            "line": 53,
+            "line": 54,
             "short_desc": "Sets contents.",
             "long_desc": "",
             "hint": null,
@@ -107,20 +108,15 @@
 
             ],
             "errors": [
-
+                "\"2\" @param tags are defined by \"1\" are expected"
             ],
             "parameters": {
                 "data": {
                     "name": "data",
-                    "line": 53,
-                    "short_desc": "",
+                    "line": 54,
+                    "short_desc": null,
                     "long_desc": null,
-                    "hint": [
-                        [
-                            "VirtualFileSystem\\Structure\\$data",
-                            false
-                        ]
-                    ],
+                    "hint": null,
                     "tags": [
 
                     ],

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>VirtualFileSystem\Wrapper | </title>
+                    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../classes.html">Classes</a></li>
+                            <li><a href="../namespaces.html">Namespaces</a></li>
+                        <li><a href="../interfaces.html">Interfaces</a></li>
+            <li><a href="../traits.html">Traits</a></li>
+            <li><a href="../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title"></div>
+
+            <div class="type">Class</div>
+    <h1><a href="../VirtualFileSystem.html">VirtualFileSystem</a>\Wrapper</h1>
+    </div>
+        <div class="content">
+                <p>    class
+    <strong>Wrapper</strong></p>
+
+            <div class="description">
+            <p>Stream wrapper class.</p>
+            <p>This is the class that PHP uses as the stream operations handler.</p>
+        </div>
+    
+    
+            <h2>Properties</h2>
+
+            <table>
+                    <tr>
+                <td class="type" id="property_context">
+                                                            
+                </td>
+                <td>$context</td>
+                <td class="last">
+</td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_stripScheme">stripScheme</a>(string $path)
+                    <p>Returns path stripped of url scheme (http://, ftp://, test:// etc.)</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_getContainerFromContext">getContainerFromContext</a>(<abbr title="VirtualFileSystem\$path">$path</abbr> $path)
+                    <p>Returns Container object fished form default<em>context</em>options by scheme.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_stream_tell">stream_tell</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    void
+                </td>
+                <td class="last">
+                    <a href="#method_stream_close">stream_close</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_stream_open">stream_open</a>(string $path, int $mode, int $options, string $opened_path)
+                    <p>Opens stream in selected mode.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_stream_write">stream_write</a>(<abbr title="VirtualFileSystem\$data">$data</abbr> $data)
+                    <p>Writes data to stream.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_stream_stat">stream_stat</a>()
+                    <p>Returns stat data for file inclusion.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array|bool
+                </td>
+                <td class="last">
+                    <a href="#method_url_stat">url_stat</a>(string $path, int $flags)
+                    <p>Returns file stat information</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_stream_read">stream_read</a>(int $bytes)
+                    <p>Reads and returns $bytes amount of bytes from stream.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_stream_eof">stream_eof</a>()
+                    <p>Checks whether pointer has reached EOF.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_mkdir">mkdir</a>(string $path, int $mode, int $options)
+                    <p>Called in response to mkdir to create directory.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_stream_metadata">stream_metadata</a>(string $path, int $option, mixed $value)
+                    <p>Called in response to chown/chgrp/touch/chmod etc.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_stream_seek">stream_seek</a>(int $offset, int $whence = SEEK_SET)
+                    <p>Sets file pointer to specified position</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_stream_truncate">stream_truncate</a>(int $new_size)
+                    <p>Truncates file to given size</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_rename">rename</a>(string $oldname, string $newname)
+                    <p>Renames/Moves file</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_unlink">unlink</a>(int $path)
+                    <p>Deletes file at given path</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_rmdir">rmdir</a>(string $path)
+                    <p>Removes directory</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method_stripScheme">
+        <div class="location">at line 68</div>
+        <code>            public            string
+    <strong>stripScheme</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Returns path stripped of url scheme (http://, ftp://, test:// etc.)</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getContainerFromContext">
+        <div class="location">at line 85</div>
+        <code>            public            <a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a>
+    <strong>getContainerFromContext</strong>(<abbr title="VirtualFileSystem\$path">$path</abbr> $path)</code>
+    </h3>
+    <div class="details">
+        <p>Returns Container object fished form default<em>context</em>options by scheme.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="VirtualFileSystem\$path">$path</abbr></td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_stream_tell">
+        <div class="location">at line 99</div>
+        <code>            public            int
+    <strong>stream_tell</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.stream-tell</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_stream_close">
+        <div class="location">at line 109</div>
+        <code>            public            void
+    <strong>stream_close</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.stream-close</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_stream_open">
+        <div class="location">at line 126</div>
+        <code>            public            bool
+    <strong>stream_open</strong>(string $path, int $mode, int $options, string $opened_path)</code>
+    </h3>
+    <div class="details">
+        <p>Opens stream in selected mode.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$mode</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$opened_path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.stream-open</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_stream_write">
+        <div class="location">at line 181</div>
+        <code>            public            int
+    <strong>stream_write</strong>(<abbr title="VirtualFileSystem\$data">$data</abbr> $data)</code>
+    </h3>
+    <div class="details">
+        <p>Writes data to stream.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="VirtualFileSystem\$data">$data</abbr></td>
+                <td>$data</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.stream-write</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_stream_stat">
+        <div class="location">at line 199</div>
+        <code>            public            bool
+    <strong>stream_stat</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns stat data for file inclusion.</p>
+        <p>Currently disabled.</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.stream-stat</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_url_stat">
+        <div class="location">at line 214</div>
+        <code>            public            array|bool
+    <strong>url_stat</strong>(string $path, int $flags)</code>
+    </h3>
+    <div class="details">
+        <p>Returns file stat information</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$flags</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array|bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/stat</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_stream_read">
+        <div class="location">at line 241</div>
+        <code>            public            string
+    <strong>stream_read</strong>(int $bytes)</code>
+    </h3>
+    <div class="details">
+        <p>Reads and returns $bytes amount of bytes from stream.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int</td>
+                <td>$bytes</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.stream-read</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_stream_eof">
+        <div class="location">at line 259</div>
+        <code>            public            bool
+    <strong>stream_eof</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether pointer has reached EOF.</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.stream-eof</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_mkdir">
+        <div class="location">at line 275</div>
+        <code>            public            bool
+    <strong>mkdir</strong>(string $path, int $mode, int $options)</code>
+    </h3>
+    <div class="details">
+        <p>Called in response to mkdir to create directory.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$mode</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.mkdir</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_stream_metadata">
+        <div class="location">at line 302</div>
+        <code>            public            bool
+    <strong>stream_metadata</strong>(string $path, int $option, mixed $value)</code>
+    </h3>
+    <div class="details">
+        <p>Called in response to chown/chgrp/touch/chmod etc.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$option</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table>
+                    <tr>
+                <td>http://php.net/streamwrapper.stream-metadata</td>
+                <td></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+                <h3 id="method_stream_seek">
+        <div class="location">at line 370</div>
+        <code>            public            bool
+    <strong>stream_seek</strong>(int $offset, int $whence = SEEK_SET)</code>
+    </h3>
+    <div class="details">
+        <p>Sets file pointer to specified position</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$whence</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_stream_truncate">
+        <div class="location">at line 393</div>
+        <code>            public            bool
+    <strong>stream_truncate</strong>(int $new_size)</code>
+    </h3>
+    <div class="details">
+        <p>Truncates file to given size</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int</td>
+                <td>$new_size</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_rename">
+        <div class="location">at line 408</div>
+        <code>            public            bool
+    <strong>rename</strong>(string $oldname, string $newname)</code>
+    </h3>
+    <div class="details">
+        <p>Renames/Moves file</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$oldname</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$newname</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_unlink">
+        <div class="location">at line 440</div>
+        <code>            public            bool
+    <strong>unlink</strong>(int $path)</code>
+    </h3>
+    <div class="details">
+        <p>Deletes file at given path</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_rmdir">
+        <div class="location">at line 470</div>
+        <code>            public            bool
+    <strong>rmdir</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Removes directory</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>

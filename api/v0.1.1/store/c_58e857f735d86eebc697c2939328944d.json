@@ -1,0 +1,143 @@
+{
+    "name": "VirtualFileSystem\\Structure\\File",
+    "line": 19,
+    "short_desc": "Object representation of File.",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem\\Structure",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/File.php",
+    "hash": "ab7f198b3fc865688409cc8eed02a43b0142433c",
+    "parent": "VirtualFileSystem\\Structure\\Node",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [
+
+    ],
+    "errors": [
+
+    ],
+    "interfaces": [
+
+    ],
+    "properties": [
+
+    ],
+    "methods": {
+        "size": {
+            "name": "size",
+            "line": 33,
+            "short_desc": "Returns contents size.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "int",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "data": {
+            "name": "data",
+            "line": 43,
+            "short_desc": "Returns contents.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "setData": {
+            "name": "setData",
+            "line": 53,
+            "short_desc": "Sets contents.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "data": {
+                    "name": "data",
+                    "line": 53,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Structure\\$data",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": {
+        "S_IFTYPE": {
+            "name": "S_IFTYPE",
+            "line": 24,
+            "short_desc": "",
+            "long_desc": ""
+        }
+    }
+}

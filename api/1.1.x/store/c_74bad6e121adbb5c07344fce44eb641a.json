@@ -1,0 +1,679 @@
+{
+    "name": "VirtualFileSystem\\Container",
+    "line": 28,
+    "short_desc": "Class to hold the filesystem structure as object representation.",
+    "long_desc": "It also provides access and factory methods for\nfile system management.\n\nAn instance of Container is registered as a default stream options when FileSystem class is instantiated - it is\nlater used by streamWrapper implementation to interact with underlying object representation.",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Container.php",
+    "hash": "0f777facc3ebc57552f4c38999b2b9e376e6cd7f",
+    "parent": null,
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Exception": "Symfony\\Component\\Config\\Definition\\Exception\\Exception",
+        "Directory": "VirtualFileSystem\\Structure\\Directory",
+        "File": "VirtualFileSystem\\Structure\\File",
+        "Root": "VirtualFileSystem\\Structure\\Root"
+    },
+    "errors": [
+
+    ],
+    "interfaces": [
+
+    ],
+    "properties": [
+
+    ],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 50,
+            "short_desc": "Class constructor.",
+            "long_desc": "Sets factory and root object on init.",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "factory": {
+                    "name": "factory",
+                    "line": 50,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Factory",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "Factory",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setFactory": {
+            "name": "setFactory",
+            "line": 62,
+            "short_desc": "Sets Factory instance",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "factory": {
+                    "name": "factory",
+                    "line": 62,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\VirtualFileSystem\\Factory",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "factory": {
+            "name": "factory",
+            "line": 72,
+            "short_desc": "Returns Factory instance",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\VirtualFileSystem\\Factory",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "root": {
+            "name": "root",
+            "line": 82,
+            "short_desc": "Returns Root instance",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Directory",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": [
+
+            ]
+        },
+        "fileAt": {
+            "name": "fileAt",
+            "line": 96,
+            "short_desc": "Returns filesystem Node|Directory|File|Root at given path.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Node",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "NotFoundException",
+                    ""
+                ]
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 96,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "hasFileAt": {
+            "name": "hasFileAt",
+            "line": 116,
+            "short_desc": "Checks whether filesystem has Node at given path",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 116,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "createDir": {
+            "name": "createDir",
+            "line": 137,
+            "short_desc": "Creates Directory at given path.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\Directory",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "NotFoundException",
+                    ""
+                ]
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 137,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "recursive": {
+                    "name": "recursive",
+                    "line": 137,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "bool",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": "false",
+                    "is_by_ref": false
+                },
+                "mode": {
+                    "name": "mode",
+                    "line": 137,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "null",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": "null",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "createFile": {
+            "name": "createFile",
+            "line": 169,
+            "short_desc": "Creates file at given path",
+            "long_desc": "",
+            "hint": [
+                [
+                    "VirtualFileSystem\\Structure\\File",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\RuntimeException",
+                    ""
+                ]
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 169,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "data": {
+                    "name": "data",
+                    "line": 169,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "null",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": "null",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "createStructure": {
+            "name": "createStructure",
+            "line": 193,
+            "short_desc": "Creates struture",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+                "\"1\" @param tags are defined by \"2\" are expected"
+            ],
+            "parameters": {
+                "structure": {
+                    "name": "structure",
+                    "line": 193,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "array",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "parent": {
+                    "name": "parent",
+                    "line": 193,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": "'\/'",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "move": {
+            "name": "move",
+            "line": 212,
+            "short_desc": "Moves Node from source to destination",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\RuntimeException",
+                    ""
+                ]
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "from": {
+                    "name": "from",
+                    "line": 212,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "to": {
+                    "name": "to",
+                    "line": 212,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "remove": {
+            "name": "remove",
+            "line": 256,
+            "short_desc": "Removes node at $path",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+                [
+                    "\\RuntimeException",
+                    ""
+                ]
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "path": {
+                    "name": "path",
+                    "line": 256,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                },
+                "recursive": {
+                    "name": "recursive",
+                    "line": 256,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "bool",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": "false",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getPermissionHelper": {
+            "name": "getPermissionHelper",
+            "line": 274,
+            "short_desc": "Returns PermissionHelper with given node in context",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\VirtualFileSystem\\Wrapper\\PermissionHelper",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "node": {
+                    "name": "node",
+                    "line": 274,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Structure\\Node",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "Structure\\Node",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setPermissionHelper": {
+            "name": "setPermissionHelper",
+            "line": 284,
+            "short_desc": "Sets permission helper instance",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [
+
+            ],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [
+
+            ],
+            "errors": [
+
+            ],
+            "parameters": {
+                "permission_helper": {
+                    "name": "permission_helper",
+                    "line": 284,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\VirtualFileSystem\\Wrapper\\PermissionHelper",
+                            false
+                        ]
+                    ],
+                    "tags": [
+
+                    ],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": [
+
+    ]
+}
