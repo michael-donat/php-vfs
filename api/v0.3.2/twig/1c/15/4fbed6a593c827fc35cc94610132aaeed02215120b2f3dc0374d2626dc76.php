@@ -25,7 +25,7 @@ class __TwigTemplate_1c154fbed6a593c827fc35cc94610132aaeed02215120b2f3dc0374d262
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        $context["__internal_683fe4cce385f2ab004de599c3bf84c34ad950c6466d71ff4dd902d524d35a20"] = $this->env->loadTemplate("macros.twig");
+        $context["__internal_b3794596ce89082b5a449531964cd0ba4b3c75335ca26ff0ebb76637aa7fa1fa"] = $this->env->loadTemplate("macros.twig");
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -72,7 +72,7 @@ class __TwigTemplate_1c154fbed6a593c827fc35cc94610132aaeed02215120b2f3dc0374d262
     {
         // line 21
         echo "    <h1>";
-        echo $context["__internal_683fe4cce385f2ab004de599c3bf84c34ad950c6466d71ff4dd902d524d35a20"]->getnamespace_link((isset($context["namespace"]) ? $context["namespace"] : $this->getContext($context, "namespace")), array("target" => "main"));
+        echo $context["__internal_b3794596ce89082b5a449531964cd0ba4b3c75335ca26ff0ebb76637aa7fa1fa"]->getnamespace_link((isset($context["namespace"]) ? $context["namespace"] : $this->getContext($context, "namespace")), array("target" => "main"));
         echo "</h1>
 
     ";
@@ -87,7 +87,7 @@ class __TwigTemplate_1c154fbed6a593c827fc35cc94610132aaeed02215120b2f3dc0374d262
             foreach ($context['_seq'] as $context["_key"] => $context["class"]) {
                 // line 26
                 echo "                <li>";
-                echo $context["__internal_683fe4cce385f2ab004de599c3bf84c34ad950c6466d71ff4dd902d524d35a20"]->getclass_link((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), array("target" => "main"));
+                echo $context["__internal_b3794596ce89082b5a449531964cd0ba4b3c75335ca26ff0ebb76637aa7fa1fa"]->getclass_link((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), array("target" => "main"));
                 echo "</li>
             ";
             }
@@ -113,7 +113,7 @@ class __TwigTemplate_1c154fbed6a593c827fc35cc94610132aaeed02215120b2f3dc0374d262
             foreach ($context['_seq'] as $context["_key"] => $context["class"]) {
                 // line 35
                 echo "                <li>";
-                echo $context["__internal_683fe4cce385f2ab004de599c3bf84c34ad950c6466d71ff4dd902d524d35a20"]->getclass_link((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), array("target" => "main"));
+                echo $context["__internal_b3794596ce89082b5a449531964cd0ba4b3c75335ca26ff0ebb76637aa7fa1fa"]->getclass_link((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), array("target" => "main"));
                 echo "</li>
             ";
             }
@@ -139,7 +139,7 @@ class __TwigTemplate_1c154fbed6a593c827fc35cc94610132aaeed02215120b2f3dc0374d262
             foreach ($context['_seq'] as $context["_key"] => $context["class"]) {
                 // line 44
                 echo "                <li>";
-                echo $context["__internal_683fe4cce385f2ab004de599c3bf84c34ad950c6466d71ff4dd902d524d35a20"]->getclass_link((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), array("target" => "main"));
+                echo $context["__internal_b3794596ce89082b5a449531964cd0ba4b3c75335ca26ff0ebb76637aa7fa1fa"]->getclass_link((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), array("target" => "main"));
                 echo "</li>
             ";
             }

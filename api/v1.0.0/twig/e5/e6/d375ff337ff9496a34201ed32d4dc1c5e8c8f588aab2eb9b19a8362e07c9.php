@@ -23,7 +23,7 @@ class __TwigTemplate_e5e6d375ff337ff9496a34201ed32d4dc1c5e8c8f588aab2eb9b19a8362
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        $context["__internal_82751589b7596e0a788fe034735a0b77b7b91b813095d1f9614f0b3022018368"] = $this->env->loadTemplate("macros.twig");
+        $context["__internal_13f6254c9afc41b6a34473a12cffd0d1a6a48dda5248a1f571bd8bcdbe71a6e6"] = $this->env->loadTemplate("macros.twig");
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -62,7 +62,7 @@ class __TwigTemplate_e5e6d375ff337ff9496a34201ed32d4dc1c5e8c8f588aab2eb9b19a8362
             echo "            <tr>
                 <td>";
             // line 17
-            echo $context["__internal_82751589b7596e0a788fe034735a0b77b7b91b813095d1f9614f0b3022018368"]->getnamespace_link((isset($context["namespace"]) ? $context["namespace"] : $this->getContext($context, "namespace")));
+            echo $context["__internal_13f6254c9afc41b6a34473a12cffd0d1a6a48dda5248a1f571bd8bcdbe71a6e6"]->getnamespace_link((isset($context["namespace"]) ? $context["namespace"] : $this->getContext($context, "namespace")));
             echo "</td>
             </tr>
         ";
