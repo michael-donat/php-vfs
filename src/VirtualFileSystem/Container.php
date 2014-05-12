@@ -23,6 +23,7 @@ use VirtualFileSystem\Structure\Root;
  *
  * @author Michael Donat <michael.donat@me.com>
  * @package php-vfs
+ * @api
  */
 class Container
 {

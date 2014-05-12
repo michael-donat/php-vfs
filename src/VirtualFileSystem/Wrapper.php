@@ -24,6 +24,7 @@ use VirtualFileSystem\Wrapper\DirectoryHandler;
  *
  * @author Michael Donat <michael.donat@me.com>
  * @package php-vfs
+ * @api
  */
 class Wrapper
 {

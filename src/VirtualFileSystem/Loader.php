@@ -19,6 +19,11 @@
 
 namespace VirtualFileSystem;
 
+/**
+ * Class Loader to use with PEAR installation
+ *
+ * @package VirtualFileSystem
+ */
 class Loader
 {
     private $fileExtension = '.php';
