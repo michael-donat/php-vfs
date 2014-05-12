@@ -42,12 +42,12 @@ class __TwigTemplate_af51d9b030085fb34707d7d508ff7cb19292873d80791b7376f5c17eb17
         echo "\" type=\"text/javascript\" charset=\"utf-8\"></script>
     <script type=\"text/javascript\" charset=\"utf-8\">
         //<![CDATA[
-        \$(document).ready(function () {
-            \$('#version-switcher').change(function () {
+        \$(document).ready(function(){
+            \$('#version-switcher').change(function() {
                 window.parent.location = \$(this).val()
             })
         })
-       \$(function () {
+       \$(function() {
            \$.ajax({
              url: 'search_index.js',
              dataType: 'script',
@@ -68,7 +68,8 @@ class __TwigTemplate_af51d9b030085fb34707d7d508ff7cb19292873d80791b7376f5c17eb17
                  var s = window.parent.location.search.match(/\\?q=([^&]+)/);
                  if (s) {
                      s = decodeURIComponent(s[1]).replace(/\\+/g, ' ');
-                     if (s.length > 0) {
+                     if (s.length > 0)
+                     {
                          \$('#search').val(s);
                          panel.search(s, true);
                      }

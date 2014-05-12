@@ -9,12 +9,12 @@
     <script src="js/searchdoc.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
         //<![CDATA[
-        $(document).ready(function () {
-            $('#version-switcher').change(function () {
+        $(document).ready(function(){
+            $('#version-switcher').change(function() {
                 window.parent.location = $(this).val()
             })
         })
-       $(function () {
+       $(function() {
            $.ajax({
              url: 'search_index.js',
              dataType: 'script',
@@ -32,7 +32,8 @@
                  var s = window.parent.location.search.match(/\?q=([^&]+)/);
                  if (s) {
                      s = decodeURIComponent(s[1]).replace(/\+/g, ' ');
-                     if (s.length > 0) {
+                     if (s.length > 0)
+                     {
                          $('#search').val(s);
                          panel.search(s, true);
                      }
@@ -59,7 +60,6 @@
                                                             <option value="../v0.3.1/index.html">v0.3.1</option>
                                                             <option value="../v0.3.2/index.html">v0.3.2</option>
                                                             <option value="../v1.0.0/index.html" selected>v1.0.0</option>
-                                                            <option value="../master/index.html">master</option>
                                                     </select>
                     </form>
                                 <div style="clear: both"></div>
