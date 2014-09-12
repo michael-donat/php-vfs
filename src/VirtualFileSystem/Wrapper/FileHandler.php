@@ -189,4 +189,9 @@ class FileHandler
     {
         return (bool) ($this->mode & self::READ_MODE);
     }
+
+    public function lock($resource, $operation)
+    {
+        return $this->file->lock($resource, $operation);
+    }
 }

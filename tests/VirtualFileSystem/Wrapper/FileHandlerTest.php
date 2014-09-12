@@ -3,6 +3,7 @@
 namespace VirtualFileSystem\Wrapper;
 
 use VirtualFileSystem\Structure\File;
+use stdClass;
 
 class FileHandlerTest extends \PHPUnit_Framework_TestCase
 {
