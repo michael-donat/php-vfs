@@ -127,8 +127,8 @@ class Container
      * Creates Directory at given path.
      *
      * @param string $path
-     * @param bool   $recursive
-     * @param null   $mode
+     * @param bool $recursive
+     * @param null|integer $mode
      *
      * @return Structure\Directory
      *
@@ -189,7 +189,7 @@ class Container
      * Creates file at given path
      *
      * @param string $path
-     * @param null   $data
+     * @param string|null $data
      *
      * @return Structure\File
      *

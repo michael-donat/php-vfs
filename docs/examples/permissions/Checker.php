@@ -4,6 +4,9 @@ class Checker
 {
     protected $root;
 
+    /**
+     * @param string $root
+     */
     public function __construct($root)
     {
         $this->root = $root;

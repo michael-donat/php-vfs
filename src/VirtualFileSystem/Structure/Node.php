@@ -190,7 +190,7 @@ abstract class Node
     /**
      * Returns Node parent absolute path.
      *
-     * @return mixed
+     * @return string|null
      */
     public function dirname()
     {
