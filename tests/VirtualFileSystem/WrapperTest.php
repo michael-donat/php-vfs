@@ -16,6 +16,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->uid = function_exists('posix_getuid') ? posix_getuid() : 0;
         $this->gid = function_exists('posix_getgid') ? posix_getgid() : 0;
 
+        $na = [];
         @$na['n/a']; //putting error in known state
     }
 
@@ -114,7 +115,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         if ($this->uid == 0) {
             $this->markTestSkipped(
-                'No point testing if user is already root. \Php unit shouldn\'t be run as root user. (Unless you are a windows user!)'
+                'No point testing if user is already root. '.
+                'Php unit shouldn\'t be run as root user. (Unless you are a windows user!)'
             );
         }
 
@@ -123,11 +125,6 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         chown($fs->path('/'), 'root');
         $this->assertEquals('root', posix_getpwuid(fileowner($fs->path('/')))['name']);
-
-        $nextCurrentOwner = fileowner($fs->path('/'));
-
-        return;
-
     }
 
     public function testChownById()
@@ -151,7 +148,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         if ($this->uid == 0) {
             $this->markTestSkipped(
-                'No point testing if group is already root. Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
+                'No point testing if group is already root. '.
+                'Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
             );
         }
 
@@ -171,7 +169,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         if ($this->gid == 0) {
             $this->markTestSkipped(
-                'No point testing if group is already root. Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
+                'No point testing if group is already root. '.
+                'Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
             );
         }
 
@@ -195,9 +194,9 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(file_exists($fs->path('/dir')));
         $this->assertTrue(is_dir($fs->path('/dir')));
 
-        mkdir($fs->path('/dir2'), false, 0000);
+        mkdir($fs->path('/dir2'), 0000, false);
 
-        $dir = $fs->container()->fileAt('/dir2');
+        $dir = $fs->container()->nodeAt('/dir2');
 
         $this->assertEquals(0000 | Directory::S_IFTYPE, $dir->mode());
 
@@ -264,7 +263,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('data2', $fs->container()->fileAt('/file2')->data(), 'Pointer advanced');
 
         fwrite($handle, 'data', 1);
-        $this->assertEquals('data2d', $fs->container()->fileAt('/file2')->data(), 'Written with limited lenghth');
+        $this->assertEquals('data2d', $fs->container()->fileAt('/file2')->data(), 'Written with limited length');
 
     }
 
@@ -342,7 +341,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
 
         $fs = new FileSystem();
-        $file = $fs->container()->createFile('/file', '--data--');
+        $fs->container()->createFile('/file', '--data--');
 
         $this->assertEquals('data', file_get_contents($fs->path('/file'), false, null, 2, 4));
 
@@ -424,9 +423,6 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $file = $fs->container()->createFile('/file', 'data');
 
         $stat = stat($fs->path('/file'));
-        $atime = $stat['atime'];
-        $mtime = $stat['mtime'];
-        $ctime = $stat['ctime'];
 
         $this->assertNotEquals(0, $stat['atime']);
         $this->assertNotEquals(0, $stat['mtime']);
@@ -509,7 +505,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
             'Fails when no parent'
         );
 
-        $file = $fs->container()->fileAt('/file2');
+        $file = $fs->container()->nodeAt('/file2');
 
         $file->setAccessTime(20);
         $file->setModificationTime(20);
@@ -531,8 +527,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         rename($fs->path('/file'), $fs->path('/file2'));
 
-        $this->assertTrue($fs->container()->hasFileAt('/file2'));
-        $this->assertFalse($fs->container()->hasFileAt('/file'));
+        $this->assertTrue($fs->container()->hasNodeAt('/file2'));
+        $this->assertFalse($fs->container()->hasNodeAt('/file'));
         $this->assertEquals('data', $fs->container()->fileAt('/file2')->data());
     }
 
@@ -583,7 +579,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         unlink($fs->path('/file'));
 
-        $this->assertFalse($fs->container()->hasFileAt('/file'));
+        $this->assertFalse($fs->container()->hasNodeAt('/file'));
     }
 
     public function testUnlinkThrowsWarnings()
@@ -621,7 +617,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         rmdir($fs->path('/dir'));
 
-        $this->assertFalse($fs->container()->hasFileAt('/dir'), 'Directory has been removed');
+        $this->assertFalse($fs->container()->hasNodeAt('/dir'), 'Directory has been removed');
     }
 
     public function testRmdirErrorsWithNonEmptyDirectories()
@@ -699,11 +695,11 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $wrapper = new Wrapper();
 
-        $handle = $wrapper->dir_opendir($fs->path('/dir'), 0);
+        $handle = $wrapper->dir_opendir($fs->path('/dir'));
 
         $this->assertTrue($handle, 'Directory opened for reading');
 
-        $handle = @$wrapper->dir_opendir($fs->path('/nonExistingDir'), 0);
+        $handle = @$wrapper->dir_opendir($fs->path('/nonExistingDir'));
 
         $this->assertFalse($handle, 'Non existing directory not opened for reading');
 
@@ -727,7 +723,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $wrapper = new Wrapper();
 
-        $handle = @$wrapper->dir_opendir($fs->path('/file'), 0);
+        $handle = @$wrapper->dir_opendir($fs->path('/file'));
 
         $this->assertFalse($handle, 'Opening fiels with opendir fails');
 
@@ -749,7 +745,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($wrapper->dir_closedir(), 'Returns false when no dir opened');
 
-        $wrapper->dir_opendir($fs->path('/dir'), 0);
+        $wrapper->dir_opendir($fs->path('/dir'));
 
         $this->assertTrue($wrapper->dir_closedir());
     }
@@ -762,7 +758,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $fs->container()->createDir('/dir3');
 
         $wr = new Wrapper();
-        $wr->dir_opendir($fs->path('/'), 0);
+        $wr->dir_opendir($fs->path('/'));
 
         $this->assertEquals('dir1', $wr->dir_readdir());
         $this->assertEquals('dir2', $wr->dir_readdir());
@@ -832,48 +828,49 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         $fs = new FileSystem();
         $file = $fs->container()->createFile('/file');
+        $openedPath = null;
 
         $wr = new Wrapper();
 
         $file->chmod(0000);
         $file->chown(0);
         $file->chgrp(0);
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $openedPath));
 
         $file->chmod(0400);
         $file->chown($this->uid);
         $file->chgrp(0);
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $openedPath));
 
         $file->chmod(0200);
         $file->chown($this->uid);
         $file->chgrp(0);
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $path));
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'r+', 0, $openedPath));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'w+', 0, $openedPath));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/file'), 'a+', 0, $openedPath));
 
         $file->chmod(0600);
         $file->chown($this->uid);
         $file->chgrp(0);
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $path));
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r+', 0, $path));
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w', 0, $path));
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w+', 0, $path));
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a', 0, $path));
-        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a+', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r', 0, $openedPath));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'r+', 0, $openedPath));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w', 0, $openedPath));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'w+', 0, $openedPath));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a', 0, $openedPath));
+        $this->assertTrue($wr->stream_open($fs->path('/file'), 'a+', 0, $openedPath));
 
     }
 
@@ -881,76 +878,78 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         $fs = new FileSystem();
         $file = $fs->container()->createDir('/dir');
+        $openedPath = null;
 
         $wr = new Wrapper();
 
         $file->chmod(0000);
         $file->chown(0);
         $file->chgrp(0);
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $openedPath));
 
         $file->chmod(0400);
         $file->chown($this->uid);
         $file->chgrp(0);
-        $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $openedPath));
 
         $file->chmod(0200);
         $file->chown($this->uid);
         $file->chgrp(0);
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $openedPath));
 
         $file->chmod(0600);
         $file->chown($this->uid);
         $file->chgrp(0);
-        $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $path));
-        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $path));
+        $this->assertTrue($wr->stream_open($fs->path('/dir'), 'r', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'r+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'w+', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a', 0, $openedPath));
+        $this->assertFalse($wr->stream_open($fs->path('/dir'), 'a+', 0, $openedPath));
     }
 
     public function testPermissionsAreCheckedWhenOpeningDirectories()
     {
         $fs = new FileSystem();
         $file = $fs->container()->createDir('/dir');
+        $openedPath = null;
 
         $wr = new Wrapper();
 
         $file->chmod(0000);
         $file->chown(0);
         $file->chgrp(0);
-        $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0));
+        $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0, $openedPath));
 
         $file->chmod(0200);
         $file->chown($this->uid);
         $file->chgrp(0);
-        $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0));
+        $this->assertFalse(@$wr->dir_opendir($fs->path('/dir'), 0, $openedPath));
 
         $file->chmod(0400);
         $file->chown($this->uid);
         $file->chgrp(0);
-        $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $path));
+        $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $openedPath));
 
         $file->chmod(0040);
         $file->chown(0);
         $file->chgrp($this->gid);
-        $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $path));
+        $this->assertTrue(@$wr->stream_open($fs->path('/dir'), 'r', 0, $openedPath));
     }
 
     public function testPermissionsAreCheckedWhenCreatingFilesWithinDirectories()
@@ -974,10 +973,12 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $dir = $fs->createDirectory('/dir');
         $file = $fs->createFile('/file');
         $dir->chmod(0000);
+        $na = [];
+        $openedPath = null;
 
         $wr = new Wrapper();
 
-        @$wr->stream_open($fs->path('/dir/file'), 'w', STREAM_REPORT_ERRORS, $path);
+        @$wr->stream_open($fs->path('/dir/file'), 'w', STREAM_REPORT_ERRORS, $openedPath);
 
         $error = error_get_last();
 
@@ -988,7 +989,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         @$na['n/a']; //putting error in known state
         $file->chmod(0000);
-        @$wr->stream_open($fs->path('/file'), 'r', STREAM_REPORT_ERRORS, $path);
+        @$wr->stream_open($fs->path('/file'), 'r', STREAM_REPORT_ERRORS, $openedPath);
 
         $error = error_get_last();
 
@@ -999,7 +1000,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         @$na['n/a']; //putting error in known state
         $file->chmod(0000);
-        @$wr->stream_open($fs->path('/file'), 'w', STREAM_REPORT_ERRORS, $path);
+        @$wr->stream_open($fs->path('/file'), 'w', STREAM_REPORT_ERRORS, $openedPath);
 
         $error = error_get_last();
 
@@ -1010,7 +1011,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         @$na['n/a']; //putting error in known state
         $file->chmod(0000);
-        @$wr->stream_open($fs->path('/file'), 'a', STREAM_REPORT_ERRORS, $path);
+        @$wr->stream_open($fs->path('/file'), 'a', STREAM_REPORT_ERRORS, $openedPath);
 
         $error = error_get_last();
 
@@ -1021,7 +1022,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         @$na['n/a']; //putting error in known state
         $file->chmod(0000);
-        @$wr->stream_open($fs->path('/file'), 'w+', STREAM_REPORT_ERRORS, $path);
+        @$wr->stream_open($fs->path('/file'), 'w+', STREAM_REPORT_ERRORS, $openedPath);
 
         $error = error_get_last();
 
@@ -1056,11 +1057,11 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $file->chmod(0000);
 
         $wr = new Wrapper();
-        $this->assertTrue($wr->unlink($fs->path('/file'), 'Allows removals with writable parent'));
+        $this->assertTrue($wr->unlink($fs->path('/file')), 'Allows removals with writable parent');
 
         $fs->root()->chmod(0500);
 
-        $this->assertFalse(@$wr->unlink($fs->path('/file'), 'Does not allow removals with non-writable parent'));
+        $this->assertFalse(@$wr->unlink($fs->path('/file')), 'Does not allow removals with non-writable parent');
 
         $error = error_get_last();
 
@@ -1141,6 +1142,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
             $error['message']
         );
 
+        $na = [];
         @$na['n/a']; //putting error in known state
 
         $this->assertFalse(
@@ -1225,7 +1227,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         if ($this->uid == 0) {
             $this->markTestSkipped(
-                'No point testing if user is already root. \Php unit shouldn\'t be run as root user. (Unless you are a windows user!)'
+                'No point testing if user is already root. '.
+                'Php unit shouldn\'t be run as root user. (Unless you are a windows user!)'
             );
         }
 
@@ -1245,7 +1248,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         if ($this->uid == 0) {
             $this->markTestSkipped(
-                'No point testing if group is already root. Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
+                'No point testing if group is already root. '.
+                'Php unit shouldn\'t be run as root group. (Unless you are on Windows - then we skip)'
             );
         }
 
@@ -1338,7 +1342,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     public function testIsExecutableReturnsCorrectly()
     {
         $fs = new FileSystem();
-        $file = $fs->createFile('/file');
+        $fs->createFile('/file');
 
         chmod($fs->path('/file'), 0000);
 

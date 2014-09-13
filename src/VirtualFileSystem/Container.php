@@ -23,6 +23,7 @@ use VirtualFileSystem\Structure\Root;
  *
  * @author Michael Donat <michael.donat@me.com>
  * @package php-vfs
+ * @api
  */
 class Container
 {
@@ -39,7 +40,7 @@ class Container
     /**
      * @var Wrapper\PermissionHelper
      */
-    protected $permission_helper;
+    protected $permissionHelper;
 
     /**
      * Class constructor. Sets factory and root object on init.
@@ -76,7 +77,7 @@ class Container
     /**
      * Returns Root instance
      *
-     * @return Directory
+     * @return Root
      */
     public function root()
     {
@@ -92,13 +93,16 @@ class Container
      *
      * @throws NotFoundException
      */
-    public function fileAt($path)
+    public function nodeAt($path)
     {
         $pathParts = array_filter(explode('/', str_replace('\\', '/', $path)), 'strlen');
 
         $node = $this->root();
 
         foreach ($pathParts as $level) {
+            if ($node instanceof File) {
+                throw new NotFoundException();
+            }
             $node = $node->childAt($level);
         }
 
@@ -112,10 +116,10 @@ class Container
      *
      * @return bool
      */
-    public function hasFileAt($path)
+    public function hasNodeAt($path)
     {
         try {
-            $this->fileAt($path);
+            $this->nodeAt($path);
 
             return true;
         } catch (NotFoundException $e) {
@@ -124,10 +128,54 @@ class Container
     }
 
     /**
-     * Creates Directory at given path.
+     * Returns directory at given path
      *
      * @param string $path
      * @param bool $recursive
+     * @param null|integer $mode
+     *
+     * @return Structure\Directory
+     *
+     * @throws NotDirectoryException
+     * @throws NotFoundException
+     */
+    public function directoryAt($path)
+    {
+        $file = $this->nodeAt($path);
+
+        if (!$file instanceof Directory) {
+            throw new NotDirectoryException();
+        }
+
+        return $file;
+    }
+
+    /**
+     * Returns file at given path
+     *
+     * @param string $path
+     *
+     * @return Structure\File
+     *
+     * @throws NotFileException
+     * @throws NotFoundException
+     */
+    public function fileAt($path)
+    {
+        $file = $this->nodeAt($path);
+
+        if (!$file instanceof File) {
+            throw new NotFileException();
+        }
+
+        return $file;
+    }
+
+    /**
+     * Creates Directory at given path.
+     *
+     * @param string       $path
+     * @param bool         $recursive
      * @param null|integer $mode
      *
      * @return Structure\Directory
@@ -140,7 +188,7 @@ class Container
         $name = basename($path);
 
         try {
-            $parent = $this->fileAt($parentPath);
+            $parent = $this->directoryAt($parentPath);
         } catch (NotFoundException $e) {
             if (!$recursive) {
                 throw new NotFoundException(sprintf('createDir: %s: No such file or directory', $parentPath));
@@ -149,6 +197,7 @@ class Container
         }
 
         $parent->addDirectory($newDirectory = $this->factory()->getDir($name));
+
         if (!is_null($mode)) {
             $newDirectory->chmod($mode);
         }
@@ -160,29 +209,25 @@ class Container
      * Creates link at given path
      *
      * @param string $path
-     * @param $destination
+     * @param string $destination
      *
-     * @return Structure\File
+     * @return Structure\Link
      *
      */
     public function createLink($path, $destination)
     {
 
-        $destination = $this->fileAt($destination);
+        $destination = $this->nodeAt($destination);
 
-        try {
-            $file = $this->fileAt($path);
+        if ($this->hasNodeAt($path)) {
             throw new \RuntimeException(sprintf('%s already exists', $path));
-        } catch (NotFoundException $e) {
-
         }
 
-        $parent =  $this->fileAt(dirname($path));
+        $parent =  $this->directoryAt(dirname($path));
 
         $parent->addLink($newLink = $this->factory()->getLink(basename($path), $destination));
 
         return $newLink;
-
     }
 
     /**
@@ -197,14 +242,11 @@ class Container
      */
     public function createFile($path, $data = null)
     {
-        try {
-            $file = $this->fileAt($path);
+        if ($this->hasNodeAt($path)) {
             throw new \RuntimeException(sprintf('%s already exists', $path));
-        } catch (NotFoundException $e) {
-
         }
 
-        $parent =  $this->fileAt(dirname($path));
+        $parent =  $this->directoryAt(dirname($path));
 
         $parent->addFile($newFile = $this->factory()->getFile(basename($path)));
 
@@ -218,6 +260,8 @@ class Container
      * Creates struture
      *
      * @param array $structure
+     * @param string $parent
+     * @throws NotFoundException
      */
     public function createStructure(array $structure, $parent = '/')
     {
@@ -234,47 +278,43 @@ class Container
     /**
      * Moves Node from source to destination
      *
-     * @param  string            $from
-     * @param  string            $to
+     * @param  string            $fromPath
+     * @param  string            $toPath
      * @return bool
      * @throws \RuntimeException
      */
-    public function move($from, $to)
+    public function move($fromPath, $toPath)
     {
-        $fromNode = $this->fileAt($from);
+        $fromNode = $this->nodeAt($fromPath);
 
         try {
-            $nodeToOverride = $this->fileAt($to);
+            $nodeToOverride = $this->nodeAt($toPath);
 
-            if(!is_a($nodeToOverride, get_class($fromNode))) {
+            if (!is_a($nodeToOverride, get_class($fromNode))) {
                 //nodes of a different type
                 throw new \RuntimeException('Can\'t move.');
             }
 
-            if($nodeToOverride instanceof Directory) {
-                if($nodeToOverride->size()) {
+            if ($nodeToOverride instanceof Directory) {
+                if ($nodeToOverride->size()) {
                     //nodes of a different type
                     throw new \RuntimeException('Can\'t override non empty directory.');
                 }
             }
 
-            $this->remove($to, true);
+            $this->remove($toPath, true);
 
         } catch (NotFoundException $e) {
-
+            //nothing at destination, we're good
         }
 
-        $toParent = $this->fileAt(dirname($to));
+        $toParent = $this->directoryAt(dirname($toPath));
 
-        $fromNode->setBasename(basename($to));
+        $fromNode->setBasename(basename($toPath));
 
-        if ($fromNode instanceof File) {
-            $toParent->addFile($fromNode);
-        } else {
-            $toParent->addDirectory($fromNode);
-        }
+        $toParent->addNode($fromNode);
 
-        $this->remove($from, true);
+        $this->remove($fromPath, true);
 
         return true;
     }
@@ -289,13 +329,13 @@ class Container
      */
     public function remove($path, $recursive = false)
     {
-        $fileToRemove = $this->fileAt($path);
+        $fileToRemove = $this->nodeAt($path);
 
         if (!$recursive && $fileToRemove instanceof Directory) {
             throw new \RuntimeException('Won\'t non-recursively remove directory');
         }
 
-        $this->fileAt(dirname($path))->remove(basename($path));
+        $this->directoryAt(dirname($path))->remove(basename($path));
     }
 
     /**
@@ -307,16 +347,16 @@ class Container
      */
     public function getPermissionHelper(Structure\Node $node)
     {
-        return $this->permission_helper->setNode($node);
+        return $this->permissionHelper->setNode($node);
     }
 
     /**
      * Sets permission helper instance
      *
-     * @param \VirtualFileSystem\Wrapper\PermissionHelper $permission_helper
+     * @param \VirtualFileSystem\Wrapper\PermissionHelper $permissionHelper
      */
-    public function setPermissionHelper($permission_helper)
+    public function setPermissionHelper($permissionHelper)
     {
-        $this->permission_helper = $permission_helper;
+        $this->permissionHelper = $permissionHelper;
     }
 }

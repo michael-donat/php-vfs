@@ -61,22 +61,7 @@ class VirtualFilesystemTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testDefaultContextOptionsAreRemoved()
-    {
-        return;
-        $this->markTestSkipped('Skipped until I find a way to remove eys from default context options');
 
-        stream_context_set_default(array('someContext' => array('a' => 'b')));
-
-        $fs = new FileSystem();
-        $scheme = $fs->scheme();
-        unset($fs); //provoking __destruct
-
-        $options = stream_context_get_options(stream_context_get_default());
-
-        $this->assertArrayNotHasKey($scheme, $options, 'FS Context option present');
-        $this->assertArrayHasKey('someContext', $options, 'Previously existing context option present');
-    }
 
     public function testCreateDirectoryCreatesDirectories()
     {
@@ -112,8 +97,8 @@ class VirtualFilesystemTest extends \PHPUnit_Framework_TestCase
 
         $fs->createStructure(['dir' => [], 'dir2' => []]);
 
-        $dir = $fs->container()->fileAt('/dir');
-        $dir2 = $fs->container()->fileAt('/dir2');
+        $dir = $fs->container()->nodeAt('/dir');
+        $dir2 = $fs->container()->nodeAt('/dir2');
 
         $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $dir);
         $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $dir2);
@@ -129,7 +114,7 @@ class VirtualFilesystemTest extends \PHPUnit_Framework_TestCase
             ]
         ]);
 
-        $dir = $fs->container()->fileAt('/dir3');
+        $dir = $fs->container()->directoryAt('/dir3');
 
         $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $dir);
 
@@ -137,7 +122,7 @@ class VirtualFilesystemTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('nested', $file->data());
 
-        $dir = $fs->container()->fileAt('/dir3/dir4/dir5');
+        $dir = $fs->container()->directoryAt('/dir3/dir4/dir5');
 
         $this->assertInstanceOf('VirtualFileSystem\Structure\Directory', $dir);
 

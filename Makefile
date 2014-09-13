@@ -4,7 +4,7 @@ PHP_VFS_BUILD_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 PHP_VFS_BUILD_REV=$(shell git rev-parse HEAD)
 
 cs:
-	phpcs --standard=PSR2 src/
+	phpcs --standard=PSR2 --ignore=Wrapper.php src/
 
 md:
 	phpmd src/
@@ -15,6 +15,9 @@ test:
 cov:
 	vendor/bin/phpunit --coverage-html=build/log/coverage
 	open build/log/coverage/index.html
+
+scru:
+	scrutinizer run -f json --output-file=build/log/scrutinizer.json ./
 
 ifndef version
 check:

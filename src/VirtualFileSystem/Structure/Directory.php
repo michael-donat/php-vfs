@@ -80,7 +80,7 @@ class Directory extends Node
      *
      * @throws FileExistsException
      */
-    protected function addNode(Node $node)
+    public function addNode(Node $node)
     {
         if (array_key_exists($node->basename(), $this->children)) {
             throw new FileExistsException(sprintf('%s already exists', $node->basename()));
