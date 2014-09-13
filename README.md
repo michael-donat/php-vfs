@@ -200,7 +200,7 @@ Changes in 1.2.x
 
 For full diff of changes please go to https://github.com/thornag/php-vfs/compare/v1.1.0...1.2.x
 
-- added support for locking (thanks to @mathroc)
+- added support for locking (thanks to [@mathroc](https://github.com/mathroc))
 - code improvements as suggested by https://scrutinizer-ci.com/g/thornag/php-vfs/
 
 
