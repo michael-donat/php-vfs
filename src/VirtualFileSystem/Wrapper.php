@@ -768,4 +768,9 @@ class Wrapper
     {
         $this->currentlyOpenedDir->iterator()->rewind();
     }
+
+    public function stream_lock($operation)
+    {
+        return $this->currently_opened->lock($this, $operation);
+    }
 }

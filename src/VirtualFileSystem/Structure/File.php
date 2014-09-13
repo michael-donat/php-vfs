@@ -10,6 +10,8 @@
 
 namespace VirtualFileSystem\Structure;
 
+use SplObjectStorage;
+
 /**
  * Object representation of File.
  *
@@ -24,6 +26,27 @@ class File extends Node
     const S_IFTYPE   = 0100000;
 
     protected $data;
+
+    /**
+     * Resource with exclusive lock on this file
+     * @var resource|null
+     */
+    private $exclusiveLock = null;
+
+    /**
+     * Resources with a shared lock on this file
+     * @var SplObjectStorage
+     */
+    private $sharedLock;
+
+    /**
+     * @inherit
+     */
+    public function __construct($basename)
+    {
+        parent::__construct($basename);
+        $this->sharedLock = new SplObjectStorage;
+    }
 
     /**
      * Returns contents size.
@@ -54,5 +77,41 @@ class File extends Node
     public function setData($data)
     {
         $this->data = $data;
+    }
+
+    public function lock($resource, $operation)
+    {
+        if ($this->exclusiveLock === $resource) {
+            $this->exclusiveLock = null;
+        } else {
+            $this->sharedLock->detach($resource);
+        }
+
+        if ($operation & LOCK_NB) {
+            $operation -= LOCK_NB;
+        }
+
+        $unlock    = $operation === LOCK_UN;
+        $exclusive = $operation === LOCK_EX;
+
+        if ($unlock) {
+            return true;
+        }
+
+        if ($this->exclusiveLock !== null) {
+            return false;
+        }
+
+        if (!$exclusive) {
+            $this->sharedLock->attach($resource);
+            return true;
+        }
+
+        if ($this->sharedLock->count()) {
+            return false;
+        }
+
+        $this->exclusiveLock = $resource;
+        return true;
     }
 }

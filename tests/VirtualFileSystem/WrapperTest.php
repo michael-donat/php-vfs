@@ -1352,4 +1352,95 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(is_executable($fs->path('/file')));
     }
+
+    public function testExclusiveLock()
+    {
+        $fs = new FileSystem();
+        $file = $fs->path($fs->createFile('/file')->path());
+
+        $fh1 = fopen($file, 'c');
+        $fh2 = fopen($file, 'c');
+
+        $this->assertTrue(flock($fh1, LOCK_EX|LOCK_NB));
+        $this->assertFalse(flock($fh2, LOCK_EX|LOCK_NB));
+    }
+
+    public function testSharedLock()
+    {
+        $fs = new FileSystem();
+        $file = $fs->path($fs->createFile('/file')->path());
+
+        $fh1 = fopen($file, 'c');
+        $fh2 = fopen($file, 'c');
+        $fh3 = fopen($file, 'c');
+
+        $this->assertTrue(flock($fh1, LOCK_SH|LOCK_NB));
+        $this->assertTrue(flock($fh2, LOCK_SH|LOCK_NB));
+        $this->assertFalse(flock($fh3, LOCK_EX|LOCK_NB));
+    }
+
+    public function testUnlockSharedLock()
+    {
+        $fs = new FileSystem();
+        $file = $fs->path($fs->createFile('/file')->path());
+
+        $fh1 = fopen($file, 'c');
+        $fh2 = fopen($file, 'c');
+
+        $this->assertTrue(flock($fh1, LOCK_SH|LOCK_NB));
+        $this->assertTrue(flock($fh1, LOCK_UN|LOCK_NB));
+        $this->assertTrue(flock($fh2, LOCK_EX|LOCK_NB));
+    }
+
+    public function testUnlockExclusiveLock()
+    {
+        $fs = new FileSystem();
+        $file = $fs->path($fs->createFile('/file')->path());
+
+        $fh1 = fopen($file, 'c');
+        $fh2 = fopen($file, 'c');
+
+        $this->assertTrue(flock($fh1, LOCK_EX|LOCK_NB));
+        $this->assertTrue(flock($fh1, LOCK_UN|LOCK_NB));
+        $this->assertTrue(flock($fh2, LOCK_EX|LOCK_NB));
+    }
+
+    public function testDowngradeExclusiveLock()
+    {
+        $fs = new FileSystem();
+        $file = $fs->path($fs->createFile('/file')->path());
+
+        $fh1 = fopen($file, 'c');
+        $fh2 = fopen($file, 'c');
+
+        $this->assertTrue(flock($fh1, LOCK_EX|LOCK_NB));
+        $this->assertTrue(flock($fh1, LOCK_SH|LOCK_NB));
+        $this->assertTrue(flock($fh2, LOCK_SH|LOCK_NB));
+    }
+
+    public function testUpgradeSharedLock()
+    {
+        $fs = new FileSystem();
+        $file = $fs->path($fs->createFile('/file')->path());
+
+        $fh1 = fopen($file, 'c');
+        $fh2 = fopen($file, 'c');
+
+        $this->assertTrue(flock($fh1, LOCK_SH|LOCK_NB));
+        $this->assertTrue(flock($fh1, LOCK_EX|LOCK_NB));
+        $this->assertFalse(flock($fh2, LOCK_SH|LOCK_NB));
+    }
+
+    public function testUpgradeSharedLockImpossible()
+    {
+        $fs = new FileSystem();
+        $file = $fs->path($fs->createFile('/file')->path());
+
+        $fh1 = fopen($file, 'c');
+        $fh2 = fopen($file, 'c');
+
+        $this->assertTrue(flock($fh1, LOCK_SH|LOCK_NB));
+        $this->assertTrue(flock($fh2, LOCK_SH|LOCK_NB));
+        $this->assertFalse(flock($fh1, LOCK_EX|LOCK_NB));
+    }
 }
