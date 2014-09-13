@@ -185,13 +185,22 @@ Any contributions are more than welcome. Please make sure that you keep to [PSR-
 
 You are more than welcome to add yourself to CONTRIBUTORS.md.
 
-Changes in 1.1.0
+Changes in 1.1.x
 ----------------
 
-For full diff of changes please go to https://github.com/thornag/php-vfs/compare/v1.0.0...1.1.x
+For full diff of changes please go to https://github.com/thornag/php-vfs/compare/v1.0.0...v1.1.0
 
 - added support for symlinks
 - fixed Windows compatibility issues
 - provided method to recreate dir/file structure from array [createStructure method]
 - added permission support where it was previously not available (touch etc)
+
+Changes in 1.2.x
+----------------
+
+For full diff of changes please go to https://github.com/thornag/php-vfs/compare/v1.1.0...1.2.x
+
+- added support for locking (thanks to @mathroc)
+- code improvements as suggested by https://scrutinizer-ci.com/g/thornag/php-vfs/
+
 
