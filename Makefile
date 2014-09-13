@@ -40,7 +40,7 @@ pear: check setup-pear
 	pear package
 	mv VirtualFileSystem-$(version).tgz build/dist/
 	git checkout pear
-	/usr/local/opt/php55/bin/pirum add . build/dist/VirtualFileSystem-$(version).tgz
+	pirum add . build/dist/VirtualFileSystem-$(version).tgz
 	git add . && git commit -a -m'adding VirtualFileSystem-$(version).tgz' && git push pear pear:gh-pages
 	git checkout -f -
 
