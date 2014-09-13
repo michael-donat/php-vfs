@@ -771,6 +771,6 @@ class Wrapper
 
     public function stream_lock($operation)
     {
-        return $this->currently_opened->lock($this, $operation);
+        return $this->currentlyOpenedFile->lock($this, $operation);
     }
 }

@@ -1,6 +1,6 @@
 |Build status|Coverage|Last stable|Last development|Quality|
 |:-------------:|:-------------:|:-----:|:-----:|:----------:|
-|[![Build Status](https://travis-ci.org/thornag/php-vfs.png)](https://travis-ci.org/thornag/php-vfs)|[![Coverage Status](https://coveralls.io/repos/thornag/php-vfs/badge.png?branch=master)](https://coveralls.io/r/thornag/php-vfs?branch=master)|[![Latest Stable Version](https://poser.pugx.org/php-vfs/php-vfs/v/stable.png)](https://packagist.org/packages/php-vfs/php-vfs)|[![Latest Unstable Version](https://poser.pugx.org/php-vfs/php-vfs/v/unstable.png)](https://packagist.org/packages/php-vfs/php-vfs)|[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/thornag/php-vfs/badges/quality-score.png?s=6b2da342adc2bbe961fc9e1b0e467c3ecc1007d0)](https://scrutinizer-ci.com/g/thornag/php-vfs/)|
+|[![Build Status](https://travis-ci.org/thornag/php-vfs.png)](https://travis-ci.org/thornag/php-vfs)|[![Coverage Status](https://coveralls.io/repos/thornag/php-vfs/badge.png?branch=1.2.x)](https://coveralls.io/r/thornag/php-vfs?branch=1.2.x)|[![Latest Stable Version](https://poser.pugx.org/php-vfs/php-vfs/v/stable.png)](https://packagist.org/packages/php-vfs/php-vfs)|[![Latest Unstable Version](https://poser.pugx.org/php-vfs/php-vfs/v/unstable.png)](https://packagist.org/packages/php-vfs/php-vfs)|[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/thornag/php-vfs/badges/quality-score.png?s=6b2da342adc2bbe961fc9e1b0e467c3ecc1007d0)](https://scrutinizer-ci.com/g/thornag/php-vfs/)|
 
 php-vfs
 ========
