@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>VirtualFileSystem\Container | php-vfs API</title>
+                    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../classes.html">Classes</a></li>
+                            <li><a href="../namespaces.html">Namespaces</a></li>
+                        <li><a href="../interfaces.html">Interfaces</a></li>
+            <li><a href="../traits.html">Traits</a></li>
+            <li><a href="../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title">php-vfs API</div>
+
+            <div class="type">Class</div>
+    <h1><a href="../VirtualFileSystem.html">VirtualFileSystem</a>\Container</h1>
+    </div>
+        <div class="content">
+                <p>    class
+    <strong>Container</strong></p>
+
+            <div class="description">
+            <p>Class to hold the filesystem structure as object representation.</p>
+            <p>It also provides access and factory methods for
+file system management.</p>
+
+<p>An instance of Container is registered as a default stream options when FileSystem class is instantiated - it is
+later used by streamWrapper implementation to interact with underlying object representation.</p>
+        </div>
+    
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>(<a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a> $factory)
+                    <p>Class constructor.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setFactory">setFactory</a>(<a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a> $factory)
+                    <p>Sets Factory instance</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_factory">factory</a>()
+                    <p>Returns Factory instance</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Structure/Root.html"><abbr title="VirtualFileSystem\Structure\Root">Root</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_root">root</a>()
+                    <p>Returns Root instance</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_nodeAt">nodeAt</a>(string $path)
+                    <p>Returns filesystem Node|Directory|File|Root at given path.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_hasNodeAt">hasNodeAt</a>(string $path)
+                    <p>Checks whether filesystem has Node at given path</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_directoryAt">directoryAt</a>(string $path)
+                    <p>Returns directory at given path</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_fileAt">fileAt</a>(string $path)
+                    <p>Returns file at given path</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_createDir">createDir</a>(string $path, bool $recursive = false, null|integer $mode = null)
+                    <p>Creates Directory at given path.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Structure/Link.html"><abbr title="VirtualFileSystem\Structure\Link">Link</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_createLink">createLink</a>(string $path, string $destination)
+                    <p>Creates link at given path</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_createFile">createFile</a>(string $path, string|null $data = null)
+                    <p>Creates file at given path</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_createStructure">createStructure</a>(array $structure, string $parent = &#039;/&#039;)
+                    <p>Creates struture</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_move">move</a>(string $fromPath, string $toPath)
+                    <p>Moves Node from source to destination</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_remove">remove</a>(string $path, bool $recursive = false)
+                    <p>Removes node at $path</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../VirtualFileSystem/Wrapper/PermissionHelper.html"><abbr title="VirtualFileSystem\Wrapper\PermissionHelper">PermissionHelper</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_getPermissionHelper">getPermissionHelper</a>(<a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $node)
+                    <p>Returns PermissionHelper with given node in context</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setPermissionHelper">setPermissionHelper</a>(<a href="../VirtualFileSystem/Wrapper/PermissionHelper.html"><abbr title="VirtualFileSystem\Wrapper\PermissionHelper">PermissionHelper</abbr></a> $permissionHelper)
+                    <p>Sets permission helper instance</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method___construct">
+        <div class="location">at line 50</div>
+        <code>            public            
+    <strong>__construct</strong>(<a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a> $factory)</code>
+    </h3>
+    <div class="details">
+        <p>Class constructor.</p>
+        <p>Sets factory and root object on init.</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a></td>
+                <td>$factory</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setFactory">
+        <div class="location">at line 62</div>
+        <code>            public            
+    <strong>setFactory</strong>(<a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a> $factory)</code>
+    </h3>
+    <div class="details">
+        <p>Sets Factory instance</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a></td>
+                <td>$factory</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_factory">
+        <div class="location">at line 72</div>
+        <code>            public            <a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a>
+    <strong>factory</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns Factory instance</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_root">
+        <div class="location">at line 82</div>
+        <code>            public            <a href="../VirtualFileSystem/Structure/Root.html"><abbr title="VirtualFileSystem\Structure\Root">Root</abbr></a>
+    <strong>root</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Returns Root instance</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Structure/Root.html"><abbr title="VirtualFileSystem\Structure\Root">Root</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_nodeAt">
+        <div class="location">at line 96</div>
+        <code>            public            <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
+    <strong>nodeAt</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Returns filesystem Node|Directory|File|Root at given path.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="NotFoundException">NotFoundException</abbr></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_hasNodeAt">
+        <div class="location">at line 119</div>
+        <code>            public            bool
+    <strong>hasNodeAt</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Checks whether filesystem has Node at given path</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_directoryAt">
+        <div class="location">at line 140</div>
+        <code>            public            <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
+    <strong>directoryAt</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Returns directory at given path</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="NotDirectoryException">NotDirectoryException</abbr></td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td><abbr title="NotFoundException">NotFoundException</abbr></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_fileAt">
+        <div class="location">at line 161</div>
+        <code>            public            <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
+    <strong>fileAt</strong>(string $path)</code>
+    </h3>
+    <div class="details">
+        <p>Returns file at given path</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="NotFileException">NotFileException</abbr></td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td><abbr title="NotFoundException">NotFoundException</abbr></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_createDir">
+        <div class="location">at line 183</div>
+        <code>            public            <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
+    <strong>createDir</strong>(string $path, bool $recursive = false, null|integer $mode = null)</code>
+    </h3>
+    <div class="details">
+        <p>Creates Directory at given path.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>null|integer</td>
+                <td>$mode</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="NotFoundException">NotFoundException</abbr></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_createLink">
+        <div class="location">at line 215</div>
+        <code>            public            <a href="../VirtualFileSystem/Structure/Link.html"><abbr title="VirtualFileSystem\Structure\Link">Link</abbr></a>
+    <strong>createLink</strong>(string $path, string $destination)</code>
+    </h3>
+    <div class="details">
+        <p>Creates link at given path</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$destination</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Structure/Link.html"><abbr title="VirtualFileSystem\Structure\Link">Link</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_createFile">
+        <div class="location">at line 241</div>
+        <code>            public            <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
+    <strong>createFile</strong>(string $path, string|null $data = null)</code>
+    </h3>
+    <div class="details">
+        <p>Creates file at given path</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$data</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_createStructure">
+        <div class="location">at line 264</div>
+        <code>            public            
+    <strong>createStructure</strong>(array $structure, string $parent = &#039;/&#039;)</code>
+    </h3>
+    <div class="details">
+        <p>Creates struture</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>array</td>
+                <td>$structure</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$parent</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="NotFoundException">NotFoundException</abbr></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_move">
+        <div class="location">at line 284</div>
+        <code>            public            bool
+    <strong>move</strong>(string $fromPath, string $toPath)</code>
+    </h3>
+    <div class="details">
+        <p>Moves Node from source to destination</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$fromPath</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$toPath</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_remove">
+        <div class="location">at line 328</div>
+        <code>            public            
+    <strong>remove</strong>(string $path, bool $recursive = false)</code>
+    </h3>
+    <div class="details">
+        <p>Removes node at $path</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getPermissionHelper">
+        <div class="location">at line 346</div>
+        <code>            public            <a href="../VirtualFileSystem/Wrapper/PermissionHelper.html"><abbr title="VirtualFileSystem\Wrapper\PermissionHelper">PermissionHelper</abbr></a>
+    <strong>getPermissionHelper</strong>(<a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $node)</code>
+    </h3>
+    <div class="details">
+        <p>Returns PermissionHelper with given node in context</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../VirtualFileSystem/Wrapper/PermissionHelper.html"><abbr title="VirtualFileSystem\Wrapper\PermissionHelper">PermissionHelper</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setPermissionHelper">
+        <div class="location">at line 356</div>
+        <code>            public            
+    <strong>setPermissionHelper</strong>(<a href="../VirtualFileSystem/Wrapper/PermissionHelper.html"><abbr title="VirtualFileSystem\Wrapper\PermissionHelper">PermissionHelper</abbr></a> $permissionHelper)</code>
+    </h3>
+    <div class="details">
+        <p>Sets permission helper instance</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../VirtualFileSystem/Wrapper/PermissionHelper.html"><abbr title="VirtualFileSystem\Wrapper\PermissionHelper">PermissionHelper</abbr></a></td>
+                <td>$permissionHelper</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>

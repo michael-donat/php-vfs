@@ -23,7 +23,7 @@ class __TwigTemplate_1eb283652eb71de313d6bbf4fc5839094a55ccadd39d37d6aa4d5c9a772
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        $context["__internal_69dd85391918a170992ee53c22582605939d7158f772ef09b968da3859d05ada"] = $this->env->loadTemplate("macros.twig");
+        $context["__internal_624a2d0766dce965aba4fc91fce3af240edc15d91e41893a240a966fdb6ba0d7"] = $this->env->loadTemplate("macros.twig");
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -103,10 +103,10 @@ class __TwigTemplate_1eb283652eb71de313d6bbf4fc5839094a55ccadd39d37d6aa4d5c9a772
                 if (("class" == (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")))) {
                     // line 29
                     echo "<dt>";
-                    echo $context["__internal_69dd85391918a170992ee53c22582605939d7158f772ef09b968da3859d05ada"]->getclass_link((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")));
+                    echo $context["__internal_624a2d0766dce965aba4fc91fce3af240edc15d91e41893a240a966fdb6ba0d7"]->getclass_link((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")));
                     if ((isset($context["has_namespaces"]) ? $context["has_namespaces"] : $this->getContext($context, "has_namespaces"))) {
                         echo " &mdash; <em>Class in namespace ";
-                        echo $context["__internal_69dd85391918a170992ee53c22582605939d7158f772ef09b968da3859d05ada"]->getnamespace_link($this->getAttribute((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "namespace"));
+                        echo $context["__internal_624a2d0766dce965aba4fc91fce3af240edc15d91e41893a240a966fdb6ba0d7"]->getnamespace_link($this->getAttribute((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "namespace"));
                     }
                     echo "</em></dt>
                     <dd>";
@@ -116,9 +116,9 @@ class __TwigTemplate_1eb283652eb71de313d6bbf4fc5839094a55ccadd39d37d6aa4d5c9a772
                 } elseif (("method" == (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")))) {
                     // line 32
                     echo "<dt>";
-                    echo $context["__internal_69dd85391918a170992ee53c22582605939d7158f772ef09b968da3859d05ada"]->getmethod_link((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")));
+                    echo $context["__internal_624a2d0766dce965aba4fc91fce3af240edc15d91e41893a240a966fdb6ba0d7"]->getmethod_link((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")));
                     echo "() &mdash; <em>Method in class ";
-                    echo $context["__internal_69dd85391918a170992ee53c22582605939d7158f772ef09b968da3859d05ada"]->getclass_link($this->getAttribute((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "class"));
+                    echo $context["__internal_624a2d0766dce965aba4fc91fce3af240edc15d91e41893a240a966fdb6ba0d7"]->getclass_link($this->getAttribute((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "class"));
                     echo "</em></dt>
                     <dd>";
                     // line 33
@@ -127,9 +127,9 @@ class __TwigTemplate_1eb283652eb71de313d6bbf4fc5839094a55ccadd39d37d6aa4d5c9a772
                 } elseif (("property" == (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")))) {
                     // line 35
                     echo "<dt>\$";
-                    echo $context["__internal_69dd85391918a170992ee53c22582605939d7158f772ef09b968da3859d05ada"]->getproperty_link((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")));
+                    echo $context["__internal_624a2d0766dce965aba4fc91fce3af240edc15d91e41893a240a966fdb6ba0d7"]->getproperty_link((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")));
                     echo " &mdash; <em>Property in class ";
-                    echo $context["__internal_69dd85391918a170992ee53c22582605939d7158f772ef09b968da3859d05ada"]->getclass_link($this->getAttribute((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "class"));
+                    echo $context["__internal_624a2d0766dce965aba4fc91fce3af240edc15d91e41893a240a966fdb6ba0d7"]->getclass_link($this->getAttribute((isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "class"));
                     echo "</em></dt>
                     <dd>";
                     // line 36
@@ -160,6 +160,6 @@ class __TwigTemplate_1eb283652eb71de313d6bbf4fc5839094a55ccadd39d37d6aa4d5c9a772
 
     public function getDebugInfo()
     {
-        return array (  144 => 39,  136 => 36,  129 => 35,  125 => 33,  118 => 32,  114 => 30,  105 => 29,  101 => 27,  95 => 25,  88 => 23,  72 => 18,  66 => 16,  55 => 13,  26 => 3,  43 => 8,  41 => 7,  21 => 2,  379 => 58,  363 => 56,  358 => 55,  355 => 54,  350 => 53,  333 => 52,  331 => 51,  329 => 50,  318 => 49,  303 => 46,  291 => 45,  265 => 40,  261 => 39,  258 => 37,  255 => 35,  253 => 34,  236 => 33,  234 => 32,  222 => 31,  211 => 28,  205 => 27,  199 => 26,  185 => 25,  174 => 22,  168 => 21,  162 => 20,  148 => 19,  135 => 16,  133 => 15,  126 => 13,  119 => 11,  117 => 10,  104 => 9,  53 => 2,  42 => 1,  37 => 6,  34 => 44,  25 => 4,  19 => 1,  110 => 32,  103 => 28,  99 => 26,  90 => 27,  87 => 6,  83 => 22,  79 => 23,  64 => 16,  62 => 15,  58 => 14,  52 => 11,  49 => 10,  46 => 9,  40 => 7,  80 => 21,  76 => 22,  71 => 19,  60 => 13,  56 => 12,  50 => 9,  31 => 5,  94 => 28,  91 => 25,  84 => 8,  81 => 7,  75 => 5,  70 => 18,  68 => 18,  65 => 18,  47 => 10,  44 => 9,  38 => 7,  33 => 5,  22 => 8,  51 => 12,  39 => 6,  35 => 10,  32 => 4,  29 => 6,  28 => 24,);
+        return array (  144 => 39,  136 => 36,  129 => 35,  125 => 33,  118 => 32,  114 => 30,  105 => 29,  101 => 27,  95 => 25,  88 => 23,  72 => 18,  66 => 16,  55 => 13,  26 => 3,  43 => 8,  41 => 7,  21 => 2,  379 => 58,  363 => 56,  358 => 55,  355 => 54,  350 => 53,  333 => 52,  331 => 51,  329 => 50,  318 => 49,  303 => 46,  291 => 45,  265 => 40,  261 => 39,  258 => 37,  255 => 35,  253 => 34,  236 => 33,  234 => 32,  222 => 31,  211 => 28,  205 => 27,  199 => 26,  185 => 25,  174 => 22,  168 => 21,  162 => 20,  148 => 19,  135 => 16,  133 => 15,  126 => 13,  119 => 11,  117 => 10,  104 => 9,  53 => 2,  37 => 6,  34 => 44,  25 => 4,  19 => 1,  110 => 32,  103 => 28,  99 => 26,  90 => 27,  87 => 6,  83 => 22,  79 => 23,  64 => 16,  62 => 15,  52 => 11,  49 => 10,  46 => 9,  40 => 7,  80 => 21,  76 => 22,  71 => 19,  60 => 13,  56 => 12,  50 => 9,  31 => 5,  94 => 28,  91 => 25,  84 => 8,  81 => 7,  75 => 5,  68 => 18,  65 => 18,  47 => 10,  44 => 9,  35 => 10,  29 => 6,  22 => 8,  70 => 18,  58 => 14,  54 => 11,  51 => 12,  48 => 9,  42 => 1,  38 => 7,  33 => 5,  30 => 3,  28 => 24,);
     }
 }

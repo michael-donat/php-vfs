@@ -16,7 +16,7 @@ class __TwigTemplate_3cdb99809102d532b8de2015df7002c6c4ec9a580a27eff9ba73b674d16
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        $context["__internal_55e1dded9830422ae43acd1e59bedd794d65b355aac82a8f3c76bb2a0f27e200"] = $this->env->loadTemplate("macros.twig");
+        $context["__internal_ceaa934a41cb3b47a7715f52bcc9d32b7eef321bbee583e831b55b2a1e1a8676"] = $this->env->loadTemplate("macros.twig");
         // line 4
         echo "var search_data = {
     'index': {
@@ -74,7 +74,7 @@ class __TwigTemplate_3cdb99809102d532b8de2015df7002c6c4ec9a580a27eff9ba73b674d16
                 echo twig_jsonencode_filter($this->env->getExtension('sami')->pathForMethod($context, $this->getAttribute((isset($context["item"]) ? $context["item"] : $this->getContext($context, "item")), 1, array(), "array")));
                 echo ",";
                 // line 21
-                echo twig_jsonencode_filter($context["__internal_55e1dded9830422ae43acd1e59bedd794d65b355aac82a8f3c76bb2a0f27e200"]->getmethod_parameters_signature($this->getAttribute((isset($context["item"]) ? $context["item"] : $this->getContext($context, "item")), 1, array(), "array")));
+                echo twig_jsonencode_filter($context["__internal_ceaa934a41cb3b47a7715f52bcc9d32b7eef321bbee583e831b55b2a1e1a8676"]->getmethod_parameters_signature($this->getAttribute((isset($context["item"]) ? $context["item"] : $this->getContext($context, "item")), 1, array(), "array")));
                 echo ",";
                 // line 22
                 echo twig_jsonencode_filter($this->env->getExtension('sami')->getSnippet($this->getAttribute($this->getAttribute((isset($context["item"]) ? $context["item"] : $this->getContext($context, "item")), 1, array(), "array"), "shortdesc")));
@@ -135,6 +135,6 @@ search_data['index']['longSearchIndex'] = search_data['index']['searchIndex']";
 
     public function getDebugInfo()
     {
-        return array (  120 => 35,  106 => 33,  89 => 26,  86 => 25,  77 => 21,  59 => 14,  48 => 10,  127 => 64,  122 => 61,  109 => 59,  24 => 4,  82 => 26,  93 => 27,  69 => 19,  63 => 5,  57 => 4,  98 => 29,  92 => 27,  85 => 23,  74 => 20,  61 => 26,  45 => 7,  144 => 39,  136 => 36,  129 => 35,  125 => 33,  118 => 32,  114 => 30,  105 => 58,  101 => 30,  95 => 28,  88 => 50,  72 => 18,  66 => 18,  55 => 14,  26 => 3,  43 => 8,  41 => 9,  21 => 4,  379 => 58,  363 => 56,  358 => 55,  355 => 54,  350 => 53,  333 => 52,  331 => 51,  329 => 50,  318 => 49,  303 => 46,  291 => 45,  265 => 40,  261 => 39,  258 => 37,  255 => 35,  253 => 34,  236 => 33,  234 => 32,  222 => 31,  211 => 28,  205 => 27,  199 => 26,  185 => 25,  174 => 22,  168 => 21,  162 => 20,  148 => 19,  135 => 16,  133 => 15,  126 => 13,  119 => 11,  117 => 10,  104 => 32,  53 => 12,  42 => 6,  37 => 8,  34 => 4,  25 => 6,  19 => 1,  110 => 32,  103 => 28,  99 => 55,  90 => 27,  87 => 24,  83 => 23,  79 => 21,  64 => 16,  62 => 15,  58 => 15,  52 => 13,  49 => 11,  46 => 9,  40 => 5,  80 => 22,  76 => 22,  71 => 19,  60 => 13,  56 => 13,  50 => 11,  31 => 5,  94 => 28,  91 => 25,  84 => 8,  81 => 7,  75 => 22,  70 => 19,  68 => 18,  65 => 16,  47 => 10,  44 => 9,  38 => 7,  33 => 5,  22 => 8,  51 => 12,  39 => 6,  35 => 4,  32 => 6,  29 => 8,  28 => 5,);
+        return array (  120 => 35,  106 => 33,  89 => 26,  86 => 25,  77 => 21,  59 => 14,  127 => 64,  122 => 61,  109 => 59,  24 => 4,  82 => 26,  93 => 27,  69 => 19,  63 => 5,  57 => 4,  32 => 6,  98 => 29,  92 => 27,  85 => 23,  74 => 20,  61 => 26,  45 => 7,  144 => 39,  136 => 36,  129 => 35,  125 => 33,  118 => 32,  114 => 30,  105 => 58,  101 => 30,  95 => 28,  88 => 50,  72 => 18,  66 => 18,  55 => 14,  26 => 3,  43 => 8,  41 => 9,  21 => 4,  379 => 58,  363 => 56,  358 => 55,  355 => 54,  350 => 53,  333 => 52,  331 => 51,  329 => 50,  318 => 49,  303 => 46,  291 => 45,  265 => 40,  261 => 39,  258 => 37,  255 => 35,  253 => 34,  236 => 33,  234 => 32,  222 => 31,  211 => 28,  205 => 27,  199 => 26,  185 => 25,  174 => 22,  168 => 21,  162 => 20,  148 => 19,  135 => 16,  133 => 15,  126 => 13,  119 => 11,  117 => 10,  104 => 32,  53 => 12,  37 => 8,  34 => 4,  25 => 6,  19 => 1,  110 => 32,  103 => 28,  99 => 55,  90 => 27,  87 => 24,  83 => 23,  79 => 21,  64 => 16,  62 => 15,  52 => 13,  49 => 11,  46 => 9,  40 => 5,  80 => 22,  76 => 22,  71 => 19,  60 => 13,  56 => 13,  50 => 11,  31 => 5,  94 => 28,  91 => 25,  84 => 8,  81 => 7,  75 => 22,  68 => 18,  65 => 16,  47 => 10,  44 => 9,  35 => 4,  29 => 8,  22 => 8,  70 => 19,  58 => 15,  54 => 11,  51 => 12,  48 => 10,  42 => 6,  38 => 7,  33 => 5,  30 => 3,  28 => 5,);
     }
 }

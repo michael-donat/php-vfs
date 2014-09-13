@@ -35,7 +35,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"] = $this->env->loadTemplate("macros.twig");
+        $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"] = $this->env->loadTemplate("macros.twig");
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -62,7 +62,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
         echo "</div>
     <h1>";
         // line 11
-        echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->getnamespace_link($this->getAttribute((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), "namespace"));
+        echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->getnamespace_link($this->getAttribute((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), "namespace"));
         if ($this->getAttribute((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), "namespace")) {
             echo "\\";
         }
@@ -165,7 +165,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
         if ($this->getAttribute((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), "parent")) {
             // line 52
             echo "        extends ";
-            echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->getclass_link($this->getAttribute((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), "parent"));
+            echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->getclass_link($this->getAttribute((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), "parent"));
         }
         // line 54
         if ((twig_length_filter($this->env, $this->getAttribute((isset($context["class"]) ? $context["class"] : $this->getContext($context, "class")), "interfaces")) > 0)) {
@@ -190,7 +190,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
             }
             foreach ($context['_seq'] as $context["_key"] => $context["interface"]) {
                 // line 57
-                echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->getclass_link((isset($context["interface"]) ? $context["interface"] : $this->getContext($context, "interface")));
+                echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->getclass_link((isset($context["interface"]) ? $context["interface"] : $this->getContext($context, "interface")));
                 // line 58
                 if ((!$this->getAttribute((isset($context["loop"]) ? $context["loop"] : $this->getContext($context, "loop")), "last"))) {
                     echo ", ";
@@ -244,7 +244,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
         }
         // line 70
         echo "    ";
-        echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->gethint_link($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "hint"));
+        echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->gethint_link($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "hint"));
         echo "
     <strong>";
         // line 71
@@ -257,9 +257,9 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
     public function block_method_parameters_signature($context, array $blocks = array())
     {
         // line 75
-        $context["__internal_d5b097003ce75a7a8a58522a2ca905adb70e6ecb00b90cd15a319cdba6c1be94"] = $this->env->loadTemplate("macros.twig");
+        $context["__internal_2d27c077019c3537f0e4e8ce1ffaab2488819a4750014d0620e76ca350d78ec0"] = $this->env->loadTemplate("macros.twig");
         // line 76
-        echo $context["__internal_d5b097003ce75a7a8a58522a2ca905adb70e6ecb00b90cd15a319cdba6c1be94"]->getmethod_parameters_signature((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")));
+        echo $context["__internal_2d27c077019c3537f0e4e8ce1ffaab2488819a4750014d0620e76ca350d78ec0"]->getmethod_parameters_signature((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")));
     }
 
     // line 79
@@ -277,7 +277,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
                 <td>";
             // line 83
             if ($this->getAttribute((isset($context["parameter"]) ? $context["parameter"] : $this->getContext($context, "parameter")), "hint")) {
-                echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->gethint_link($this->getAttribute((isset($context["parameter"]) ? $context["parameter"] : $this->getContext($context, "parameter")), "hint"));
+                echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->gethint_link($this->getAttribute((isset($context["parameter"]) ? $context["parameter"] : $this->getContext($context, "parameter")), "hint"));
             }
             echo "</td>
                 <td>\$";
@@ -307,7 +307,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
         <tr>
             <td>";
         // line 94
-        echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->gethint_link($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "hint"));
+        echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->gethint_link($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "hint"));
         echo "</td>
             <td>";
         // line 95
@@ -332,7 +332,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
             echo "            <tr>
                 <td>";
             // line 104
-            echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->getclass_link($this->getAttribute((isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")), 0, array(), "array"));
+            echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->getclass_link($this->getAttribute((isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")), 0, array(), "array"));
             echo "</td>
                 <td>";
             // line 105
@@ -445,7 +445,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
             }
             // line 143
             echo "                    ";
-            echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->gethint_link($this->getAttribute((isset($context["property"]) ? $context["property"] : $this->getContext($context, "property")), "hint"));
+            echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->gethint_link($this->getAttribute((isset($context["property"]) ? $context["property"] : $this->getContext($context, "property")), "hint"));
             echo "
                 </td>
                 <td>\$";
@@ -498,7 +498,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
             if ($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "static")) {
                 echo "static&nbsp;";
             }
-            echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->gethint_link($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "hint"));
+            echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->gethint_link($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "hint"));
             echo "
                 </td>
                 <td class=\"last\">
@@ -520,7 +520,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
             if ((!($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "class") === (isset($context["class"]) ? $context["class"] : $this->getContext($context, "class"))))) {
                 // line 165
                 echo "<small>from&nbsp;";
-                echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->getmethod_link((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), array(), false, true);
+                echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->getmethod_link((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), array(), false, true);
                 echo "</small>";
             }
             // line 167
@@ -595,7 +595,7 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
         // line 181
         if ((!($this->getAttribute((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), "class") === (isset($context["class"]) ? $context["class"] : $this->getContext($context, "class"))))) {
             echo "in ";
-            echo $context["__internal_783d1e35fab9af8ec2fb9205ee1ca016dc2ce4e3766017d5f21f1b16b35ddf36"]->getmethod_link((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), array(), false, true);
+            echo $context["__internal_dc1b815a3f8f76afc1952629ce9c10ce38837bc7c1bec0bf542624b6802927ab"]->getmethod_link((isset($context["method"]) ? $context["method"] : $this->getContext($context, "method")), array(), false, true);
             echo " ";
         }
         echo "at line ";
@@ -688,6 +688,6 @@ class __TwigTemplate_0879a43cab9f951874375810110a6c355550499c55910ec2e10513063a2
 
     public function getDebugInfo()
     {
-        return array (  674 => 211,  669 => 209,  665 => 207,  663 => 206,  660 => 205,  655 => 203,  651 => 201,  649 => 200,  646 => 199,  641 => 197,  637 => 195,  635 => 194,  632 => 193,  627 => 191,  623 => 189,  621 => 188,  616 => 186,  612 => 185,  606 => 182,  596 => 181,  591 => 180,  588 => 179,  569 => 175,  551 => 174,  548 => 173,  543 => 170,  527 => 167,  522 => 165,  520 => 164,  515 => 161,  507 => 160,  498 => 157,  494 => 155,  477 => 154,  474 => 153,  471 => 152,  466 => 149,  457 => 146,  453 => 145,  447 => 143,  442 => 142,  438 => 141,  434 => 140,  431 => 139,  427 => 138,  424 => 137,  421 => 136,  416 => 133,  406 => 129,  402 => 128,  397 => 126,  394 => 125,  390 => 124,  387 => 123,  384 => 122,  370 => 116,  366 => 115,  359 => 113,  356 => 112,  353 => 111,  348 => 108,  339 => 105,  335 => 104,  332 => 103,  328 => 102,  325 => 101,  322 => 100,  314 => 95,  310 => 94,  306 => 92,  298 => 88,  289 => 85,  285 => 84,  279 => 83,  276 => 82,  272 => 81,  269 => 80,  266 => 79,  262 => 76,  260 => 75,  257 => 74,  251 => 71,  246 => 70,  241 => 69,  231 => 67,  226 => 66,  221 => 65,  217 => 64,  214 => 63,  195 => 58,  193 => 57,  176 => 56,  173 => 55,  171 => 54,  167 => 52,  165 => 51,  157 => 49,  153 => 48,  130 => 36,  116 => 30,  113 => 29,  108 => 27,  78 => 15,  152 => 47,  143 => 43,  139 => 43,  132 => 37,  123 => 37,  150 => 47,  141 => 44,  137 => 43,  131 => 40,  128 => 39,  124 => 37,  115 => 35,  111 => 34,  107 => 32,  102 => 24,  73 => 19,  27 => 3,  120 => 35,  106 => 31,  89 => 19,  86 => 18,  77 => 20,  59 => 14,  48 => 10,  127 => 35,  122 => 33,  109 => 59,  24 => 4,  82 => 24,  93 => 20,  69 => 11,  63 => 16,  57 => 9,  98 => 28,  92 => 27,  85 => 25,  74 => 21,  61 => 26,  45 => 9,  144 => 39,  136 => 39,  129 => 35,  125 => 33,  118 => 31,  114 => 30,  105 => 31,  101 => 30,  95 => 27,  88 => 50,  72 => 18,  66 => 17,  55 => 14,  26 => 3,  43 => 5,  41 => 7,  21 => 4,  379 => 119,  363 => 114,  358 => 55,  355 => 54,  350 => 53,  333 => 52,  331 => 51,  329 => 50,  318 => 49,  303 => 91,  291 => 45,  265 => 40,  261 => 39,  258 => 37,  255 => 35,  253 => 34,  236 => 68,  234 => 32,  222 => 31,  211 => 28,  205 => 27,  199 => 26,  185 => 25,  174 => 22,  168 => 21,  162 => 50,  148 => 19,  135 => 16,  133 => 41,  126 => 38,  119 => 35,  117 => 10,  104 => 25,  53 => 11,  42 => 6,  37 => 8,  34 => 4,  25 => 6,  19 => 1,  110 => 32,  103 => 30,  99 => 23,  90 => 25,  87 => 15,  83 => 23,  79 => 21,  64 => 16,  62 => 9,  58 => 15,  52 => 13,  49 => 11,  46 => 9,  40 => 6,  80 => 23,  76 => 22,  71 => 20,  60 => 10,  56 => 13,  50 => 10,  31 => 5,  94 => 28,  91 => 25,  84 => 17,  81 => 7,  75 => 14,  70 => 18,  68 => 18,  65 => 11,  47 => 9,  44 => 9,  38 => 3,  33 => 5,  22 => 8,  51 => 7,  39 => 7,  35 => 4,  32 => 6,  29 => 8,  28 => 3,);
+        return array (  674 => 211,  669 => 209,  665 => 207,  663 => 206,  660 => 205,  655 => 203,  651 => 201,  649 => 200,  646 => 199,  641 => 197,  637 => 195,  635 => 194,  632 => 193,  627 => 191,  623 => 189,  621 => 188,  616 => 186,  612 => 185,  606 => 182,  596 => 181,  591 => 180,  588 => 179,  569 => 175,  551 => 174,  548 => 173,  543 => 170,  527 => 167,  522 => 165,  520 => 164,  515 => 161,  507 => 160,  498 => 157,  494 => 155,  477 => 154,  474 => 153,  471 => 152,  466 => 149,  457 => 146,  453 => 145,  447 => 143,  442 => 142,  438 => 141,  434 => 140,  431 => 139,  427 => 138,  424 => 137,  421 => 136,  416 => 133,  406 => 129,  402 => 128,  397 => 126,  394 => 125,  390 => 124,  387 => 123,  384 => 122,  370 => 116,  366 => 115,  359 => 113,  356 => 112,  353 => 111,  348 => 108,  339 => 105,  335 => 104,  332 => 103,  328 => 102,  325 => 101,  322 => 100,  314 => 95,  310 => 94,  306 => 92,  298 => 88,  289 => 85,  285 => 84,  279 => 83,  276 => 82,  272 => 81,  269 => 80,  266 => 79,  262 => 76,  260 => 75,  257 => 74,  251 => 71,  246 => 70,  241 => 69,  231 => 67,  226 => 66,  221 => 65,  217 => 64,  214 => 63,  195 => 58,  193 => 57,  176 => 56,  173 => 55,  171 => 54,  167 => 52,  165 => 51,  157 => 49,  153 => 48,  130 => 36,  116 => 30,  113 => 29,  108 => 27,  78 => 15,  152 => 47,  143 => 43,  139 => 43,  132 => 37,  123 => 37,  39 => 7,  150 => 47,  141 => 44,  137 => 43,  131 => 40,  128 => 39,  124 => 37,  115 => 35,  111 => 34,  107 => 32,  102 => 24,  73 => 19,  27 => 3,  120 => 35,  106 => 31,  89 => 19,  86 => 18,  77 => 20,  59 => 14,  127 => 35,  122 => 33,  109 => 59,  24 => 4,  82 => 24,  93 => 20,  69 => 11,  63 => 16,  57 => 9,  32 => 6,  98 => 28,  92 => 27,  85 => 25,  74 => 21,  61 => 26,  45 => 9,  144 => 39,  136 => 39,  129 => 35,  125 => 33,  118 => 31,  114 => 30,  105 => 31,  101 => 30,  95 => 27,  88 => 50,  72 => 18,  66 => 17,  55 => 14,  26 => 3,  43 => 5,  41 => 7,  21 => 4,  379 => 119,  363 => 114,  358 => 55,  355 => 54,  350 => 53,  333 => 52,  331 => 51,  329 => 50,  318 => 49,  303 => 91,  291 => 45,  265 => 40,  261 => 39,  258 => 37,  255 => 35,  253 => 34,  236 => 68,  234 => 32,  222 => 31,  211 => 28,  205 => 27,  199 => 26,  185 => 25,  174 => 22,  168 => 21,  162 => 50,  148 => 19,  135 => 16,  133 => 41,  126 => 38,  119 => 35,  117 => 10,  104 => 25,  53 => 11,  37 => 8,  34 => 4,  25 => 6,  19 => 1,  110 => 32,  103 => 30,  99 => 23,  90 => 25,  87 => 15,  83 => 23,  79 => 21,  64 => 16,  62 => 9,  52 => 13,  49 => 11,  46 => 9,  40 => 6,  80 => 23,  76 => 22,  71 => 20,  60 => 10,  56 => 13,  50 => 10,  31 => 5,  94 => 28,  91 => 25,  84 => 17,  81 => 7,  75 => 14,  68 => 18,  65 => 11,  47 => 9,  44 => 9,  35 => 4,  29 => 8,  22 => 8,  70 => 18,  58 => 15,  54 => 11,  51 => 7,  48 => 10,  42 => 6,  38 => 3,  33 => 5,  30 => 3,  28 => 3,);
     }
 }
