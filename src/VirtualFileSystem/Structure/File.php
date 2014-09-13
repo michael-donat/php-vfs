@@ -41,6 +41,7 @@ class File extends Node
 
     /**
      * @inherit
+     * @param string $basename
      */
     public function __construct($basename)
     {
@@ -104,6 +105,7 @@ class File extends Node
 
         if (!$exclusive) {
             $this->sharedLock->attach($resource);
+
             return true;
         }
 
@@ -112,6 +114,7 @@ class File extends Node
         }
 
         $this->exclusiveLock = $resource;
+
         return true;
     }
 }

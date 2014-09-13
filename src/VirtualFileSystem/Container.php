@@ -131,8 +131,6 @@ class Container
      * Returns directory at given path
      *
      * @param string $path
-     * @param bool $recursive
-     * @param null|integer $mode
      *
      * @return Structure\Directory
      *
