@@ -1,7 +1,9 @@
-|Build status|Coverage|Last stable|Last development|Quality|
-|:-------------:|:-------------:|:-----:|:-----:|:----------:|
-|[![Build Status](https://travis-ci.org/thornag/php-vfs.png)](https://travis-ci.org/thornag/php-vfs)|[![Coverage Status](https://coveralls.io/repos/thornag/php-vfs/badge.png?branch=1.2.x)](https://coveralls.io/r/thornag/php-vfs?branch=1.2.x)|[![Latest Stable Version](https://poser.pugx.org/php-vfs/php-vfs/v/stable.png)](https://packagist.org/packages/php-vfs/php-vfs)|[![Latest Unstable Version](https://poser.pugx.org/php-vfs/php-vfs/v/unstable.png)](https://packagist.org/packages/php-vfs/php-vfs)|[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/thornag/php-vfs/badges/quality-score.png?s=6b2da342adc2bbe961fc9e1b0e467c3ecc1007d0)](https://scrutinizer-ci.com/g/thornag/php-vfs/)|
-
+[![Version][icon-version]][url-version]
+[![Build status][icon-build]][url-build]
+[![Licence][icon-licence]][url-licence]
+[![Coverage][icon-coverage]][url-coverage]
+[![Quality][icon-quality]][url-quality]
+[![Documentation][icon-docs]][url-docs]
 php-vfs
 ========
 
@@ -204,3 +206,16 @@ For full diff of changes please go to https://github.com/thornag/php-vfs/compare
 - code improvements as suggested by https://scrutinizer-ci.com/g/thornag/php-vfs/
 
 
+
+[icon-version]: http://img.shields.io/packagist/v/php-vfs/php-vfs.svg?style=flat
+[url-version]: https://packagist.org/packages/php-vfs/php-vfs
+[icon-build]: http://img.shields.io/travis/thornag/php-vfs/v1.2.1.svg?style=flat
+[url-build]: https://travis-ci.org/thornag/php-vfs
+[icon-coverage]: http://img.shields.io/coveralls/thornag/php-vfs/v1.2.1.svg?style=flat
+[url-coverage]: http://thornag.github.io/php-vfs/coverage/ 
+[icon-quality]: http://img.shields.io/scrutinizer/g/thornag/php-vfs/1.2.x.svg?style=flat
+[url-quality]: https://scrutinizer-ci.com/g/thornag/php-vfs/ 
+[icon-licence]: http://img.shields.io/packagist/l/php-vfs/php-vfs.svg?style=flat
+[url-licence]: LICENCE 
+[icon-docs]: http://img.shields.io/badge/docs-API-4C73BA.svg?style=flat
+[url-docs]: http://thornag.github.io/php-vfs/api/v1.2.1/
