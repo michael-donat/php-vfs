@@ -4,6 +4,7 @@
 [![Coverage][icon-coverage]][url-coverage]
 [![Quality][icon-quality]][url-quality]
 [![Documentation][icon-docs]][url-docs]
+[![HHVM][picon-hhvm]][url-hhvm]
 php-vfs
 ========
 
@@ -219,3 +220,5 @@ For full diff of changes please go to https://github.com/thornag/php-vfs/compare
 [url-licence]: LICENCE 
 [icon-docs]: http://img.shields.io/badge/docs-API-4C73BA.svg?style=flat
 [url-docs]: http://thornag.github.io/php-vfs/api/v1.2.1/
+[icon-hhvm]: http://img.shields.io/hhvm/php-vfs/php-vfs.svg
+[url-hhvm]: http://hhvm.h4cc.de/package/php-vfs/php-vfs
