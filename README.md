@@ -4,7 +4,7 @@
 [![Coverage][icon-coverage]][url-coverage]
 [![Quality][icon-quality]][url-quality]
 [![Documentation][icon-docs]][url-docs]
-[![HHVM][picon-hhvm]][url-hhvm]
+[![HHVM][icon-hhvm]][url-hhvm]
 php-vfs
 ========
 
