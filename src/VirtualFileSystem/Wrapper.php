@@ -445,7 +445,7 @@ class Wrapper
                     break;
 
                 case STREAM_META_OWNER_NAME:
-                    if (!$permissionHelper->userIsRoot()) {
+                    if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
                         trigger_error(
                             sprintf('chown: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
@@ -459,7 +459,7 @@ class Wrapper
                     break;
 
                 case STREAM_META_OWNER:
-                    if (!$permissionHelper->userIsRoot()) {
+                    if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
                         trigger_error(
                             sprintf('chown: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
@@ -472,7 +472,7 @@ class Wrapper
                     break;
 
                 case STREAM_META_GROUP_NAME:
-                    if (!$permissionHelper->userIsRoot()) {
+                    if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
                         trigger_error(
                             sprintf('chgrp: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
@@ -486,7 +486,7 @@ class Wrapper
                     break;
 
                 case STREAM_META_GROUP:
-                    if (!$permissionHelper->userIsRoot()) {
+                    if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
                         trigger_error(
                             sprintf('chgrp: %s: Permission denied', $strippedPath),
                             E_USER_WARNING
