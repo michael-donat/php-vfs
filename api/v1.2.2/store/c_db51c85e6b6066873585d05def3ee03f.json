@@ -1,0 +1,34 @@
+{
+    "name": "VirtualFileSystem\\NotFoundException",
+    "line": 19,
+    "short_desc": "Thrown when non-existing Node is requested.",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem",
+    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/NotFoundException.php",
+    "hash": "4ee7197a148becee0c4e00b30837ecec11c3ec41",
+    "parent": "Exception",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}
