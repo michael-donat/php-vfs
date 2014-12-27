@@ -203,8 +203,9 @@ Changes in 1.2.x
 
 For full diff of changes please go to https://github.com/thornag/php-vfs/compare/v1.1.0...1.2.x
 
-- added support for locking (thanks to [@mathroc](https://github.com/mathroc))
-- code improvements as suggested by https://scrutinizer-ci.com/g/thornag/php-vfs/
+- added support for locking (thanks to [@mathroc](https://github.com/mathroc)) (1.2.1)
+- code improvements as suggested by https://scrutinizer-ci.com/g/thornag/php-vfs/ (1.2.1)
+- fixed [30](https://github.com/thornag/php-vfs/issues/30) allowing owner and root to change metadata ([@milesj](https://github.com/milesj)) (1.2.2)
 
 
 
