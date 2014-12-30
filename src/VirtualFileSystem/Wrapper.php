@@ -369,9 +369,9 @@ class Wrapper
     }
 
     /**
-     * @param string $path
-     * @param Container $container
-     * @param string $strippedPath
+     * @param  string    $path
+     * @param  Container $container
+     * @param  string    $strippedPath
      * @return bool
      */
     protected function metaTouch($path, $container, $strippedPath)
@@ -411,11 +411,11 @@ class Wrapper
     }
 
     /**
-     * @param Structure\Node $node
-     * @param integer $value
-     * @param Container $container
-     * @param string $strippedPath
-     * @param Wrapper\PermissionHelper $permissionHelper
+     * @param  Structure\Node           $node
+     * @param  integer                  $value
+     * @param  Container                $container
+     * @param  string                   $strippedPath
+     * @param  Wrapper\PermissionHelper $permissionHelper
      * @throws AccessDeniedException
      */
     protected function metaAccess($node, $value, $container, $strippedPath, $permissionHelper)
@@ -438,11 +438,11 @@ class Wrapper
     }
 
     /**
-     * @param Structure\Node $node
-     * @param null|integer $ownerId
-     * @param integer|null $ownerName
-     * @param string $strippedPath
-     * @param Wrapper\PermissionHelper $permissionHelper
+     * @param  Structure\Node           $node
+     * @param  null|integer             $ownerId
+     * @param  integer|null             $ownerName
+     * @param  string                   $strippedPath
+     * @param  Wrapper\PermissionHelper $permissionHelper
      * @throws AccessDeniedException
      * @internal param Container $container
      */
@@ -466,11 +466,11 @@ class Wrapper
     }
 
     /**
-     * @param Structure\Node $node
-     * @param null|integer $groupId
-     * @param integer|null $groupName
-     * @param string $strippedPath
-     * @param Wrapper\PermissionHelper $permissionHelper
+     * @param  Structure\Node           $node
+     * @param  null|integer             $groupId
+     * @param  integer|null             $groupName
+     * @param  string                   $strippedPath
+     * @param  Wrapper\PermissionHelper $permissionHelper
      * @throws AccessDeniedException
      * @internal param Container $container
      */

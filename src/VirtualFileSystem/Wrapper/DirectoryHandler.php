@@ -46,7 +46,7 @@ class DirectoryHandler
     /**
      * Returns children iterator
      *
-     * @return ArrayIterator
+     * @return \ArrayIterator
      */
     public function iterator()
     {
