@@ -77,7 +77,7 @@ class Loader
     /**
      * Gets the base include path for all class files in the namespace of this class loader.
      *
-     * @return string $includePath
+     * @return null|string $includePath
      */
     public function getIncludePath()
     {

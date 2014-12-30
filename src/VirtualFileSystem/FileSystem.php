@@ -121,7 +121,7 @@ class FileSystem
      *
      * @param string  $path
      * @param bool    $recursive
-     * @param integer $mode
+     * @param integer|null $mode
      *
      * @return Directory
      */
@@ -134,7 +134,7 @@ class FileSystem
      * Creates and returns a file
      *
      * @param string $path
-     * @param string $data
+     * @param string|null $data
      *
      * @return File
      */

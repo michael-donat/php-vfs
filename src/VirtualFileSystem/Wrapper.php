@@ -45,7 +45,7 @@ class Wrapper
      *
      * @see http://php.net/stat
      *
-     * @return array
+     * @return array<*,integer>
      */
     protected function getStatArray()
     {
@@ -231,7 +231,7 @@ class Wrapper
      *
      * @param $data
      *
-     * @return int
+     * @return false|integer
      */
     public function stream_write($data)
     {
@@ -264,7 +264,7 @@ class Wrapper
      *
      * @param string $path
      *
-     * @return array|bool
+     * @return array|false
      */
     public function url_stat($path)
     {
@@ -292,7 +292,7 @@ class Wrapper
      *
      * @param int $bytes
      *
-     * @return string
+     * @return null|string
      */
     public function stream_read($bytes)
     {
@@ -369,6 +369,105 @@ class Wrapper
     }
 
     /**
+     * @param $path
+     * @param $container
+     * @param $strippedPath
+     * @return bool
+     */
+    protected function metaTouch($path, $container, $strippedPath)
+    {
+        if (!$container->hasNodeAt($strippedPath)) {
+            try {
+                $container->createFile($strippedPath);
+            } catch (NotFoundException $e) {
+                trigger_error(
+                    sprintf('touch: %s: No such file or directory.', $strippedPath),
+                    E_USER_WARNING
+                );
+
+                return false;
+            }
+        }
+        $file = $container->nodeAt($strippedPath);
+
+        $permissionHelper = $container->getPermissionHelper($file);
+
+        if (!$permissionHelper->userIsOwner() && !$permissionHelper->isWritable()) {
+            trigger_error(
+                sprintf('touch: %s: Permission denied', $strippedPath),
+                E_USER_WARNING
+            );
+
+            return false;
+        }
+
+        $file->setAccessTime(time());
+        $file->setModificationTime(time());
+        $file->setChangeTime(time());
+
+        clearstatcache(true, $path);
+
+        return true;
+    }
+
+    protected function metaAccess($node, $value, $container, $strippedPath, $permissionHelper)
+    {
+        if ($node instanceof Link) {
+            $node = $node->getDestination();
+            $permissionHelper = $container->getPermissionHelper($node);
+        }
+
+        if (!$permissionHelper->userIsOwner()) {
+            trigger_error(
+                sprintf('chmod: %s: Permission denied', $strippedPath),
+                E_USER_WARNING
+            );
+
+            throw new AccessDeniedException(sprintf('chmod: %s: Permission denied', $strippedPath));
+        }
+        $node->chmod($value);
+        $node->setChangeTime(time());
+    }
+
+    protected function metaOwner($node, $ownerId, $ownerName, $container, $strippedPath, $permissionHelper)
+    {
+        if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
+            trigger_error(
+                sprintf('chown: %s: Permission denied', $strippedPath),
+                E_USER_WARNING
+            );
+
+            throw new AccessDeniedException(sprintf('chown: %s: Permission denied', $strippedPath));
+        }
+
+        if (!is_null($ownerName)) {
+            $ownerId = function_exists('posix_getpwnam') ? posix_getpwnam($ownerName)['uid'] : 0;
+        }
+
+        $node->chown($ownerId);
+        $node->setChangeTime(time());
+    }
+
+    protected function metaGroup($node, $groupId, $groupName, $container, $strippedPath, $permissionHelper)
+    {
+        if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
+            trigger_error(
+                sprintf('chgrp: %s: Permission denied', $strippedPath),
+                E_USER_WARNING
+            );
+
+            throw new AccessDeniedException(sprintf('chgrp: %s: Permission denied', $strippedPath));
+        }
+
+        if (!is_null($groupName)) {
+            $groupId = function_exists('posix_getgrnam') ? posix_getgrnam($groupName)['gid'] : 0;
+        }
+
+        $node->chgrp($groupId);
+        $node->setChangeTime(time());
+    }
+
+    /**
      * Called in response to chown/chgrp/touch/chmod etc.
      *
      * @see http://php.net/streamwrapper.stream-metadata
@@ -387,39 +486,7 @@ class Wrapper
         try {
 
             if ($option == STREAM_META_TOUCH) {
-                if (!$container->hasNodeAt($strippedPath)) {
-                    try {
-                        $container->createFile($strippedPath);
-                    } catch (NotFoundException $e) {
-                        trigger_error(
-                            sprintf('touch: %s: No such file or directory.', $strippedPath),
-                            E_USER_WARNING
-                        );
-
-                        return false;
-                    }
-                }
-                $file = $container->nodeAt($strippedPath);
-
-                $permissionHelper = $container->getPermissionHelper($file);
-
-                if (!$permissionHelper->userIsOwner() && !$permissionHelper->isWritable()) {
-                    trigger_error(
-                        sprintf('touch: %s: Permission denied', $strippedPath),
-                        E_USER_WARNING
-                    );
-
-                    return false;
-                }
-
-                $file->setAccessTime(time());
-                $file->setModificationTime(time());
-                $file->setChangeTime(time());
-
-                clearstatcache(true, $path);
-
-                return true;
-
+                return $this->metaTouch($path, $container, $strippedPath);
             }
 
             $node = $container->nodeAt($strippedPath);
@@ -427,79 +494,28 @@ class Wrapper
 
             switch ($option) {
                 case STREAM_META_ACCESS:
-
-                    if ($node instanceof Link) {
-                        $node = $node->getDestination();
-                        $permissionHelper = $container->getPermissionHelper($node);
-                    }
-
-                    if (!$permissionHelper->userIsOwner()) {
-                        trigger_error(
-                            sprintf('chmod: %s: Permission denied', $strippedPath),
-                            E_USER_WARNING
-                        );
-
-                        return false;
-                    }
-                    $node->chmod($value);
-                    $node->setChangeTime(time());
+                    $this->metaAccess($node, $value, $container, $strippedPath, $permissionHelper);
                     break;
 
                 case STREAM_META_OWNER_NAME:
-                    if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
-                        trigger_error(
-                            sprintf('chown: %s: Permission denied', $strippedPath),
-                            E_USER_WARNING
-                        );
-
-                        return false;
-                    }
-                    $uid = function_exists('posix_getpwnam') ? posix_getpwnam($value)['uid'] : 0;
-                    $node->chown($uid);
-                    $node->setChangeTime(time());
+                    $this->metaOwner($node, null, $value, $container, $strippedPath, $permissionHelper);
                     break;
 
                 case STREAM_META_OWNER:
-                    if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
-                        trigger_error(
-                            sprintf('chown: %s: Permission denied', $strippedPath),
-                            E_USER_WARNING
-                        );
-
-                        return false;
-                    }
-                    $node->chown($value);
-                    $node->setChangeTime(time());
+                    $this->metaOwner($node, $value, null, $container, $strippedPath, $permissionHelper);
                     break;
 
                 case STREAM_META_GROUP_NAME:
-                    if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
-                        trigger_error(
-                            sprintf('chgrp: %s: Permission denied', $strippedPath),
-                            E_USER_WARNING
-                        );
-
-                        return false;
-                    }
-                    $gid = function_exists('posix_getgrnam') ? posix_getgrnam($value)['gid'] : 0;
-                    $node->chgrp($gid);
-                    $node->setChangeTime(time());
+                    $this->metaGroup($node, null, $value, $container, $strippedPath, $permissionHelper);
                     break;
 
                 case STREAM_META_GROUP:
-                    if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
-                        trigger_error(
-                            sprintf('chgrp: %s: Permission denied', $strippedPath),
-                            E_USER_WARNING
-                        );
-
-                        return false;
-                    }
-                    $node->chgrp($value);
-                    $node->setChangeTime(time());
+                    $this->metaGroup($node, $value, null, $container, $strippedPath, $permissionHelper);
                     break;
             }
         } catch (NotFoundException $e) {
+            return false;
+        } catch (AccessDeniedException $e) {
             return false;
         }
 

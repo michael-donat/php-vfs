@@ -91,7 +91,7 @@ class PermissionHelper
     /**
      * Checks whether file is readable for group
      *
-     * @return bool
+     * @return integer|null
      */
     public function groupCanRead()
     {
