@@ -416,6 +416,7 @@ class Wrapper
      * @param Container $container
      * @param string $strippedPath
      * @param Wrapper\PermissionHelper $permissionHelper
+     * @throws AccessDeniedException
      */
     protected function metaAccess($node, $value, $container, $strippedPath, $permissionHelper)
     {
@@ -437,14 +438,15 @@ class Wrapper
     }
 
     /**
- * @param Structure\Node $node
- * @param null|integer $ownerId
- * @param integer|null $ownerName
- * @param Container $container
- * @param string $strippedPath
- * @param Wrapper\PermissionHelper $permissionHelper
- */
-protected function metaOwner($node, $ownerId, $ownerName, $container, $strippedPath, $permissionHelper)
+     * @param Structure\Node $node
+     * @param null|integer $ownerId
+     * @param integer|null $ownerName
+     * @param string $strippedPath
+     * @param Wrapper\PermissionHelper $permissionHelper
+     * @throws AccessDeniedException
+     * @internal param Container $container
+     */
+    protected function metaOwner($node, $ownerId, $ownerName, $strippedPath, $permissionHelper)
     {
         if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
             trigger_error(
@@ -464,14 +466,15 @@ protected function metaOwner($node, $ownerId, $ownerName, $container, $strippedP
     }
 
     /**
- * @param Structure\Node $node
- * @param null|integer $groupId
- * @param integer|null $groupName
- * @param Container $container
- * @param string $strippedPath
- * @param Wrapper\PermissionHelper $permissionHelper
- */
-protected function metaGroup($node, $groupId, $groupName, $container, $strippedPath, $permissionHelper)
+     * @param Structure\Node $node
+     * @param null|integer $groupId
+     * @param integer|null $groupName
+     * @param string $strippedPath
+     * @param Wrapper\PermissionHelper $permissionHelper
+     * @throws AccessDeniedException
+     * @internal param Container $container
+     */
+    protected function metaGroup($node, $groupId, $groupName, $strippedPath, $permissionHelper)
     {
         if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
             trigger_error(

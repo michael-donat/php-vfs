@@ -39,8 +39,8 @@ class PermissionHelper
     protected $groupid;
 
     /**
-     * @param int $uid
-     * @param int $gid
+     * @param int|null $uid
+     * @param int|null $gid
      */
     public function __construct($uid = null, $gid = null)
     {

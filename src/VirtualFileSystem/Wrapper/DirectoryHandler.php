@@ -28,7 +28,7 @@ class DirectoryHandler
     protected $directory;
 
     /**
-     * @var ArrayIterator
+     * @var \ArrayIterator
      */
     protected $iterator;
 
