@@ -191,7 +191,7 @@ class FileHandler
     }
 
     /**
-     * @param  $resource
+     * @param   $resource
      */
     public function lock($resource, $operation)
     {

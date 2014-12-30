@@ -369,9 +369,9 @@ class Wrapper
     }
 
     /**
-     * @param $path
-     * @param $container
-     * @param $strippedPath
+     * @param string $path
+     * @param Container $container
+     * @param string $strippedPath
      * @return bool
      */
     protected function metaTouch($path, $container, $strippedPath)
@@ -410,6 +410,13 @@ class Wrapper
         return true;
     }
 
+    /**
+     * @param Structure\Node $node
+     * @param integer $value
+     * @param Container $container
+     * @param string $strippedPath
+     * @param Wrapper\PermissionHelper $permissionHelper
+     */
     protected function metaAccess($node, $value, $container, $strippedPath, $permissionHelper)
     {
         if ($node instanceof Link) {
@@ -429,7 +436,15 @@ class Wrapper
         $node->setChangeTime(time());
     }
 
-    protected function metaOwner($node, $ownerId, $ownerName, $container, $strippedPath, $permissionHelper)
+    /**
+ * @param Structure\Node $node
+ * @param null|integer $ownerId
+ * @param integer|null $ownerName
+ * @param Container $container
+ * @param string $strippedPath
+ * @param Wrapper\PermissionHelper $permissionHelper
+ */
+protected function metaOwner($node, $ownerId, $ownerName, $container, $strippedPath, $permissionHelper)
     {
         if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
             trigger_error(
@@ -448,7 +463,15 @@ class Wrapper
         $node->setChangeTime(time());
     }
 
-    protected function metaGroup($node, $groupId, $groupName, $container, $strippedPath, $permissionHelper)
+    /**
+ * @param Structure\Node $node
+ * @param null|integer $groupId
+ * @param integer|null $groupName
+ * @param Container $container
+ * @param string $strippedPath
+ * @param Wrapper\PermissionHelper $permissionHelper
+ */
+protected function metaGroup($node, $groupId, $groupName, $container, $strippedPath, $permissionHelper)
     {
         if (!$permissionHelper->userIsRoot() && !$permissionHelper->userIsOwner()) {
             trigger_error(
