@@ -231,7 +231,7 @@ class Container
     /**
      * Creates file at given path
      *
-     * @param string $path
+     * @param string      $path
      * @param string|null $data
      *
      * @return Structure\File
@@ -257,8 +257,8 @@ class Container
     /**
      * Creates struture
      *
-     * @param array $structure
-     * @param string $parent
+     * @param  array             $structure
+     * @param  string            $parent
      * @throws NotFoundException
      */
     public function createStructure(array $structure, $parent = '/')

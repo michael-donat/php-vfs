@@ -2,9 +2,9 @@
 
 namespace VirtualFileSystem;
 
-use VirtualFileSystem\Structure\Root;
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
+use VirtualFileSystem\Structure\Root;
 
 class ContainerTest extends \PHPUnit_Framework_TestCase
 {

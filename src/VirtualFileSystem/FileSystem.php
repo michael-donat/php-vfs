@@ -12,8 +12,8 @@ namespace VirtualFileSystem;
 
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
-use VirtualFileSystem\Structure\Root;
 use VirtualFileSystem\Structure\Link;
+use VirtualFileSystem\Structure\Root;
 
 /**
  * Main 'access' class to vfs implementation. It will register new stream wrapper on instantiation.

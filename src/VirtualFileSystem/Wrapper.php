@@ -14,8 +14,8 @@ use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Link;
 use VirtualFileSystem\Structure\Root;
-use VirtualFileSystem\Wrapper\FileHandler;
 use VirtualFileSystem\Wrapper\DirectoryHandler;
+use VirtualFileSystem\Wrapper\FileHandler;
 
 /**
  * Stream wrapper class. This is the class that PHP uses as the stream operations handler.
