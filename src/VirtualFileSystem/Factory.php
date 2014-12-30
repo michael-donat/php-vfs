@@ -11,10 +11,10 @@
 namespace VirtualFileSystem;
 
 use VirtualFileSystem\Structure\Directory;
-use VirtualFileSystem\Structure\Node;
-use VirtualFileSystem\Structure\Root;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Link;
+use VirtualFileSystem\Structure\Node;
+use VirtualFileSystem\Structure\Root;
 
 /**
  * Factory class to encapsulate object creation.
