@@ -524,19 +524,19 @@ class Wrapper
                     break;
 
                 case STREAM_META_OWNER_NAME:
-                    $this->metaOwner($node, null, $value, $container, $strippedPath, $permissionHelper);
+                    $this->metaOwner($node, null, $value, $strippedPath, $permissionHelper);
                     break;
 
                 case STREAM_META_OWNER:
-                    $this->metaOwner($node, $value, null, $container, $strippedPath, $permissionHelper);
+                    $this->metaOwner($node, $value, null, $strippedPath, $permissionHelper);
                     break;
 
                 case STREAM_META_GROUP_NAME:
-                    $this->metaGroup($node, null, $value, $container, $strippedPath, $permissionHelper);
+                    $this->metaGroup($node, null, $value, $strippedPath, $permissionHelper);
                     break;
 
                 case STREAM_META_GROUP:
-                    $this->metaGroup($node, $value, null, $container, $strippedPath, $permissionHelper);
+                    $this->metaGroup($node, $value, null, $strippedPath, $permissionHelper);
                     break;
             }
         } catch (NotFoundException $e) {
