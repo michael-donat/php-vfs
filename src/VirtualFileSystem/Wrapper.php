@@ -277,7 +277,8 @@ class Wrapper
                 'gid' => $file->group(),
                 'atime' => $file->atime(),
                 'mtime' => $file->mtime(),
-                'ctime' => $file->ctime()
+                'ctime' => $file->ctime(),
+                'size' => $file->size()
             ));
         } catch (NotFoundException $e) {
             return false;
