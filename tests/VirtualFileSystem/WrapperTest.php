@@ -1122,6 +1122,43 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testChownAndChgrpAllowedIfOwner()
+    {
+        $fs = new FileSystem();
+        $file = $fs->createFile($fileName = uniqid('/'));
+        $file->chown($this->uid); //set to current
+
+        $uid = $this->uid + 1;
+
+        $wr = new Wrapper();
+
+        $this->assertTrue(
+            $wr->stream_metadata($fs->path($fileName), STREAM_META_OWNER, $uid)
+        );
+
+        $file = $fs->createFile($fileName = uniqid('/'));
+        $file->chown($this->uid); //set to current
+
+        $this->assertTrue(
+            $wr->stream_metadata($fs->path($fileName), STREAM_META_OWNER_NAME, 'user')
+        );
+
+        $file = $fs->createFile($fileName = uniqid('/'));
+        $file->chown($this->uid); //set to current
+
+        $this->assertTrue(
+            $wr->stream_metadata($fs->path($fileName), STREAM_META_GROUP, $uid)
+        );
+
+        $file = $fs->createFile($fileName = uniqid('/'));
+        $file->chown($this->uid); //set to current
+
+        $this->assertTrue(
+            $wr->stream_metadata($fs->path($fileName), STREAM_META_GROUP_NAME, 'userGroup')
+        );
+
+    }
+
     public function testChownAndChgrpNotAllowedIfNotRoot()
     {
         $fs = new FileSystem();
@@ -1306,7 +1343,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('data', file_get_contents($fs->path('/link')));
     }
 
-    public function tetsLinkWriting()
+    public function testLinkWriting()
     {
 
         $fs = new FileSystem();
@@ -1443,4 +1480,13 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(flock($fh2, LOCK_SH|LOCK_NB));
         $this->assertFalse(flock($fh1, LOCK_EX|LOCK_NB));
     }
+
+    public function testFileSize()
+    {
+        $fs = new FileSystem();
+        $file = $fs->path($fs->createFile('/file', '12345')->path());
+
+        $this->assertEquals(5, filesize($file));
+    }
+
 }
