@@ -211,12 +211,12 @@ For full diff of changes please go to https://github.com/thornag/php-vfs/compare
 
 [icon-version]: http://img.shields.io/packagist/v/php-vfs/php-vfs.svg?style=flat
 [url-version]: https://packagist.org/packages/php-vfs/php-vfs
-[icon-build]: http://img.shields.io/travis/thornag/php-vfs/v1.2.1.svg?style=flat
-[url-build]: https://travis-ci.org/thornag/php-vfs
-[icon-coverage]: http://img.shields.io/coveralls/thornag/php-vfs/v1.2.1.svg?style=flat
+[icon-build]: http://img.shields.io/travis/michael-donat/php-vfs/v1.2.1.svg?style=flat
+[url-build]: https://travis-ci.org/michael-donat/php-vfs
+[icon-coverage]: http://img.shields.io/coveralls/michael-donat/php-vfs/v1.2.1.svg?style=flat
 [url-coverage]: http://thornag.github.io/php-vfs/coverage/ 
-[icon-quality]: http://img.shields.io/scrutinizer/g/thornag/php-vfs/1.2.x.svg?style=flat
-[url-quality]: https://scrutinizer-ci.com/g/thornag/php-vfs/ 
+[icon-quality]: http://img.shields.io/scrutinizer/g/michael-donat/php-vfs/1.2.x.svg?style=flat
+[url-quality]: https://scrutinizer-ci.com/g/michael-donat/php-vfs/ 
 [icon-licence]: http://img.shields.io/packagist/l/php-vfs/php-vfs.svg?style=flat
 [url-licence]: LICENCE 
 [icon-docs]: http://img.shields.io/badge/docs-API-4C73BA.svg?style=flat
