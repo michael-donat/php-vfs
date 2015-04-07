@@ -28,7 +28,7 @@ check:
 endif
 
 setup-pear:
-	git remote add pear git@github.com:thornag/pear.git || true
+	git remote add pear git@github.com:michael-donat/pear.git || true
 	git fetch pear
 	git checkout pear || git checkout -b pear pear/gh-pages
 	git checkout -
