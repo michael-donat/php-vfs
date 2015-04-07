@@ -10,7 +10,7 @@ php-vfs
 
 Very simple filesystem emulating PHP stream wrapper for use in unit testing
 with PHPUnit, PHPSpec or any other testing framework. It offers means to test methods interacting
-with real filesystem without creating temporary directories or file fixtures.
+with real filesystem without creating temportary directories or file fixtures.
 
 Released under a GPL3+ licence.
 
@@ -168,14 +168,14 @@ There are generally 4 methods you should always use when mocking up the state:
 
 Combining above should allow you to recreate any directory/file structure.
 
-Full API documentation is available [here](http://thornag.github.io/php-vfs/api/master).
+Full API documentation is available [here](http://michael-donat.github.io/php-vfs/api/master).
 
 Behaviour
 -------------
 
 php-vfs tries to mimic unix filesystem as much as possible. The same conditions must be matched and the same errors will be triggered as if we were interacting via php with real underlying filesystem.
 
-Most of [PHP filesystem functions](http://www.php.net/manual/en/ref.filesystem.php) are happily supported by php-vfs as long as the full file URL is passed as argument (using ```$fs->path()```). If you find something not working and not listed below please rise an issue on [github issues page](https://github.com/thornag/php-vfs/issues).
+Most of [PHP filesystem functions](http://www.php.net/manual/en/ref.filesystem.php) are happily supported by php-vfs as long as the full file URL is passed as argument (using ```$fs->path()```). If you find something not working and not listed below please rise an issue on [github issues page](https://github.com/michael-donat/php-vfs/issues).
 
 **Known pitfalls**
 
@@ -191,7 +191,7 @@ You are more than welcome to add yourself to CONTRIBUTORS.md.
 Changes in 1.1.x
 ----------------
 
-For full diff of changes please go to https://github.com/thornag/php-vfs/compare/v1.0.0...v1.1.0
+For full diff of changes please go to https://github.com/michael-donat/php-vfs/compare/v1.0.0...v1.1.0
 
 - added support for symlinks
 - fixed Windows compatibility issues
@@ -201,11 +201,11 @@ For full diff of changes please go to https://github.com/thornag/php-vfs/compare
 Changes in 1.2.x
 ----------------
 
-For full diff of changes please go to https://github.com/thornag/php-vfs/compare/v1.1.0...1.2.x
+For full diff of changes please go to https://github.com/michael-donat/php-vfs/compare/v1.1.0...1.2.x
 
 - added support for locking (thanks to [@mathroc](https://github.com/mathroc)) (1.2.1)
-- code improvements as suggested by https://scrutinizer-ci.com/g/thornag/php-vfs/ (1.2.1)
-- fixed [30](https://github.com/thornag/php-vfs/issues/30) allowing owner and root to change metadata ([@milesj](https://github.com/milesj)) (1.2.2)
+- code improvements as suggested by https://scrutinizer-ci.com/g/michael-donat/php-vfs/ (1.2.1)
+- fixed [30](https://github.com/michael-donat/php-vfs/issues/30) allowing owner and root to change metadata ([@milesj](https://github.com/milesj)) (1.2.2)
 
 
 
