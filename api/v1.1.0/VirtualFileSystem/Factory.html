@@ -1,148 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="robots" content="index, follow, all" />
-        <title>VirtualFileSystem\Factory | php-vfs API</title>
-                    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
-                            </head>
-        <body id="class">
-            <div class="header">
-        <ul>
-            <li><a href="../classes.html">Classes</a></li>
-                            <li><a href="../namespaces.html">Namespaces</a></li>
-                        <li><a href="../interfaces.html">Interfaces</a></li>
-            <li><a href="../traits.html">Traits</a></li>
-            <li><a href="../doc-index.html">Index</a></li>
-            
-        </ul>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>VirtualFileSystem\Factory | php-vfs API</title>
 
-        <div id="title">php-vfs API</div>
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/sami.css">
+        <script src="../js/jquery-1.11.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../sami.js"></script>
+    
+    
+    </head>
 
-            <div class="type">Class</div>
-    <h1><a href="../VirtualFileSystem.html">VirtualFileSystem</a>\Factory</h1>
+    <body id="class" data-name="class:VirtualFileSystem_Factory" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#" method="GET">
+                <select id="version-switcher" name="version">
+                                            <option value="../../v0.1.1/index.html">v0.1.1</option>
+                                            <option value="../../v0.2.0/index.html">v0.2.0</option>
+                                            <option value="../../v0.3.0/index.html">v0.3.0</option>
+                                            <option value="../../v0.3.1/index.html">v0.3.1</option>
+                                            <option value="../../v0.3.2/index.html">v0.3.2</option>
+                                            <option value="../../v1.0.0/index.html">v1.0.0</option>
+                                            <option value="../../v1.1.0/index.html" selected>v1.1.0</option>
+                                            <option value="../../v1.2.1/index.html">v1.2.1</option>
+                                            <option value="../../v1.2.2/index.html">v1.2.2</option>
+                                            <option value="../../v1.2.3/index.html">v1.2.3</option>
+                                            <option value="../../v1.3.0/index.html">v1.3.0</option>
+                                    </select>
+            </form>
+                <form id="search-form" action="../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
     </div>
-        <div class="content">
-                <p>    class
-    <strong>Factory</strong></p>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">php-vfs API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                                            <li><a href="../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../VirtualFileSystem.html">VirtualFileSystem</a></li>
+    
+                <li>Factory</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>Factory</h1>
+    </div>
+
+    <p>    class
+    <strong>Factory</strong>
+</p>
 
             <div class="description">
-            <p>Factory class to encapsulate object creation.</p>
-            <p>
-</p>
-        </div>
+            <p>Factory class to encapsulate object creation.</p>                    </div>
+    
     
     
     
             <h2>Methods</h2>
 
-            <table>
-                    <tr>
-                <td class="type">
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>()
-                    <p>Class constructor.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Class constructor. Sets user/group to current system user/group.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_getRoot">getRoot</a>()
-                    <p>Creates Root object.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Creates Root object.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
-                </td>
-                <td class="last">
-                    <a href="#method_updateMetadata">updateMetadata</a>(<a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $node)
-                    <p>Updates time and ownership of a node</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateMetadata">updateMetadata</a>(<abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr> $node)
+                                            <p>Updates time and ownership of a node</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
-                </td>
-                <td class="last">
-                    <a href="#method_updateFileTimes">updateFileTimes</a>(<a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $node)
-                    <p>Update file a/c/m times</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateFileTimes">updateFileTimes</a>(<abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr> $node)
+                                            <p>Update file a/c/m times</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_getDir">getDir</a>(string $basename)
-                    <p>Creates Directory object.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Creates Directory object.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_getFile">getFile</a>(string $basename)
-                    <p>Creates File object.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Creates File object.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/Link.html"><abbr title="VirtualFileSystem\Structure\Link">Link</abbr></a>
-                </td>
-                <td class="last">
-                    <a href="#method_getLink">getLink</a>(string $basename, <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $destination)
-                    <p>Creates Link object.</p>
-                </td>
-                <td></td>
-            </tr>
-            </table>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLink">getLink</a>(string $basename, <abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr> $destination)
+                                            <p>Creates Link object.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
 
 
         <h2>Details</h2>
 
-                        <h3 id="method___construct">
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
         <div class="location">at line 36</div>
-        <code>            public            
+        <code>                    
     <strong>__construct</strong>()</code>
     </h3>
     <div class="details">
-        <p>Class constructor.</p>
-        <p>Sets user/group to current system user/group.</p>
-
-<p>On non POSIX systems both attributes will be set to 0</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Class constructor. Sets user/group to current system user/group.</p>                    <p>On non POSIX systems both attributes will be set to 0</p>            </div>
+                <div class="tags">
             
             
             
                     </div>
     </div>
 
-                <h3 id="method_getRoot">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRoot">
         <div class="location">at line 47</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
+        <code>                    <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
     <strong>getRoot</strong>()</code>
     </h3>
     <div class="details">
-        <p>Creates Root object.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Creates Root object.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
             <td>
@@ -155,21 +211,22 @@
                     </div>
     </div>
 
-                <h3 id="method_updateMetadata">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateMetadata">
         <div class="location">at line 59</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
-    <strong>updateMetadata</strong>(<a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $node)</code>
+        <code>                    <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
+    <strong>updateMetadata</strong>(<abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr> $node)</code>
     </h3>
     <div class="details">
-        <p>Updates time and ownership of a node</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Updates time and ownership of a node</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
+                <td><abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr></td>
                 <td>$node</td>
                 <td>
 </td>
@@ -179,7 +236,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
             <td>
@@ -192,21 +249,22 @@
                     </div>
     </div>
 
-                <h3 id="method_updateFileTimes">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateFileTimes">
         <div class="location">at line 73</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
-    <strong>updateFileTimes</strong>(<a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $node)</code>
+        <code>                    <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
+    <strong>updateFileTimes</strong>(<abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr> $node)</code>
     </h3>
     <div class="details">
-        <p>Update file a/c/m times</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Update file a/c/m times</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
+                <td><abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr></td>
                 <td>$node</td>
                 <td>
 </td>
@@ -216,7 +274,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
             <td>
@@ -229,19 +287,20 @@
                     </div>
     </div>
 
-                <h3 id="method_getDir">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDir">
         <div class="location">at line 105</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
+        <code>                    <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
     <strong>getDir</strong>(string $basename)</code>
     </h3>
     <div class="details">
-        <p>Creates Directory object.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Creates Directory object.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$basename</td>
@@ -253,7 +312,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></td>
             <td>
@@ -266,19 +325,20 @@
                     </div>
     </div>
 
-                <h3 id="method_getFile">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFile">
         <div class="location">at line 117</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
+        <code>                    <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
     <strong>getFile</strong>(string $basename)</code>
     </h3>
     <div class="details">
-        <p>Creates File object.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Creates File object.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$basename</td>
@@ -290,7 +350,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a></td>
             <td>
@@ -303,19 +363,20 @@
                     </div>
     </div>
 
-                <h3 id="method_getLink">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLink">
         <div class="location">at line 130</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/Link.html"><abbr title="VirtualFileSystem\Structure\Link">Link</abbr></a>
-    <strong>getLink</strong>(string $basename, <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a> $destination)</code>
+        <code>                    <a href="../VirtualFileSystem/Structure/Link.html"><abbr title="VirtualFileSystem\Structure\Link">Link</abbr></a>
+    <strong>getLink</strong>(string $basename, <abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr> $destination)</code>
     </h3>
     <div class="details">
-        <p>Creates Link object.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Creates Link object.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$basename</td>
@@ -323,7 +384,7 @@
 </td>
             </tr>
                     <tr>
-                <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
+                <td><abbr title="VirtualFileSystem\VirtualFileSystem\Structure\Node">Node</abbr></td>
                 <td>$destination</td>
                 <td>
 </td>
@@ -333,7 +394,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/Link.html"><abbr title="VirtualFileSystem\Structure\Link">Link</abbr></a></td>
             <td>
@@ -346,10 +407,17 @@
                     </div>
     </div>
 
+            </div>
+            </div>
+
     
             </div>
-            <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
     </div>
     </body>
+
 </html>

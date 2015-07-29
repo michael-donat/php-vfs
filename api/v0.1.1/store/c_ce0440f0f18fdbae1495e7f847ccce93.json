@@ -1,8 +1,8 @@
 {
     "name": "VirtualFileSystem\\Wrapper",
     "line": 23,
-    "short_desc": "Stream wrapper class.",
-    "long_desc": "This is the class that PHP uses as the stream operations handler.",
+    "short_desc": "Stream wrapper class. This is the class that PHP uses as the stream operations handler.",
+    "long_desc": "",
     "hint": null,
     "tags": {
         "see": [
@@ -28,10 +28,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Wrapper.php",
+    "relative_file": null,
     "hash": "6f3877f135146031dccb2eb2d66024ef10ee84f0",
     "parent": null,
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": {
@@ -39,6 +40,7 @@
     },
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": {
         "context": {
             "name": "context",
@@ -97,7 +99,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Container",
+                    "\\VirtualFileSystem\\Container",
                     false
                 ]
             ],
@@ -113,12 +115,7 @@
                     "line": 84,
                     "short_desc": "",
                     "long_desc": null,
-                    "hint": [
-                        [
-                            "VirtualFileSystem\\$path",
-                            false
-                        ]
-                    ],
+                    "hint": [],
                     "tags": [],
                     "modifiers": "",
                     "default": null,
@@ -295,12 +292,7 @@
                     "line": 180,
                     "short_desc": "",
                     "long_desc": null,
-                    "hint": [
-                        [
-                            "VirtualFileSystem\\$data",
-                            false
-                        ]
-                    ],
+                    "hint": [],
                     "tags": [],
                     "modifiers": "",
                     "default": null,
@@ -311,8 +303,8 @@
         "stream_stat": {
             "name": "stream_stat",
             "line": 196,
-            "short_desc": "Returns stat data for file inclusion.",
-            "long_desc": "Currently disabled.",
+            "short_desc": "Returns stat data for file inclusion. Currently disabled.",
+            "long_desc": "",
             "hint": [
                 [
                     "bool",

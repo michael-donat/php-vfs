@@ -1,0 +1,381 @@
+{
+    "name": "VirtualFileSystem\\Wrapper\\PermissionHelper",
+    "line": 22,
+    "short_desc": "Class to encapsulate permission checks",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ],
+        "api": [
+            [
+                ""
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem\\Wrapper",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/PermissionHelper.php",
+    "relative_file": null,
+    "hash": "af86249e9184b6f599f78a96c0944b1f6d87a0d4",
+    "parent": null,
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Node": "VirtualFileSystem\\Structure\\Node"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 45,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "uid": {
+                    "name": "uid",
+                    "line": 45,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "integer",
+                            false
+                        ],
+                        [
+                            "null",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "null",
+                    "is_by_ref": false
+                },
+                "gid": {
+                    "name": "gid",
+                    "line": 45,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "integer",
+                            false
+                        ],
+                        [
+                            "null",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "null",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "userIsOwner": {
+            "name": "userIsOwner",
+            "line": 56,
+            "short_desc": "Checks whether user_id on file is the same as executing user",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "userCanRead": {
+            "name": "userCanRead",
+            "line": 66,
+            "short_desc": "Checks whether file is readable for user",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "userCanWrite": {
+            "name": "userCanWrite",
+            "line": 76,
+            "short_desc": "Checks whether file is writable for user",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "groupIsOwner": {
+            "name": "groupIsOwner",
+            "line": 86,
+            "short_desc": "Checks whether group_id on file is the same as executing user",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "groupCanRead": {
+            "name": "groupCanRead",
+            "line": 96,
+            "short_desc": "Checks whether file is readable for group",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "groupCanWrite": {
+            "name": "groupCanWrite",
+            "line": 106,
+            "short_desc": "Checks whether file is writable for group",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "worldCanRead": {
+            "name": "worldCanRead",
+            "line": 116,
+            "short_desc": "Checks whether file is readable for world",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "worldCanWrite": {
+            "name": "worldCanWrite",
+            "line": 126,
+            "short_desc": "Checks whether file is writable for world",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "isReadable": {
+            "name": "isReadable",
+            "line": 136,
+            "short_desc": "Checks whether file is readable (by user, group or world)",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "isWritable": {
+            "name": "isWritable",
+            "line": 146,
+            "short_desc": "Checks whether file is writable (by user, group or world)",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "userIsRoot": {
+            "name": "userIsRoot",
+            "line": 156,
+            "short_desc": "Checks whether userid is 0 - root.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setNode": {
+            "name": "setNode",
+            "line": 166,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\VirtualFileSystem\\Wrapper\\PermissionHelper",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "node": {
+                    "name": "node",
+                    "line": 166,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\VirtualFileSystem\\Structure\\Node",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": {
+        "MODE_USER_READ": {
+            "name": "MODE_USER_READ",
+            "line": 24,
+            "short_desc": "",
+            "long_desc": ""
+        },
+        "MODE_USER_WRITE": {
+            "name": "MODE_USER_WRITE",
+            "line": 25,
+            "short_desc": "",
+            "long_desc": ""
+        },
+        "MODE_GROUP_READ": {
+            "name": "MODE_GROUP_READ",
+            "line": 27,
+            "short_desc": "",
+            "long_desc": ""
+        },
+        "MODE_GROUP_WRITE": {
+            "name": "MODE_GROUP_WRITE",
+            "line": 28,
+            "short_desc": "",
+            "long_desc": ""
+        },
+        "MODE_WORLD_READ": {
+            "name": "MODE_WORLD_READ",
+            "line": 30,
+            "short_desc": "",
+            "long_desc": ""
+        },
+        "MODE_WORLD_WRITE": {
+            "name": "MODE_WORLD_WRITE",
+            "line": 31,
+            "short_desc": "",
+            "long_desc": ""
+        }
+    }
+}

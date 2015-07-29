@@ -1,0 +1,312 @@
+{
+    "name": "VirtualFileSystem\\Loader",
+    "line": 27,
+    "short_desc": "Class Loader to use with PEAR installation",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "package": [
+            [
+                "VirtualFileSystem"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Loader.php",
+    "relative_file": null,
+    "hash": "53ffadb4a3f7910aa9b7a9e8af90a314c89791eb",
+    "parent": null,
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 41,
+            "short_desc": "Creates a new <tt>Loader<\/tt> that loads classes of the\nspecified namespace.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "namespace": {
+                    "name": "namespace",
+                    "line": 41,
+                    "short_desc": "The namespace to use.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "'VirtualFileSystem'",
+                    "is_by_ref": false
+                },
+                "includePath": {
+                    "name": "includePath",
+                    "line": 41,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "null",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "null",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setNamespaceSeparator": {
+            "name": "setNamespaceSeparator",
+            "line": 52,
+            "short_desc": "Sets the namespace separator used by classes in the namespace of this class loader.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "sep": {
+                    "name": "sep",
+                    "line": 52,
+                    "short_desc": "The separator to use.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getNamespaceSeparator": {
+            "name": "getNamespaceSeparator",
+            "line": 62,
+            "short_desc": "Gets the namespace seperator used by classes in the namespace of this class loader.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setIncludePath": {
+            "name": "setIncludePath",
+            "line": 72,
+            "short_desc": "Sets the base include path for all class files in the namespace of this class loader.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "includePath": {
+                    "name": "includePath",
+                    "line": 72,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getIncludePath": {
+            "name": "getIncludePath",
+            "line": 82,
+            "short_desc": "Gets the base include path for all class files in the namespace of this class loader.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "null",
+                    false
+                ],
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "$includePath",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setFileExtension": {
+            "name": "setFileExtension",
+            "line": 92,
+            "short_desc": "Sets the file extension of class files in the namespace of this class loader.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "fileExtension": {
+                    "name": "fileExtension",
+                    "line": 92,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getFileExtension": {
+            "name": "getFileExtension",
+            "line": 102,
+            "short_desc": "Gets the file extension of class files in the namespace of this class loader.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "$fileExtension",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "register": {
+            "name": "register",
+            "line": 112,
+            "short_desc": "Installs this class loader on the SPL autoload stack.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "prepend": {
+                    "name": "prepend",
+                    "line": 112,
+                    "short_desc": "If true, prepend autoloader on the autoload stack",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "bool",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": "false",
+                    "is_by_ref": false
+                }
+            }
+        },
+        "unregister": {
+            "name": "unregister",
+            "line": 120,
+            "short_desc": "Uninstalls this class loader from the SPL autoloader stack.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "loadClass": {
+            "name": "loadClass",
+            "line": 131,
+            "short_desc": "Loads the given class or interface.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "className": {
+                    "name": "className",
+                    "line": 131,
+                    "short_desc": "The name of the class to load.",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

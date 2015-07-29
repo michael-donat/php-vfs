@@ -19,15 +19,17 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Structure",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Link.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Structure\/Link.php",
+    "relative_file": null,
     "hash": "83d69b72f2c4360a1bb0f1488ddaee0b3756cb35",
     "parent": "VirtualFileSystem\\Structure\\Node",
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": [],
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": [],
     "methods": {
         "__construct": {
@@ -68,12 +70,12 @@
                     "long_desc": null,
                     "hint": [
                         [
-                            "VirtualFileSystem\\Structure\\Node",
+                            "VirtualFileSystem\\Structure\\VirtualFileSystem\\Structure\\Node",
                             false
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "Node",
+                    "modifiers": "VirtualFileSystem\\Structure\\Node",
                     "default": null,
                     "is_by_ref": false
                 }
@@ -105,7 +107,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Node",
+                    "\\VirtualFileSystem\\Structure\\Node",
                     false
                 ]
             ],

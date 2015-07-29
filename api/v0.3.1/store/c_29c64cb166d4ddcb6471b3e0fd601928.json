@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Wrapper",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/DirectoryHandler.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/DirectoryHandler.php",
+    "relative_file": null,
     "hash": "e2739a148def0e0cb87c7e6f1377cd35a5dded66",
     "parent": null,
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": {
@@ -30,6 +31,7 @@
     },
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": [],
     "methods": {
         "setDirectory": {
@@ -52,12 +54,12 @@
                     "long_desc": null,
                     "hint": [
                         [
-                            "VirtualFileSystem\\Structure\\Directory",
+                            "VirtualFileSystem\\Wrapper\\VirtualFileSystem\\Structure\\Directory",
                             false
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "Directory",
+                    "modifiers": "VirtualFileSystem\\Structure\\Directory",
                     "default": null,
                     "is_by_ref": false
                 }
@@ -70,7 +72,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Wrapper\\ArrayIterator",
+                    "\\VirtualFileSystem\\Wrapper\\ArrayIterator",
                     false
                 ]
             ],

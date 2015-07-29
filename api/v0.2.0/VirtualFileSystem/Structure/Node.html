@@ -1,40 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="robots" content="index, follow, all" />
-        <title>VirtualFileSystem\Structure\Node | php-vfs API</title>
-                    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
-                            </head>
-        <body id="class">
-            <div class="header">
-        <ul>
-            <li><a href="../../classes.html">Classes</a></li>
-                            <li><a href="../../namespaces.html">Namespaces</a></li>
-                        <li><a href="../../interfaces.html">Interfaces</a></li>
-            <li><a href="../../traits.html">Traits</a></li>
-            <li><a href="../../doc-index.html">Index</a></li>
-            
-        </ul>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>VirtualFileSystem\Structure\Node | php-vfs API</title>
 
-        <div id="title">php-vfs API</div>
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+        <script src="../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../sami.js"></script>
+    
+    
+    </head>
 
-            <div class="type">Class</div>
-    <h1><a href="../../VirtualFileSystem/Structure.html">VirtualFileSystem\Structure</a>\Node</h1>
+    <body id="class" data-name="class:VirtualFileSystem_Structure_Node" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#" method="GET">
+                <select id="version-switcher" name="version">
+                                            <option value="../../../v0.1.1/index.html">v0.1.1</option>
+                                            <option value="../../../v0.2.0/index.html" selected>v0.2.0</option>
+                                            <option value="../../../v0.3.0/index.html">v0.3.0</option>
+                                            <option value="../../../v0.3.1/index.html">v0.3.1</option>
+                                            <option value="../../../v0.3.2/index.html">v0.3.2</option>
+                                            <option value="../../../v1.0.0/index.html">v1.0.0</option>
+                                            <option value="../../../v1.1.0/index.html">v1.1.0</option>
+                                            <option value="../../../v1.2.1/index.html">v1.2.1</option>
+                                            <option value="../../../v1.2.2/index.html">v1.2.2</option>
+                                            <option value="../../../v1.2.3/index.html">v1.2.3</option>
+                                            <option value="../../../v1.3.0/index.html">v1.3.0</option>
+                                    </select>
+            </form>
+                <form id="search-form" action="../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
     </div>
-        <div class="content">
-                <p>abstract     class
-    <strong>Node</strong></p>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">php-vfs API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../VirtualFileSystem.html">VirtualFileSystem</a></li>
+                                        <li><a href="../../VirtualFileSystem/Structure.html">Structure</a></li>
+    
+                <li>Node</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>Node</h1>
+    </div>
+
+    <p>    class
+    <strong>Node</strong>
+</p>
 
             <div class="description">
-            <p>Abstract class to represent filesystem Node.</p>
-            <p>
-</p>
-        </div>
+            <p>Abstract class to represent filesystem Node.</p>                    </div>
+    
     
             <h2>Constants</h2>
 
-            <table>
+            <table class="table table-condensed">
                     <tr>
                 <td>S_IFMT</td>
                 <td class="last">
@@ -59,215 +122,197 @@
     
             <h2>Methods</h2>
 
-            <table>
-                    <tr>
-                <td class="type">
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(string $basename)
-                    <p>Class constructor.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Class constructor.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_chmod">chmod</a>(int $mode)
-                    <p>Changes access to file.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Changes access to file.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     int
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_mode">mode</a>()
-                    <p>Returns file mode</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns file mode</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
-                    <a href="#method_chown">chown</a>(<abbr title="VirtualFileSystem\Structure\$userid">$userid</abbr> $userid)
-                    <p>Changes ownership.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_chown">chown</a>($userid)
+                                            <p>Changes ownership.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     mixed
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_user">user</a>()
-                    <p>Returns ownership.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns ownership.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
-                    <a href="#method_chgrp">chgrp</a>(<abbr title="VirtualFileSystem\Structure\$groupid">$groupid</abbr> $groupid)
-                    <p>Changes group ownership.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_chgrp">chgrp</a>($groupid)
+                                            <p>Changes group ownership.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     mixed
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_group">group</a>()
-                    <p>Returns group ownership.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns group ownership.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     mixed
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_size">size</a>()
-                    <p>Returns Node size.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns Node size.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_basename">basename</a>()
-                    <p>Returns Node basename.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns Node basename.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_setBasename">setBasename</a>(string $basename)
-                    <p>Sets new basename</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Sets new basename</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_path">path</a>()
-                    <p>Returns node URL.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns node URL.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method___toString">__toString</a>()
-                    <p>Returns node absolute path (without scheme).</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns node absolute path (without scheme).</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     mixed
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_dirname">dirname</a>()
-                    <p>Returns Node parent absolute path.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns Node parent absolute path.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_setAccessTime">setAccessTime</a>(int $time)
-                    <p>Sets last access time</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Sets last access time</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_setModificationTime">setModificationTime</a>(int $time)
-                    <p>Sets last modification time</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Sets last modification time</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_setChangeTime">setChangeTime</a>(int $time)
-                    <p>Sets last inode change time</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Sets last inode change time</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     int
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_atime">atime</a>()
-                    <p>Returns last access time</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns last access time</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     int
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_mtime">mtime</a>()
-                    <p>Returns last modification time</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns last modification time</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     int
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_ctime">ctime</a>()
-                    <p>Returns last inode change time (chown etc.)</p>
-                </td>
-                <td></td>
-            </tr>
-            </table>
+                                            <p>Returns last inode change time (chown etc.)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
 
 
         <h2>Details</h2>
 
-                        <h3 id="method___construct">
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
         <div class="location">at line 39</div>
-        <code>            public            
+        <code>                    
     <strong>__construct</strong>(string $basename)</code>
     </h3>
     <div class="details">
-        <p>Class constructor.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Class constructor.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$basename</td>
@@ -282,18 +327,20 @@
                     </div>
     </div>
 
-                <h3 id="method_chmod">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_chmod">
         <div class="location">at line 53</div>
-        <code>            public            
+        <code>                    
     <strong>chmod</strong>(int $mode)</code>
     </h3>
     <div class="details">
-        <p>Changes access to file.</p>
-        <p>This will apply the DIR/FILE type mask for use by stat to distinguish between file and directory.</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Changes access to file.</p>                    <p>This will apply the DIR/FILE type mask for use by stat to distinguish between file and directory.</p>            </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$mode</td>
@@ -307,7 +354,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://man7.org/linux/man-pages/man2/lstat.2.html</td>
                 <td>for explanation.</td>
@@ -317,20 +364,21 @@
                     </div>
     </div>
 
-                <h3 id="method_mode">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mode">
         <div class="location">at line 63</div>
-        <code>            public            int
+        <code>                    int
     <strong>mode</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns file mode</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns file mode</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>int</td>
             <td>
@@ -343,21 +391,22 @@
                     </div>
     </div>
 
-                <h3 id="method_chown">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_chown">
         <div class="location">at line 73</div>
-        <code>            public            
-    <strong>chown</strong>(<abbr title="VirtualFileSystem\Structure\$userid">$userid</abbr> $userid)</code>
+        <code>                    
+    <strong>chown</strong>($userid)</code>
     </h3>
     <div class="details">
-        <p>Changes ownership.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Changes ownership.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><abbr title="VirtualFileSystem\Structure\$userid">$userid</abbr></td>
+                <td></td>
                 <td>$userid</td>
                 <td>
 </td>
@@ -370,20 +419,21 @@
                     </div>
     </div>
 
-                <h3 id="method_user">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_user">
         <div class="location">at line 83</div>
-        <code>            public            mixed
+        <code>                    mixed
     <strong>user</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns ownership.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns ownership.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>mixed</td>
             <td>
@@ -396,21 +446,22 @@
                     </div>
     </div>
 
-                <h3 id="method_chgrp">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_chgrp">
         <div class="location">at line 93</div>
-        <code>            public            
-    <strong>chgrp</strong>(<abbr title="VirtualFileSystem\Structure\$groupid">$groupid</abbr> $groupid)</code>
+        <code>                    
+    <strong>chgrp</strong>($groupid)</code>
     </h3>
     <div class="details">
-        <p>Changes group ownership.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Changes group ownership.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><abbr title="VirtualFileSystem\Structure\$groupid">$groupid</abbr></td>
+                <td></td>
                 <td>$groupid</td>
                 <td>
 </td>
@@ -423,20 +474,21 @@
                     </div>
     </div>
 
-                <h3 id="method_group">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_group">
         <div class="location">at line 103</div>
-        <code>            public            mixed
+        <code>                    mixed
     <strong>group</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns group ownership.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns group ownership.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>mixed</td>
             <td>
@@ -449,20 +501,21 @@
                     </div>
     </div>
 
-                <h3 id="method_size">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_size">
         <div class="location">at line 113</div>
-        <code>    abstract        public            mixed
+        <code>    abstract                mixed
     <strong>size</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns Node size.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns Node size.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>mixed</td>
             <td>
@@ -475,20 +528,21 @@
                     </div>
     </div>
 
-                <h3 id="method_basename">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_basename">
         <div class="location">at line 130</div>
-        <code>            public            string
+        <code>                    string
     <strong>basename</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns Node basename.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns Node basename.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>string</td>
             <td>
@@ -501,19 +555,20 @@
                     </div>
     </div>
 
-                <h3 id="method_setBasename">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBasename">
         <div class="location">at line 140</div>
-        <code>            public            
+        <code>                    
     <strong>setBasename</strong>(string $basename)</code>
     </h3>
     <div class="details">
-        <p>Sets new basename</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Sets new basename</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$basename</td>
@@ -528,20 +583,21 @@
                     </div>
     </div>
 
-                <h3 id="method_path">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_path">
         <div class="location">at line 150</div>
-        <code>            public            string
+        <code>                    string
     <strong>path</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns node URL.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns node URL.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>string</td>
             <td>
@@ -554,20 +610,21 @@
                     </div>
     </div>
 
-                <h3 id="method___toString">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
         <div class="location">at line 168</div>
-        <code>            public            string
+        <code>                    string
     <strong>__toString</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns node absolute path (without scheme).</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns node absolute path (without scheme).</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>string</td>
             <td>
@@ -580,20 +637,21 @@
                     </div>
     </div>
 
-                <h3 id="method_dirname">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dirname">
         <div class="location">at line 178</div>
-        <code>            public            mixed
+        <code>                    mixed
     <strong>dirname</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns Node parent absolute path.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns Node parent absolute path.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>mixed</td>
             <td>
@@ -606,19 +664,20 @@
                     </div>
     </div>
 
-                <h3 id="method_setAccessTime">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAccessTime">
         <div class="location">at line 190</div>
-        <code>            public            
+        <code>                    
     <strong>setAccessTime</strong>(int $time)</code>
     </h3>
     <div class="details">
-        <p>Sets last access time</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Sets last access time</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$time</td>
@@ -633,19 +692,20 @@
                     </div>
     </div>
 
-                <h3 id="method_setModificationTime">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setModificationTime">
         <div class="location">at line 200</div>
-        <code>            public            
+        <code>                    
     <strong>setModificationTime</strong>(int $time)</code>
     </h3>
     <div class="details">
-        <p>Sets last modification time</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Sets last modification time</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$time</td>
@@ -660,19 +720,20 @@
                     </div>
     </div>
 
-                <h3 id="method_setChangeTime">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setChangeTime">
         <div class="location">at line 210</div>
-        <code>            public            
+        <code>                    
     <strong>setChangeTime</strong>(int $time)</code>
     </h3>
     <div class="details">
-        <p>Sets last inode change time</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Sets last inode change time</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$time</td>
@@ -687,20 +748,21 @@
                     </div>
     </div>
 
-                <h3 id="method_atime">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_atime">
         <div class="location">at line 220</div>
-        <code>            public            int
+        <code>                    int
     <strong>atime</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns last access time</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns last access time</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>int</td>
             <td>
@@ -713,20 +775,21 @@
                     </div>
     </div>
 
-                <h3 id="method_mtime">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mtime">
         <div class="location">at line 230</div>
-        <code>            public            int
+        <code>                    int
     <strong>mtime</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns last modification time</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns last modification time</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>int</td>
             <td>
@@ -739,20 +802,21 @@
                     </div>
     </div>
 
-                <h3 id="method_ctime">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ctime">
         <div class="location">at line 240</div>
-        <code>            public            int
+        <code>                    int
     <strong>ctime</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns last inode change time (chown etc.)</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns last inode change time (chown etc.)</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>int</td>
             <td>
@@ -765,10 +829,17 @@
                     </div>
     </div>
 
+            </div>
+            </div>
+
     
             </div>
-            <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
     </div>
     </body>
+
 </html>

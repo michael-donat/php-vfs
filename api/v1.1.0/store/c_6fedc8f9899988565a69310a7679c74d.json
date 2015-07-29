@@ -6,10 +6,11 @@
     "hint": null,
     "tags": [],
     "namespace": "VirtualFileSystem\\Wrapper",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/PermissionHelper.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/PermissionHelper.php",
+    "relative_file": null,
     "hash": "eb8171d246e30afcce66e2284067f7f546b9e7b3",
     "parent": null,
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": {
@@ -17,6 +18,7 @@
     },
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": [],
     "methods": {
         "__construct": {
@@ -282,7 +284,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Wrapper\\PermissionHelper",
+                    "\\VirtualFileSystem\\Wrapper\\PermissionHelper",
                     false
                 ]
             ],

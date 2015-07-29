@@ -19,15 +19,17 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Structure",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Structure\/Root.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Structure\/Root.php",
+    "relative_file": null,
     "hash": "99fc53f03ca53ba1c35ccf7bc594599b8d432b95",
     "parent": "VirtualFileSystem\\Structure\\Directory",
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": [],
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": [],
     "methods": {
         "__construct": {
@@ -62,12 +64,7 @@
                     "line": 52,
                     "short_desc": "",
                     "long_desc": null,
-                    "hint": [
-                        [
-                            "VirtualFileSystem\\Structure\\$scheme",
-                            false
-                        ]
-                    ],
+                    "hint": [],
                     "tags": [],
                     "modifiers": "",
                     "default": null,

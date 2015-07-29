@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem\\Wrapper",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/FileHandler.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/FileHandler.php",
+    "relative_file": null,
     "hash": "f6f4b7dabfe15e703293efbbdc610ce45d31d72a",
     "parent": null,
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": {
@@ -30,6 +31,7 @@
     },
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": [],
     "methods": {
         "setFile": {
@@ -52,12 +54,12 @@
                     "long_desc": null,
                     "hint": [
                         [
-                            "VirtualFileSystem\\Structure\\File",
+                            "VirtualFileSystem\\Wrapper\\VirtualFileSystem\\Structure\\File",
                             false
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "File",
+                    "modifiers": "VirtualFileSystem\\Structure\\File",
                     "default": null,
                     "is_by_ref": false
                 }
@@ -66,8 +68,8 @@
         "write": {
             "name": "write",
             "line": 54,
-            "short_desc": "Writes data to file.",
-            "long_desc": "Will return the number of bytes written. Will advance pointer by number of bytes written.",
+            "short_desc": "Writes data to file. Will return the number of bytes written. Will advance pointer by number of bytes written.",
+            "long_desc": "",
             "hint": [
                 [
                     "int",
@@ -102,8 +104,8 @@
         "read": {
             "name": "read",
             "line": 75,
-            "short_desc": "Will read and return $bytes bytes from file.",
-            "long_desc": "Will advance pointer by $bytes bytes.",
+            "short_desc": "Will read and return $bytes bytes from file. Will advance pointer by $bytes bytes.",
+            "long_desc": "",
             "hint": [
                 [
                     "string",

@@ -1,0 +1,36 @@
+{
+    "name": "VirtualFileSystem\\Exception\\NotDirectoryException",
+    "line": 19,
+    "short_desc": "Thrown when non-existing Node is requested.",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem\\Exception",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Exception\/NotDirectoryException.php",
+    "relative_file": null,
+    "hash": "060dcbc4a4ea62b612f067ce7f880a02dbab06ff",
+    "parent": "Exception",
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}

@@ -1,284 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="robots" content="index, follow, all" />
-        <title>VirtualFileSystem\Wrapper | php-vfs API</title>
-                    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
-                            </head>
-        <body id="class">
-            <div class="header">
-        <ul>
-            <li><a href="../classes.html">Classes</a></li>
-                            <li><a href="../namespaces.html">Namespaces</a></li>
-                        <li><a href="../interfaces.html">Interfaces</a></li>
-            <li><a href="../traits.html">Traits</a></li>
-            <li><a href="../doc-index.html">Index</a></li>
-            
-        </ul>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>VirtualFileSystem\Wrapper | php-vfs API</title>
 
-        <div id="title">php-vfs API</div>
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/sami.css">
+        <script src="../js/jquery-1.11.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../sami.js"></script>
+    
+    
+    </head>
 
-            <div class="type">Class</div>
-    <h1><a href="../VirtualFileSystem.html">VirtualFileSystem</a>\Wrapper</h1>
+    <body id="class" data-name="class:VirtualFileSystem_Wrapper" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#" method="GET">
+                <select id="version-switcher" name="version">
+                                            <option value="../../v0.1.1/index.html">v0.1.1</option>
+                                            <option value="../../v0.2.0/index.html">v0.2.0</option>
+                                            <option value="../../v0.3.0/index.html">v0.3.0</option>
+                                            <option value="../../v0.3.1/index.html">v0.3.1</option>
+                                            <option value="../../v0.3.2/index.html">v0.3.2</option>
+                                            <option value="../../v1.0.0/index.html" selected>v1.0.0</option>
+                                            <option value="../../v1.1.0/index.html">v1.1.0</option>
+                                            <option value="../../v1.2.1/index.html">v1.2.1</option>
+                                            <option value="../../v1.2.2/index.html">v1.2.2</option>
+                                            <option value="../../v1.2.3/index.html">v1.2.3</option>
+                                            <option value="../../v1.3.0/index.html">v1.3.0</option>
+                                    </select>
+            </form>
+                <form id="search-form" action="../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
     </div>
-        <div class="content">
-                <p>    class
-    <strong>Wrapper</strong></p>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">php-vfs API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                                            <li><a href="../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../VirtualFileSystem.html">VirtualFileSystem</a></li>
+    
+                <li>Wrapper</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>Wrapper</h1>
+    </div>
+
+    <p>    class
+    <strong>Wrapper</strong>
+</p>
 
             <div class="description">
-            <p>Stream wrapper class.</p>
-            <p>This is the class that PHP uses as the stream operations handler.</p>
-        </div>
+            <p>Stream wrapper class. This is the class that PHP uses as the stream operations handler.</p>                    </div>
+    
     
     
             <h2>Properties</h2>
 
-            <table>
+            <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_context">
-                                                            
+                                                                                
                 </td>
                 <td>$context</td>
                 <td class="last">
 </td>
+                <td></td>
             </tr>
             </table>
 
     
             <h2>Methods</h2>
 
-            <table>
-                    <tr>
-                <td class="type">
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stripScheme">stripScheme</a>(string $path)
-                    <p>Returns path stripped of url scheme (http://, ftp://, test:// etc.)</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns path stripped of url scheme (http://, ftp://, test:// etc.)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a>
-                </td>
-                <td class="last">
-                    <a href="#method_getContainerFromContext">getContainerFromContext</a>(<abbr title="VirtualFileSystem\$path">$path</abbr> $path)
-                    <p>Returns Container object fished form default<em>context</em>options by scheme.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getContainerFromContext">getContainerFromContext</a>($path)
+                                            <p>Returns Container object fished form default<em>context</em>options by scheme.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     int
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_tell">stream_tell</a>()
-                    <p>
-</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     void
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_close">stream_close</a>()
-                    <p>
-</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_open">stream_open</a>(string $path, int $mode, int $options, string $opened_path)
-                    <p>Opens stream in selected mode.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Opens stream in selected mode.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     int
-                </td>
-                <td class="last">
-                    <a href="#method_stream_write">stream_write</a>(<abbr title="VirtualFileSystem\$data">$data</abbr> $data)
-                    <p>Writes data to stream.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_stream_write">stream_write</a>($data)
+                                            <p>Writes data to stream.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_stat">stream_stat</a>()
-                    <p>Returns stat data for file inclusion.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns stat data for file inclusion. Currently disabled.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     array|bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_url_stat">url_stat</a>(string $path, int $flags)
-                    <p>Returns file stat information</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns file stat information</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_read">stream_read</a>(int $bytes)
-                    <p>Reads and returns $bytes amount of bytes from stream.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Reads and returns $bytes amount of bytes from stream.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_eof">stream_eof</a>()
-                    <p>Checks whether pointer has reached EOF.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Checks whether pointer has reached EOF.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_mkdir">mkdir</a>(string $path, int $mode, int $options)
-                    <p>Called in response to mkdir to create directory.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Called in response to mkdir to create directory.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_metadata">stream_metadata</a>(string $path, int $option, mixed $value)
-                    <p>Called in response to chown/chgrp/touch/chmod etc.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Called in response to chown/chgrp/touch/chmod etc.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_seek">stream_seek</a>(int $offset, int $whence = SEEK_SET)
-                    <p>Sets file pointer to specified position</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Sets file pointer to specified position</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_stream_truncate">stream_truncate</a>(int $new_size)
-                    <p>Truncates file to given size</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Truncates file to given size</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_rename">rename</a>(string $oldname, string $newname)
-                    <p>Renames/Moves file</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Renames/Moves file</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_unlink">unlink</a>(int $path)
-                    <p>Deletes file at given path</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Deletes file at given path</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_rmdir">rmdir</a>(string $path)
-                    <p>Removes directory</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Removes directory</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_dir_opendir">dir_opendir</a>(string $path, int $options)
-                    <p>Opens directory for iteration</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Opens directory for iteration</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_dir_closedir">dir_closedir</a>()
-                    <p>Closes opened dir</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Closes opened dir</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     null
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_dir_readdir">dir_readdir</a>()
-                    <p>Returns next file url in directory</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns next file url in directory</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_dir_rewinddir">dir_rewinddir</a>()
-                    <p>Resets directory iterator</p>
-                </td>
-                <td></td>
-            </tr>
-            </table>
+                                            <p>Resets directory iterator</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
 
 
         <h2>Details</h2>
 
-                        <h3 id="method_stripScheme">
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_stripScheme">
         <div class="location">at line 72</div>
-        <code>            public            string
+        <code>                    string
     <strong>stripScheme</strong>(string $path)</code>
     </h3>
     <div class="details">
-        <p>Returns path stripped of url scheme (http://, ftp://, test:// etc.)</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns path stripped of url scheme (http://, ftp://, test:// etc.)</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -290,7 +334,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>string</td>
             <td>
@@ -303,21 +347,22 @@
                     </div>
     </div>
 
-                <h3 id="method_getContainerFromContext">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContainerFromContext">
         <div class="location">at line 87</div>
-        <code>            public            <a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a>
-    <strong>getContainerFromContext</strong>(<abbr title="VirtualFileSystem\$path">$path</abbr> $path)</code>
+        <code>                    <a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a>
+    <strong>getContainerFromContext</strong>($path)</code>
     </h3>
     <div class="details">
-        <p>Returns Container object fished form default<em>context</em>options by scheme.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns Container object fished form default<em>context</em>options by scheme.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><abbr title="VirtualFileSystem\$path">$path</abbr></td>
+                <td></td>
                 <td>$path</td>
                 <td>
 </td>
@@ -327,7 +372,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Container.html"><abbr title="VirtualFileSystem\Container">Container</abbr></a></td>
             <td>
@@ -340,21 +385,19 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_tell">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_tell">
         <div class="location">at line 100</div>
-        <code>            public            int
+        <code>                    int
     <strong>stream_tell</strong>()</code>
     </h3>
     <div class="details">
-        <p>
-</p>
-        <p>
-</p>
-        <div class="tags">
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>int</td>
             <td>
@@ -366,7 +409,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.stream-tell</td>
                 <td></td>
@@ -376,21 +419,19 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_close">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_close">
         <div class="location">at line 110</div>
-        <code>            public            void
+        <code>                    void
     <strong>stream_close</strong>()</code>
     </h3>
     <div class="details">
-        <p>
-</p>
-        <p>
-</p>
-        <div class="tags">
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>void</td>
             <td>
@@ -402,7 +443,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.stream-close</td>
                 <td></td>
@@ -412,19 +453,20 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_open">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_open">
         <div class="location">at line 127</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>stream_open</strong>(string $path, int $mode, int $options, string $opened_path)</code>
     </h3>
     <div class="details">
-        <p>Opens stream in selected mode.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Opens stream in selected mode.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -454,7 +496,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -466,7 +508,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.stream-open</td>
                 <td></td>
@@ -476,21 +518,22 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_write">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_write">
         <div class="location">at line 219</div>
-        <code>            public            int
-    <strong>stream_write</strong>(<abbr title="VirtualFileSystem\$data">$data</abbr> $data)</code>
+        <code>                    int
+    <strong>stream_write</strong>($data)</code>
     </h3>
     <div class="details">
-        <p>Writes data to stream.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Writes data to stream.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><abbr title="VirtualFileSystem\$data">$data</abbr></td>
+                <td></td>
                 <td>$data</td>
                 <td>
 </td>
@@ -500,7 +543,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>int</td>
             <td>
@@ -512,7 +555,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.stream-write</td>
                 <td></td>
@@ -522,19 +565,21 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_stat">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_stat">
         <div class="location">at line 237</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>stream_stat</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns stat data for file inclusion.</p>
-        <p>Currently disabled.</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns stat data for file inclusion. Currently disabled.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -546,7 +591,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.stream-stat</td>
                 <td></td>
@@ -556,19 +601,20 @@
                     </div>
     </div>
 
-                <h3 id="method_url_stat">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_url_stat">
         <div class="location">at line 252</div>
-        <code>            public            array|bool
+        <code>                    array|bool
     <strong>url_stat</strong>(string $path, int $flags)</code>
     </h3>
     <div class="details">
-        <p>Returns file stat information</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns file stat information</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -586,7 +632,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>array|bool</td>
             <td>
@@ -598,7 +644,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/stat</td>
                 <td></td>
@@ -608,19 +654,20 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_read">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_read">
         <div class="location">at line 279</div>
-        <code>            public            string
+        <code>                    string
     <strong>stream_read</strong>(int $bytes)</code>
     </h3>
     <div class="details">
-        <p>Reads and returns $bytes amount of bytes from stream.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Reads and returns $bytes amount of bytes from stream.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$bytes</td>
@@ -632,7 +679,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>string</td>
             <td>
@@ -644,7 +691,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.stream-read</td>
                 <td></td>
@@ -654,20 +701,21 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_eof">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_eof">
         <div class="location">at line 297</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>stream_eof</strong>()</code>
     </h3>
     <div class="details">
-        <p>Checks whether pointer has reached EOF.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Checks whether pointer has reached EOF.</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -679,7 +727,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.stream-eof</td>
                 <td></td>
@@ -689,19 +737,20 @@
                     </div>
     </div>
 
-                <h3 id="method_mkdir">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mkdir">
         <div class="location">at line 313</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>mkdir</strong>(string $path, int $mode, int $options)</code>
     </h3>
     <div class="details">
-        <p>Called in response to mkdir to create directory.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Called in response to mkdir to create directory.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -725,7 +774,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -737,7 +786,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.mkdir</td>
                 <td></td>
@@ -747,19 +796,20 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_metadata">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_metadata">
         <div class="location">at line 360</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>stream_metadata</strong>(string $path, int $option, mixed $value)</code>
     </h3>
     <div class="details">
-        <p>Called in response to chown/chgrp/touch/chmod etc.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Called in response to chown/chgrp/touch/chmod etc.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -783,7 +833,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -795,7 +845,7 @@
             
                             <h4>See also</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>http://php.net/streamwrapper.stream-metadata</td>
                 <td></td>
@@ -805,19 +855,20 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_seek">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_seek">
         <div class="location">at line 428</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>stream_seek</strong>(int $offset, int $whence = SEEK_SET)</code>
     </h3>
     <div class="details">
-        <p>Sets file pointer to specified position</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Sets file pointer to specified position</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$offset</td>
@@ -835,7 +886,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -848,19 +899,20 @@
                     </div>
     </div>
 
-                <h3 id="method_stream_truncate">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_truncate">
         <div class="location">at line 451</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>stream_truncate</strong>(int $new_size)</code>
     </h3>
     <div class="details">
-        <p>Truncates file to given size</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Truncates file to given size</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$new_size</td>
@@ -872,7 +924,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -885,19 +937,20 @@
                     </div>
     </div>
 
-                <h3 id="method_rename">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rename">
         <div class="location">at line 466</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>rename</strong>(string $oldname, string $newname)</code>
     </h3>
     <div class="details">
-        <p>Renames/Moves file</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Renames/Moves file</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$oldname</td>
@@ -915,7 +968,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -928,19 +981,20 @@
                     </div>
     </div>
 
-                <h3 id="method_unlink">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unlink">
         <div class="location">at line 498</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>unlink</strong>(int $path)</code>
     </h3>
     <div class="details">
-        <p>Deletes file at given path</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Deletes file at given path</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$path</td>
@@ -952,7 +1006,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -965,19 +1019,20 @@
                     </div>
     </div>
 
-                <h3 id="method_rmdir">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rmdir">
         <div class="location">at line 542</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>rmdir</strong>(string $path)</code>
     </h3>
     <div class="details">
-        <p>Removes directory</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Removes directory</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -989,7 +1044,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -1002,19 +1057,20 @@
                     </div>
     </div>
 
-                <h3 id="method_dir_opendir">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dir_opendir">
         <div class="location">at line 596</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>dir_opendir</strong>(string $path, int $options)</code>
     </h3>
     <div class="details">
-        <p>Opens directory for iteration</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Opens directory for iteration</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -1032,7 +1088,7 @@
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -1045,20 +1101,21 @@
                     </div>
     </div>
 
-                <h3 id="method_dir_closedir">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dir_closedir">
         <div class="location">at line 631</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>dir_closedir</strong>()</code>
     </h3>
     <div class="details">
-        <p>Closes opened dir</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Closes opened dir</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -1071,20 +1128,21 @@
                     </div>
     </div>
 
-                <h3 id="method_dir_readdir">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dir_readdir">
         <div class="location">at line 646</div>
-        <code>            public            null
+        <code>                    null
     <strong>dir_readdir</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns next file url in directory</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns next file url in directory</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>null</td>
             <td>
@@ -1097,26 +1155,34 @@
                     </div>
     </div>
 
-                <h3 id="method_dir_rewinddir">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dir_rewinddir">
         <div class="location">at line 659</div>
-        <code>            public            
+        <code>                    
     <strong>dir_rewinddir</strong>()</code>
     </h3>
     <div class="details">
-        <p>Resets directory iterator</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Resets directory iterator</p>                                </div>
+                <div class="tags">
             
             
             
                     </div>
     </div>
 
+            </div>
+            </div>
+
     
             </div>
-            <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
     </div>
     </body>
+
 </html>

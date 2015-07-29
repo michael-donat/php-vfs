@@ -1,164 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="robots" content="index, follow, all" />
-        <title>VirtualFileSystem\Container | php-vfs API</title>
-                    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
-                            </head>
-        <body id="class">
-            <div class="header">
-        <ul>
-            <li><a href="../classes.html">Classes</a></li>
-                            <li><a href="../namespaces.html">Namespaces</a></li>
-                        <li><a href="../interfaces.html">Interfaces</a></li>
-            <li><a href="../traits.html">Traits</a></li>
-            <li><a href="../doc-index.html">Index</a></li>
-            
-        </ul>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>VirtualFileSystem\Container | php-vfs API</title>
 
-        <div id="title">php-vfs API</div>
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/sami.css">
+        <script src="../js/jquery-1.11.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../sami.js"></script>
+    
+    
+    </head>
 
-            <div class="type">Class</div>
-    <h1><a href="../VirtualFileSystem.html">VirtualFileSystem</a>\Container</h1>
+    <body id="class" data-name="class:VirtualFileSystem_Container" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#" method="GET">
+                <select id="version-switcher" name="version">
+                                            <option value="../../v0.1.1/index.html">v0.1.1</option>
+                                            <option value="../../v0.2.0/index.html">v0.2.0</option>
+                                            <option value="../../v0.3.0/index.html">v0.3.0</option>
+                                            <option value="../../v0.3.1/index.html">v0.3.1</option>
+                                            <option value="../../v0.3.2/index.html">v0.3.2</option>
+                                            <option value="../../v1.0.0/index.html" selected>v1.0.0</option>
+                                            <option value="../../v1.1.0/index.html">v1.1.0</option>
+                                            <option value="../../v1.2.1/index.html">v1.2.1</option>
+                                            <option value="../../v1.2.2/index.html">v1.2.2</option>
+                                            <option value="../../v1.2.3/index.html">v1.2.3</option>
+                                            <option value="../../v1.3.0/index.html">v1.3.0</option>
+                                    </select>
+            </form>
+                <form id="search-form" action="../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
     </div>
-        <div class="content">
-                <p>    class
-    <strong>Container</strong></p>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">php-vfs API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                                            <li><a href="../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../VirtualFileSystem.html">VirtualFileSystem</a></li>
+    
+                <li>Container</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>Container</h1>
+    </div>
+
+    <p>    class
+    <strong>Container</strong>
+</p>
 
             <div class="description">
-            <p>Class to hold the filesystem structure as object representation.</p>
-            <p>It also provides access and factory methods for
-file system management.</p>
-
-<p>An instance of Container is registered as a default stream options when FileSystem class is instantiated - it is
-later used by streamWrapper implementation to interact with underlying object representation.</p>
-        </div>
+            <p>Class to hold the filesystem structure as object representation. It also provides access and factory methods for
+file system management.</p>            <p>An instance of Container is registered as a default stream options when FileSystem class is instantiated - it is
+later used by streamWrapper implementation to interact with underlying object representation.</p>        </div>
+    
     
     
     
             <h2>Methods</h2>
 
-            <table>
-                    <tr>
-                <td class="type">
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
-                    <a href="#method___construct">__construct</a>(<a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a> $factory)
-                    <p>Class constructor.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<abbr title="VirtualFileSystem\VirtualFileSystem\Factory">Factory</abbr> $factory)
+                                            <p>Class constructor. Sets factory and root object on init.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_setFactory">setFactory</a>(<a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a> $factory)
-                    <p>Sets Factory instance</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Sets Factory instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a>
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_factory">factory</a>()
-                    <p>Returns Factory instance</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns Factory instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_root">root</a>()
-                    <p>Returns Root instance</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns Root instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_fileAt">fileAt</a>(string $path)
-                    <p>Returns filesystem Node|Directory|File|Root at given path.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Returns filesystem Node|Directory|File|Root at given path.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_hasFileAt">hasFileAt</a>(string $path)
-                    <p>Checks whether filesystem has Node at given path</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Checks whether filesystem has Node at given path</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_createDir">createDir</a>(string $path, bool $recursive = false, null $mode = null)
-                    <p>Creates Directory at given path.</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Creates Directory at given path.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_createFile">createFile</a>(string $path, null $data = null)
-                    <p>Creates file at given path</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Creates file at given path</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_move">move</a>(string $from, string $to)
-                    <p>Moves Node from source to destination</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
+                                            <p>Moves Node from source to destination</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
-                </td>
-                <td class="last">
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_remove">remove</a>(string $path, bool $recursive = false)
-                    <p>Removes node at $path</p>
-                </td>
-                <td></td>
-            </tr>
-            </table>
+                                            <p>Removes node at $path</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
 
 
         <h2>Details</h2>
 
-                        <h3 id="method___construct">
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
         <div class="location">at line 45</div>
-        <code>            public            
-    <strong>__construct</strong>(<a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a> $factory)</code>
+        <code>                    
+    <strong>__construct</strong>(<abbr title="VirtualFileSystem\VirtualFileSystem\Factory">Factory</abbr> $factory)</code>
     </h3>
     <div class="details">
-        <p>Class constructor.</p>
-        <p>Sets factory and root object on init.</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Class constructor. Sets factory and root object on init.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a></td>
+                <td><abbr title="VirtualFileSystem\VirtualFileSystem\Factory">Factory</abbr></td>
                 <td>$factory</td>
                 <td>
 </td>
@@ -171,19 +224,20 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_setFactory">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFactory">
         <div class="location">at line 56</div>
-        <code>            public            
+        <code>                    
     <strong>setFactory</strong>(<a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a> $factory)</code>
     </h3>
     <div class="details">
-        <p>Sets Factory instance</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Sets Factory instance</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td><a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a></td>
                 <td>$factory</td>
@@ -198,20 +252,21 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_factory">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_factory">
         <div class="location">at line 66</div>
-        <code>            public            <a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a>
+        <code>                    <a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a>
     <strong>factory</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns Factory instance</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns Factory instance</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Factory.html"><abbr title="VirtualFileSystem\Factory">Factory</abbr></a></td>
             <td>
@@ -224,20 +279,21 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_root">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_root">
         <div class="location">at line 76</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
+        <code>                    <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
     <strong>root</strong>()</code>
     </h3>
     <div class="details">
-        <p>Returns Root instance</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns Root instance</p>                                </div>
+                <div class="tags">
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></td>
             <td>
@@ -250,19 +306,20 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_fileAt">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fileAt">
         <div class="location">at line 90</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
+        <code>                    <a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a>
     <strong>fileAt</strong>(string $path)</code>
     </h3>
     <div class="details">
-        <p>Returns filesystem Node|Directory|File|Root at given path.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Returns filesystem Node|Directory|File|Root at given path.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -274,7 +331,7 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/Node.html"><abbr title="VirtualFileSystem\Structure\Node">Node</abbr></a></td>
             <td>
@@ -285,9 +342,9 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Exceptions</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><abbr title="NotFoundException">NotFoundException</abbr></td>
+                <td><a href="../VirtualFileSystem/NotFoundException.html"><abbr title="VirtualFileSystem\NotFoundException">NotFoundException</abbr></a></td>
                 <td>
 </td>
             </tr>
@@ -297,19 +354,20 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_hasFileAt">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasFileAt">
         <div class="location">at line 110</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>hasFileAt</strong>(string $path)</code>
     </h3>
     <div class="details">
-        <p>Checks whether filesystem has Node at given path</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Checks whether filesystem has Node at given path</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -321,7 +379,7 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -334,19 +392,20 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_createDir">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createDir">
         <div class="location">at line 131</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
+        <code>                    <a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a>
     <strong>createDir</strong>(string $path, bool $recursive = false, null $mode = null)</code>
     </h3>
     <div class="details">
-        <p>Creates Directory at given path.</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Creates Directory at given path.</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -370,7 +429,7 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/Directory.html"><abbr title="VirtualFileSystem\Structure\Directory">Directory</abbr></a></td>
             <td>
@@ -381,9 +440,9 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Exceptions</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><abbr title="NotFoundException">NotFoundException</abbr></td>
+                <td><a href="../VirtualFileSystem/NotFoundException.html"><abbr title="VirtualFileSystem\NotFoundException">NotFoundException</abbr></a></td>
                 <td>
 </td>
             </tr>
@@ -393,19 +452,20 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_createFile">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFile">
         <div class="location">at line 163</div>
-        <code>            public            <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
+        <code>                    <a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a>
     <strong>createFile</strong>(string $path, null $data = null)</code>
     </h3>
     <div class="details">
-        <p>Creates file at given path</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Creates file at given path</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -423,7 +483,7 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td><a href="../VirtualFileSystem/Structure/File.html"><abbr title="VirtualFileSystem\Structure\File">File</abbr></a></td>
             <td>
@@ -434,9 +494,9 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Exceptions</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><a href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
+                <td><a target="_blank" href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
                 <td>
 </td>
             </tr>
@@ -446,19 +506,20 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_move">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_move">
         <div class="location">at line 190</div>
-        <code>            public            bool
+        <code>                    bool
     <strong>move</strong>(string $from, string $to)</code>
     </h3>
     <div class="details">
-        <p>Moves Node from source to destination</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Moves Node from source to destination</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$from</td>
@@ -476,7 +537,7 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Return Value</h4>
 
-                    <table>
+                    <table class="table table-condensed">
         <tr>
             <td>bool</td>
             <td>
@@ -487,9 +548,9 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Exceptions</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><a href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
+                <td><a target="_blank" href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
                 <td>
 </td>
             </tr>
@@ -499,19 +560,20 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
-                <h3 id="method_remove">
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_remove">
         <div class="location">at line 234</div>
-        <code>            public            
+        <code>                    
     <strong>remove</strong>(string $path, bool $recursive = false)</code>
     </h3>
     <div class="details">
-        <p>Removes node at $path</p>
-        <p>
-</p>
-        <div class="tags">
+                    <div class="method-description">
+                                    <p>Removes node at $path</p>                                </div>
+                <div class="tags">
                             <h4>Parameters</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$path</td>
@@ -530,9 +592,9 @@ later used by streamWrapper implementation to interact with underlying object re
             
                             <h4>Exceptions</h4>
 
-                    <table>
+                    <table class="table table-condensed">
                     <tr>
-                <td><a href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
+                <td><a target="_blank" href="http://php.net/RuntimeException"><abbr title="RuntimeException">RuntimeException</abbr></a></td>
                 <td>
 </td>
             </tr>
@@ -542,10 +604,17 @@ later used by streamWrapper implementation to interact with underlying object re
                     </div>
     </div>
 
+            </div>
+            </div>
+
     
             </div>
-            <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
     </div>
     </body>
+
 </html>

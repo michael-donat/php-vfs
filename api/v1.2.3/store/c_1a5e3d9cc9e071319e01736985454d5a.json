@@ -1,8 +1,8 @@
 {
     "name": "VirtualFileSystem\\FileSystem",
     "line": 26,
-    "short_desc": "Main 'access' class to vfs implementation.",
-    "long_desc": "It will register new stream wrapper on instantiation.\n\nThis class provides methods to get access to Container as well as file URI helper.",
+    "short_desc": "Main 'access' class to vfs implementation. It will register new stream wrapper on instantiation.",
+    "long_desc": "This class provides methods to get access to Container as well as file URI helper.",
     "hint": null,
     "tags": {
         "author": [
@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/FileSystem.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/FileSystem.php",
+    "relative_file": null,
     "hash": "d8e162547e77a79c14247f0d486686c4d856cbbb",
     "parent": null,
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": {
@@ -33,13 +34,14 @@
     },
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": [],
     "methods": {
         "__construct": {
             "name": "__construct",
             "line": 40,
-            "short_desc": "Class constructor.",
-            "long_desc": "Will register both, the stream default options and wrapper handler.\n\nNote: Each FileSystem instance will create NEW stream wrapper\/scheme.",
+            "short_desc": "Class constructor. Will register both, the stream default options and wrapper handler.",
+            "long_desc": "Note: Each FileSystem instance will create NEW stream wrapper\/scheme.",
             "hint": null,
             "hint_desc": null,
             "tags": [],
@@ -89,7 +91,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Container",
+                    "\\VirtualFileSystem\\Container",
                     false
                 ]
             ],
@@ -108,7 +110,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Root",
+                    "\\VirtualFileSystem\\Structure\\Root",
                     false
                 ]
             ],
@@ -163,7 +165,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Directory",
+                    "\\VirtualFileSystem\\Structure\\Directory",
                     false
                 ]
             ],
@@ -231,7 +233,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\File",
+                    "\\VirtualFileSystem\\Structure\\File",
                     false
                 ]
             ],
@@ -314,7 +316,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Link",
+                    "\\VirtualFileSystem\\Structure\\Link",
                     false
                 ]
             ],

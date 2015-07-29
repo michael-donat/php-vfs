@@ -1,0 +1,36 @@
+{
+    "name": "VirtualFileSystem\\Exception\\FileExistsException",
+    "line": 19,
+    "short_desc": "Thrown when trying to override Node at address (duplicate prevention).",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem\\Exception",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Exception\/FileExistsException.php",
+    "relative_file": null,
+    "hash": "ff45592aa93c1aa2698d787ce3bb838c9044a0d7",
+    "parent": "Exception",
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": [],
+    "constants": []
+}

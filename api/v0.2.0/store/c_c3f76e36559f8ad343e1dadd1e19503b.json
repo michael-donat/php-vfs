@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Factory.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Factory.php",
+    "relative_file": null,
     "hash": "8b59aa0a97ab6134085b3a7ff194c96b967a7e97",
     "parent": null,
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": {
@@ -33,13 +34,14 @@
     },
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": [],
     "methods": {
         "__construct": {
             "name": "__construct",
             "line": 35,
-            "short_desc": "Class constructor.",
-            "long_desc": "Sets user\/group to current system user\/group.\n\nOn non POSIX systems both attributes will be set to 0",
+            "short_desc": "Class constructor. Sets user\/group to current system user\/group.",
+            "long_desc": "On non POSIX systems both attributes will be set to 0",
             "hint": null,
             "hint_desc": null,
             "tags": [],
@@ -56,7 +58,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Node",
+                    "\\VirtualFileSystem\\Structure\\Node",
                     false
                 ]
             ],
@@ -75,7 +77,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Node",
+                    "\\VirtualFileSystem\\Structure\\Node",
                     false
                 ]
             ],
@@ -93,12 +95,12 @@
                     "long_desc": null,
                     "hint": [
                         [
-                            "VirtualFileSystem\\Structure\\Node",
+                            "VirtualFileSystem\\VirtualFileSystem\\Structure\\Node",
                             false
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "Node",
+                    "modifiers": "VirtualFileSystem\\Structure\\Node",
                     "default": null,
                     "is_by_ref": false
                 }
@@ -111,7 +113,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Node",
+                    "\\VirtualFileSystem\\Structure\\Node",
                     false
                 ]
             ],
@@ -129,12 +131,12 @@
                     "long_desc": null,
                     "hint": [
                         [
-                            "VirtualFileSystem\\Structure\\Node",
+                            "VirtualFileSystem\\VirtualFileSystem\\Structure\\Node",
                             false
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "Node",
+                    "modifiers": "VirtualFileSystem\\Structure\\Node",
                     "default": null,
                     "is_by_ref": false
                 }
@@ -147,7 +149,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Node",
+                    "\\VirtualFileSystem\\Structure\\Node",
                     false
                 ]
             ],
@@ -183,7 +185,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Node",
+                    "\\VirtualFileSystem\\Structure\\Node",
                     false
                 ]
             ],

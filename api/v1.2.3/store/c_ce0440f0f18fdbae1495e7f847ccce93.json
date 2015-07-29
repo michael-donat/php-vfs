@@ -1,8 +1,8 @@
 {
     "name": "VirtualFileSystem\\Wrapper",
     "line": 29,
-    "short_desc": "Stream wrapper class.",
-    "long_desc": "This is the class that PHP uses as the stream operations handler.",
+    "short_desc": "Stream wrapper class. This is the class that PHP uses as the stream operations handler.",
+    "long_desc": "",
     "hint": null,
     "tags": {
         "see": [
@@ -33,10 +33,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Wrapper.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Wrapper.php",
+    "relative_file": null,
     "hash": "45159f270a399f6fb08310a340422287191e1cd4",
     "parent": null,
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": {
@@ -49,6 +50,7 @@
     },
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": {
         "context": {
             "name": "context",
@@ -107,7 +109,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Container",
+                    "\\VirtualFileSystem\\Container",
                     false
                 ]
             ],
@@ -123,12 +125,7 @@
                     "line": 93,
                     "short_desc": "",
                     "long_desc": null,
-                    "hint": [
-                        [
-                            "VirtualFileSystem\\$path",
-                            false
-                        ]
-                    ],
+                    "hint": [],
                     "tags": [],
                     "modifiers": "",
                     "default": null,
@@ -209,11 +206,11 @@
             "is_by_ref": "",
             "exceptions": [
                 [
-                    "NotDirectoryException",
+                    "\\VirtualFileSystem\\NotDirectoryException",
                     ""
                 ],
                 [
-                    "NotFoundException",
+                    "\\VirtualFileSystem\\NotFoundException",
                     ""
                 ]
             ],
@@ -272,12 +269,7 @@
                     "line": 135,
                     "short_desc": "",
                     "long_desc": null,
-                    "hint": [
-                        [
-                            "VirtualFileSystem\\$openedPath",
-                            false
-                        ]
-                    ],
+                    "hint": [],
                     "tags": [],
                     "modifiers": "",
                     "default": null,
@@ -314,12 +306,7 @@
                     "line": 236,
                     "short_desc": "",
                     "long_desc": null,
-                    "hint": [
-                        [
-                            "VirtualFileSystem\\$data",
-                            false
-                        ]
-                    ],
+                    "hint": [],
                     "tags": [],
                     "modifiers": "",
                     "default": null,
@@ -330,8 +317,8 @@
         "stream_stat": {
             "name": "stream_stat",
             "line": 255,
-            "short_desc": "Returns stat data for file inclusion.",
-            "long_desc": "Currently disabled.",
+            "short_desc": "Returns stat data for file inclusion. Currently disabled.",
+            "long_desc": "",
             "hint": [
                 [
                     "bool",

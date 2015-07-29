@@ -1,0 +1,89 @@
+{
+    "name": "VirtualFileSystem\\Wrapper\\DirectoryHandler",
+    "line": 23,
+    "short_desc": "User as directory handle by streamWrapper implementation.",
+    "long_desc": "This class is responsible mainly iterating over directory.",
+    "hint": null,
+    "tags": {
+        "author": [
+            [
+                "Michael",
+                "Donat",
+                "<michael.donat@me.com>"
+            ]
+        ],
+        "package": [
+            [
+                "php-vfs"
+            ]
+        ]
+    },
+    "namespace": "VirtualFileSystem\\Wrapper",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Wrapper\/DirectoryHandler.php",
+    "relative_file": null,
+    "hash": "6c382c549817716ab6d7931499c52287ed5440c5",
+    "parent": null,
+    "modifiers": "Stmt_Class",
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Directory": "VirtualFileSystem\\Structure\\Directory"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "setDirectory": {
+            "name": "setDirectory",
+            "line": 40,
+            "short_desc": "Sets directory in context.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "directory": {
+                    "name": "directory",
+                    "line": 40,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "VirtualFileSystem\\Wrapper\\VirtualFileSystem\\Structure\\Directory",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": "VirtualFileSystem\\Structure\\Directory",
+                    "default": null,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "iterator": {
+            "name": "iterator",
+            "line": 51,
+            "short_desc": "Returns children iterator",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\VirtualFileSystem\\Wrapper\\ArrayIterator",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": "1",
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

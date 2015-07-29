@@ -1,8 +1,8 @@
 {
     "name": "VirtualFileSystem\\Container",
     "line": 27,
-    "short_desc": "Class to hold the filesystem structure as object representation.",
-    "long_desc": "It also provides access and factory methods for\nfile system management.\n\nAn instance of Container is registered as a default stream options when FileSystem class is instantiated - it is\nlater used by streamWrapper implementation to interact with underlying object representation.",
+    "short_desc": "Class to hold the filesystem structure as object representation. It also provides access and factory methods for\nfile system management.",
+    "long_desc": "An instance of Container is registered as a default stream options when FileSystem class is instantiated - it is\nlater used by streamWrapper implementation to interact with underlying object representation.",
     "hint": null,
     "tags": {
         "author": [
@@ -19,10 +19,11 @@
         ]
     },
     "namespace": "VirtualFileSystem",
-    "file": "\/Volumes\/Development\/php-vfs\/src\/VirtualFileSystem\/Container.php",
+    "file": "\/Users\/donatm\/Infra\/php-vfs\/src\/VirtualFileSystem\/Container.php",
+    "relative_file": null,
     "hash": "be732d468be000bfc070b34e8a530fbc0be27c66",
     "parent": null,
-    "modifiers": 0,
+    "modifiers": "Stmt_Class",
     "is_trait": false,
     "is_interface": false,
     "aliases": {
@@ -32,13 +33,14 @@
     },
     "errors": [],
     "interfaces": [],
+    "traits": [],
     "properties": [],
     "methods": {
         "__construct": {
             "name": "__construct",
             "line": 49,
-            "short_desc": "Class constructor.",
-            "long_desc": "Sets factory and root object on init.",
+            "short_desc": "Class constructor. Sets factory and root object on init.",
+            "long_desc": "",
             "hint": null,
             "hint_desc": null,
             "tags": [],
@@ -54,12 +56,12 @@
                     "long_desc": null,
                     "hint": [
                         [
-                            "VirtualFileSystem\\Factory",
+                            "VirtualFileSystem\\VirtualFileSystem\\Factory",
                             false
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "Factory",
+                    "modifiers": "VirtualFileSystem\\Factory",
                     "default": null,
                     "is_by_ref": false
                 }
@@ -122,7 +124,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Directory",
+                    "\\VirtualFileSystem\\Structure\\Directory",
                     false
                 ]
             ],
@@ -141,7 +143,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Node",
+                    "\\VirtualFileSystem\\Structure\\Node",
                     false
                 ]
             ],
@@ -151,7 +153,7 @@
             "is_by_ref": "",
             "exceptions": [
                 [
-                    "NotFoundException",
+                    "\\VirtualFileSystem\\NotFoundException",
                     ""
                 ]
             ],
@@ -218,7 +220,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\Directory",
+                    "\\VirtualFileSystem\\Structure\\Directory",
                     false
                 ]
             ],
@@ -228,7 +230,7 @@
             "is_by_ref": "",
             "exceptions": [
                 [
-                    "NotFoundException",
+                    "\\VirtualFileSystem\\NotFoundException",
                     ""
                 ]
             ],
@@ -291,7 +293,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\File",
+                    "\\VirtualFileSystem\\Structure\\File",
                     false
                 ]
             ],
@@ -323,12 +325,7 @@
                     "line": 168,
                     "short_desc": "",
                     "long_desc": null,
-                    "hint": [
-                        [
-                            "VirtualFileSystem\\$destination",
-                            false
-                        ]
-                    ],
+                    "hint": [],
                     "tags": [],
                     "modifiers": "",
                     "default": null,
@@ -343,7 +340,7 @@
             "long_desc": "",
             "hint": [
                 [
-                    "VirtualFileSystem\\Structure\\File",
+                    "\\VirtualFileSystem\\Structure\\File",
                     false
                 ]
             ],
@@ -571,12 +568,12 @@
                     "long_desc": null,
                     "hint": [
                         [
-                            "VirtualFileSystem\\Structure\\Node",
+                            "VirtualFileSystem\\VirtualFileSystem\\Structure\\Node",
                             false
                         ]
                     ],
                     "tags": [],
-                    "modifiers": "Structure\\Node",
+                    "modifiers": "VirtualFileSystem\\Structure\\Node",
                     "default": null,
                     "is_by_ref": false
                 }
