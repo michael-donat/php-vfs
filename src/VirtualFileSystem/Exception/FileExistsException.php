@@ -8,14 +8,14 @@
  * file that was distributed with this source code.
  */
 
-namespace VirtualFileSystem;
+namespace VirtualFileSystem\Exception;
 
 /**
- * Thrown when non-existing Node is requested.
+ * Thrown when trying to override Node at address (duplicate prevention).
  *
  * @author Michael Donat <michael.donat@me.com>
  * @package php-vfs
  */
-class NotFoundException extends \Exception
+class FileExistsException extends \Exception
 {
 }

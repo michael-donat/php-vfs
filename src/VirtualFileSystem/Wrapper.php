@@ -10,6 +10,9 @@
 
 namespace VirtualFileSystem;
 
+use VirtualFileSystem\Exception\FileExistsException;
+use VirtualFileSystem\Exception\NotDirectoryException;
+use VirtualFileSystem\Exception\NotFoundException;
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Link;
@@ -45,7 +48,7 @@ class Wrapper
      *
      * @see http://php.net/stat
      *
-     * @return array
+     * @return array<*,integer>
      */
     protected function getStatArray()
     {
@@ -153,7 +156,7 @@ class Wrapper
         $extended = in_array('+', $mode);
 
         if (!$container->hasNodeAt($path)) {
-            if ($readMode or !$container->hasNodeAt(dirname($path))) {
+            if ($readMode || !$container->hasNodeAt(dirname($path))) {
                 if ($options & STREAM_REPORT_ERRORS) {
                     trigger_error(sprintf('%s: failed to open stream.', $path), E_USER_WARNING);
                 }
@@ -196,7 +199,7 @@ class Wrapper
         $this->currentlyOpenedFile->setFile($file);
 
         if ($extended) {
-            if (!$permissionHelper->isReadable() or !$permissionHelper->isWritable()) {
+            if (!$permissionHelper->isReadable() || !$permissionHelper->isWritable()) {
                 return $accessDeniedError();
             }
             $this->currentlyOpenedFile->setReadWriteMode();
@@ -231,7 +234,7 @@ class Wrapper
      *
      * @param $data
      *
-     * @return int
+     * @return false|integer
      */
     public function stream_write($data)
     {
@@ -264,7 +267,7 @@ class Wrapper
      *
      * @param string $path
      *
-     * @return array|bool
+     * @return  array|false
      */
     public function url_stat($path)
     {
@@ -292,7 +295,7 @@ class Wrapper
      *
      * @param int $bytes
      *
-     * @return string
+     * @return string|null
      */
     public function stream_read($bytes)
     {

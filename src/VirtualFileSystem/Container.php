@@ -10,6 +10,9 @@
 
 namespace VirtualFileSystem;
 
+use VirtualFileSystem\Exception\NotDirectoryException;
+use VirtualFileSystem\Exception\NotFileException;
+use VirtualFileSystem\Exception\NotFoundException;
 use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Root;
@@ -278,7 +281,7 @@ class Container
      *
      * @param  string            $fromPath
      * @param  string            $toPath
-     * @return bool
+     *
      * @throws \RuntimeException
      */
     public function move($fromPath, $toPath)
@@ -314,7 +317,6 @@ class Container
 
         $this->remove($fromPath, true);
 
-        return true;
     }
 
     /**

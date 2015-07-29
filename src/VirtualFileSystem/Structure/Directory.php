@@ -10,8 +10,8 @@
 
 namespace VirtualFileSystem\Structure;
 
-use VirtualFileSystem\FileExistsException;
-use VirtualFileSystem\NotFoundException;
+use VirtualFileSystem\Exception\FileExistsException;
+use VirtualFileSystem\Exception\NotFoundException;
 
 /**
  * FileSystem Directory representation.
@@ -107,7 +107,7 @@ class Directory extends Node
      *
      * @return Node
      *
-     * @throws \VirtualFileSystem\NotFoundException
+     * @throws \VirtualFileSystem\Exception\NotFoundException
      */
     public function childAt($path)
     {

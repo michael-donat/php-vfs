@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace VirtualFileSystem;
+namespace VirtualFileSystem\Exception;
 
 /**
  * Thrown when non-existing Node is requested.
@@ -16,6 +16,6 @@ namespace VirtualFileSystem;
  * @author Michael Donat <michael.donat@me.com>
  * @package php-vfs
  */
-class NotFileException extends \Exception
+class NotDirectoryException extends \Exception
 {
 }
