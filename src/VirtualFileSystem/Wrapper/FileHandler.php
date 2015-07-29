@@ -91,7 +91,7 @@ class FileHandler
     /**
      * Returns current pointer position.
      *
-     * @param integer $position
+     * @param integer|null $position
      *
      * @return int
      */
