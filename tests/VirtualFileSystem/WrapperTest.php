@@ -6,6 +6,10 @@ use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Link;
 
+function is_hhvm() {
+    return defined('HHVM_VERSION');
+}
+
 class WrapperTest extends \PHPUnit_Framework_TestCase
 {
     protected $uid;
@@ -288,7 +292,9 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         $fs = new FileSystem();
 
-        @fopen($fs->path('/nonExistingFile'), 'r');
+        $this->assertFalse(@fopen($fs->path('/nonExistingFile'), 'r'));
+
+        if(is_hhvm()) return;
 
         $error = error_get_last();
 
@@ -329,7 +335,9 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
         $fs = new FileSystem();
 
-        @fopen($fs->path('/dir/file'), 'w');
+        $this->assertFalse(@fopen($fs->path('/dir/file'), 'w'));
+
+        if(is_hhvm()) return;
 
         $error = error_get_last();
 
@@ -534,6 +542,8 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testRenameReturnsCorrectWarnings()
     {
+        if(is_hhvm()) $this->markTestSkipped('Skip on HHVM');
+
         $fs = new FileSystem();
 
         @rename($fs->path('/file'), $fs->path('/dir/file2'));
@@ -570,6 +580,23 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
             'Triggers when moving to non existing directory'
         );
 
+    }
+
+    public function testRenameFailsCorrectly()
+    {
+        if(!is_hhvm()) $this->markTestSkipped('Skip on PHP');
+
+        $fs = new FileSystem();
+
+        $this->assertFalse(@rename($fs->path('/file'), $fs->path('/dir/file2')));
+
+        $fs->container()->createFile('/file');
+
+        $this->assertFalse(@rename($fs->path('/file'), $fs->path('/dir/file2')));
+
+        $fs->container()->createDir('/dir');
+
+        $this->assertFalse(@rename($fs->path('/dir'), $fs->path('/file')));
     }
 
     public function testUnlinkRemovesFile()
