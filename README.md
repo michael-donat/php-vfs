@@ -21,6 +21,20 @@ Prerequisites
 
 PHP >= 5.4.0
 
+Compatibility
+-------------
+
+Tested and working on (Linux/MacOs):
+
+- php 5.4
+- php 5.5
+- php 5.6
+- php 7.0-beta
+
+- hhvm
+
+Windows compatibility is unknown (should work!)
+
 
 Installation
 ------------
@@ -207,19 +221,29 @@ For full diff of changes please go to https://github.com/michael-donat/php-vfs/c
 - code improvements as suggested by https://scrutinizer-ci.com/g/michael-donat/php-vfs/ (1.2.1)
 - fixed [30](https://github.com/michael-donat/php-vfs/issues/30) allowing owner and root to change metadata ([@milesj](https://github.com/milesj)) (1.2.2)
 
+Changes in 1.3.x
+----------------
+
+For full diff of changes please go to https://github.com/michael-donat/php-vfs/compare/v1.2.3...1.3.x
+
+- ensured compatibility with php7.0
+- ensured compatibility with hhvm
 
 
 [icon-version]: http://img.shields.io/packagist/v/php-vfs/php-vfs.svg?style=flat
 [url-version]: https://packagist.org/packages/php-vfs/php-vfs
-[icon-build]: http://img.shields.io/travis/michael-donat/php-vfs/v1.2.1.svg?style=flat
+[icon-build]: http://img.shields.io/travis/michael-donat/php-vfs/1.3.x.svg?style=flat
 [url-build]: https://travis-ci.org/michael-donat/php-vfs
-[icon-coverage]: http://img.shields.io/coveralls/michael-donat/php-vfs/v1.2.1.svg?style=flat
+[icon-coverage]: http://img.shields.io/scrutinizer/coverage/g/michael-donat/php-vfs/1.3.x.svg?style=flat
 [url-coverage]: http://michael-donat.github.io/php-vfs/coverage/ 
-[icon-quality]: http://img.shields.io/scrutinizer/g/michael-donat/php-vfs/1.2.x.svg?style=flat
+[icon-quality]: http://img.shields.io/scrutinizer/g/michael-donat/php-vfs/1.3.x.svg?style=flat
 [url-quality]: https://scrutinizer-ci.com/g/michael-donat/php-vfs/ 
 [icon-licence]: http://img.shields.io/packagist/l/php-vfs/php-vfs.svg?style=flat
 [url-licence]: LICENCE 
 [icon-docs]: http://img.shields.io/badge/docs-API-4C73BA.svg?style=flat
-[url-docs]: http://michael-donat.github.io/php-vfs/api/v1.2.1/
-[icon-hhvm]: http://img.shields.io/hhvm/php-vfs/php-vfs/1.2.x-dev.svg?style=flat
+[url-docs]: http://michael-donat.github.io/php-vfs/api/v1.3.0/
+[icon-hhvm]: http://img.shields.io/hhvm/php-vfs/php-vfs/1.3.x-dev.svg?style=flat
 [url-hhvm]: http://hhvm.h4cc.de/package/php-vfs/php-vfs
+
+[hhvm-ok-icon]: https://img.shields.io/badge/hhvm-OK-green.svg
+[php7-ok-icon]: https://img.shields.io/badge/php7-OK-green.svg
