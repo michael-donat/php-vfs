@@ -55,21 +55,23 @@ Or via command line:
 
 This will install latest stable version of php-vfs as a development dependency, for the latest development version replace @stable with @dev.
 
-**PEAR**
+~~**PEAR**~~
 
-php-vfs is hosted on pear.michaeldonat.net and can be installed using following commands:
+~~php-vfs is hosted on pear.michaeldonat.net and can be installed using following commands:~~
 
     sudo pear channel-discover pear.michaeldonat.net
     sudo pear install pear.michaeldonat.net/VirtualFileSystem
-    
-To use PEAR installation with your testing framework you need to initialize the autoloader in your bootsrtap files.
+  
+~~To use PEAR installation with your testing framework you need to initialize the autoloader in your bootsrtap files.~~
 
 ```PHP
 require_once 'VirtualFileSystem/Loader.php';
 $l = new \VirtualFileSystem\Loader();
 $l->register();
 ```
-	
+
+Version 1.2.3 of php-vfs was the last one to be released via PEAR, future builds will not be provided through this installation channel.
+
 Usage
 --------------
 
