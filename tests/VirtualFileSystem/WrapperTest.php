@@ -288,6 +288,15 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testStreamFlushing()
+    {
+        $fs = new FileSystem();
+
+        $handle = fopen($fs->path('/file'), 'w');
+
+        $this->assertTrue(fflush($handle));
+    }
+
     public function testOpeningForReadingOnNonExistingFails()
     {
         $fs = new FileSystem();

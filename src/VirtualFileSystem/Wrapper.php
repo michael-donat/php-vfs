@@ -322,6 +322,18 @@ class Wrapper
     }
 
     /**
+     * Flushes the output. This always returns TRUE, since no buffering takes place in FileHandler.
+     *
+     * @see http://php.net/streamwrapper.stream-flush
+     *
+     * @return bool
+     */
+    public function stream_flush()
+    {
+        return true;
+    }
+
+    /**
      * Called in response to mkdir to create directory.
      *
      * @see http://php.net/streamwrapper.mkdir
