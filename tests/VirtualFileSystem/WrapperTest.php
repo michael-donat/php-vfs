@@ -1525,4 +1525,34 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(5, filesize($file));
     }
 
+    public function testRmdirAfterUrlStatCall()
+    {
+        $fs = new FileSystem();
+
+        $path = $fs->path('dir');
+
+        mkdir($path);
+
+        $this->assertFileExists($path);
+
+        rmdir($path);
+
+        $this->assertFileNotExists($path);
+    }
+
+    public function testUnlinkAfterUrlStatCall()
+    {
+        $fs = new FileSystem();
+
+        $path = $fs->path('file');
+
+        touch($path);
+
+        $this->assertFileExists($path);
+
+        unlink($path);
+
+        $this->assertFileNotExists($path);
+    }
+
 }

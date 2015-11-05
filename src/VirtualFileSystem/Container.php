@@ -336,6 +336,8 @@ class Container
         }
 
         $this->directoryAt(dirname($path))->remove(basename($path));
+
+        clearstatcache(true, $path);
     }
 
     /**
