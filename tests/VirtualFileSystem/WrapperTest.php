@@ -24,7 +24,7 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
     {
         $c = new Wrapper();
 
-        $this->assertEquals('/1/2/3/4', $c->stripScheme('test://1/2/3/4'));
+        $this->assertEquals('/1asdasd/2/3/4', $c->stripScheme('test://1/2/3/4'));
         $this->assertEquals('/', $c->stripScheme('test://'));
         $this->assertEquals('/', $c->stripScheme('test:///'));
         $this->assertEquals('/dir', $c->stripScheme('test:///dir'));
