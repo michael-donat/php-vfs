@@ -427,9 +427,12 @@ class Wrapper
                     return false;
                 }
 
-                $file->setAccessTime(time());
-                $file->setModificationTime(time());
-                $file->setChangeTime(time());
+                $time = isset($value[0]) ? $value[0] : time();
+                $atime = isset($value[1]) ? $value[1] : $time;
+
+                $file->setChangeTime($time);
+                $file->setModificationTime($time);
+                $file->setAccessTime($atime);
 
                 clearstatcache(true, $path);
 

@@ -537,6 +537,21 @@ class WrapperTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testTouchUpdatesTimes()
+    {
+        $fs = new FileSystem();
+        $path = $fs->path('/file');
+
+        $time = 1500020720;
+        $atime = 1500204791;
+
+        touch($path, $time, $atime);
+
+        $this->assertEquals($time, filectime($path));
+        $this->assertEquals($time, filemtime($path));
+        $this->assertEquals($atime, fileatime($path));
+    }
+
     public function testRenamesMovesFileCorrectly()
     {
         $fs = new FileSystem();
