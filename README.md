@@ -229,7 +229,11 @@ Changes in 1.3.x
 For full diff of changes please go to https://github.com/michael-donat/php-vfs/compare/v1.2.3...1.3.x
 
 - ensured compatibility with php7.0
-- ensured compatibility with hhvm
+- ~~ensured compatibility with hhvm~~
+
+Note on HHVM:
+
+There'a a problem with PHPUnit version on HHVM which means the build started failing - I no longer have the time to spare to chase all the little bits so right now the HHVM support is on YMMV basis.
 
 
 [icon-version]: http://img.shields.io/packagist/v/php-vfs/php-vfs.svg?style=flat
@@ -247,5 +251,4 @@ For full diff of changes please go to https://github.com/michael-donat/php-vfs/c
 [icon-hhvm]: http://img.shields.io/hhvm/php-vfs/php-vfs/1.3.x-dev.svg?style=flat
 [url-hhvm]: http://hhvm.h4cc.de/package/php-vfs/php-vfs
 
-[hhvm-ok-icon]: https://img.shields.io/badge/hhvm-OK-green.svg
 [php7-ok-icon]: https://img.shields.io/badge/php7-OK-green.svg
