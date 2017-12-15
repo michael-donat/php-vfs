@@ -2,7 +2,7 @@
 
 namespace VirtualFileSystem;
 
-class VirtualFilesystemTest extends \PHPUnit_Framework_TestCase
+class VirtualFilesystemTest extends \PHPUnit\Framework\TestCase
 {
     public function testContainerIsSetDuringConstruction()
     {

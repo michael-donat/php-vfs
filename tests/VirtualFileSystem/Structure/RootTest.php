@@ -2,7 +2,7 @@
 
 namespace VirtualFileSystem\Structure;
 
-class RootTest extends \PHPUnit_Framework_TestCase
+class RootTest extends \PHPUnit\Framework\TestCase
 {
     public function testBaseName()
     {
@@ -27,7 +27,7 @@ class RootTest extends \PHPUnit_Framework_TestCase
         $root = new Root();
         $dir = new Directory('a');
 
-        $this->setExpectedException('\LogicException');
+        $this->expectException('\LogicException');
 
         $dir->addDirectory($root);
     }
@@ -58,7 +58,7 @@ class RootTest extends \PHPUnit_Framework_TestCase
     {
         $root = new Root();
 
-        $this->setExpectedException('RuntimeException');
+        $this->expectException('RuntimeException');
 
         $root->url();
     }

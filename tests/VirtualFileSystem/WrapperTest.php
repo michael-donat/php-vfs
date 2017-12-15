@@ -10,7 +10,7 @@ function is_hhvm() {
     return defined('HHVM_VERSION');
 }
 
-class WrapperTest extends \PHPUnit_Framework_TestCase
+class WrapperTest extends \PHPUnit\Framework\TestCase
 {
     protected $uid;
     protected $gid;
