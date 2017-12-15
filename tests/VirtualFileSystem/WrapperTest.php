@@ -1570,4 +1570,15 @@ class WrapperTest extends \PHPUnit\Framework\TestCase
         $this->assertFileNotExists($path);
     }
 
+    public function testFinfoSupport()
+    {
+        $fs = new FileSystem();
+
+        $fs->createFile('/file.gif', base64_decode("R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="));
+
+        $finfo = new \Finfo(FILEINFO_MIME_TYPE);
+
+        $this->assertEquals("image/gif", $finfo->file($fs->path('/file.gif')));
+
+    }
 }

@@ -112,6 +112,15 @@ class Wrapper
     }
 
     /**
+     * @see http://php.net/streamwrapper.stream-cast
+     *
+     * @return void
+     */
+    public function stream_cast() {
+        return false;
+    }
+
+    /**
      * @see http://php.net/streamwrapper.stream-close
      *
      * @return void
@@ -249,7 +258,7 @@ class Wrapper
     }
 
     /**
-     * Returns stat data for file inclusion. Currently disabled.
+     * Returns stat data for file inclusion.
      *
      * @see http://php.net/streamwrapper.stream-stat
      *
@@ -257,7 +266,22 @@ class Wrapper
      */
     public function stream_stat()
     {
-        return true;
+
+        try {
+            $file = $this->currentlyOpenedFile->getFile();
+
+            return array_merge($this->getStatArray(), array(
+                'mode' => $file->mode(),
+                'uid' => $file->user(),
+                'gid' => $file->group(),
+                'atime' => $file->atime(),
+                'mtime' => $file->mtime(),
+                'ctime' => $file->ctime(),
+                'size' => $file->size()
+            ));
+        } catch (NotFoundException $e) {
+            return false;
+        }
     }
 
     /**
