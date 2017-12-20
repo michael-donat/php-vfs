@@ -29,7 +29,8 @@
     },
     "require-dev": {
         "sami/sami": "*",
-        "phpunit/phpunit": "^6.5"
+        "phpunit/phpunit": "^6.5",
+        "doctrine/instantiator": "~1.0.2"
     },
     "type": "library"
 }
