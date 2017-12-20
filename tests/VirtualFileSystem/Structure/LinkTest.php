@@ -2,7 +2,7 @@
 
 namespace VirtualFileSystem\Structure;
 
-class LinkTest extends \PHPUnit_Framework_TestCase
+class LinkTest extends \PHPUnit\Framework\TestCase
 {
     public function testFileSizeAssumesTargetSize()
     {

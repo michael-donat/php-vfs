@@ -4,7 +4,7 @@ namespace VirtualFileSystem\Wrapper;
 
 use VirtualFileSystem\Structure\File;
 
-class FileHandlerTest extends \PHPUnit_Framework_TestCase
+class FileHandlerTest extends \PHPUnit\Framework\TestCase
 {
     public function testPointerPositionInitializedToZero()
     {

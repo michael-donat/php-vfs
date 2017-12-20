@@ -8,7 +8,7 @@
 
 namespace VirtualFileSystem\Structure;
 
-class NodeTest extends \PHPUnit_Framework_TestCase
+class NodeTest extends \PHPUnit\Framework\TestCase
 {
     public function testChmod()
     {

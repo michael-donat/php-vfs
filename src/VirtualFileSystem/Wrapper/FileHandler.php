@@ -45,6 +45,15 @@ class FileHandler
     }
 
     /**
+     * Returns file in context.
+     *
+     * @return File
+     */
+    public function getFile() {
+        return $this->file;
+    }
+
+    /**
      * Writes data to file. Will return the number of bytes written. Will advance pointer by number of bytes written.
      *
      * @param string $data

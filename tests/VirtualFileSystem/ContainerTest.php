@@ -6,7 +6,7 @@ use VirtualFileSystem\Structure\Directory;
 use VirtualFileSystem\Structure\File;
 use VirtualFileSystem\Structure\Root;
 
-class ContainerTest extends \PHPUnit_Framework_TestCase
+class ContainerTest extends \PHPUnit\Framework\TestCase
 {
     public function testRootCreatedAfterRegistration()
     {
@@ -66,7 +66,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     public function testMkdirThrowsWhenNoParent()
     {
-        $this->setExpectedException('\VirtualFilesystem\Exception\NotFoundException');
+        $this->expectException('\VirtualFilesystem\Exception\NotFoundException');
 
         $container = new Container(new Factory());
         $container->createDir('/dir1/dir2');
@@ -91,7 +91,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     public function testFileCreationThrowsWhenNoParent()
     {
-        $this->setExpectedException('\VirtualFilesystem\Exception\NotFoundException');
+        $this->expectException('\VirtualFilesystem\Exception\NotFoundException');
 
         $container = new Container(new Factory());
 
@@ -105,7 +105,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $container->createFile('/file');
 
-        $this->setExpectedException('\RuntimeException');
+        $this->expectException('\RuntimeException');
 
         $container->createFile('/file');
 
@@ -191,7 +191,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->createDir('/dir2');
         $container->createFile('/dir2/file1', 'file');
 
-        $this->setExpectedException('\RuntimeException', 'Can\'t override non empty directory.');
+        $this->expectException('\RuntimeException', 'Can\'t override non empty directory.');
 
         $container->move('/dir1', '/dir2');
 
@@ -203,7 +203,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->createDir('/dir1');
         $container->createFile('/file2', 'file2');
 
-        $this->setExpectedException('\RuntimeException', 'Can\'t move.');
+        $this->expectException('\RuntimeException', 'Can\'t move.');
 
         $container->move('/dir1', '/file2');
 
@@ -215,7 +215,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->createDir('/dir1');
         $container->createFile('/file2', 'file2');
 
-        $this->setExpectedException('\RuntimeException', 'Can\'t move.');
+        $this->expectException('\RuntimeException', 'Can\'t move.');
 
         $container->move('/file2', '/dir1');
 
@@ -227,7 +227,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->createFile('/file1');
         $container->createFile('/file2', 'file2');
 
-        $this->setExpectedException('VirtualFileSystem\Exception\NotDirectoryException');
+        $this->expectException('VirtualFileSystem\Exception\NotDirectoryException');
 
         $container->move('/file1', '/file2/file1');
 
@@ -254,7 +254,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container = new Container(new Factory());
         $container->createDir('/dir');
 
-        $this->setExpectedException('\RuntimeException', 'Won\'t non-recursively remove directory');
+        $this->expectException('\RuntimeException', 'Won\'t non-recursively remove directory');
 
         $container->remove('/dir');
     }
@@ -276,7 +276,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container->createFile('/file');
         $container->createLink('/link', '/file');
 
-        $this->setExpectedException('\RuntimeException');
+        $this->expectException('\RuntimeException');
 
         $container->createLink('/link', '/file');
 
@@ -287,7 +287,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container = new Container(new Factory());
         $container->createFile('/file');
 
-        $this->setExpectedException('VirtualFileSystem\Exception\NotDirectoryException');
+        $this->expectException('VirtualFileSystem\Exception\NotDirectoryException');
 
         $container->createDir('/file/dir');
     }
@@ -297,7 +297,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container = new Container(new Factory());
         $container->createFile('/file');
 
-        $this->setExpectedException('VirtualFileSystem\Exception\NotFoundException');
+        $this->expectException('VirtualFileSystem\Exception\NotFoundException');
 
         $container->nodeAt('/file/file2');
     }
@@ -307,7 +307,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container = new Container(new Factory());
         $container->createFile('/file');
 
-        $this->setExpectedException('VirtualFileSystem\Exception\NotDirectoryException');
+        $this->expectException('VirtualFileSystem\Exception\NotDirectoryException');
 
         $container->createFile('/file/file2');
     }
@@ -317,7 +317,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container = new Container(new Factory());
         $container->createFile('/file');
 
-        $this->setExpectedException('VirtualFileSystem\Exception\NotDirectoryException');
+        $this->expectException('VirtualFileSystem\Exception\NotDirectoryException');
 
         $container->directoryAt('/file');
     }
@@ -326,7 +326,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     {
         $container = new Container(new Factory());
 
-        $this->setExpectedException('VirtualFileSystem\Exception\NotFoundException');
+        $this->expectException('VirtualFileSystem\Exception\NotFoundException');
 
         $container->directoryAt('/dir');
     }
@@ -344,7 +344,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container = new Container(new Factory());
         $container->createDir('/dir');
 
-        $this->setExpectedException('VirtualFileSystem\Exception\NotFileException');
+        $this->expectException('VirtualFileSystem\Exception\NotFileException');
 
         $container->fileAt('/dir');
     }
@@ -353,7 +353,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     {
         $container = new Container(new Factory());
 
-        $this->setExpectedException('VirtualFileSystem\Exception\NotFoundException');
+        $this->expectException('VirtualFileSystem\Exception\NotFoundException');
 
         $container->fileAt('/file');
     }

@@ -2,11 +2,11 @@
 
 namespace VirtualFileSystem\Structure;
 
-class DirectoryTest extends \PHPUnit_Framework_TestCase
+class DirectoryTest extends \PHPUnit\Framework\TestCase
 {
     public function testThrowsExceptionWhenTryingToCreateAtRoot()
     {
-        $this->setExpectedException('\InvalidArgumentException');
+        $this->expectException('\InvalidArgumentException');
 
         new Directory('/');
     }
@@ -68,7 +68,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
         $root = new Root();
         $root->addDirectory($d1 = new Directory('dir1'));
 
-        $this->setExpectedException('\VirtualFileSystem\Exception\NotFoundException');
+        $this->expectException('\VirtualFileSystem\Exception\NotFoundException');
 
         $root->childAt('dir2');
     }
@@ -88,7 +88,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
         $root = new Root();
         $root->addDirectory(new Directory('dir1'));
 
-        $this->setExpectedException('\VirtualFileSystem\Exception\FileExistsException');
+        $this->expectException('\VirtualFileSystem\Exception\FileExistsException');
         $root->addDirectory(new Directory('dir1'));
 
     }
@@ -99,7 +99,7 @@ class DirectoryTest extends \PHPUnit_Framework_TestCase
         $root->addDirectory(new Directory('dir1'));
         $root->remove('dir1');
 
-        $this->setExpectedException('\VirtualFileSystem\Exception\NotFoundException');
+        $this->expectException('\VirtualFileSystem\Exception\NotFoundException');
 
         $root->childAt('dir1');
     }
