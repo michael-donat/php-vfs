@@ -61,7 +61,17 @@ class VirtualFilesystemTest extends \PHPUnit\Framework\TestCase
 
     }
 
+    public function testSetStreamNameViaEnvironmentVariable()
+    {
+        $_ENV['PHPVFS_NAME'] = 'vfs';
 
+        $fs = new FileSystem();
+        $fs->createFile('/foo.txt', 'This is the content of foo.txt');
+
+        $this->assertEquals('vfs://foo.txt', $fs->path('foo.txt'));
+
+        unset($_ENV['PHPVFS_NAME']);
+    }
 
     public function testCreateDirectoryCreatesDirectories()
     {

@@ -39,7 +39,7 @@ class FileSystem
      */
     public function __construct()
     {
-        $this->scheme = uniqid('phpvfs');
+        $this->scheme = isset($_ENV['PHPVFS_NAME']) ? $_ENV['PHPVFS_NAME'] : uniqid('phpvfs');
 
         /* injecting components */
         $this->container = $container = new Container(new Factory());
