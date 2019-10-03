@@ -243,12 +243,12 @@ class Wrapper
      *
      * @param $data
      *
-     * @return false|integer
+     * @return integer
      */
     public function stream_write($data)
     {
         if (!$this->currentlyOpenedFile->isOpenedForWriting()) {
-            return false;
+            return 0;
         }
         //file access time changes so stat cache needs to be cleared
         $written = $this->currentlyOpenedFile->write($data);
@@ -496,7 +496,17 @@ class Wrapper
 
                         return false;
                     }
-                    $uid = function_exists('posix_getpwnam') ? posix_getpwnam($value)['uid'] : 0;
+
+                    $uid = 0;
+
+                    if (function_exists('posix_getpwnam')) {
+                        $user = posix_getpwnam($value);
+
+                        if ($user !== false) {
+                            $uid = $user['uid'];
+                        }
+                    }
+
                     $node->chown($uid);
                     $node->setChangeTime(time());
                     break;
@@ -523,7 +533,17 @@ class Wrapper
 
                         return false;
                     }
-                    $gid = function_exists('posix_getgrnam') ? posix_getgrnam($value)['gid'] : 0;
+
+                    $gid = 0;
+
+                    if (function_exists('posix_getgrnam')) {
+                        $group = posix_getgrnam($value);
+
+                        if ($group !== false) {
+                            $gid = $group['gid'];
+                        }
+                    }
+
                     $node->chgrp($gid);
                     $node->setChangeTime(time());
                     break;
@@ -815,5 +835,10 @@ class Wrapper
     public function stream_lock($operation)
     {
         return $this->currentlyOpenedFile->lock($this, $operation);
+    }
+
+    public function stream_set_option($option, $arg1, $arg2)
+    {
+        return false;
     }
 }
