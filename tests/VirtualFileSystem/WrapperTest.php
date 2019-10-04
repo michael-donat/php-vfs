@@ -1581,4 +1581,15 @@ class WrapperTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals("image/gif", $finfo->file($fs->path('/file.gif')));
 
     }
+
+    public function testRequire()
+    {
+        $fs = new FileSystem();
+        $fs->createFile('/file.php', <<<'PHP'
+<?php return 1;
+PHP
+        );
+
+        $this->assertSame(1, require $fs->path('/file.php'));
+    }
 }
