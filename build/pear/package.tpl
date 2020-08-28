@@ -22,7 +22,7 @@
         <release>stable</release>
         <api>stable</api>
     </stability>
-    <license uri="http://opensource.org/licenses/GPL-3.0">GPL3+</license>
+    <license uri="https://opensource.org/licenses/MIT">MIT</license>
     <notes>-</notes>
     <dependencies>
         <required>
