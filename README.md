@@ -13,7 +13,7 @@ Very simple filesystem emulating PHP stream wrapper for use in unit testing
 with PHPUnit, PHPSpec or any other testing framework. It offers means to test methods interacting
 with real filesystem without creating temportary directories or file fixtures.
 
-Released under a GPL3+ licence.
+Released under a MIT licence.
 
 For latest release please use tag indicated above.
 

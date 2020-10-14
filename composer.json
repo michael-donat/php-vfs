@@ -2,7 +2,7 @@
     "name": "php-vfs/php-vfs",
     "homepage": "http://michael-donat.github.com/php-vfs",
     "keywords": ["php", "virtual", "filesystem", "testing", "unit"],
-    "license": "GPL-3.0+",
+    "license": "MIT",
     "description": "Virtual file system implementation for use with PHP unit testing.",
     "minimum-stability": "stable",
     "authors": [
