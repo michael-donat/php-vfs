@@ -149,7 +149,7 @@ class FileHandler
     public function truncate($newSize = 0)
     {
         $this->position(0);
-        $newData = substr($this->file->data(), 0, $newSize);
+        $newData = substr($this->file->data() ? $this->file->data() : '', 0, $newSize);
         $newData = false === $newData ? '' : $newData;
         $this->file->setData($newData);
         $this->file->setModificationTime(time());
